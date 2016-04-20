@@ -9,7 +9,50 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    //Page Elements
+    @IBOutlet weak var signupButton: UIButton!
+    @IBOutlet weak var loginText: UILabel!
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var emailField: UITextField!
+    @IBOutlet weak var switchViewButton: UIButton!
+    @IBOutlet weak var HaveAccountText: UILabel!
+    var blueBackground = UIColor(red: 0, green: 128/255, blue: 1, alpha: 1.0)
+    var purpleBackground = UIColor(red: 204/255, green: 102/255, blue: 1, alpha: 1.0)
+    
+    //function which fades in the signup page
+    func FadeInSignup() {
+        UIView.animateWithDuration(1.5, animations: {
+            self.view.backgroundColor =  self.purpleBackground
+            self.switchViewButton.setTitle("Log In", forState: .Normal)
+            self.loginButton.alpha = 0.0
+            self.loginText.alpha = 0.0
+            self.HaveAccountText.alpha = 0.0
+            self.emailField.alpha = 1.0
+            self.signupButton.alpha = 1.0
+        })
+        self.HaveAccountText.alpha = 1.0
+        self.HaveAccountText.text = "Already Have an Account?"
+    }
+    
+    //function to fade in the login screen
+    func FadeInLogin() {
+        UIView.animateWithDuration(1.5, animations: {
+            self.view.backgroundColor =  self.blueBackground
+            self.switchViewButton.setTitle("Sign Up", forState: .Normal)
+            self.emailField.alpha = 1.0
+            self.loginText.alpha = 1.0
+            self.signupButton.alpha = 0.0
+            self.loginButton.alpha = 1.0
+            self.emailField.alpha = 0.0
+            self.HaveAccountText.text = "Don\'t Have an Account?"
+        })
+    }
+    
+    //locks orientation to portrait
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Portrait
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -19,7 +62,15 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    //Action to take when at bottom of view is pressed
+    @IBAction func switchViewButtonPressed(sender: AnyObject) {
+        if switchViewButton.titleLabel!.text == "Sign Up" {
+            FadeInSignup()
+        }
+        else {
+            FadeInLogin()
+        }
+    }
 
 }
 
