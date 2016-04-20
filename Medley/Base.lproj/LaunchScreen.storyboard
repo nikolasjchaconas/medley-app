@@ -20,8 +20,14 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9h8-Ey-uKA">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Medley" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpR-0z-4yJ" userLabel="medley_logo">
-                                <rect key="frame" x="160" y="60" width="281" height="118"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sync Music Playlists With Your Friends" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Cj-Ve-mxo">
+                                <rect key="frame" x="152" y="549" width="295" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Medley" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpR-0z-4yJ" userLabel="medley_logo">
+                                <rect key="frame" x="160" y="30" width="281" height="118"/>
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="73"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -29,18 +35,13 @@
                                     <rect key="frame" x="81" y="76" width="238" height="135"/>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sync Music Playlists With Your Friends" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Cj-Ve-mxo">
-                                <rect key="frame" x="152" y="549" width="295" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="7Cj-Ve-mxo" secondAttribute="bottom" constant="30" id="8gm-oD-byt"/>
                             <constraint firstItem="9h8-Ey-uKA" firstAttribute="top" secondItem="F5W-If-Ltp" secondAttribute="top" id="BfX-SG-eoL"/>
                             <constraint firstItem="7Cj-Ve-mxo" firstAttribute="centerX" secondItem="F5W-If-Ltp" secondAttribute="centerX" id="IZj-gc-S6m"/>
+                            <constraint firstItem="dpR-0z-4yJ" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="10" id="MV7-EO-6aL"/>
                             <constraint firstItem="9h8-Ey-uKA" firstAttribute="leading" secondItem="F5W-If-Ltp" secondAttribute="leading" id="dLS-hg-kfG"/>
                             <constraint firstItem="dpR-0z-4yJ" firstAttribute="centerX" secondItem="F5W-If-Ltp" secondAttribute="centerX" id="kkK-sX-uMt"/>
                             <constraint firstAttribute="trailing" secondItem="9h8-Ey-uKA" secondAttribute="trailing" id="q3g-fA-YmF"/>
