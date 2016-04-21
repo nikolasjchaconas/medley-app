@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     //Page Elements
+    @IBOutlet weak var passwordConfirmationField: UITextField!
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var loginText: UILabel!
     @IBOutlet weak var loginButton: UIButton!
@@ -25,8 +26,9 @@ class ViewController: UIViewController {
             self.view.backgroundColor =  self.purpleBackground
             self.switchViewButton.setTitle("Log In", forState: .Normal)
             self.loginButton.alpha = 0.0
-            self.loginText.alpha = 0.0
+            self.loginText.text = "Sign Up"
             self.HaveAccountText.alpha = 0.0
+            self.passwordConfirmationField.alpha = 1.0
             self.emailField.alpha = 1.0
             self.signupButton.alpha = 1.0
         })
@@ -38,14 +40,20 @@ class ViewController: UIViewController {
     func FadeInLogin() {
         UIView.animateWithDuration(1.5, animations: {
             self.view.backgroundColor =  self.blueBackground
+            self.loginText.text = "Login to make a shared playlist with friends."
             self.switchViewButton.setTitle("Sign Up", forState: .Normal)
             self.emailField.alpha = 1.0
             self.loginText.alpha = 1.0
             self.signupButton.alpha = 0.0
             self.loginButton.alpha = 1.0
             self.emailField.alpha = 0.0
+            self.passwordConfirmationField.alpha = 0.0
             self.HaveAccountText.text = "Don\'t Have an Account?"
         })
+    }
+    
+    func closeKeyboard() {
+        view.endEditing(true)
     }
     
     //locks orientation to portrait
@@ -56,12 +64,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.closeKeyboard))
+        view.addGestureRecognizer(tap)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     //Action to take when at bottom of view is pressed
     @IBAction func switchViewButtonPressed(sender: AnyObject) {
         if switchViewButton.titleLabel!.text == "Sign Up" {
