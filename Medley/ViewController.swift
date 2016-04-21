@@ -8,6 +8,17 @@
 
 import UIKit
 
+extension UIViewController {
+    func hideKeyboardOnTap() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.hideKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    func hideKeyboard() {
+        view.endEditing(true)
+    }
+}
+
 class ViewController: UIViewController {
     //Page Elements
     @IBOutlet weak var passwordConfirmationField: UITextField!
@@ -52,10 +63,6 @@ class ViewController: UIViewController {
         })
     }
     
-    func closeKeyboard() {
-        view.endEditing(true)
-    }
-    
     //locks orientation to portrait
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.Portrait
@@ -64,15 +71,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.closeKeyboard))
-        view.addGestureRecognizer(tap)
+        self.hideKeyboardOnTap()
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     //Action to take when at bottom of view is pressed
     @IBAction func switchViewButtonPressed(sender: AnyObject) {
         if switchViewButton.titleLabel!.text == "Sign Up" {

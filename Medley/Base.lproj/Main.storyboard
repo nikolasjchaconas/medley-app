@@ -113,6 +113,9 @@
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="141" y="587" width="119" height="30"/>
                                 </variation>
+                                <connections>
+                                    <segue destination="eEN-Pe-a6g" kind="showDetail" identifier="LoginSuccess" action="showViewController:sender:" id="xbe-cO-4eQ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bvx-nX-pSm">
                                 <rect key="frame" x="157" y="383" width="300" height="40"/>
@@ -194,6 +197,31 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="324" y="369"/>
+        </scene>
+        <!--Home View Controller-->
+        <scene sceneID="eV0-si-ziP">
+            <objects>
+                <viewController id="eEN-Pe-a6g" customClass="HomeViewController" customModule="Medley" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FGA-Qa-EW6"/>
+                        <viewControllerLayoutGuide type="bottom" id="hD2-Hr-Kj5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="56c-60-mxp">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="HOME" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="97Q-Yd-c7Y">
+                                <rect key="frame" x="204" y="82" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5GI-IN-wus" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1029" y="369"/>
         </scene>
     </scenes>
 </document>
