@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B3A87001CC85ED900A04BCD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3A86FF1CC85ED900A04BCD /* HomeViewController.swift */; };
 		AA89B6291CC32F2300E929F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA89B6281CC32F2300E929F0 /* AppDelegate.swift */; };
 		AA89B62B1CC32F2300E929F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA89B62A1CC32F2300E929F0 /* ViewController.swift */; };
 		AA89B62E1CC32F2300E929F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA89B62C1CC32F2300E929F0 /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5B3A86FF1CC85ED900A04BCD /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		AA89B6251CC32F2300E929F0 /* Medley.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Medley.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA89B6281CC32F2300E929F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA89B62A1CC32F2300E929F0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			children = (
 				AA89B6281CC32F2300E929F0 /* AppDelegate.swift */,
 				AA89B62A1CC32F2300E929F0 /* ViewController.swift */,
+				5B3A86FF1CC85ED900A04BCD /* HomeViewController.swift */,
 				AA89B62C1CC32F2300E929F0 /* Main.storyboard */,
 				AA89B62F1CC32F2300E929F0 /* Assets.xcassets */,
 				AA89B6311CC32F2300E929F0 /* LaunchScreen.storyboard */,
@@ -259,6 +262,7 @@
 			files = (
 				AA89B62B1CC32F2300E929F0 /* ViewController.swift in Sources */,
 				AA89B6291CC32F2300E929F0 /* AppDelegate.swift in Sources */,
+				5B3A87001CC85ED900A04BCD /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
