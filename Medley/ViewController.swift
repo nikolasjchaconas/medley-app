@@ -30,6 +30,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var HaveAccountText: UILabel!
     var blueBackground = UIColor(red: 0, green: 128/255, blue: 1, alpha: 1.0)
     var purpleBackground = UIColor(red: 204/255, green: 102/255, blue: 1, alpha: 1.0)
+    //Color for button borders
+    let buttonBorderColor : UIColor = UIColor( red: 255, green: 255, blue: 255, alpha: 0.35)
     
     //function which fades in the signup page
     func FadeInSignup() {
@@ -73,6 +75,15 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         self.hideKeyboardOnTap()
         
+        // Make login and signup buttons rounded
+        loginButton.layer.cornerRadius = 5
+        signupButton.layer.cornerRadius = 5
+        
+        // Make login and signup buttons have a slight border
+        loginButton.layer.borderWidth = 1
+        loginButton.layer.borderColor = buttonBorderColor.CGColor
+        signupButton.layer.borderWidth = 1
+        signupButton.layer.borderColor = buttonBorderColor.CGColor
     }
 
     override func didReceiveMemoryWarning() {
