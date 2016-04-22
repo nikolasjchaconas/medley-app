@@ -190,6 +190,7 @@
                         <outlet property="passwordField" destination="dWP-Z0-Bnx" id="6Ae-RA-Bmp"/>
                         <outlet property="signupButton" destination="bvx-nX-pSm" id="ssx-Mj-9eL"/>
                         <outlet property="switchViewButton" destination="YiN-Y0-gw2" id="YKw-cX-p21"/>
+                        <outlet property="usernameField" destination="cbH-N4-wia" id="gQl-2s-FXS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

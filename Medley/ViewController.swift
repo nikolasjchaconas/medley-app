@@ -22,6 +22,7 @@ extension UIViewController {
 
 class ViewController: UIViewController {
     //Page Elements
+    @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var passwordConfirmationField: UITextField!
     @IBOutlet weak var signupButton: UIButton!
@@ -101,8 +102,12 @@ class ViewController: UIViewController {
         loginButton.layer.borderColor = buttonBorderColor.CGColor
         signupButton.layer.borderWidth = 1
         signupButton.layer.borderColor = buttonBorderColor.CGColor
+        
+        //add listeners on text fields
         self.passwordConfirmationField.addTarget(self, action: #selector(ViewController.LoginFieldChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
         self.passwordField.addTarget(self, action: #selector(ViewController.LoginFieldChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        self.usernameField.addTarget(self, action: #selector(ViewController.LoginFieldChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        self.emailField.addTarget(self, action: #selector(ViewController.LoginFieldChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
     }
 
     override func didReceiveMemoryWarning() {
@@ -111,6 +116,10 @@ class ViewController: UIViewController {
     }
     //Action to take when at bottom of view is pressed
     @IBAction func switchViewButtonPressed(sender: AnyObject) {
+        emailField.layer.borderWidth = 0
+        usernameField.layer.borderWidth = 0
+        passwordField.layer.borderWidth = 0
+        passwordConfirmationField.layer.borderWidth = 0
         if switchViewButton.titleLabel!.text == "Sign Up" {
             FadeInSignup()
         }
@@ -118,17 +127,60 @@ class ViewController: UIViewController {
             FadeInLogin()
         }
     }
-    //
+    func MakeTextFieldRed(sender:UITextField) {
+        sender.layer.borderColor = self.redColor.CGColor
+        sender.layer.borderWidth = 2
+        sender.layer.cornerRadius = 5
+    }
+    func AbleToSignup (sender:UITextField) {
+        sender.layer.borderWidth = 0
+        if(emailField.text != "" && usernameField.text != "" && passwordField != "" && passwordConfirmationField != "") {
+            self.signupButton.enabled = true
+        }
+        else {
+            self.signupButton.enabled = false
+        }
+    }
+    
     func LoginFieldChange(sender:UITextField){
         switch sender {
         case passwordConfirmationField, passwordField:
             if(passwordField.text != passwordConfirmationField.text) {
-                passwordConfirmationField.layer.borderColor = self.redColor.CGColor
-                passwordConfirmationField.layer.borderWidth = 2
-                passwordConfirmationField.layer.cornerRadius = 5
+                MakeTextFieldRed(passwordConfirmationField)
+                self.signupButton.enabled = false
             }
             else {
                 passwordConfirmationField.layer.borderWidth = 0
+                AbleToSignup(passwordConfirmationField)
+            }
+        case emailField:
+            let after = emailField.text!.componentsSeparatedByString("@");
+            let num = after.count - 1;
+            var separators = [""]
+            if(emailField.text == "" || num != 1) {
+                MakeTextFieldRed(emailField)
+            }
+            else if (after[1] == "" || after[0] == ""){
+                MakeTextFieldRed(emailField)
+            }
+            else if (after[1] != "") {
+                separators = after[1].componentsSeparatedByString(".")
+            }
+            if (separators.count - 1 != 1){
+                MakeTextFieldRed(emailField)
+            }
+            else if (separators[0] == "" || separators[1] == "") {
+                MakeTextFieldRed(emailField)
+            }
+            else {
+                AbleToSignup(emailField)
+            }
+        case usernameField:
+            if(usernameField.text == "") {
+                MakeTextFieldRed(usernameField)
+            }
+            else {
+                AbleToSignup(usernameField)
             }
             
         default:
@@ -137,7 +189,19 @@ class ViewController: UIViewController {
     }
     
     @IBAction func signupButtonPressed(sender: AnyObject) {
-        
+        myRootRef.createUser(self.emailField.text!, password: self.passwordField.text!,
+                             withValueCompletionBlock: { error, result in
+                                
+                                if error != nil {
+                                    // There was an error creating the account
+                                } else {
+                                    let uid = result["uid"] as? String
+                                    print("Successfully created user account with uid: \(uid)")
+//                                    let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+//                                    let HomeViewController = storyBoard.instantiateViewControllerWithIdentifier("HomeViewController")
+//                                    self.presentViewController(HomeViewController, animated:true, completion:nil)
+                                }
+        })
     }
 }
 
