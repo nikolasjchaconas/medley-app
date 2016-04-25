@@ -108,6 +108,8 @@ class ViewController: UIViewController {
         self.passwordField.addTarget(self, action: #selector(ViewController.LoginFieldChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
         self.usernameField.addTarget(self, action: #selector(ViewController.LoginFieldChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
         self.emailField.addTarget(self, action: #selector(ViewController.LoginFieldChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        self.loginButton.enabled = false
+        self.signupButton.enabled = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -141,10 +143,27 @@ class ViewController: UIViewController {
             self.signupButton.enabled = false
         }
     }
+    func AbleToLogin (sender:UITextField) {
+        sender.layer.borderWidth = 0
+        if(usernameField.text != "" && passwordField != "") {
+            self.loginButton.enabled = true
+        }
+        else {
+            self.loginButton.enabled = false
+        }
+    }
     
     func LoginFieldChange(sender:UITextField){
         switch sender {
         case passwordConfirmationField, passwordField:
+            if(sender == passwordField){
+                if(passwordField.text == "") {
+                    MakeTextFieldRed(passwordField)
+                }
+                else {
+                    AbleToLogin(sender)
+                }
+            }
             if(passwordField.text != passwordConfirmationField.text) {
                 MakeTextFieldRed(passwordConfirmationField)
                 self.signupButton.enabled = false
@@ -180,12 +199,23 @@ class ViewController: UIViewController {
                 MakeTextFieldRed(usernameField)
             }
             else {
+                AbleToLogin(usernameField)
                 AbleToSignup(usernameField)
             }
             
         default:
             break
         }
+    }
+    @IBAction func loginButtonPressed(sender: AnyObject) {
+        myRootRef.authUser(self.emailField.text!, password: self.passwordField.text!,
+                     withCompletionBlock: { error, authData in
+                        if error != nil {
+                            // There was an error logging in to this account
+                        } else {
+                            // We are now logged in
+                        }
+        })
     }
     
     @IBAction func signupButtonPressed(sender: AnyObject) {
@@ -197,9 +227,6 @@ class ViewController: UIViewController {
                                 } else {
                                     let uid = result["uid"] as? String
                                     print("Successfully created user account with uid: \(uid)")
-//                                    let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-//                                    let HomeViewController = storyBoard.instantiateViewControllerWithIdentifier("HomeViewController")
-//                                    self.presentViewController(HomeViewController, animated:true, completion:nil)
                                 }
         })
     }
