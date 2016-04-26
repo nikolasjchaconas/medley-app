@@ -22,6 +22,10 @@ extension UIViewController {
 
 class ViewController: UIViewController {
     //Page Elements
+    @IBOutlet weak var resetPasswordButton: UIButton!
+    @IBOutlet weak var helpSigningInText: UILabel!
+    @IBOutlet weak var loginErrorMessage: UILabel!
+    @IBOutlet weak var signupErrorMessage: UILabel!
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var passwordConfirmationField: UITextField!
@@ -29,6 +33,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var loginText: UILabel!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var emailField: UITextField!
+    @IBOutlet weak var loginSuccessMessage: UILabel!
+    @IBOutlet weak var signupSuccessMessage: UILabel!
     @IBOutlet weak var switchViewButton: UIButton!
     @IBOutlet weak var haveAccountText: UILabel!
     var blueBackground = UIColor(red: 0, green: 128/255, blue: 1, alpha: 1.0)
@@ -37,7 +43,7 @@ class ViewController: UIViewController {
     //Color for button borders
     let buttonBorderColor : UIColor = UIColor( red: 255, green: 255, blue: 255, alpha: 0.35)
     var redColor = UIColor(red: 1, green:0, blue: 0, alpha: 0.8)
-    
+    var greenColor = UIColor(red: 0, green: 1, blue: 0, alpha: 0.8)
     // Create a reference to a Firebase location
     var myRootRef = Firebase(url:"https://crackling-heat-1030.firebaseio.com/")
     
@@ -45,31 +51,50 @@ class ViewController: UIViewController {
     //function which fades in the signup page
     func FadeInSignup() {
         UIView.animateWithDuration(1.5, animations: {
+            self.signupButton.enabled = false
+            self.loginErrorMessage.text = ""
             self.view.backgroundColor =  self.purpleBackground
             self.switchViewButton.setTitle("Log In", forState: .Normal)
             self.loginButton.alpha = 0.0
             self.loginText.text = "Sign Up"
             self.haveAccountText.alpha = 0.0
             self.passwordConfirmationField.alpha = 1.0
-            self.emailField.alpha = 1.0
+            self.usernameField.alpha = 1.0
             self.signupButton.alpha = 1.0
+            self.resetPasswordButton.alpha = 0.0
+            self.helpSigningInText.text = ""
+            self.emailField.text = ""
+            self.passwordField.text = ""
         })
         self.haveAccountText.alpha = 1.0
         self.haveAccountText.text = "Already Have an Account?"
+        HideMessages()
        
     }
     
-//    func ShowError(errorMessage: String, currentBackground: UIColor) {
-//        self.errorLabel.text = errorMessage
-//        self.errorLabel.textColor = self.redColor
-//        UIView.animateWithDuration(1.5, animations: {
-//            //self.errorLabel.textColor = currentBackground
-//        })
-//    }
+    func ShowError(errorMessage: String, label: UILabel) {
+        self.HideMessages()
+        label.text = errorMessage
+        label.textColor = self.redColor
+    }
+    
+    func HideMessages() {
+        loginSuccessMessage.text = ""
+        loginErrorMessage.text = ""
+        signupSuccessMessage.text = ""
+        signupErrorMessage.text = ""
+    }
+    
+    func ShowSuccess(successMessage: String, label: UILabel) {
+        self.HideMessages()
+        label.text = successMessage
+        label.textColor = self.greenColor
+    }
     
     //function to fade in the login screen
     func FadeInLogin() {
         UIView.animateWithDuration(1.5, animations: {
+            self.loginButton.enabled = false
             self.view.backgroundColor =  self.blueBackground
             self.loginText.text = "Login to make a shared playlist with friends."
             self.switchViewButton.setTitle("Sign Up", forState: .Normal)
@@ -77,11 +102,17 @@ class ViewController: UIViewController {
             self.loginText.alpha = 1.0
             self.signupButton.alpha = 0.0
             self.loginButton.alpha = 1.0
-            self.emailField.alpha = 0.0
+            self.usernameField.alpha = 0.0
             self.passwordConfirmationField.alpha = 0.0
+            self.resetPasswordButton.alpha = 1.0
             self.haveAccountText.text = "Don\'t Have an Account?"
+            self.usernameField.text = ""
+            self.emailField.text = ""
+            self.passwordField.text = ""
+            self.passwordConfirmationField.text = ""
         })
-        
+        self.helpSigningInText.text = "Need Help Signing in?"
+        self.HideMessages()
     }
     
     //locks orientation to portrait
@@ -110,6 +141,15 @@ class ViewController: UIViewController {
         self.emailField.addTarget(self, action: #selector(ViewController.LoginFieldChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
         self.loginButton.enabled = false
         self.signupButton.enabled = false
+        
+        //iphone 4S stuff
+        if UIDevice.currentDevice().model == "iPhone4,1" {
+            helpSigningInText.text = UIDevice.currentDevice().model
+            helpSigningInText.font = helpSigningInText.font.fontWithSize(11)
+            resetPasswordButton.titleLabel!.font =  UIFont.systemFontOfSize(12)
+            haveAccountText.font = haveAccountText.font.fontWithSize(11)
+            switchViewButton.titleLabel!.font = UIFont.boldSystemFontOfSize(12)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -134,19 +174,54 @@ class ViewController: UIViewController {
         sender.layer.borderWidth = 2
         sender.layer.cornerRadius = 5
     }
+    
+    func isRed(sender:UITextField) -> Bool {
+        let output = sender.layer.borderWidth == 2 ? true : false
+        return output;
+    }
+    
+    func validEmail(emailField:UITextField) -> Bool {
+        let after = emailField.text!.componentsSeparatedByString("@");
+        let num = after.count - 1;
+        var separators = [""]
+        if(emailField.text == "" || num != 1) {
+            return false
+        }
+        else if (after[1] == "" || after[0] == ""){
+            return false
+        }
+        else if (after[1] != "") {
+            separators = after[1].componentsSeparatedByString(".")
+        }
+        if (separators.count - 1 != 1){
+            return false
+        }
+        else if (separators[0] == "" || separators[1] == "") {
+            return false
+        }
+        else {
+            return true
+        }
+    }
+    
     func AbleToSignup (sender:UITextField) {
         sender.layer.borderWidth = 0
         if(emailField.text != "" && usernameField.text != "" && passwordField != "" && passwordConfirmationField != "") {
-            self.signupButton.enabled = true
+            if(!isRed(emailField) && !isRed(usernameField) && !isRed(passwordField) && !isRed(passwordConfirmationField)){
+                self.signupButton.enabled = true
+            }
         }
         else {
             self.signupButton.enabled = false
         }
     }
+    
     func AbleToLogin (sender:UITextField) {
         sender.layer.borderWidth = 0
-        if(usernameField.text != "" && passwordField != "") {
-            self.loginButton.enabled = true
+        if(emailField.text != "" && passwordField.text != "") {
+            if(!isRed(emailField) && !isRed(passwordField)){
+                self.loginButton.enabled = true
+            }
         }
         else {
             self.loginButton.enabled = false
@@ -155,6 +230,7 @@ class ViewController: UIViewController {
     
     func LoginFieldChange(sender:UITextField){
         switch sender {
+        //validations for password field
         case passwordConfirmationField, passwordField:
             if(sender == passwordField){
                 if(passwordField.text == "") {
@@ -166,40 +242,27 @@ class ViewController: UIViewController {
             }
             if(passwordField.text != passwordConfirmationField.text) {
                 MakeTextFieldRed(passwordConfirmationField)
-                self.signupButton.enabled = false
             }
             else {
                 passwordConfirmationField.layer.borderWidth = 0
                 AbleToSignup(passwordConfirmationField)
             }
+            
+        //validations for emailField
         case emailField:
-            let after = emailField.text!.componentsSeparatedByString("@");
-            let num = after.count - 1;
-            var separators = [""]
-            if(emailField.text == "" || num != 1) {
-                MakeTextFieldRed(emailField)
-            }
-            else if (after[1] == "" || after[0] == ""){
-                MakeTextFieldRed(emailField)
-            }
-            else if (after[1] != "") {
-                separators = after[1].componentsSeparatedByString(".")
-            }
-            if (separators.count - 1 != 1){
-                MakeTextFieldRed(emailField)
-            }
-            else if (separators[0] == "" || separators[1] == "") {
+            if (!validEmail(emailField)){
                 MakeTextFieldRed(emailField)
             }
             else {
+                AbleToLogin(emailField)
                 AbleToSignup(emailField)
             }
+        //add validations for usernamefield
         case usernameField:
             if(usernameField.text == "") {
                 MakeTextFieldRed(usernameField)
             }
             else {
-                AbleToLogin(usernameField)
                 AbleToSignup(usernameField)
             }
             
@@ -212,8 +275,10 @@ class ViewController: UIViewController {
                      withCompletionBlock: { error, authData in
                         if error != nil {
                             // There was an error logging in to this account
+                            self.ShowError("Error Logging In!", label: self.loginErrorMessage)
                         } else {
                             // We are now logged in
+                            self.ShowSuccess("Logged In!", label: self.loginSuccessMessage)
                         }
         })
     }
@@ -223,12 +288,29 @@ class ViewController: UIViewController {
                              withValueCompletionBlock: { error, result in
                                 
                                 if error != nil {
-                                    // There was an error creating the account
+                                    self.ShowError("Error creating account!", label: self.signupErrorMessage)
                                 } else {
-                                    let uid = result["uid"] as? String
-                                    print("Successfully created user account with uid: \(uid)")
+                                    //let uid = result["uid"] as? String
+                                    self.ShowSuccess("Successfully created account!", label: self.signupSuccessMessage)
                                 }
         })
+    }
+    @IBAction func resetPasswordButtonPressed(sender: AnyObject) {
+        if(validEmail(self.emailField)) {
+            myRootRef.resetPasswordForUser(emailField.text!, withCompletionBlock: { error in
+                if error != nil {
+                    
+                    self.ShowError("Email Does not Exist", label: self.loginErrorMessage)
+                } else {
+                    self.ShowSuccess("Password Recovery Email Sent", label: self.loginErrorMessage)
+                    // Password reset sent successfully
+                }
+            })
+        }
+        else {
+            MakeTextFieldRed(self.emailField)
+        }
+        
     }
 }
 
