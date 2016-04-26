@@ -271,6 +271,7 @@ class ViewController: UIViewController {
         }
     }
     @IBAction func loginButtonPressed(sender: AnyObject) {
+        self.hideKeyboard()
         myRootRef.authUser(self.emailField.text!, password: self.passwordField.text!,
                      withCompletionBlock: { error, authData in
                         if error != nil {
@@ -284,6 +285,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func signupButtonPressed(sender: AnyObject) {
+        self.hideKeyboard()
         myRootRef.createUser(self.emailField.text!, password: self.passwordField.text!,
                              withValueCompletionBlock: { error, result in
                                 
@@ -296,6 +298,7 @@ class ViewController: UIViewController {
         })
     }
     @IBAction func resetPasswordButtonPressed(sender: AnyObject) {
+        self.hideKeyboard()
         if(validEmail(self.emailField)) {
             myRootRef.resetPasswordForUser(emailField.text!, withCompletionBlock: { error in
                 if error != nil {
