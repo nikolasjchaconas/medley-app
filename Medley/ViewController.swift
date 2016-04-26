@@ -45,7 +45,7 @@ class ViewController: UIViewController {
     var redColor = UIColor(red: 1, green:0, blue: 0, alpha: 0.8)
     var greenColor = UIColor(red: 0, green: 1, blue: 0, alpha: 0.8)
     // Create a reference to a Firebase location
-    var myRootRef = Firebase(url:"https://crackling-heat-1030.firebaseio.com/")
+    let myRootRef = Firebase(url:"https://crackling-heat-1030.firebaseio.com/")
     
     
     //function which fades in the signup page
@@ -270,6 +270,12 @@ class ViewController: UIViewController {
             break
         }
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        //let DestViewController : HomeViewController = segue.destinationViewController as! HomeViewController
+        //DestViewController.greetingMessage.text = "hello"
+    }
+    
     @IBAction func loginButtonPressed(sender: AnyObject) {
         self.hideKeyboard()
         myRootRef.authUser(self.emailField.text!, password: self.passwordField.text!,
@@ -279,7 +285,8 @@ class ViewController: UIViewController {
                             self.ShowError("Error Logging In!", label: self.loginErrorMessage)
                         } else {
                             // We are now logged in
-                            self.ShowSuccess("Logged In!", label: self.loginSuccessMessage)
+                            authData.providerData["email"]
+                            self.performSegueWithIdentifier("HomeViewController", sender:sender)
                         }
         })
     }
@@ -293,7 +300,8 @@ class ViewController: UIViewController {
                                     self.ShowError("Error creating account!", label: self.signupErrorMessage)
                                 } else {
                                     //let uid = result["uid"] as? String
-                                    self.ShowSuccess("Successfully created account!", label: self.signupSuccessMessage)
+                                    self.FadeInLogin()
+                                    self.ShowSuccess("Account Created! Please Login", label: self.loginSuccessMessage)
                                 }
         })
     }
@@ -315,5 +323,6 @@ class ViewController: UIViewController {
         }
         
     }
+
 }
 
