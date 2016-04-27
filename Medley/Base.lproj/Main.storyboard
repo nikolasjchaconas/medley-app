@@ -245,9 +245,9 @@
                                 <exclude reference="uez-Ex-4wg"/>
                                 <exclude reference="vjI-EL-MqU"/>
                                 <exclude reference="aPt-Ep-neE"/>
-                                <exclude reference="Vgw-sW-FCq"/>
                                 <exclude reference="ZU8-cS-1FN"/>
                                 <exclude reference="wqM-AK-cgN"/>
+                                <exclude reference="Vgw-sW-FCq"/>
                                 <exclude reference="KiN-F0-A5k"/>
                                 <exclude reference="LPX-kY-pI7"/>
                                 <exclude reference="MJ3-kq-sJD"/>
@@ -294,32 +294,177 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="HOME" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="97Q-Yd-c7Y">
-                                <rect key="frame" x="111" y="80" width="416" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Medley" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0e-D4-YMj" userLabel="medley_logo">
+                                <rect key="frame" x="160" y="30" width="281" height="118"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="73"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="89" y="41" width="222.5" height="117"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="81" y="76" width="238" height="135"/>
+                                </variation>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f0v-pr-y4m">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.2892780172413793" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="85" id="U8e-zv-qHN"/>
+                                    <constraint firstAttribute="width" constant="150" id="oBR-eV-IQR"/>
+                                </constraints>
+                                <state key="normal" title="Create Room">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="U8e-zv-qHN"/>
+                                        <exclude reference="oBR-eV-IQR"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="125" y="233" width="150" height="85"/>
+                                    <mask key="constraints">
+                                        <include reference="U8e-zv-qHN"/>
+                                        <include reference="oBR-eV-IQR"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <segue destination="4Ed-Mw-3xt" kind="show" id="3bW-Y8-zHY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZDU-El-Sac">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.28927801720000001" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="DwT-Ds-Ij9"/>
+                                    <constraint firstAttribute="width" constant="150" id="ScH-gN-giw"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="85" id="f1V-1P-VHS"/>
+                                    <constraint firstAttribute="height" constant="85" id="pkH-8X-wsy"/>
+                                </constraints>
+                                <state key="normal" title="Join Room">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="DwT-Ds-Ij9"/>
+                                        <exclude reference="ScH-gN-giw"/>
+                                        <exclude reference="f1V-1P-VHS"/>
+                                        <exclude reference="pkH-8X-wsy"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="125" y="331" width="150" height="85"/>
+                                    <mask key="constraints">
+                                        <exclude reference="DwT-Ds-Ij9"/>
+                                        <include reference="ScH-gN-giw"/>
+                                        <exclude reference="f1V-1P-VHS"/>
+                                        <include reference="pkH-8X-wsy"/>
+                                    </mask>
+                                </variation>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello User1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rWS-dx-Of8">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="83" y="166" width="228" height="21"/>
+                                </variation>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3cV-Zb-Eam">
                                 <rect key="frame" x="204" y="219" width="126" height="30"/>
-                                <state key="normal" title="Back"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Logout">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="137" y="550" width="126" height="30"/>
+                                </variation>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="7D5-je-Pge"/>
+                                    <action selector="logoutButtonPressed:" destination="eEN-Pe-a6g" eventType="touchUpInside" id="35R-Hu-O2X"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="ZDU-El-Sac" firstAttribute="centerX" secondItem="56c-60-mxp" secondAttribute="centerX" id="CW3-iQ-t52"/>
+                            <constraint firstItem="P0e-D4-YMj" firstAttribute="centerX" secondItem="56c-60-mxp" secondAttribute="centerX" id="JK3-wk-vzc"/>
+                            <constraint firstItem="rWS-dx-Of8" firstAttribute="centerX" secondItem="56c-60-mxp" secondAttribute="centerX" id="MB0-T1-TrK"/>
+                            <constraint firstItem="ZDU-El-Sac" firstAttribute="top" secondItem="f0v-pr-y4m" secondAttribute="bottom" constant="43" id="Pxk-0n-HJK">
+                                <variation key="widthClass=compact" constant="10"/>
+                            </constraint>
+                            <constraint firstItem="f0v-pr-y4m" firstAttribute="top" secondItem="rWS-dx-Of8" secondAttribute="bottom" constant="46" id="arb-0E-OmT"/>
+                            <constraint firstItem="f0v-pr-y4m" firstAttribute="centerX" secondItem="56c-60-mxp" secondAttribute="centerX" id="b0L-cP-n3c"/>
+                            <constraint firstItem="rWS-dx-Of8" firstAttribute="top" secondItem="P0e-D4-YMj" secondAttribute="bottom" constant="3" id="hJd-pz-hbF"/>
                             <constraint firstItem="3cV-Zb-Eam" firstAttribute="centerX" secondItem="56c-60-mxp" secondAttribute="centerX" id="kXg-1Q-eVM"/>
-                            <constraint firstItem="97Q-Yd-c7Y" firstAttribute="centerX" secondItem="56c-60-mxp" secondAttribute="centerX" id="ySM-0i-kL1"/>
+                            <constraint firstItem="P0e-D4-YMj" firstAttribute="top" secondItem="FGA-Qa-EW6" secondAttribute="bottom" constant="5" id="u2d-Ya-MjT"/>
+                            <constraint firstItem="hD2-Hr-Kj5" firstAttribute="top" secondItem="3cV-Zb-Eam" secondAttribute="bottom" constant="5" id="x2o-eE-Vjd"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="P0e-D4-YMj"/>
+                                <exclude reference="f0v-pr-y4m"/>
+                                <exclude reference="ZDU-El-Sac"/>
+                                <exclude reference="rWS-dx-Of8"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="JK3-wk-vzc"/>
+                                <exclude reference="u2d-Ya-MjT"/>
+                                <exclude reference="MB0-T1-TrK"/>
+                                <exclude reference="hJd-pz-hbF"/>
+                                <exclude reference="arb-0E-OmT"/>
+                                <exclude reference="b0L-cP-n3c"/>
+                                <exclude reference="CW3-iQ-t52"/>
+                                <exclude reference="Pxk-0n-HJK"/>
+                                <exclude reference="x2o-eE-Vjd"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="P0e-D4-YMj"/>
+                                <include reference="f0v-pr-y4m"/>
+                                <include reference="ZDU-El-Sac"/>
+                                <include reference="rWS-dx-Of8"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="JK3-wk-vzc"/>
+                                <include reference="u2d-Ya-MjT"/>
+                                <include reference="MB0-T1-TrK"/>
+                                <include reference="hJd-pz-hbF"/>
+                                <include reference="arb-0E-OmT"/>
+                                <include reference="b0L-cP-n3c"/>
+                                <include reference="CW3-iQ-t52"/>
+                                <include reference="Pxk-0n-HJK"/>
+                                <include reference="x2o-eE-Vjd"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
-                        <outlet property="greetingMessage" destination="97Q-Yd-c7Y" id="Ozv-xN-oW5"/>
+                        <outlet property="greetingMessage" destination="rWS-dx-Of8" id="yNu-wv-G5f"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="ViewController" id="OaE-fq-UVU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5GI-IN-wus" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1029" y="369"/>
+        </scene>
+        <!--Room View Controller-->
+        <scene sceneID="9IR-HN-DKy">
+            <objects>
+                <viewController id="4Ed-Mw-3xt" customClass="RoomViewController" customModule="Medley" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="seF-JR-2t1"/>
+                        <viewControllerLayoutGuide type="bottom" id="Jsf-4D-S6M"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iLr-fg-6av">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="etq-nR-EDi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1731" y="369"/>
         </scene>
     </scenes>
 </document>

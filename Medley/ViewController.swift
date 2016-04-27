@@ -98,7 +98,6 @@ class ViewController: UIViewController {
             self.view.backgroundColor =  self.blueBackground
             self.loginText.text = "Login to make a shared playlist with friends."
             self.switchViewButton.setTitle("Sign Up", forState: .Normal)
-            self.emailField.alpha = 1.0
             self.loginText.alpha = 1.0
             self.signupButton.alpha = 0.0
             self.loginButton.alpha = 1.0
@@ -285,7 +284,6 @@ class ViewController: UIViewController {
                             self.ShowError("Error Logging In!", label: self.loginErrorMessage)
                         } else {
                             // We are now logged in
-                            authData.providerData["email"]
                             self.performSegueWithIdentifier("HomeViewController", sender:sender)
                         }
         })
