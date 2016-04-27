@@ -27,6 +27,12 @@ extension UIViewController {
     func GetCurrentUserEmail(myRootRef : Firebase) -> String {
         return (GetCurrentUser(myRootRef).providerData["email"] as? String)!
     }
+    
+    func MakeTextFieldRed(sender:UITextField, color:UIColor) {
+        sender.layer.borderColor = color.CGColor
+        sender.layer.borderWidth = 2
+        sender.layer.cornerRadius = 5
+    }
 }
 
 class ViewController: UIViewController {
@@ -177,11 +183,7 @@ class ViewController: UIViewController {
             FadeInLogin()
         }
     }
-    func MakeTextFieldRed(sender:UITextField) {
-        sender.layer.borderColor = self.redColor.CGColor
-        sender.layer.borderWidth = 2
-        sender.layer.cornerRadius = 5
-    }
+    
     
     func isRed(sender:UITextField) -> Bool {
         let output = sender.layer.borderWidth == 2 ? true : false
@@ -242,14 +244,14 @@ class ViewController: UIViewController {
         case passwordConfirmationField, passwordField:
             if(sender == passwordField){
                 if(passwordField.text == "") {
-                    MakeTextFieldRed(passwordField)
+                    MakeTextFieldRed(passwordField, color:self.redColor)
                 }
                 else {
                     AbleToLogin(sender)
                 }
             }
             if(passwordField.text != passwordConfirmationField.text) {
-                MakeTextFieldRed(passwordConfirmationField)
+                MakeTextFieldRed(passwordConfirmationField, color:self.redColor)
             }
             else {
                 passwordConfirmationField.layer.borderWidth = 0
@@ -259,7 +261,7 @@ class ViewController: UIViewController {
         //validations for emailField
         case emailField:
             if (!validEmail(emailField)){
-                MakeTextFieldRed(emailField)
+                MakeTextFieldRed(emailField, color:self.redColor)
             }
             else {
                 AbleToLogin(emailField)
@@ -268,7 +270,7 @@ class ViewController: UIViewController {
         //add validations for usernamefield
         case usernameField:
             if(usernameField.text == "") {
-                MakeTextFieldRed(usernameField)
+                MakeTextFieldRed(usernameField, color:self.redColor)
             }
             else {
                 AbleToSignup(usernameField)
@@ -326,7 +328,7 @@ class ViewController: UIViewController {
             })
         }
         else {
-            MakeTextFieldRed(self.emailField)
+            MakeTextFieldRed(self.emailField, color:self.redColor)
         }
         
     }

@@ -19,7 +19,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.hideKeyboardOnTap()
-        greetingMessage.text =  "Hello " + GetCurrentUserEmail(myRootRef) + "!"
+        self.greetingMessage.text =  "Hello " + self.GetCurrentUserEmail(myRootRef) + "!"
     }
     
     override func didReceiveMemoryWarning() {
