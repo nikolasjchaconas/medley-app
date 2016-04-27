@@ -18,6 +18,15 @@ extension UIViewController {
     func hideKeyboard() {
         view.endEditing(true)
     }
+    
+    func GetCurrentUser(myRootRef : Firebase) -> FAuthData {
+        return myRootRef.authData
+        
+    }
+    
+    func GetCurrentUserEmail(myRootRef : Firebase) -> String {
+        return (GetCurrentUser(myRootRef).providerData["email"] as? String)!
+    }
 }
 
 class ViewController: UIViewController {

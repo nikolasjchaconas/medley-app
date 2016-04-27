@@ -1,5 +1,5 @@
 //
-//  RoomViewController.swift
+//  JoinRoomViewController.swift
 //  Medley
 //
 //  Created by Nikolas Chaconas on 4/26/16.
@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class RoomViewController: UIViewController {
+class JoinRoomViewController: UIViewController {
     
     var myRootRef = Firebase(url:"https://crackling-heat-1030.firebaseio.com/")
     
@@ -22,14 +22,6 @@ class RoomViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func GetCurrentUser() -> FAuthData {
-        return myRootRef.authData
-    }
-    
-    func GetCurrentUserEmail() -> String {
-        return (GetCurrentUser().providerData["email"] as? String)!
     }
     
     
