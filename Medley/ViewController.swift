@@ -37,6 +37,7 @@ extension UIViewController {
 
 class ViewController: UIViewController {
     //Page Elements
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var resetPasswordButton: UIButton!
     @IBOutlet weak var helpSigningInText: UILabel!
     @IBOutlet weak var loginErrorMessage: UILabel!
@@ -164,6 +165,8 @@ class ViewController: UIViewController {
             haveAccountText.font = haveAccountText.font.fontWithSize(11)
             switchViewButton.titleLabel!.font = UIFont.boldSystemFontOfSize(12)
         }
+        
+        self.hideLoading()
     }
 
     override func didReceiveMemoryWarning() {
@@ -286,14 +289,27 @@ class ViewController: UIViewController {
         //DestViewController.greetingMessage.text = "hello"
     }
     
+    func showLoading() {
+        loadingIndicator.startAnimating()
+        loadingIndicator.hidden = false
+        loadingIndicator.alpha = 1.0
+    }
+    func hideLoading() {
+        loadingIndicator.stopAnimating()
+        loadingIndicator.alpha = 0.0
+    }
     @IBAction func loginButtonPressed(sender: AnyObject) {
         self.hideKeyboard()
+        self.showLoading()
+        self.HideMessages()
         myRootRef.authUser(self.emailField.text!, password: self.passwordField.text!,
                      withCompletionBlock: { error, authData in
                         if error != nil {
                             // There was an error logging in to this account
+                            self.hideLoading()
                             self.ShowError("Error Logging In!", label: self.loginErrorMessage)
                         } else {
+                            self.hideLoading()
                             // We are now logged in
                             self.performSegueWithIdentifier("HomeViewController", sender:sender)
                         }
