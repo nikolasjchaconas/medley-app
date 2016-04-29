@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class CreateRoomViewController: UIViewController {
+class RoomViewController: UIViewController {
     
     var myRootRef = Firebase(url:"https://crackling-heat-1030.firebaseio.com/")
     

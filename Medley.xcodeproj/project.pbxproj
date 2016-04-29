@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5B35FB211CD042A800BE38A1 /* CreateRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B35FB201CD042A800BE38A1 /* CreateRoomViewController.swift */; };
+		5B35FB211CD042A800BE38A1 /* RoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B35FB201CD042A800BE38A1 /* RoomViewController.swift */; };
 		5B35FB231CD0476000BE38A1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B35FB221CD0476000BE38A1 /* SettingsViewController.swift */; };
-		5B35FB251CD0487700BE38A1 /* JoinRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B35FB241CD0487700BE38A1 /* JoinRoomViewController.swift */; };
 		5B3A87001CC85ED900A04BCD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3A86FF1CC85ED900A04BCD /* HomeViewController.swift */; };
 		AA89B6291CC32F2300E929F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA89B6281CC32F2300E929F0 /* AppDelegate.swift */; };
 		AA89B62B1CC32F2300E929F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA89B62A1CC32F2300E929F0 /* ViewController.swift */; };
@@ -39,9 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5B35FB201CD042A800BE38A1 /* CreateRoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRoomViewController.swift; sourceTree = "<group>"; };
+		5B35FB201CD042A800BE38A1 /* RoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomViewController.swift; sourceTree = "<group>"; };
 		5B35FB221CD0476000BE38A1 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = ../SettingsViewController.swift; sourceTree = "<group>"; };
-		5B35FB241CD0487700BE38A1 /* JoinRoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinRoomViewController.swift; sourceTree = "<group>"; };
 		5B3A86FF1CC85ED900A04BCD /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		8B8DA4961E9E8BF7264C687B /* Pods-Medley.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Medley.release.xcconfig"; path = "Pods/Target Support Files/Pods-Medley/Pods-Medley.release.xcconfig"; sourceTree = "<group>"; };
 		95613E7E07F75C8BE30A5881 /* Pods-Medley.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Medley.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Medley/Pods-Medley.debug.xcconfig"; sourceTree = "<group>"; };
@@ -114,8 +112,7 @@
 			children = (
 				AA89B6281CC32F2300E929F0 /* AppDelegate.swift */,
 				5B35FB221CD0476000BE38A1 /* SettingsViewController.swift */,
-				5B35FB201CD042A800BE38A1 /* CreateRoomViewController.swift */,
-				5B35FB241CD0487700BE38A1 /* JoinRoomViewController.swift */,
+				5B35FB201CD042A800BE38A1 /* RoomViewController.swift */,
 				5B3A86FF1CC85ED900A04BCD /* HomeViewController.swift */,
 				AA89B62A1CC32F2300E929F0 /* ViewController.swift */,
 				AA89B62C1CC32F2300E929F0 /* Main.storyboard */,
@@ -348,8 +345,7 @@
 				AA89B6291CC32F2300E929F0 /* AppDelegate.swift in Sources */,
 				5B3A87001CC85ED900A04BCD /* HomeViewController.swift in Sources */,
 				5B35FB231CD0476000BE38A1 /* SettingsViewController.swift in Sources */,
-				5B35FB211CD042A800BE38A1 /* CreateRoomViewController.swift in Sources */,
-				5B35FB251CD0487700BE38A1 /* JoinRoomViewController.swift in Sources */,
+				5B35FB211CD042A800BE38A1 /* RoomViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
