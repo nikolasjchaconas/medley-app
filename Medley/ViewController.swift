@@ -284,20 +284,33 @@ class ViewController: UIViewController {
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        //let DestViewController : HomeViewController = segue.destinationViewController as! HomeViewController
-        //DestViewController.greetingMessage.text = "hello"
+    func showLoading() {
+        loginButton.enabled = false
+        signupButton.enabled = false
+        switchViewButton.enabled = false
+        emailField.enabled = false
+        usernameField.enabled = false
+        passwordField.enabled = false
+        passwordConfirmationField.enabled = false
+        resetPasswordButton.enabled = false
+        loadingIndicator.alpha = 1.0
+        loadingIndicator.startAnimating()
+        
     }
     
-    func showLoading() {
-        loadingIndicator.startAnimating()
-        loadingIndicator.hidden = false
-        loadingIndicator.alpha = 1.0
-    }
     func hideLoading() {
+        switchViewButton.enabled = true
+        loginButton.enabled = true
+        signupButton.enabled = true
+        emailField.enabled = true
+        usernameField.enabled = true
+        passwordField.enabled = true
+        resetPasswordButton.enabled = true
+        passwordConfirmationField.enabled = true
         loadingIndicator.stopAnimating()
         loadingIndicator.alpha = 0.0
     }
+    
     @IBAction func loginButtonPressed(sender: AnyObject) {
         self.hideKeyboard()
         self.showLoading()
@@ -330,18 +343,37 @@ class ViewController: UIViewController {
                                 }
         })
     }
+    
+    func sendRecoveryEmail (alert: UIAlertAction!) {
+        showLoading()
+        myRootRef.resetPasswordForUser(emailField.text!, withCompletionBlock: { error in
+            if error != nil {
+                self.hideLoading()
+                self.ShowError("Email Does not Exist", label: self.loginErrorMessage)
+            } else {
+                self.hideLoading()
+                self.ShowSuccess("Password Recovery Email Sent", label: self.loginErrorMessage)
+                // Password reset sent successfully
+            }
+        })
+    }
+    
+    func ShowPasswordChangeAlert() {
+        let alertController = UIAlertController(title: "Reset Password", message:
+            "A recovery password will be sent to " + emailField.text!, preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: sendRecoveryEmail))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func IsPasswordTemporary() -> Bool {
+        return (self.GetCurrentUser(self.myRootRef).providerData["isTemporaryPassword"] as? Bool)!
+    }
+    
     @IBAction func resetPasswordButtonPressed(sender: AnyObject) {
         self.hideKeyboard()
         if(validEmail(self.emailField)) {
-            myRootRef.resetPasswordForUser(emailField.text!, withCompletionBlock: { error in
-                if error != nil {
-                    
-                    self.ShowError("Email Does not Exist", label: self.loginErrorMessage)
-                } else {
-                    self.ShowSuccess("Password Recovery Email Sent", label: self.loginErrorMessage)
-                    // Password reset sent successfully
-                }
-            })
+            ShowPasswordChangeAlert()
         }
         else {
             MakeTextFieldRed(self.emailField, color:self.redColor)
