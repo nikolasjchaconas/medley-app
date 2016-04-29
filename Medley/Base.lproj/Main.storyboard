@@ -359,7 +359,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="4Ed-Mw-3xt" kind="show" identifier="CreateRoomViewController" id="3Q5-cN-eXd"/>
+                                    <action selector="createRoomButtonPressed:" destination="eEN-Pe-a6g" eventType="touchUpInside" id="uHD-h4-iTF"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZDU-El-Sac">
@@ -391,7 +391,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="bK7-28-lbM" kind="show" identifier="JoinRoomViewController" id="v3g-HJ-9tc"/>
+                                    <action selector="joinRoomButtonPressed:" destination="eEN-Pe-a6g" eventType="touchUpInside" id="00f-AW-QuP"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4YH-zH-ewO">
@@ -513,16 +513,17 @@
                     <connections>
                         <outlet property="greetingMessage" destination="rWS-dx-Of8" id="yNu-wv-G5f"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="ViewController" id="OaE-fq-UVU"/>
+                        <segue destination="4Ed-Mw-3xt" kind="show" identifier="RoomViewController" id="UGg-7c-sea"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5GI-IN-wus" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1563" y="287"/>
+            <point key="canvasLocation" x="1665" y="642"/>
         </scene>
-        <!--Create Room View Controller-->
+        <!--Room View Controller-->
         <scene sceneID="9IR-HN-DKy">
             <objects>
-                <viewController id="4Ed-Mw-3xt" customClass="CreateRoomViewController" sceneMemberID="viewController">
+                <viewController id="4Ed-Mw-3xt" customClass="RoomViewController" customModule="Medley" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="seF-JR-2t1"/>
                         <viewControllerLayoutGuide type="bottom" id="Jsf-4D-S6M"/>
@@ -540,15 +541,6 @@
                                     <rect key="frame" x="81" y="76" width="238" height="135"/>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is the create room page" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FLa-rj-fKi">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="89" y="277" width="218" height="21"/>
-                                </variation>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NN7-0J-12N">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="Back">
@@ -561,6 +553,15 @@
                                     <segue destination="eEN-Pe-a6g" kind="show" identifier="HomeViewController" id="dXh-EW-OYK"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a room" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FLa-rj-fKi">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="142" y="163" width="107" height="21"/>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -570,8 +571,8 @@
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="Xoa-3w-o3r"/>
-                                <exclude reference="FLa-rj-fKi"/>
                                 <exclude reference="NN7-0J-12N"/>
+                                <exclude reference="FLa-rj-fKi"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="WKY-CH-HaV"/>
@@ -581,8 +582,8 @@
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="Xoa-3w-o3r"/>
-                                <include reference="FLa-rj-fKi"/>
                                 <include reference="NN7-0J-12N"/>
+                                <include reference="FLa-rj-fKi"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="WKY-CH-HaV"/>
@@ -593,117 +594,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="etq-nR-EDi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="948" y="1094"/>
-        </scene>
-        <!--Join Room View Controller-->
-        <scene sceneID="cLN-hA-R9R">
-            <objects>
-                <viewController id="bK7-28-lbM" customClass="JoinRoomViewController" customModule="Medley" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="VIV-z8-WBM"/>
-                        <viewControllerLayoutGuide type="bottom" id="8fd-pU-hz0"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="bdG-ze-oWX">
-                        <rect key="frame" x="0.0" y="0.0" width="400" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medley" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yXW-al-PUC" userLabel="medley_logo">
-                                <rect key="frame" x="160" y="30" width="281" height="118"/>
-                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="73"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
-                                    <rect key="frame" x="89" y="33" width="222.5" height="117"/>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="81" y="76" width="238" height="135"/>
-                                </variation>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Room Code" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S53-3n-RzH">
-                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
-                                <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
-                                    <rect key="frame" x="80" y="318" width="243" height="30"/>
-                                </variation>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Join a Room." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="86h-Tw-swx">
-                                <rect key="frame" x="133" y="149" width="333" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="JOp-Ta-gju"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
-                                    <rect key="frame" x="50" y="170" width="300" height="38.5"/>
-                                </variation>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ka-td-ouc">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Back">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="143" y="503" width="117" height="30"/>
-                                </variation>
-                                <connections>
-                                    <segue destination="eEN-Pe-a6g" kind="show" identifier="HomeViewController" id="otI-4S-hr7"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Room Code of room to Join" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="clv-HU-0aW">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="clv-HU-0aW" firstAttribute="centerX" secondItem="bdG-ze-oWX" secondAttribute="centerX" id="BEt-uX-cCt"/>
-                            <constraint firstItem="yXW-al-PUC" firstAttribute="top" secondItem="VIV-z8-WBM" secondAttribute="bottom" constant="5" id="Gcc-ed-rpP"/>
-                            <constraint firstItem="S53-3n-RzH" firstAttribute="top" secondItem="clv-HU-0aW" secondAttribute="bottom" constant="8" id="aQ6-kP-82j"/>
-                            <constraint firstItem="clv-HU-0aW" firstAttribute="centerY" secondItem="bdG-ze-oWX" secondAttribute="centerY" id="ecT-kJ-Kas"/>
-                            <constraint firstItem="86h-Tw-swx" firstAttribute="top" secondItem="yXW-al-PUC" secondAttribute="bottom" constant="3" id="pur-0N-tFk"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="yXW-al-PUC"/>
-                                <exclude reference="S53-3n-RzH"/>
-                                <exclude reference="86h-Tw-swx"/>
-                                <exclude reference="0ka-td-ouc"/>
-                                <exclude reference="clv-HU-0aW"/>
-                            </mask>
-                            <mask key="constraints">
-                                <exclude reference="aQ6-kP-82j"/>
-                                <exclude reference="BEt-uX-cCt"/>
-                                <exclude reference="ecT-kJ-Kas"/>
-                                <exclude reference="Gcc-ed-rpP"/>
-                                <exclude reference="pur-0N-tFk"/>
-                            </mask>
-                        </variation>
-                        <variation key="widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="yXW-al-PUC"/>
-                                <include reference="S53-3n-RzH"/>
-                                <include reference="86h-Tw-swx"/>
-                                <include reference="0ka-td-ouc"/>
-                                <include reference="clv-HU-0aW"/>
-                            </mask>
-                            <mask key="constraints">
-                                <include reference="aQ6-kP-82j"/>
-                                <include reference="BEt-uX-cCt"/>
-                                <include reference="ecT-kJ-Kas"/>
-                                <include reference="Gcc-ed-rpP"/>
-                                <include reference="pur-0N-tFk"/>
-                            </mask>
-                        </variation>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="stp-as-yNZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="213" y="1104"/>
+            <point key="canvasLocation" x="918" y="1017"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="zPg-Ik-U3v">
@@ -954,6 +845,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="YK2-ml-4J1"/>
+        <segue reference="dXh-EW-OYK"/>
     </inferredMetricsTieBreakers>
 </document>
