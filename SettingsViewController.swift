@@ -16,6 +16,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var oldPasswordField: UITextField!
     @IBOutlet weak var temporaryPasswordWarning: UILabel!
     @IBOutlet weak var successMessage: UILabel!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     /*
  
@@ -41,6 +42,7 @@ class SettingsViewController: UIViewController {
             self.HideWarning()
         }
         self.HideSuccess()
+        loadingIndicator.alpha = 0;
     }
     
     override func didReceiveMemoryWarning() {
@@ -55,6 +57,16 @@ class SettingsViewController: UIViewController {
     func HideSuccess() {
         self.successMessage.text = ""
     }
+    
+    func ShowLoading() {
+        loadingIndicator.alpha = 1.0
+        loadingIndicator.startAnimating()
+    }
+    
+    func HideLoading() {
+        loadingIndicator.alpha = 0.0
+    }
+    
     func ShowWarning() {
         self.temporaryPasswordWarning.text = "You are using a temporary password, it will expire in the next 24 hours. Please change your password."
     }
@@ -76,13 +88,14 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func changePasswordPressed(sender: AnyObject) {
-        
         if(self.ValidField(self.newPasswordField) && self.ValidField(self.oldPasswordField)) {
+            ShowLoading()
             self.myRootRef.changePasswordForUser(GetCurrentUserEmail(myRootRef), fromOld: self.oldPasswordField.text!,
                 toNew: self.newPasswordField.text!, withCompletionBlock: { error in
                 if error != nil {
-                    
+                    self.HideLoading()
                 } else {
+                    self.HideLoading()
                     self.HideWarning()
                     self.ShowSuccess()
                 }

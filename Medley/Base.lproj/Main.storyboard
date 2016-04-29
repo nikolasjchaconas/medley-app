@@ -941,6 +941,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="loadingIndicator" destination="X41-vZ-CJF" id="Ktf-Du-R9b"/>
                         <outlet property="newPasswordField" destination="uvS-Z7-jqS" id="XTm-J3-jaS"/>
                         <outlet property="oldPasswordField" destination="1l8-SV-PNT" id="FL6-wJ-ZGE"/>
                         <outlet property="successMessage" destination="sqE-6X-Lxr" id="fZa-Iz-fit"/>
