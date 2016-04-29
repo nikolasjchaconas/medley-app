@@ -28,6 +28,11 @@ extension UIViewController {
         return (GetCurrentUser(myRootRef).providerData["email"] as? String)!
     }
     
+    func ReturnUsername(username : String) -> String {
+        return username
+    }
+    
+    
     func MakeTextFieldRed(sender:UITextField, color:UIColor) {
         sender.layer.borderColor = color.CGColor
         sender.layer.borderWidth = 2
@@ -335,13 +340,32 @@ class ViewController: UIViewController {
                              withValueCompletionBlock: { error, result in
                                 
                                 if error != nil {
+                                    //add error conditions from https://www.firebase.com/docs/ios/guide/user-auth.html#section-storing
                                     self.ShowError("Error creating account!", label: self.signupErrorMessage)
                                 } else {
                                     //let uid = result["uid"] as? String
-                                    self.FadeInLogin()
-                                    self.ShowSuccess("Account Created! Please Login", label: self.loginSuccessMessage)
+                                    self.FirstSignIn()
                                 }
         })
+    }
+    
+    func FirstSignIn() {
+        self.myRootRef.authUser(self.emailField.text!, password: self.passwordField.text!) {
+            error, authData in
+            if error != nil {
+                // Something went wrong. :(
+            } else {
+                let newUser = [
+                    "username": self.usernameField.text!
+                ]
+                // Create a child path with a key set to the uid underneath the "users" node
+                // This creates a URL path like the following:
+                //  - https://<YOUR-FIREBASE-APP>.firebaseio.com/users/<uid>
+                self.myRootRef.childByAppendingPath("users")
+                    .childByAppendingPath(authData.uid).setValue(newUser)
+                self.performSegueWithIdentifier("HomeViewController", sender:self)
+            }
+        }
     }
     
     func sendRecoveryEmail (alert: UIAlertAction!) {
