@@ -336,14 +336,18 @@ class ViewController: UIViewController {
     
     @IBAction func signupButtonPressed(sender: AnyObject) {
         self.hideKeyboard()
+        self.showLoading()
+        self.HideMessages()
         myRootRef.createUser(self.emailField.text!, password: self.passwordField.text!,
                              withValueCompletionBlock: { error, result in
                                 
                                 if error != nil {
                                     //add error conditions from https://www.firebase.com/docs/ios/guide/user-auth.html#section-storing
+                                    self.hideLoading()
                                     self.ShowError("Error creating account!", label: self.signupErrorMessage)
                                 } else {
                                     //let uid = result["uid"] as? String
+                                    self.hideLoading()
                                     self.FirstSignIn()
                                 }
         })
@@ -358,11 +362,16 @@ class ViewController: UIViewController {
                 let newUser = [
                     "username": self.usernameField.text!
                 ]
+                let userID = [
+                    "id": authData.uid
+                ]
                 // Create a child path with a key set to the uid underneath the "users" node
                 // This creates a URL path like the following:
                 //  - https://<YOUR-FIREBASE-APP>.firebaseio.com/users/<uid>
                 self.myRootRef.childByAppendingPath("users")
                     .childByAppendingPath(authData.uid).setValue(newUser)
+                self.myRootRef.childByAppendingPath("usernames")
+                    .childByAppendingPath(self.usernameField.text!).setValue(userID)
                 self.performSegueWithIdentifier("HomeViewController", sender:self)
             }
         }
