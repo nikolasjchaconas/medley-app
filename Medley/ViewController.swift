@@ -250,6 +250,7 @@ class ViewController: UIViewController {
         switch sender {
         //validations for passwordConfirmationField
         case passwordConfirmationField:
+            if (self.switchViewButton.titleLabel!.text == "Sign Up") {
             if(passwordField.text == "") {
                 MakeTextFieldRed(passwordField, color:self.redColor)
             }
@@ -269,6 +270,7 @@ class ViewController: UIViewController {
                 AbleToSignup(passwordConfirmationField)
                 AbleToSignup(passwordField)
                 self.HideMessages()
+            }
             }
             break
             
@@ -395,19 +397,20 @@ class ViewController: UIViewController {
                                 
                                 if error != nil {
                                     //add error conditions from https://www.firebase.com/docs/ios/guide/user-auth.html#section-storing
-<<<<<<< HEAD
-                                    switch(error){
-                                        case "EMAIL_TAKEN":
+                                    if let errorCode = FAuthenticationError(rawValue: error.code){
+                                    switch(errorCode){
+                                        case .EmailTaken:
                                             self.ShowError("Email is already in use.", label:self.signupErrorMessage)
+                                            break
+                                        case .InvalidEmail:
+                                            self.ShowError("Invalid email.", label:self.signupErrorMessage)
                                             break
                                         default:
                                             self.ShowError("Could not connect.", label:self.signupErrorMessage)
                                             break
                                     }
-=======
+                                    }
                                     self.hideLoading()
->>>>>>> 47e03b22856fd48688a661ebd5dc5a58c312f94e
-                                    self.ShowError("Error creating account!", label: self.signupErrorMessage)
                                 } else {
                                     //let uid = result["uid"] as? String
                                     self.hideLoading()
