@@ -199,8 +199,8 @@ class ViewController: UIViewController {
     }
     
     func validEmail(emailField:UITextField) -> Bool {
-        let after = emailField.text!.componentsSeparatedByString("@");
-        let num = after.count - 1;
+        let after = emailField.text!.componentsSeparatedByString("@")
+        let num = after.count - 1
         var separators = [""]
         if(emailField.text == "" || num != 1) {
             return false
@@ -211,7 +211,7 @@ class ViewController: UIViewController {
         else if (after[1] != "") {
             separators = after[1].componentsSeparatedByString(".")
         }
-        if (separators.count - 1 != 1){
+        if (separators.count < 2){
             return false
         }
         else if (separators[0] == "" || separators[1] == "") {
@@ -311,10 +311,27 @@ class ViewController: UIViewController {
             
         //add validations for usernamefield
         case usernameField:
+
             if(usernameField.text == "") {
                 MakeTextFieldRed(usernameField, color:self.redColor)
             }
+            else if(usernameField.text != ""){
+                myRootRef.childByAppendingPath("usernames")
+                    .childByAppendingPath(usernameField.text?.lowercaseString).observeSingleEventOfType(.Value, withBlock: { snapshot in
+                    if(!(snapshot.value is NSNull)){
+                        self.MakeTextFieldRed(self.usernameField, color: self.redColor)
+                        self.ShowError("Username is taken.", label: self.signupErrorMessage)
+                    }
+                    else {
+                        self.HideMessages()
+                        self.AbleToSignup(self.usernameField)
+                    }
+                })
+
+            }
+
             else {
+                
                 AbleToSignup(usernameField)
             }
             break
@@ -371,11 +388,14 @@ class ViewController: UIViewController {
     
     @IBAction func signupButtonPressed(sender: AnyObject) {
         self.hideKeyboard()
+        self.showLoading()
+        self.HideMessages()
         myRootRef.createUser(self.emailField.text!, password: self.passwordField.text!,
                              withValueCompletionBlock: { error, result in
                                 
                                 if error != nil {
                                     //add error conditions from https://www.firebase.com/docs/ios/guide/user-auth.html#section-storing
+<<<<<<< HEAD
                                     switch(error){
                                         case "EMAIL_TAKEN":
                                             self.ShowError("Email is already in use.", label:self.signupErrorMessage)
@@ -384,9 +404,13 @@ class ViewController: UIViewController {
                                             self.ShowError("Could not connect.", label:self.signupErrorMessage)
                                             break
                                     }
+=======
+                                    self.hideLoading()
+>>>>>>> 47e03b22856fd48688a661ebd5dc5a58c312f94e
                                     self.ShowError("Error creating account!", label: self.signupErrorMessage)
                                 } else {
                                     //let uid = result["uid"] as? String
+                                    self.hideLoading()
                                     self.FirstSignIn()
                                 }
         })
@@ -399,13 +423,18 @@ class ViewController: UIViewController {
                 // Something went wrong. :(
             } else {
                 let newUser = [
-                    "username": self.usernameField.text!
+                    "username": (self.usernameField.text?.lowercaseString)!
+                ]
+                let userID = [
+                    "id": authData.uid
                 ]
                 // Create a child path with a key set to the uid underneath the "users" node
                 // This creates a URL path like the following:
                 //  - https://<YOUR-FIREBASE-APP>.firebaseio.com/users/<uid>
                 self.myRootRef.childByAppendingPath("users")
                     .childByAppendingPath(authData.uid).setValue(newUser)
+                self.myRootRef.childByAppendingPath("usernames")
+                    .childByAppendingPath(self.usernameField.text?.lowercaseString).setValue(userID)
                 self.performSegueWithIdentifier("HomeViewController", sender:self)
             }
         }
