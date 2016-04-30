@@ -277,10 +277,28 @@ class ViewController: UIViewController {
             }
         //add validations for usernamefield
         case usernameField:
+
             if(usernameField.text == "") {
                 MakeTextFieldRed(usernameField, color:self.redColor)
             }
+            else if(usernameField.text != ""){
+                myRootRef.childByAppendingPath("usernames")
+                    .childByAppendingPath(usernameField.text?.lowercaseString)
+                    .observeEventType(.Value, withBlock: { snapshot in
+                        if(!(snapshot.value is NSNull)){
+                            self.MakeTextFieldRed(self.usernameField, color: self.redColor)
+                            self.ShowError("Username is taken.", label: self.signupErrorMessage)
+                        }
+                        else {
+                            self.HideMessages()
+                            self.AbleToSignup(self.usernameField)
+                        }
+                        }, withCancelBlock: { error in
+                    })
+            }
+
             else {
+                
                 AbleToSignup(usernameField)
             }
             
@@ -360,7 +378,7 @@ class ViewController: UIViewController {
                 // Something went wrong. :(
             } else {
                 let newUser = [
-                    "username": self.usernameField.text!
+                    "username": (self.usernameField.text?.lowercaseString)!
                 ]
                 let userID = [
                     "id": authData.uid
@@ -371,7 +389,7 @@ class ViewController: UIViewController {
                 self.myRootRef.childByAppendingPath("users")
                     .childByAppendingPath(authData.uid).setValue(newUser)
                 self.myRootRef.childByAppendingPath("usernames")
-                    .childByAppendingPath(self.usernameField.text!).setValue(userID)
+                    .childByAppendingPath(self.usernameField.text?.lowercaseString).setValue(userID)
                 self.performSegueWithIdentifier("HomeViewController", sender:self)
             }
         }
