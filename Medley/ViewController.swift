@@ -248,23 +248,55 @@ class ViewController: UIViewController {
     
     func LoginFieldChange(sender:UITextField){
         switch sender {
-        //validations for password field
-        case passwordConfirmationField, passwordField:
-            if(sender == passwordField){
-                if(passwordField.text == "") {
-                    MakeTextFieldRed(passwordField, color:self.redColor)
-                }
-                else {
-                    AbleToLogin(sender)
-                }
+        //validations for passwordConfirmationField
+        case passwordConfirmationField:
+            if(passwordField.text == "") {
+                MakeTextFieldRed(passwordField, color:self.redColor)
             }
-            if(passwordField.text != passwordConfirmationField.text) {
-                MakeTextFieldRed(passwordConfirmationField, color:self.redColor)
+
+            else if(passwordField.text != passwordConfirmationField.text && passwordField.text?.characters.count >= 7) {
+                MakeTextFieldRed(passwordConfirmationField, color: self.redColor)
+                self.ShowError("Passwords do not match", label: self.signupErrorMessage)
             }
-            else {
-                passwordConfirmationField.layer.borderWidth = 0
+            else if(passwordField.text != passwordConfirmationField.text && passwordField.text?.characters.count < 7) {
+                MakeTextFieldRed(passwordConfirmationField, color: self.redColor)
+            }
+            else if(passwordField.text?.characters.count < 7 && passwordField.text == passwordConfirmationField.text){
                 AbleToSignup(passwordConfirmationField)
             }
+            else {
+                AbleToLogin(sender)
+                AbleToSignup(passwordConfirmationField)
+                AbleToSignup(passwordField)
+                self.HideMessages()
+            }
+            break
+            
+        //validations for passwordField
+        case passwordField:
+            if(passwordField.text?.characters.count < 7){
+                MakeTextFieldRed(passwordField, color: self.redColor)
+                self.ShowError("Please make password at least 7 characters", label: self.signupErrorMessage)
+            }
+            else if(passwordField.text != passwordConfirmationField.text && passwordField.text?.characters.count < 7) {
+                MakeTextFieldRed(passwordConfirmationField, color: self.redColor)
+            }
+            else if(passwordField.text != passwordConfirmationField.text && passwordField.text?.characters.count >= 7 && passwordConfirmationField.text != "") {
+                AbleToSignup(passwordField)
+                MakeTextFieldRed(passwordConfirmationField, color: self.redColor)
+                self.ShowError("Passwords do not match", label: self.signupErrorMessage)
+            }
+
+            else if(passwordField.text?.characters.count < 7 && passwordField.text == passwordConfirmationField.text){
+                AbleToSignup(passwordConfirmationField)
+            }
+            else {
+                self.HideMessages()
+                AbleToSignup(passwordField)
+                AbleToLogin(passwordConfirmationField)
+
+            }
+            break
             
         //validations for emailField
         case emailField:
@@ -275,6 +307,8 @@ class ViewController: UIViewController {
                 AbleToLogin(emailField)
                 AbleToSignup(emailField)
             }
+            break
+            
         //add validations for usernamefield
         case usernameField:
             if(usernameField.text == "") {
@@ -283,6 +317,7 @@ class ViewController: UIViewController {
             else {
                 AbleToSignup(usernameField)
             }
+            break
             
         default:
             break
@@ -325,7 +360,7 @@ class ViewController: UIViewController {
                         if error != nil {
                             // There was an error logging in to this account
                             self.hideLoading()
-                            self.ShowError("Error Logging In!", label: self.loginErrorMessage)
+                            self.ShowError("Incorrect Username/Password.", label: self.loginErrorMessage)
                         } else {
                             self.hideLoading()
                             // We are now logged in
@@ -341,6 +376,14 @@ class ViewController: UIViewController {
                                 
                                 if error != nil {
                                     //add error conditions from https://www.firebase.com/docs/ios/guide/user-auth.html#section-storing
+                                    switch(error){
+                                        case "EMAIL_TAKEN":
+                                            self.ShowError("Email is already in use.", label:self.signupErrorMessage)
+                                            break
+                                        default:
+                                            self.ShowError("Could not connect.", label:self.signupErrorMessage)
+                                            break
+                                    }
                                     self.ShowError("Error creating account!", label: self.signupErrorMessage)
                                 } else {
                                     //let uid = result["uid"] as? String
