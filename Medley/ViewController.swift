@@ -397,7 +397,7 @@ class ViewController: UIViewController {
                         if error != nil {
                             // There was an error logging in to this account
                             self.hideLoading()
-                            self.ShowError("Incorrect Username/Password.", label: self.loginErrorMessage)
+                            self.ShowError("Incorrect Email/Password.", label: self.loginErrorMessage)
                         } else {
                             //self.hideLoading()
                             // We are now logged in
