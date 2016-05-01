@@ -250,64 +250,80 @@ class ViewController: UIViewController {
         switch sender {
         //validations for passwordConfirmationField
         case passwordConfirmationField:
-            if (self.switchViewButton.titleLabel!.text == "Sign Up") {
-                if(passwordField.text == "") {
-                    MakeTextFieldRed(passwordField, color:self.redColor)
-                }
 
-                else if(passwordField.text != passwordConfirmationField.text && passwordField.text?.characters.count >= 7) {
-                    MakeTextFieldRed(passwordConfirmationField, color: self.redColor)
-                    self.ShowError("Passwords do not match", label: self.signupErrorMessage)
-                }
-                else if(passwordField.text != passwordConfirmationField.text && passwordField.text?.characters.count < 7) {
-                    MakeTextFieldRed(passwordConfirmationField, color: self.redColor)
-                }
-                else if(passwordField.text?.characters.count < 7 && passwordField.text == passwordConfirmationField.text){
-                    AbleToSignup(passwordConfirmationField)
-                }
-                else {
-                    AbleToLogin(sender)
-                    AbleToSignup(passwordConfirmationField)
-                    AbleToSignup(passwordField)
-                    self.HideMessages()
-                }
+            if(passwordField.text == "") {
+                MakeTextFieldRed(passwordField, color:self.redColor)
             }
-            break
-            
-        //validations for passwordField
-        case passwordField:
-            if(passwordField.text?.characters.count < 7){
-                MakeTextFieldRed(passwordField, color: self.redColor)
-                self.ShowError("Please make password at least 7 characters", label: self.signupErrorMessage)
+
+            else if(passwordField.text != passwordConfirmationField.text && passwordField.text?.characters.count >= 7) {
+                MakeTextFieldRed(passwordConfirmationField, color: self.redColor)
+                self.ShowError("Passwords do not match", label: self.signupErrorMessage)
             }
             else if(passwordField.text != passwordConfirmationField.text && passwordField.text?.characters.count < 7) {
                 MakeTextFieldRed(passwordConfirmationField, color: self.redColor)
             }
-            else if(passwordField.text != passwordConfirmationField.text && passwordField.text?.characters.count >= 7 && passwordConfirmationField.text != "") {
-                AbleToSignup(passwordField)
-                MakeTextFieldRed(passwordConfirmationField, color: self.redColor)
-                self.ShowError("Passwords do not match", label: self.signupErrorMessage)
-            }
-
             else if(passwordField.text?.characters.count < 7 && passwordField.text == passwordConfirmationField.text){
                 AbleToSignup(passwordConfirmationField)
             }
             else {
-                self.HideMessages()
+                AbleToLogin(sender)
+                AbleToSignup(passwordConfirmationField)
                 AbleToSignup(passwordField)
-                AbleToLogin(passwordConfirmationField)
-
+                self.HideMessages()
             }
+
+            break
+            
+        //validations for passwordField
+        case passwordField:
+            if (self.switchViewButton.currentTitle == "Log In") {
+                if(passwordField.text?.characters.count < 7){
+                    MakeTextFieldRed(passwordField, color: self.redColor)
+                    self.ShowError("Please make password at least 7 characters", label: self.signupErrorMessage)
+                }
+                else if(passwordField.text != passwordConfirmationField.text && passwordField.text?.characters.count < 7) {
+                    MakeTextFieldRed(passwordConfirmationField, color: self.redColor)
+                }
+                else if(passwordField.text != passwordConfirmationField.text && passwordField.text?.characters.count >= 7 && passwordConfirmationField.text != "") {
+                    AbleToSignup(passwordField)
+                    MakeTextFieldRed(passwordConfirmationField, color: self.redColor)
+                    self.ShowError("Passwords do not match", label: self.signupErrorMessage)
+                }
+
+                else if(passwordField.text?.characters.count < 7 && passwordField.text == passwordConfirmationField.text){
+                    AbleToSignup(passwordConfirmationField)
+                }
+                else {
+                    self.HideMessages()
+                    AbleToSignup(passwordField)
+                    AbleToLogin(passwordConfirmationField)
+
+                }
+            }
+            else if (self.switchViewButton.currentTitle == "Sign Up") {
+                if(passwordField.text != ""){
+                    AbleToLogin(passwordConfirmationField)
+                    AbleToLogin(passwordField)
+                }
+            }
+
             break
             
         //validations for emailField
         case emailField:
-            if (!validEmail(emailField)){
-                MakeTextFieldRed(emailField, color:self.redColor)
+            if (self.switchViewButton.currentTitle == "Log In"){
+                if (!validEmail(emailField)){
+                    MakeTextFieldRed(emailField, color:self.redColor)
+                }
+                else {
+                    AbleToLogin(emailField)
+                    AbleToSignup(emailField)
+                }
             }
-            else {
-                AbleToLogin(emailField)
-                AbleToSignup(emailField)
+            else if (self.switchViewButton.currentTitle == "Sign Up") {
+                if (emailField.text != ""){
+                    AbleToLogin(emailField)
+                }
             }
             break
             
