@@ -305,6 +305,9 @@
                                 <variation key="widthClass=compact" misplaced="YES">
                                     <rect key="frame" x="137" y="550" width="126" height="30"/>
                                 </variation>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="274" y="565" width="52" height="30"/>
+                                </variation>
                                 <connections>
                                     <action selector="logoutButtonPressed:" destination="eEN-Pe-a6g" eventType="touchUpInside" id="35R-Hu-O2X"/>
                                 </connections>
@@ -320,7 +323,7 @@
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.2892780172413793" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="85" id="U8e-zv-qHN"/>
-                                    <constraint firstAttribute="width" constant="150" id="oBR-eV-IQR"/>
+                                    <constraint firstAttribute="width" constant="250" id="oBR-eV-IQR"/>
                                 </constraints>
                                 <state key="normal" title="Create Room">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -345,8 +348,8 @@
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.28927801720000001" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="DwT-Ds-Ij9"/>
-                                    <constraint firstAttribute="width" constant="150" id="ScH-gN-giw"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="DwT-Ds-Ij9"/>
+                                    <constraint firstAttribute="width" constant="250" id="ScH-gN-giw"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="85" id="f1V-1P-VHS"/>
                                     <constraint firstAttribute="height" constant="85" id="pkH-8X-wsy"/>
                                 </constraints>
@@ -377,10 +380,10 @@
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.28927801720000001" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="WMj-dY-b7o"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="WMj-dY-b7o"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="85" id="e0j-h0-vvC"/>
                                     <constraint firstAttribute="height" constant="85" id="mQT-GL-aOQ"/>
-                                    <constraint firstAttribute="width" constant="150" id="ssY-nv-j2W"/>
+                                    <constraint firstAttribute="width" constant="250" id="ssY-nv-j2W"/>
                                 </constraints>
                                 <state key="normal" title="Settings">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
