@@ -158,7 +158,7 @@ class ViewController: UIViewController {
         self.passwordConfirmationField.addTarget(self, action: #selector(ViewController.LoginFieldChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
         self.passwordField.addTarget(self, action: #selector(ViewController.LoginFieldChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
         self.usernameField.addTarget(self, action: #selector(ViewController.LoginFieldChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
-        self.emailField.addTarget(self, action: #selector(ViewController.LoginFieldChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        self.emailField.addTarget(self, action: #selector(ViewController.LoginFieldChange(_:)), forControlEvents: UIControlEvents.EditingDidEnd)
         
         //iphone 4S stuff
         if UIDevice.currentDevice().model == "iPhone4,1" {
@@ -309,20 +309,14 @@ class ViewController: UIViewController {
             
         //validations for emailField
         case emailField:
-            if (self.switchViewButton.currentTitle == "Log In"){
-                if (!validEmail(emailField)){
-                    MakeTextFieldRed(emailField, color:self.redColor)
-                }
-                else {
-                    AbleToLogin(emailField)
-                    AbleToSignup(emailField)
-                }
+            if (!validEmail(emailField)){
+                MakeTextFieldRed(emailField, color:self.redColor)
             }
-            else if (self.switchViewButton.currentTitle == "Sign Up") {
-                if (emailField.text != ""){
-                    AbleToLogin(emailField)
-                }
+            else {
+                AbleToLogin(emailField)
+                AbleToSignup(emailField)
             }
+
             break
             
         //add validations for usernamefield
