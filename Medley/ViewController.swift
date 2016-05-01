@@ -159,8 +159,6 @@ class ViewController: UIViewController {
         self.passwordField.addTarget(self, action: #selector(ViewController.LoginFieldChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
         self.usernameField.addTarget(self, action: #selector(ViewController.LoginFieldChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
         self.emailField.addTarget(self, action: #selector(ViewController.LoginFieldChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
-        self.loginButton.enabled = false
-        self.signupButton.enabled = false
         
         //iphone 4S stuff
         if UIDevice.currentDevice().model == "iPhone4,1" {
@@ -172,6 +170,8 @@ class ViewController: UIViewController {
         }
         
         self.hideLoading()
+        self.signupButton.enabled = false
+        self.loginButton.enabled = false
     }
 
     override func didReceiveMemoryWarning() {
