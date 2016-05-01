@@ -19,7 +19,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var createRoomButton: UIButton!
     
-    let buttonBorderColor : UIColor = UIColor( red: 255, green: 255, blue: 255, alpha: 0.35)
+    let buttonBorderColor : UIColor = UIColor( red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 0.35)
     
     override func viewDidLoad() {
         super.viewDidLoad()
