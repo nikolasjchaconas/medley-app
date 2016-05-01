@@ -317,6 +317,10 @@ class ViewController: UIViewController {
             if(usernameField.text == "") {
                 MakeTextFieldRed(usernameField, color:self.redColor)
             }
+            /*
+                 maybe change to observeEventOfType
+ 
+            */
             else if(usernameField.text != ""){
                 myRootRef.childByAppendingPath("users").queryOrderedByChild("username").queryEqualToValue(usernameField.text?.lowercaseString)
                     .observeSingleEventOfType(.Value, withBlock: { snapshot in
