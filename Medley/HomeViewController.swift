@@ -15,11 +15,31 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var greetingMessage: UILabel!
     var myRootRef = Firebase(url:"https://crackling-heat-1030.firebaseio.com/")
     @IBOutlet var roomCode: UITextField!
+    @IBOutlet weak var joinRoomButton: UIButton!
+    @IBOutlet weak var settingsButton: UIButton!
+    @IBOutlet weak var createRoomButton: UIButton!
+    
+    let buttonBorderColor : UIColor = UIColor( red: 255, green: 255, blue: 255, alpha: 0.35)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.hideKeyboardOnTap()
+        
+        // Round the button corners
+        self.createRoomButton.layer.cornerRadius = 5
+        self.settingsButton.layer.cornerRadius = 5
+        self.joinRoomButton.layer.cornerRadius = 5
+        
+        // Give buttons outlines
+        self.createRoomButton.layer.borderWidth = 1
+        self.createRoomButton.layer.borderColor = self.buttonBorderColor.CGColor
+        self.joinRoomButton.layer.borderWidth = 1
+        self.joinRoomButton.layer.borderColor = self.buttonBorderColor.CGColor
+        self.settingsButton.layer.borderWidth = 1
+        self.settingsButton.layer.borderColor = self.buttonBorderColor.CGColor
+        
+        
         //get username
         myRootRef.childByAppendingPath("users")
             .childByAppendingPath(myRootRef.authData.uid).childByAppendingPath("username")
