@@ -251,26 +251,26 @@ class ViewController: UIViewController {
         //validations for passwordConfirmationField
         case passwordConfirmationField:
             if (self.switchViewButton.titleLabel!.text == "Sign Up") {
-            if(passwordField.text == "") {
-                MakeTextFieldRed(passwordField, color:self.redColor)
-            }
+                if(passwordField.text == "") {
+                    MakeTextFieldRed(passwordField, color:self.redColor)
+                }
 
-            else if(passwordField.text != passwordConfirmationField.text && passwordField.text?.characters.count >= 7) {
-                MakeTextFieldRed(passwordConfirmationField, color: self.redColor)
-                self.ShowError("Passwords do not match", label: self.signupErrorMessage)
-            }
-            else if(passwordField.text != passwordConfirmationField.text && passwordField.text?.characters.count < 7) {
-                MakeTextFieldRed(passwordConfirmationField, color: self.redColor)
-            }
-            else if(passwordField.text?.characters.count < 7 && passwordField.text == passwordConfirmationField.text){
-                AbleToSignup(passwordConfirmationField)
-            }
-            else {
-                AbleToLogin(sender)
-                AbleToSignup(passwordConfirmationField)
-                AbleToSignup(passwordField)
-                self.HideMessages()
-            }
+                else if(passwordField.text != passwordConfirmationField.text && passwordField.text?.characters.count >= 7) {
+                    MakeTextFieldRed(passwordConfirmationField, color: self.redColor)
+                    self.ShowError("Passwords do not match", label: self.signupErrorMessage)
+                }
+                else if(passwordField.text != passwordConfirmationField.text && passwordField.text?.characters.count < 7) {
+                    MakeTextFieldRed(passwordConfirmationField, color: self.redColor)
+                }
+                else if(passwordField.text?.characters.count < 7 && passwordField.text == passwordConfirmationField.text){
+                    AbleToSignup(passwordConfirmationField)
+                }
+                else {
+                    AbleToLogin(sender)
+                    AbleToSignup(passwordConfirmationField)
+                    AbleToSignup(passwordField)
+                    self.HideMessages()
+                }
             }
             break
             
@@ -333,11 +333,9 @@ class ViewController: UIViewController {
                             self.AbleToSignup(self.usernameField)
                         }
                     })
-
             }
 
             else {
-                
                 AbleToSignup(usernameField)
             }
             break
@@ -379,7 +377,7 @@ class ViewController: UIViewController {
         self.showLoading()
         self.HideMessages()
         myRootRef.authUser(self.emailField.text!, password: self.passwordField.text!,
-                     withCompletionBlock: { error, authData in
+                        withCompletionBlock: { error, authData in
                         if error != nil {
                             // There was an error logging in to this account
                             self.hideLoading()
@@ -397,29 +395,28 @@ class ViewController: UIViewController {
         self.showLoading()
         self.HideMessages()
         myRootRef.createUser(self.emailField.text!, password: self.passwordField.text!,
-                             withValueCompletionBlock: { error, result in
-                                
-                                if error != nil {
-                                    //add error conditions from https://www.firebase.com/docs/ios/guide/user-auth.html#section-storing
-                                    if let errorCode = FAuthenticationError(rawValue: error.code){
-                                    switch(errorCode){
-                                        case .EmailTaken:
-                                            self.ShowError("Email is already in use.", label:self.signupErrorMessage)
-                                            break
-                                        case .InvalidEmail:
-                                            self.ShowError("Invalid email.", label:self.signupErrorMessage)
-                                            break
-                                        default:
-                                            self.ShowError("Could not connect.", label:self.signupErrorMessage)
-                                            break
-                                    }
-                                    }
-                                    self.hideLoading()
-                                } else {
-                                    //let uid = result["uid"] as? String
-                                    //self.hideLoading()
-                                    self.FirstSignIn()
+                        withValueCompletionBlock: { error, result in
+                        if error != nil {
+                            //add error conditions from https://www.firebase.com/docs/ios/guide/user-auth.html#section-storing
+                            if let errorCode = FAuthenticationError(rawValue: error.code){
+                                switch(errorCode){
+                                    case .EmailTaken:
+                                        self.ShowError("Email is already in use.", label:self.signupErrorMessage)
+                                        break
+                                    case .InvalidEmail:
+                                        self.ShowError("Invalid email.", label:self.signupErrorMessage)
+                                        break
+                                    default:
+                                        self.ShowError("Could not connect.", label:self.signupErrorMessage)
+                                        break
                                 }
+                            }
+                            self.hideLoading()
+                        } else {
+                            //let uid = result["uid"] as? String
+                            //self.hideLoading()
+                            self.FirstSignIn()
+                            }
         })
     }
     
