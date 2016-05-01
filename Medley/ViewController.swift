@@ -318,17 +318,17 @@ class ViewController: UIViewController {
                 MakeTextFieldRed(usernameField, color:self.redColor)
             }
             else if(usernameField.text != ""){
-                myRootRef.childByAppendingPath("usernames")
-                    .childByAppendingPath(usernameField.text?.lowercaseString).observeSingleEventOfType(.Value, withBlock: { snapshot in
-                    if(!(snapshot.value is NSNull)){
-                        self.MakeTextFieldRed(self.usernameField, color: self.redColor)
-                        self.ShowError("Username is taken.", label: self.signupErrorMessage)
-                    }
-                    else {
-                        self.HideMessages()
-                        self.AbleToSignup(self.usernameField)
-                    }
-                })
+                myRootRef.childByAppendingPath("users").queryOrderedByChild("username").queryEqualToValue(usernameField.text?.lowercaseString)
+                    .observeEventType(.Value, withBlock: { snapshot in
+                        if(!(snapshot.value is NSNull)){
+                            self.MakeTextFieldRed(self.usernameField, color: self.redColor)
+                            self.ShowError("Username is taken.", label: self.signupErrorMessage)
+                        }
+                        else {
+                            self.HideMessages()
+                            self.AbleToSignup(self.usernameField)
+                        }
+                    })
 
             }
 
@@ -428,16 +428,11 @@ class ViewController: UIViewController {
                 let newUser = [
                     "username": (self.usernameField.text?.lowercaseString)!
                 ]
-                let userID = [
-                    "id": authData.uid
-                ]
                 // Create a child path with a key set to the uid underneath the "users" node
                 // This creates a URL path like the following:
                 //  - https://<YOUR-FIREBASE-APP>.firebaseio.com/users/<uid>
                 self.myRootRef.childByAppendingPath("users")
                     .childByAppendingPath(authData.uid).setValue(newUser)
-                self.myRootRef.childByAppendingPath("usernames")
-                    .childByAppendingPath(self.usernameField.text?.lowercaseString).setValue(userID)
                 self.performSegueWithIdentifier("HomeViewController", sender:self)
             }
         }
