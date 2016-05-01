@@ -319,7 +319,7 @@ class ViewController: UIViewController {
             }
             else if(usernameField.text != ""){
                 myRootRef.childByAppendingPath("users").queryOrderedByChild("username").queryEqualToValue(usernameField.text?.lowercaseString)
-                    .observeEventType(.Value, withBlock: { snapshot in
+                    .observeSingleEventOfType(.Value, withBlock: { snapshot in
                         if(!(snapshot.value is NSNull)){
                             self.MakeTextFieldRed(self.usernameField, color: self.redColor)
                             self.ShowError("Username is taken.", label: self.signupErrorMessage)
@@ -381,7 +381,7 @@ class ViewController: UIViewController {
                             self.hideLoading()
                             self.ShowError("Incorrect Username/Password.", label: self.loginErrorMessage)
                         } else {
-                            self.hideLoading()
+                            //self.hideLoading()
                             // We are now logged in
                             self.performSegueWithIdentifier("HomeViewController", sender:sender)
                         }
@@ -413,7 +413,7 @@ class ViewController: UIViewController {
                                     self.hideLoading()
                                 } else {
                                     //let uid = result["uid"] as? String
-                                    self.hideLoading()
+                                    //self.hideLoading()
                                     self.FirstSignIn()
                                 }
         })
