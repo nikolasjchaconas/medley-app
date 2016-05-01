@@ -250,7 +250,6 @@ class ViewController: UIViewController {
         switch sender {
         //validations for passwordConfirmationField
         case passwordConfirmationField:
-
             if(passwordField.text == "") {
                 MakeTextFieldRed(passwordField, color:self.redColor)
             }
@@ -271,7 +270,6 @@ class ViewController: UIViewController {
                 AbleToSignup(passwordField)
                 self.HideMessages()
             }
-
             break
             
         //validations for passwordField
@@ -329,7 +327,6 @@ class ViewController: UIViewController {
             
         //add validations for usernamefield
         case usernameField:
-
             if(usernameField.text == "") {
                 MakeTextFieldRed(usernameField, color:self.redColor)
             }
@@ -350,7 +347,6 @@ class ViewController: UIViewController {
                         }
                     })
             }
-
             else {
                 AbleToSignup(usernameField)
             }
