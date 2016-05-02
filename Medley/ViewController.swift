@@ -396,34 +396,48 @@ class ViewController: UIViewController {
         })
     }
     
+    func SignIn() {
+        myRootRef.createUser(self.emailField.text!, password: self.passwordField.text!,
+            withValueCompletionBlock: { error, result in
+            if error != nil {
+                //add error conditions from https://www.firebase.com/docs/ios/guide/user-auth.html#section-storing
+                if let errorCode = FAuthenticationError(rawValue: error.code){
+                    switch(errorCode){
+                        case .EmailTaken:
+                            self.ShowError("Email is already in use.", label:self.signupErrorMessage)
+                            break
+                        case .InvalidEmail:
+                            self.ShowError("Invalid email.", label:self.signupErrorMessage)
+                            break
+                        default:
+                            self.ShowError("Could not connect.", label:self.signupErrorMessage)
+                            break
+                    }
+                }
+                self.hideLoading()
+                } else {
+                    //let uid = result["uid"] as? String
+                    //self.hideLoading()
+                    self.FirstSignIn()
+                }
+            })
+    }
+    
     @IBAction func signupButtonPressed(sender: AnyObject) {
         self.hideKeyboard()
         self.showLoading()
         self.HideMessages()
-        myRootRef.createUser(self.emailField.text!, password: self.passwordField.text!,
-                        withValueCompletionBlock: { error, result in
-                        if error != nil {
-                            //add error conditions from https://www.firebase.com/docs/ios/guide/user-auth.html#section-storing
-                            if let errorCode = FAuthenticationError(rawValue: error.code){
-                                switch(errorCode){
-                                    case .EmailTaken:
-                                        self.ShowError("Email is already in use.", label:self.signupErrorMessage)
-                                        break
-                                    case .InvalidEmail:
-                                        self.ShowError("Invalid email.", label:self.signupErrorMessage)
-                                        break
-                                    default:
-                                        self.ShowError("Could not connect.", label:self.signupErrorMessage)
-                                        break
-                                }
-                            }
-                            self.hideLoading()
-                        } else {
-                            //let uid = result["uid"] as? String
-                            //self.hideLoading()
-                            self.FirstSignIn()
-                            }
-        })
+        myRootRef.childByAppendingPath("users").queryOrderedByChild("username").queryEqualToValue(usernameField.text?.lowercaseString)
+            .observeSingleEventOfType(.Value, withBlock: { snapshot in
+                if(!(snapshot.value is NSNull)){
+                    self.hideLoading()
+                    self.MakeTextFieldRed(self.usernameField, color: self.redColor)
+                    self.ShowError("Username is taken.", label: self.signupErrorMessage)
+                }
+                else {
+                    self.SignIn()
+                }
+            })
     }
     
     func FirstSignIn() {
