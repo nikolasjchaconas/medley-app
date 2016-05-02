@@ -654,52 +654,6 @@
                                     </mask>
                                 </variation>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="REm-mZ-FaN">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.28927801720000001" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="85" id="aAN-LX-9nk"/>
-                                    <constraint firstAttribute="width" constant="250" id="hya-AT-qGO"/>
-                                </constraints>
-                                <state key="normal" title="Support">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="aAN-LX-9nk"/>
-                                        <exclude reference="hya-AT-qGO"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="aAN-LX-9nk"/>
-                                        <include reference="hya-AT-qGO"/>
-                                    </mask>
-                                </variation>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q3t-PI-WBQ">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.28927801720000001" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="48G-u5-MPd"/>
-                                    <constraint firstAttribute="height" constant="85" id="PgR-VV-yq9"/>
-                                </constraints>
-                                <state key="normal" title="Logout">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="PgR-VV-yq9"/>
-                                        <exclude reference="48G-u5-MPd"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="PgR-VV-yq9"/>
-                                        <include reference="48G-u5-MPd"/>
-                                    </mask>
-                                </variation>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pPA-dZ-RSx">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.28927801720000001" colorSpace="calibratedRGB"/>
@@ -726,6 +680,58 @@
                                     <action selector="showAboutPopup:" destination="VFp-pa-i9i" eventType="touchUpInside" id="pb6-lo-UBd"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q3t-PI-WBQ">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.28927801720000001" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="48G-u5-MPd"/>
+                                    <constraint firstAttribute="height" constant="85" id="PgR-VV-yq9"/>
+                                </constraints>
+                                <state key="normal" title="Logout">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="PgR-VV-yq9"/>
+                                        <exclude reference="48G-u5-MPd"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="PgR-VV-yq9"/>
+                                        <include reference="48G-u5-MPd"/>
+                                    </mask>
+                                </variation>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="REm-mZ-FaN">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.28927801720000001" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="85" id="aAN-LX-9nk"/>
+                                    <constraint firstAttribute="width" constant="250" id="hya-AT-qGO"/>
+                                </constraints>
+                                <state key="normal" title="Support">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="aAN-LX-9nk"/>
+                                        <exclude reference="hya-AT-qGO"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="aAN-LX-9nk"/>
+                                        <include reference="hya-AT-qGO"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="73" y="374" width="250" height="85"/>
+                                </variation>
+                                <connections>
+                                    <action selector="showSupportPopup:" destination="VFp-pa-i9i" eventType="touchUpInside" id="Mh9-Rf-dXd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -749,9 +755,9 @@
                                 <exclude reference="2NL-U5-Usz"/>
                                 <exclude reference="2FI-Js-pJs"/>
                                 <exclude reference="Agb-hq-zcx"/>
-                                <exclude reference="REm-mZ-FaN"/>
-                                <exclude reference="q3t-PI-WBQ"/>
                                 <exclude reference="pPA-dZ-RSx"/>
+                                <exclude reference="q3t-PI-WBQ"/>
+                                <exclude reference="REm-mZ-FaN"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="9hu-1f-tnh"/>
@@ -781,9 +787,9 @@
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="Agb-hq-zcx"/>
-                                <include reference="REm-mZ-FaN"/>
-                                <include reference="q3t-PI-WBQ"/>
                                 <include reference="pPA-dZ-RSx"/>
+                                <include reference="q3t-PI-WBQ"/>
+                                <include reference="REm-mZ-FaN"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="9hu-1f-tnh"/>

@@ -19,6 +19,7 @@ class SettingsViewController: UIViewController {
     
 
     
+
     /*
 
      @IBOutlet weak var showAboutPopup: UIButton!
@@ -81,6 +82,40 @@ class SettingsViewController: UIViewController {
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
+    @IBAction func showSupportPopup(sender: AnyObject) {
+        var subject = ""
+        var message = ""
+        let alertController = UIAlertController(title: "Contact", message:
+            "Send us a message and we'll contact you at your account email.", preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: contactUs))
+        
+        alertController.addTextFieldWithConfigurationHandler({(textField: UITextField!) in
+            textField.textAlignment = NSTextAlignment .Center
+            textField.placeholder = "Subject"
+            subject = textField.text!
+        })
+        alertController.addTextFieldWithConfigurationHandler({(textField: UITextField!) in
+            textField.textAlignment = NSTextAlignment .Center
+            textField.placeholder = "Message"
+            message = textField.text!
+        })
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func addTextField(textField: UITextField!) {
+        textField.textAlignment = NSTextAlignment .Center
+        textField.placeholder = "Room Code"
+
+    }
+    
+    func contactUs(alert: UIAlertAction!){
+        let alertController = UIAlertController(title: "Thank you!", message:
+            "We will reply to your message as soon as possible! \n\nSorry if it takes a while, we're just a team of five college students.", preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
