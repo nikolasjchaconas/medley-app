@@ -17,9 +17,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var supportButton: UIButton!
     @IBOutlet weak var logoutButton: UIButton!
     
-    @IBAction func showAboutPopup(sender: AnyObject) {
-        
-    }
+
     
     /*
 
@@ -74,6 +72,13 @@ class SettingsViewController: UIViewController {
         self.HideSuccess()
         loadingIndicator.alpha = 0;
         */
+    }
+    
+    @IBAction func showAboutPopup(sender: AnyObject) {
+        let alertController = UIAlertController(title: "About Medley", message:
+            "Medley is an app where you can join rooms with friends to listen to music and chat. \n\nMedley was first created by five students at the University of California, Santa Barbara in Spring 2016. \n\nWe hope you enjoy using our app!", preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
