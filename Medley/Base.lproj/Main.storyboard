@@ -306,28 +306,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3cV-Zb-Eam">
-                                <rect key="frame" x="204" y="219" width="126" height="30"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Logout">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="137" y="550" width="126" height="30"/>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="274" y="565" width="52" height="30"/>
-                                </variation>
-                                <connections>
-                                    <action selector="logoutButtonPressed:" destination="eEN-Pe-a6g" eventType="touchUpInside" id="35R-Hu-O2X"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello User1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rWS-dx-Of8">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f0v-pr-y4m">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.2892780172413793" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="85" id="U8e-zv-qHN"/>
+                                    <constraint firstAttribute="width" constant="250" id="oBR-eV-IQR"/>
+                                </constraints>
+                                <state key="normal" title="Create Room">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="U8e-zv-qHN"/>
+                                        <exclude reference="oBR-eV-IQR"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="U8e-zv-qHN"/>
+                                        <include reference="oBR-eV-IQR"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="75" y="214" width="250" height="85"/>
+                                </variation>
+                                <connections>
+                                    <action selector="createRoomButtonPressed:" destination="eEN-Pe-a6g" eventType="touchUpInside" id="uHD-h4-iTF"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZDU-El-Sac">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.28927801720000001" colorSpace="calibratedRGB"/>
@@ -398,33 +411,20 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f0v-pr-y4m">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.2892780172413793" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="85" id="U8e-zv-qHN"/>
-                                    <constraint firstAttribute="width" constant="250" id="oBR-eV-IQR"/>
-                                </constraints>
-                                <state key="normal" title="Create Room">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3cV-Zb-Eam">
+                                <rect key="frame" x="204" y="219" width="126" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Logout">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="U8e-zv-qHN"/>
-                                        <exclude reference="oBR-eV-IQR"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="U8e-zv-qHN"/>
-                                        <include reference="oBR-eV-IQR"/>
-                                    </mask>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="137" y="550" width="126" height="30"/>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="75" y="214" width="250" height="85"/>
+                                    <rect key="frame" x="273" y="565" width="52" height="30"/>
                                 </variation>
                                 <connections>
-                                    <action selector="createRoomButtonPressed:" destination="eEN-Pe-a6g" eventType="touchUpInside" id="uHD-h4-iTF"/>
+                                    <action selector="logoutButtonPressed:" destination="eEN-Pe-a6g" eventType="touchUpInside" id="35R-Hu-O2X"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -452,10 +452,10 @@
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="rWS-dx-Of8"/>
+                                <exclude reference="f0v-pr-y4m"/>
                                 <exclude reference="ZDU-El-Sac"/>
                                 <exclude reference="4YH-zH-ewO"/>
                                 <exclude reference="P0e-D4-YMj"/>
-                                <exclude reference="f0v-pr-y4m"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="7u3-ZK-Dj8"/>
@@ -478,10 +478,10 @@
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="rWS-dx-Of8"/>
+                                <include reference="f0v-pr-y4m"/>
                                 <include reference="ZDU-El-Sac"/>
                                 <include reference="4YH-zH-ewO"/>
                                 <include reference="P0e-D4-YMj"/>
-                                <include reference="f0v-pr-y4m"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="7u3-ZK-Dj8"/>
@@ -513,7 +513,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5GI-IN-wus" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1607" y="657"/>
+            <point key="canvasLocation" x="1807.5" y="546"/>
         </scene>
         <!--Room View Controller-->
         <scene sceneID="9IR-HN-DKy">
@@ -702,6 +702,9 @@
                                         <include reference="48G-u5-MPd"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="logoutButtonPressed:" destination="VFp-pa-i9i" eventType="touchUpInside" id="MER-Ja-Nrf"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="REm-mZ-FaN">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -810,14 +813,16 @@
                         <outlet property="accountSettingsButton" destination="Agb-hq-zcx" id="qPB-JE-B5p"/>
                         <outlet property="logoutButton" destination="q3t-PI-WBQ" id="MSo-3Z-1fE"/>
                         <outlet property="supportButton" destination="REm-mZ-FaN" id="FH8-GV-Ust"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="ViewController" id="Yn2-Lj-OtF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DRa-EQ-mho" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2359.5" y="292"/>
+            <point key="canvasLocation" x="2688" y="310.5"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="YK2-ml-4J1"/>
+        <segue reference="Yn2-Lj-OtF"/>
+        <segue reference="uJE-Sm-52R"/>
     </inferredMetricsTieBreakers>
 </document>
