@@ -158,9 +158,7 @@ class ViewController: UIViewController {
         self.passwordConfirmationField.addTarget(self, action: #selector(ViewController.LoginFieldChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
         self.passwordField.addTarget(self, action: #selector(ViewController.LoginFieldChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
         self.usernameField.addTarget(self, action: #selector(ViewController.LoginFieldChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
-        self.emailField.addTarget(self, action: #selector(ViewController.LoginFieldChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
-        self.loginButton.enabled = false
-        self.signupButton.enabled = false
+        self.emailField.addTarget(self, action: #selector(ViewController.LoginFieldChange(_:)), forControlEvents: UIControlEvents.EditingDidEnd)
         
         //iphone 4S stuff
         if UIDevice.currentDevice().model == "iPhone4,1" {
@@ -172,6 +170,8 @@ class ViewController: UIViewController {
         }
         
         self.hideLoading()
+        self.signupButton.enabled = false
+        self.loginButton.enabled = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -250,54 +250,61 @@ class ViewController: UIViewController {
         switch sender {
         //validations for passwordConfirmationField
         case passwordConfirmationField:
-            if (self.switchViewButton.titleLabel!.text == "Sign Up") {
-                if(passwordField.text == "") {
-                    MakeTextFieldRed(passwordField, color:self.redColor)
-                }
+            if(passwordField.text == "") {
+                MakeTextFieldRed(passwordField, color:self.redColor)
+            }
 
-                else if(passwordField.text != passwordConfirmationField.text && passwordField.text?.characters.count >= 7) {
-                    MakeTextFieldRed(passwordConfirmationField, color: self.redColor)
-                    self.ShowError("Passwords do not match", label: self.signupErrorMessage)
-                }
-                else if(passwordField.text != passwordConfirmationField.text && passwordField.text?.characters.count < 7) {
-                    MakeTextFieldRed(passwordConfirmationField, color: self.redColor)
-                }
-                else if(passwordField.text?.characters.count < 7 && passwordField.text == passwordConfirmationField.text){
-                    AbleToSignup(passwordConfirmationField)
-                }
-                else {
-                    AbleToLogin(sender)
-                    AbleToSignup(passwordConfirmationField)
-                    AbleToSignup(passwordField)
-                    self.HideMessages()
-                }
+            else if(passwordField.text != passwordConfirmationField.text && passwordField.text?.characters.count >= 7) {
+                MakeTextFieldRed(passwordConfirmationField, color: self.redColor)
+                self.ShowError("Passwords do not match", label: self.signupErrorMessage)
+            }
+            else if(passwordField.text != passwordConfirmationField.text && passwordField.text?.characters.count < 7) {
+                MakeTextFieldRed(passwordConfirmationField, color: self.redColor)
+            }
+            else if(passwordField.text?.characters.count < 7 && passwordField.text == passwordConfirmationField.text){
+                AbleToSignup(passwordConfirmationField)
+            }
+            else {
+                AbleToLogin(sender)
+                AbleToSignup(passwordConfirmationField)
+                AbleToSignup(passwordField)
+                self.HideMessages()
             }
             break
             
         //validations for passwordField
         case passwordField:
-            if(passwordField.text?.characters.count < 7){
-                MakeTextFieldRed(passwordField, color: self.redColor)
-                self.ShowError("Please make password at least 7 characters", label: self.signupErrorMessage)
+            if (self.switchViewButton.currentTitle == "Log In") {
+                if(passwordField.text?.characters.count < 7){
+                    MakeTextFieldRed(passwordField, color: self.redColor)
+                    self.ShowError("Please make password at least 7 characters", label: self.signupErrorMessage)
+                }
+                else if(passwordField.text != passwordConfirmationField.text && passwordField.text?.characters.count < 7) {
+                    MakeTextFieldRed(passwordConfirmationField, color: self.redColor)
+                }
+                else if(passwordField.text != passwordConfirmationField.text && passwordField.text?.characters.count >= 7 && passwordConfirmationField.text != "") {
+                    AbleToSignup(passwordField)
+                    MakeTextFieldRed(passwordConfirmationField, color: self.redColor)
+                    self.ShowError("Passwords do not match", label: self.signupErrorMessage)
+                }
+
+                else if(passwordField.text?.characters.count < 7 && passwordField.text == passwordConfirmationField.text){
+                    AbleToSignup(passwordConfirmationField)
+                }
+                else {
+                    self.HideMessages()
+                    AbleToSignup(passwordField)
+                    AbleToLogin(passwordConfirmationField)
+
+                }
             }
-            else if(passwordField.text != passwordConfirmationField.text && passwordField.text?.characters.count < 7) {
-                MakeTextFieldRed(passwordConfirmationField, color: self.redColor)
-            }
-            else if(passwordField.text != passwordConfirmationField.text && passwordField.text?.characters.count >= 7 && passwordConfirmationField.text != "") {
-                AbleToSignup(passwordField)
-                MakeTextFieldRed(passwordConfirmationField, color: self.redColor)
-                self.ShowError("Passwords do not match", label: self.signupErrorMessage)
+            else if (self.switchViewButton.currentTitle == "Sign Up") {
+                if(passwordField.text != ""){
+                    AbleToLogin(passwordConfirmationField)
+                    AbleToLogin(passwordField)
+                }
             }
 
-            else if(passwordField.text?.characters.count < 7 && passwordField.text == passwordConfirmationField.text){
-                AbleToSignup(passwordConfirmationField)
-            }
-            else {
-                self.HideMessages()
-                AbleToSignup(passwordField)
-                AbleToLogin(passwordConfirmationField)
-
-            }
             break
             
         //validations for emailField
@@ -309,11 +316,11 @@ class ViewController: UIViewController {
                 AbleToLogin(emailField)
                 AbleToSignup(emailField)
             }
+
             break
             
         //add validations for usernamefield
         case usernameField:
-
             if(usernameField.text == "") {
                 MakeTextFieldRed(usernameField, color:self.redColor)
             }
@@ -334,7 +341,6 @@ class ViewController: UIViewController {
                         }
                     })
             }
-
             else {
                 AbleToSignup(usernameField)
             }
@@ -381,7 +387,7 @@ class ViewController: UIViewController {
                         if error != nil {
                             // There was an error logging in to this account
                             self.hideLoading()
-                            self.ShowError("Incorrect Username/Password.", label: self.loginErrorMessage)
+                            self.ShowError("Incorrect Email/Password.", label: self.loginErrorMessage)
                         } else {
                             //self.hideLoading()
                             // We are now logged in
