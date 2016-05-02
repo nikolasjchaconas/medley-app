@@ -25,18 +25,12 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="58" y="356" width="284" height="30"/>
-                                </variation>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Medley" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oXh-kI-mfu" userLabel="medley_logo">
                                 <rect key="frame" x="160" y="30" width="281" height="118"/>
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="73"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="81" y="76" width="238" height="135"/>
-                                </variation>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dWP-Z0-Bnx">
                                 <rect key="frame" x="157" y="290" width="300" height="40"/>
@@ -46,9 +40,6 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="58" y="356" width="284" height="30"/>
-                                </variation>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hoJ-l1-seo">
                                 <rect key="frame" x="157" y="337" width="300" height="40"/>
@@ -58,9 +49,6 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="58" y="356" width="284" height="30"/>
-                                </variation>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an Account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3a4-RI-r2O">
                                 <rect key="frame" x="210" y="543" width="181" height="21"/>
@@ -89,9 +77,6 @@
                                 <state key="normal" title="Login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="141" y="587" width="119" height="30"/>
-                                </variation>
                                 <connections>
                                     <action selector="loginButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gQV-sm-pnB"/>
                                 </connections>
@@ -116,9 +101,6 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="58" y="356" width="284" height="30"/>
-                                </variation>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Need Help Signing in?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cD-qj-pte">
                                 <rect key="frame" x="181" y="395" width="248" height="21"/>
@@ -159,9 +141,6 @@
                                 <state key="normal" title="Sign Up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="141" y="587" width="119" height="30"/>
-                                </variation>
                                 <connections>
                                     <action selector="signupButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="W2b-sh-7e6"/>
                                 </connections>
@@ -314,7 +293,7 @@
                         <viewControllerLayoutGuide type="bottom" id="hD2-Hr-Kj5"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="56c-60-mxp">
-                        <rect key="frame" x="0.0" y="0.0" width="400" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3cV-Zb-Eam">
@@ -325,6 +304,9 @@
                                 </state>
                                 <variation key="widthClass=compact" misplaced="YES">
                                     <rect key="frame" x="137" y="550" width="126" height="30"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="274" y="565" width="52" height="30"/>
                                 </variation>
                                 <connections>
                                     <action selector="logoutButtonPressed:" destination="eEN-Pe-a6g" eventType="touchUpInside" id="35R-Hu-O2X"/>
@@ -341,7 +323,7 @@
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.2892780172413793" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="85" id="U8e-zv-qHN"/>
-                                    <constraint firstAttribute="width" constant="150" id="oBR-eV-IQR"/>
+                                    <constraint firstAttribute="width" constant="250" id="oBR-eV-IQR"/>
                                 </constraints>
                                 <state key="normal" title="Create Room">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -366,8 +348,8 @@
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.28927801720000001" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="DwT-Ds-Ij9"/>
-                                    <constraint firstAttribute="width" constant="150" id="ScH-gN-giw"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="DwT-Ds-Ij9"/>
+                                    <constraint firstAttribute="width" constant="250" id="ScH-gN-giw"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="85" id="f1V-1P-VHS"/>
                                     <constraint firstAttribute="height" constant="85" id="pkH-8X-wsy"/>
                                 </constraints>
@@ -398,10 +380,10 @@
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.28927801720000001" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="WMj-dY-b7o"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="WMj-dY-b7o"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="85" id="e0j-h0-vvC"/>
                                     <constraint firstAttribute="height" constant="85" id="mQT-GL-aOQ"/>
-                                    <constraint firstAttribute="width" constant="150" id="ssY-nv-j2W"/>
+                                    <constraint firstAttribute="width" constant="250" id="ssY-nv-j2W"/>
                                 </constraints>
                                 <state key="normal" title="Settings">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -431,9 +413,6 @@
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="73"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="81" y="76" width="238" height="135"/>
-                                </variation>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -511,14 +490,17 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="createRoomButton" destination="f0v-pr-y4m" id="V0g-xq-V3w"/>
                         <outlet property="greetingMessage" destination="rWS-dx-Of8" id="yNu-wv-G5f"/>
+                        <outlet property="joinRoomButton" destination="ZDU-El-Sac" id="VHp-AN-Zms"/>
+                        <outlet property="settingsButton" destination="4YH-zH-ewO" id="DRq-VZ-AfH"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="ViewController" id="OaE-fq-UVU"/>
                         <segue destination="4Ed-Mw-3xt" kind="show" identifier="RoomViewController" id="UGg-7c-sea"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5GI-IN-wus" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1665" y="642"/>
+            <point key="canvasLocation" x="1607" y="657"/>
         </scene>
         <!--Room View Controller-->
         <scene sceneID="9IR-HN-DKy">
@@ -529,7 +511,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Jsf-4D-S6M"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="iLr-fg-6av">
-                        <rect key="frame" x="0.0" y="0.0" width="400" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medley" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xoa-3w-o3r" userLabel="medley_logo">
@@ -537,9 +519,6 @@
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="73"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="81" y="76" width="238" height="135"/>
-                                </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NN7-0J-12N">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -605,7 +584,7 @@
                         <viewControllerLayoutGuide type="bottom" id="OCz-dl-KdQ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="M85-EV-hgx">
-                        <rect key="frame" x="0.0" y="0.0" width="400" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2NL-U5-Usz">
@@ -739,9 +718,6 @@
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="73"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="81" y="76" width="238" height="135"/>
-                                </variation>
                             </label>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="X41-vZ-CJF">
                                 <rect key="frame" x="-10" y="-10" width="20" height="20"/>
@@ -845,6 +821,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="dXh-EW-OYK"/>
+        <segue reference="YK2-ml-4J1"/>
     </inferredMetricsTieBreakers>
 </document>
