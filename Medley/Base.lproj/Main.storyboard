@@ -411,22 +411,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3cV-Zb-Eam">
-                                <rect key="frame" x="204" y="219" width="126" height="30"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Logout">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="137" y="550" width="126" height="30"/>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="273" y="565" width="52" height="30"/>
-                                </variation>
-                                <connections>
-                                    <action selector="logoutButtonPressed:" destination="eEN-Pe-a6g" eventType="touchUpInside" id="35R-Hu-O2X"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -445,9 +429,7 @@
                             <constraint firstItem="f0v-pr-y4m" firstAttribute="top" secondItem="rWS-dx-Of8" secondAttribute="bottom" constant="46" id="arb-0E-OmT"/>
                             <constraint firstItem="f0v-pr-y4m" firstAttribute="centerX" secondItem="56c-60-mxp" secondAttribute="centerX" id="b0L-cP-n3c"/>
                             <constraint firstItem="rWS-dx-Of8" firstAttribute="top" secondItem="P0e-D4-YMj" secondAttribute="bottom" constant="3" id="hJd-pz-hbF"/>
-                            <constraint firstItem="3cV-Zb-Eam" firstAttribute="centerX" secondItem="56c-60-mxp" secondAttribute="centerX" id="kXg-1Q-eVM"/>
                             <constraint firstItem="P0e-D4-YMj" firstAttribute="top" secondItem="FGA-Qa-EW6" secondAttribute="bottom" constant="5" id="u2d-Ya-MjT"/>
-                            <constraint firstItem="hD2-Hr-Kj5" firstAttribute="top" secondItem="3cV-Zb-Eam" secondAttribute="bottom" constant="5" id="x2o-eE-Vjd"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
@@ -472,7 +454,6 @@
                                 <exclude reference="hJd-pz-hbF"/>
                                 <exclude reference="JK3-wk-vzc"/>
                                 <exclude reference="u2d-Ya-MjT"/>
-                                <exclude reference="x2o-eE-Vjd"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -498,7 +479,6 @@
                                 <include reference="hJd-pz-hbF"/>
                                 <include reference="JK3-wk-vzc"/>
                                 <include reference="u2d-Ya-MjT"/>
-                                <include reference="x2o-eE-Vjd"/>
                             </mask>
                         </variation>
                     </view>
@@ -822,7 +802,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Yn2-Lj-OtF"/>
+        <segue reference="OaE-fq-UVU"/>
         <segue reference="uJE-Sm-52R"/>
     </inferredMetricsTieBreakers>
 </document>
