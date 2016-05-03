@@ -311,9 +311,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="256.5" y="145" width="87.5" height="21"/>
-                                </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f0v-pr-y4m">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -336,9 +333,6 @@
                                         <include reference="U8e-zv-qHN"/>
                                         <include reference="oBR-eV-IQR"/>
                                     </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="175" y="212" width="250" height="85"/>
                                 </variation>
                                 <connections>
                                     <action selector="createRoomButtonPressed:" destination="eEN-Pe-a6g" eventType="touchUpInside" id="uHD-h4-iTF"/>
@@ -372,9 +366,6 @@
                                         <include reference="pkH-8X-wsy"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="175" y="307" width="250" height="85"/>
-                                </variation>
                                 <connections>
                                     <action selector="joinRoomButtonPressed:" destination="eEN-Pe-a6g" eventType="touchUpInside" id="00f-AW-QuP"/>
                                 </connections>
@@ -407,9 +398,6 @@
                                         <include reference="ssY-nv-j2W"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="175" y="402" width="250" height="85"/>
-                                </variation>
                                 <connections>
                                     <segue destination="VFp-pa-i9i" kind="show" identifier="SettingsViewController" id="Pc2-jv-RTt"/>
                                 </connections>
@@ -419,9 +407,6 @@
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="73"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="189.5" y="25" width="222.5" height="117"/>
-                                </variation>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -524,9 +509,6 @@
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="73"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="189.5" y="25" width="222.5" height="117"/>
-                                </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NN7-0J-12N">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -600,9 +582,6 @@
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="73"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="174" y="20" width="253.5" height="117"/>
-                                </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Agb-hq-zcx">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -626,9 +605,6 @@
                                         <include reference="JlH-rm-5IN"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="173" y="182" width="250" height="85"/>
-                                </variation>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pPA-dZ-RSx">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -651,9 +627,6 @@
                                         <include reference="7ew-ag-YQs"/>
                                         <include reference="dLb-ba-jGZ"/>
                                     </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="173" y="277" width="250" height="85"/>
                                 </variation>
                                 <connections>
                                     <action selector="showAboutPopup:" destination="VFp-pa-i9i" eventType="touchUpInside" id="pb6-lo-UBd"/>
@@ -681,9 +654,6 @@
                                         <include reference="hya-AT-qGO"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="173" y="374" width="250" height="85"/>
-                                </variation>
                                 <connections>
                                     <action selector="showSupportPopup:" destination="VFp-pa-i9i" eventType="touchUpInside" id="Mh9-Rf-dXd"/>
                                 </connections>
@@ -709,9 +679,6 @@
                                         <include reference="48G-u5-MPd"/>
                                         <include reference="PgR-VV-yq9"/>
                                     </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="173" y="467" width="250" height="85"/>
                                 </variation>
                                 <connections>
                                     <action selector="logoutButtonPressed:" destination="VFp-pa-i9i" eventType="touchUpInside" id="MER-Ja-Nrf"/>
@@ -850,8 +817,91 @@
                         <viewControllerLayoutGuide type="bottom" id="5lU-RJ-WqH"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bim-0J-ilh">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Support" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xyG-88-BO4" userLabel="Support">
+                                <rect key="frame" x="160" y="30" width="281" height="118"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="73"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Y8-pK-gfk">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="9IY-m1-l2N">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="61"/>
+                                    </constraint>
+                                    <constraint firstAttribute="height" constant="10" id="i2k-kg-27J"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="35"/>
+                                <state key="normal" title="&lt;">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="9IY-m1-l2N"/>
+                                        <exclude reference="i2k-kg-27J"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="135" y="484" width="117" height="30"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="28" width="61" height="10"/>
+                                    <mask key="constraints">
+                                        <include reference="9IY-m1-l2N"/>
+                                        <include reference="i2k-kg-27J"/>
+                                    </mask>
+                                </variation>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="per-lL-IWv">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <string key="text">Leave us some feedback or bug reports and we'll contact your account e-mail as soon as we can! We're just a team of five college students so sorry if it takes a while.</string>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="-832" y="165" width="1159" height="113"/>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="xyG-88-BO4" firstAttribute="top" secondItem="TE3-yq-g4x" secondAttribute="bottom" constant="41" id="0C4-pu-82V">
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                            </constraint>
+                            <constraint firstAttribute="trailingMargin" secondItem="xyG-88-BO4" secondAttribute="trailing" constant="52" id="VLa-k5-w5J">
+                                <variation key="heightClass=regular-widthClass=compact" constant="53"/>
+                            </constraint>
+                            <constraint firstItem="xyG-88-BO4" firstAttribute="leading" secondItem="bim-0J-ilh" secondAttribute="leadingMargin" constant="54" id="zs2-dh-4Dc">
+                                <variation key="heightClass=regular-widthClass=compact" constant="53"/>
+                            </constraint>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="xyG-88-BO4"/>
+                                <exclude reference="1Y8-pK-gfk"/>
+                                <exclude reference="per-lL-IWv"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="0C4-pu-82V"/>
+                                <exclude reference="VLa-k5-w5J"/>
+                                <exclude reference="zs2-dh-4Dc"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="xyG-88-BO4"/>
+                                <include reference="1Y8-pK-gfk"/>
+                                <include reference="per-lL-IWv"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="0C4-pu-82V"/>
+                                <include reference="VLa-k5-w5J"/>
+                                <include reference="zs2-dh-4Dc"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1gG-6W-bKs" userLabel="First Responder" sceneMemberID="firstResponder"/>
