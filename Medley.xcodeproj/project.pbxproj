@@ -117,11 +117,11 @@
 				5B35FB201CD042A800BE38A1 /* RoomViewController.swift */,
 				5B3A86FF1CC85ED900A04BCD /* HomeViewController.swift */,
 				AA89B62A1CC32F2300E929F0 /* ViewController.swift */,
+				AA1FA2E71CD83E1C007E5D61 /* SupportViewController.swift */,
 				AA89B62C1CC32F2300E929F0 /* Main.storyboard */,
 				AA89B62F1CC32F2300E929F0 /* Assets.xcassets */,
 				AA89B6311CC32F2300E929F0 /* LaunchScreen.storyboard */,
 				AA89B6341CC32F2300E929F0 /* Info.plist */,
-				AA1FA2E71CD83E1C007E5D61 /* SupportViewController.swift */,
 			);
 			path = Medley;
 			sourceTree = "<group>";

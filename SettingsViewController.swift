@@ -82,26 +82,10 @@ class SettingsViewController: UIViewController {
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
-    @IBAction func showSupportPopup(sender: AnyObject) {
-        var subject = ""
-        var message = ""
-        let alertController = UIAlertController(title: "Contact", message:
-            "Send us a message and we'll contact you at your account email.", preferredStyle: UIAlertControllerStyle.Alert)
-        alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
-        alertController.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: contactUs))
-        
-        alertController.addTextFieldWithConfigurationHandler({(textField: UITextField!) in
-            textField.textAlignment = NSTextAlignment .Center
-            textField.placeholder = "Subject"
-            subject = textField.text!
-        })
-        alertController.addTextFieldWithConfigurationHandler({(textField: UITextField!) in
-            textField.textAlignment = NSTextAlignment .Center
-            textField.placeholder = "Message"
-            message = textField.text!
-        })
-        self.presentViewController(alertController, animated: true, completion: nil)
+    @IBAction func showSupportPage(sender: AnyObject) {
+        self.performSegueWithIdentifier("SupportViewController", sender:sender)
     }
+
     
     func contactUs(alert: UIAlertAction!){
         let alertController = UIAlertController(title: "Thank you!", message:
