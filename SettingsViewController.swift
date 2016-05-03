@@ -75,15 +75,12 @@ class SettingsViewController: UIViewController {
         */
     }
     
+    /*
     @IBAction func showAboutPopup(sender: AnyObject) {
         let alertController = UIAlertController(title: "About Medley", message:
             "Medley is an app where you can join rooms with friends to listen to music and chat. \n\nMedley was first created by five students at the University of California, Santa Barbara in Spring 2016. \n\nWe hope you enjoy using our app!", preferredStyle: UIAlertControllerStyle.Alert)
         alertController.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alertController, animated: true, completion: nil)
-    }
-    
-    @IBAction func showSupportPage(sender: AnyObject) {
-        self.performSegueWithIdentifier("SupportViewController", sender:sender)
     }
 
     
@@ -93,6 +90,7 @@ class SettingsViewController: UIViewController {
         alertController.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alertController, animated: true, completion: nil)
     }
+    */
     
     @IBAction func logoutButtonPressed(sender: AnyObject) {
         myRootRef.unauth()

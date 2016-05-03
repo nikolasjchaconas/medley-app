@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -582,9 +583,6 @@
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="73"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="74" y="20" width="254" height="117"/>
-                                </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Agb-hq-zcx">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -632,7 +630,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="showAboutPopup:" destination="VFp-pa-i9i" eventType="touchUpInside" id="pb6-lo-UBd"/>
+                                    <segue destination="UH5-TK-Big" kind="show" id="1qr-JJ-gae"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="REm-mZ-FaN">
@@ -705,7 +703,7 @@
                                         <exclude reference="amn-PS-5At"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" fixedFrame="YES">
+                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="135" y="484" width="117" height="30"/>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -754,16 +752,16 @@
                             <mask key="constraints">
                                 <exclude reference="9hu-1f-tnh"/>
                                 <exclude reference="G68-rG-Oco"/>
-                                <exclude reference="1Wy-Tw-a15"/>
-                                <exclude reference="cVV-eI-3sV"/>
                                 <exclude reference="qIl-z3-UvY"/>
                                 <exclude reference="zM8-Bt-C30"/>
+                                <exclude reference="ytS-ey-4tG"/>
                                 <exclude reference="7FH-Tn-wgt"/>
                                 <exclude reference="C41-7A-Brz"/>
                                 <exclude reference="Eeu-hu-kzl"/>
                                 <exclude reference="eAK-CK-vEk"/>
-                                <exclude reference="ytS-ey-4tG"/>
                                 <exclude reference="m6e-zN-xID"/>
+                                <exclude reference="1Wy-Tw-a15"/>
+                                <exclude reference="cVV-eI-3sV"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -785,15 +783,15 @@
                             <mask key="constraints">
                                 <include reference="9hu-1f-tnh"/>
                                 <include reference="G68-rG-Oco"/>
-                                <include reference="1Wy-Tw-a15"/>
                                 <include reference="qIl-z3-UvY"/>
                                 <include reference="zM8-Bt-C30"/>
+                                <include reference="ytS-ey-4tG"/>
                                 <include reference="7FH-Tn-wgt"/>
                                 <include reference="C41-7A-Brz"/>
                                 <include reference="Eeu-hu-kzl"/>
                                 <include reference="eAK-CK-vEk"/>
-                                <include reference="ytS-ey-4tG"/>
                                 <include reference="m6e-zN-xID"/>
+                                <include reference="1Wy-Tw-a15"/>
                             </mask>
                         </variation>
                     </view>
@@ -930,9 +928,6 @@
                                         <exclude reference="i2k-kg-27J"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="135" y="484" width="117" height="30"/>
-                                </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="9IY-m1-l2N"/>
@@ -985,11 +980,10 @@
                                 <exclude reference="1Y8-pK-gfk"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="6dn-4W-tmC"/>
-                                <exclude reference="VLa-k5-w5J"/>
-                                <exclude reference="zs2-dh-4Dc"/>
+                                <exclude reference="tFt-Db-KSC"/>
                                 <exclude reference="r9O-7u-2o7"/>
                                 <exclude reference="vH1-r6-Cos"/>
+                                <exclude reference="D0n-ly-bbb"/>
                                 <exclude reference="DMs-pA-CLl"/>
                                 <exclude reference="Doa-xp-DFS"/>
                                 <exclude reference="L4t-Qc-SRo"/>
@@ -998,9 +992,10 @@
                                 <exclude reference="fmM-0t-OlP"/>
                                 <exclude reference="mc2-Qm-YEM"/>
                                 <exclude reference="vYl-x3-EMw"/>
-                                <exclude reference="tFt-Db-KSC"/>
                                 <exclude reference="1oV-HD-5xa"/>
-                                <exclude reference="D0n-ly-bbb"/>
+                                <exclude reference="6dn-4W-tmC"/>
+                                <exclude reference="VLa-k5-w5J"/>
+                                <exclude reference="zs2-dh-4Dc"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -1013,11 +1008,10 @@
                                 <include reference="1Y8-pK-gfk"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="6dn-4W-tmC"/>
-                                <include reference="VLa-k5-w5J"/>
-                                <include reference="zs2-dh-4Dc"/>
+                                <include reference="tFt-Db-KSC"/>
                                 <include reference="r9O-7u-2o7"/>
                                 <include reference="vH1-r6-Cos"/>
+                                <include reference="D0n-ly-bbb"/>
                                 <include reference="DMs-pA-CLl"/>
                                 <include reference="Doa-xp-DFS"/>
                                 <include reference="L4t-Qc-SRo"/>
@@ -1026,9 +1020,10 @@
                                 <include reference="fmM-0t-OlP"/>
                                 <include reference="mc2-Qm-YEM"/>
                                 <include reference="vYl-x3-EMw"/>
-                                <include reference="tFt-Db-KSC"/>
                                 <include reference="1oV-HD-5xa"/>
-                                <include reference="D0n-ly-bbb"/>
+                                <include reference="6dn-4W-tmC"/>
+                                <include reference="VLa-k5-w5J"/>
+                                <include reference="zs2-dh-4Dc"/>
                             </mask>
                         </variation>
                     </view>
@@ -1039,7 +1034,24 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1gG-6W-bKs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3394.5" y="162"/>
+            <point key="canvasLocation" x="3709.5" y="27"/>
+        </scene>
+        <!--About View Controller-->
+        <scene sceneID="WOK-D2-G4m">
+            <objects>
+                <viewController id="UH5-TK-Big" customClass="AboutViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1n0-Ho-zmG"/>
+                        <viewControllerLayoutGuide type="bottom" id="GGl-Bq-AeR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lxI-hp-s1O">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uvy-cq-UF2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3709.5" y="723.75"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
