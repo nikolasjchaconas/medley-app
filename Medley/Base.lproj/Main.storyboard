@@ -311,6 +311,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="256.5" y="145" width="87.5" height="21"/>
+                                </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f0v-pr-y4m">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -335,7 +338,7 @@
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="75" y="214" width="250" height="85"/>
+                                    <rect key="frame" x="175" y="212" width="250" height="85"/>
                                 </variation>
                                 <connections>
                                     <action selector="createRoomButtonPressed:" destination="eEN-Pe-a6g" eventType="touchUpInside" id="uHD-h4-iTF"/>
@@ -369,6 +372,9 @@
                                         <include reference="pkH-8X-wsy"/>
                                     </mask>
                                 </variation>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="175" y="307" width="250" height="85"/>
+                                </variation>
                                 <connections>
                                     <action selector="joinRoomButtonPressed:" destination="eEN-Pe-a6g" eventType="touchUpInside" id="00f-AW-QuP"/>
                                 </connections>
@@ -401,6 +407,9 @@
                                         <include reference="ssY-nv-j2W"/>
                                     </mask>
                                 </variation>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="175" y="402" width="250" height="85"/>
+                                </variation>
                                 <connections>
                                     <segue destination="VFp-pa-i9i" kind="show" identifier="SettingsViewController" id="Pc2-jv-RTt"/>
                                 </connections>
@@ -410,6 +419,9 @@
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="73"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="189.5" y="25" width="222.5" height="117"/>
+                                </variation>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -512,6 +524,9 @@
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="73"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="189.5" y="25" width="222.5" height="117"/>
+                                </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NN7-0J-12N">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -585,6 +600,9 @@
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="73"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="174" y="20" width="253.5" height="117"/>
+                                </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Agb-hq-zcx">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -598,15 +616,18 @@
                                 </state>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="JlH-rm-5IN"/>
                                         <exclude reference="97Q-QU-PeV"/>
+                                        <exclude reference="JlH-rm-5IN"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
                                     <mask key="constraints">
-                                        <include reference="JlH-rm-5IN"/>
                                         <include reference="97Q-QU-PeV"/>
+                                        <include reference="JlH-rm-5IN"/>
                                     </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="173" y="182" width="250" height="85"/>
                                 </variation>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pPA-dZ-RSx">
@@ -630,6 +651,9 @@
                                         <include reference="7ew-ag-YQs"/>
                                         <include reference="dLb-ba-jGZ"/>
                                     </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="173" y="277" width="250" height="85"/>
                                 </variation>
                                 <connections>
                                     <action selector="showAboutPopup:" destination="VFp-pa-i9i" eventType="touchUpInside" id="pb6-lo-UBd"/>
@@ -657,6 +681,9 @@
                                         <include reference="hya-AT-qGO"/>
                                     </mask>
                                 </variation>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="173" y="374" width="250" height="85"/>
+                                </variation>
                                 <connections>
                                     <action selector="showSupportPopup:" destination="VFp-pa-i9i" eventType="touchUpInside" id="Mh9-Rf-dXd"/>
                                 </connections>
@@ -673,15 +700,18 @@
                                 </state>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="PgR-VV-yq9"/>
                                         <exclude reference="48G-u5-MPd"/>
+                                        <exclude reference="PgR-VV-yq9"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
                                     <mask key="constraints">
-                                        <include reference="PgR-VV-yq9"/>
                                         <include reference="48G-u5-MPd"/>
+                                        <include reference="PgR-VV-yq9"/>
                                     </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="173" y="467" width="250" height="85"/>
                                 </variation>
                                 <connections>
                                     <action selector="logoutButtonPressed:" destination="VFp-pa-i9i" eventType="touchUpInside" id="MER-Ja-Nrf"/>
@@ -708,8 +738,7 @@
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="135" y="484" width="117" height="30"/>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="20" width="65" height="28"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="QH5-Z7-w9F"/>
                                         <include reference="amn-PS-5At"/>
@@ -757,16 +786,16 @@
                             <mask key="constraints">
                                 <exclude reference="9hu-1f-tnh"/>
                                 <exclude reference="Vmw-ft-avT"/>
-                                <exclude reference="XtU-hf-dwo"/>
-                                <exclude reference="cVV-eI-3sV"/>
                                 <exclude reference="qIl-z3-UvY"/>
                                 <exclude reference="zM8-Bt-C30"/>
+                                <exclude reference="ytS-ey-4tG"/>
                                 <exclude reference="7FH-Tn-wgt"/>
                                 <exclude reference="C41-7A-Brz"/>
                                 <exclude reference="Eeu-hu-kzl"/>
                                 <exclude reference="eAK-CK-vEk"/>
-                                <exclude reference="ytS-ey-4tG"/>
                                 <exclude reference="m6e-zN-xID"/>
+                                <exclude reference="XtU-hf-dwo"/>
+                                <exclude reference="cVV-eI-3sV"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -791,11 +820,11 @@
                                 <include reference="Vmw-ft-avT"/>
                                 <include reference="qIl-z3-UvY"/>
                                 <include reference="zM8-Bt-C30"/>
+                                <include reference="ytS-ey-4tG"/>
                                 <include reference="7FH-Tn-wgt"/>
                                 <include reference="C41-7A-Brz"/>
                                 <include reference="Eeu-hu-kzl"/>
                                 <include reference="eAK-CK-vEk"/>
-                                <include reference="ytS-ey-4tG"/>
                                 <include reference="m6e-zN-xID"/>
                             </mask>
                         </variation>
@@ -811,6 +840,23 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DRa-EQ-mho" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2691" y="303"/>
+        </scene>
+        <!--Support View Controller-->
+        <scene sceneID="PvR-in-f3c">
+            <objects>
+                <viewController id="W81-lR-yTU" customClass="SupportViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TE3-yq-g4x"/>
+                        <viewControllerLayoutGuide type="bottom" id="5lU-RJ-WqH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bim-0J-ilh">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1gG-6W-bKs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3387" y="133.5"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
