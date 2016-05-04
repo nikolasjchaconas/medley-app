@@ -11,8 +11,8 @@ import UIKit
 extension CAGradientLayer {
     
     func blueGradient() -> CAGradientLayer {
-        let blueTop = UIColor(red: 30/255.0, green: 120/255.0, blue: 239/255.0, alpha: 1.0)
-        let blueBottom = UIColor( red: 74/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1.0)
+        let blueTop = UIColor(red: 0/255.0, green: 128/255.0, blue: 255/255.0, alpha: 1.0)
+        let blueBottom = UIColor( red: 74/255.0, green: 230/255.0, blue: 230/255.0, alpha: 1.0)
         
         let gradientColors: [CGColor] = [blueTop.CGColor, blueBottom.CGColor]
         let gradientLocations: [Float] = [0.0, 1.0]
