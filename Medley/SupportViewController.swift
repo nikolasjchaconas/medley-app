@@ -17,6 +17,7 @@ class SupportViewController: UIViewController {
     @IBOutlet weak var messageBox: UITextView!
     
     let buttonBorderColor : UIColor = UIColor( red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 0.35)
+    let placeholderColor : UIColor = UIColor( red: 199/255.0, green: 199/255.0, blue: 205/255.0, alpha: 1)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +29,24 @@ class SupportViewController: UIViewController {
         self.sendButton.layer.borderWidth = 1
         //Stylize message box
         self.messageBox.layer.cornerRadius = 5
+        self.messageBox.text = "Message..."
+        self.messageBox.textColor = self.placeholderColor
         
         self.hideKeyboardOnTap()
+    }
+    
+    func messageBoxDidBeginEditing(messageBox: UITextView){
+        if(messageBox.textColor == self.placeholderColor){
+            messageBox.text = nil
+            messageBox.textColor = UIColor.blackColor()
+        }
+    }
+    
+    func messageBoxDidEndEditing(messageBox: UITextView){
+        if (messageBox.text.isEmpty){
+            messageBox.text = "Message..."
+            messageBox.textColor = self.placeholderColor
+        }
     }
     
     override func didReceiveMemoryWarning() {
