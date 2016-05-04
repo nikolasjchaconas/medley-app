@@ -61,6 +61,9 @@ class ViewController: UIViewController {
     var blueBackground = UIColor(red: 0, green: 128/255, blue: 1, alpha: 1.0)
     var purpleBackground = UIColor(red: 204/255, green: 102/255, blue: 1, alpha: 1.0)
     
+    let blueGrad = CAGradientLayer().blueGradient()
+    let purpleGrad = CAGradientLayer().purpleGradient()
+    
     //Color for button borders
     let buttonBorderColor : UIColor = UIColor( red: 255, green: 255, blue: 255, alpha: 0.35)
     var redColor = UIColor(red: 1, green:0, blue: 0, alpha: 0.8)
@@ -71,7 +74,8 @@ class ViewController: UIViewController {
     
     //function which fades in the signup page
     func FadeInSignup() {
-        UIView.animateWithDuration(1.5, animations: {
+        self.blueGrad.opacity = 0.0
+        UIView.animateWithDuration(0.10, animations: {
             self.signupButton.enabled = false
             self.loginErrorMessage.text = ""
             self.view.backgroundColor =  self.purpleBackground
@@ -86,6 +90,7 @@ class ViewController: UIViewController {
             self.helpSigningInText.text = ""
             self.emailField.text = ""
             self.passwordField.text = ""
+            self.purpleGrad.opacity = 1.0
         })
         self.haveAccountText.alpha = 1.0
         self.haveAccountText.text = "Already Have an Account?"
@@ -114,7 +119,8 @@ class ViewController: UIViewController {
     
     //function to fade in the login screen
     func FadeInLogin() {
-        UIView.animateWithDuration(1.5, animations: {
+        self.purpleGrad.opacity = 0.0
+        UIView.animateWithDuration(0.10, animations: {
             self.loginButton.enabled = false
             self.view.backgroundColor =  self.blueBackground
             self.loginText.text = "Login to make a shared playlist with friends."
@@ -130,6 +136,7 @@ class ViewController: UIViewController {
             self.emailField.text = ""
             self.passwordField.text = ""
             self.passwordConfirmationField.text = ""
+            self.blueGrad.opacity = 1.0
         })
         self.helpSigningInText.text = "Need Help Signing in?"
         self.HideMessages()
@@ -159,6 +166,13 @@ class ViewController: UIViewController {
         self.passwordField.addTarget(self, action: #selector(ViewController.LoginFieldChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
         self.usernameField.addTarget(self, action: #selector(ViewController.LoginFieldChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
         self.emailField.addTarget(self, action: #selector(ViewController.LoginFieldChange(_:)), forControlEvents: UIControlEvents.EditingDidEnd)
+        
+        // Add gradient layers
+        self.blueGrad.frame = self.view.bounds
+        self.purpleGrad.frame = self.view.bounds
+        self.view.layer.addSublayer(blueGrad)
+        self.view.layer.addSublayer(purpleGrad)
+        self.purpleGrad.opacity = 0
         
         //iphone 4S stuff
         if UIDevice.currentDevice().model == "iPhone4,1" {
