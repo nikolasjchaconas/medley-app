@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class SupportViewController: UIViewController {
+class SupportViewController: UIViewController, UITextViewDelegate {
     
     var myRootRef = Firebase(url:"https://crackling-heat-1030.firebaseio.com/")
     
@@ -18,6 +18,7 @@ class SupportViewController: UIViewController {
     
     let buttonBorderColor : UIColor = UIColor( red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 0.35)
     let placeholderColor : UIColor = UIColor( red: 199/255.0, green: 199/255.0, blue: 205/255.0, alpha: 1)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,17 +33,20 @@ class SupportViewController: UIViewController {
         self.messageBox.text = "Message..."
         self.messageBox.textColor = self.placeholderColor
         
+        //Create message box listener
+        messageBox.delegate = self
+        
         self.hideKeyboardOnTap()
     }
     
-    func messageBoxDidBeginEditing(messageBox: UITextView){
+    func textViewDidBeginEditing(messageBox: UITextView){
         if(messageBox.textColor == self.placeholderColor){
             messageBox.text = nil
             messageBox.textColor = UIColor.blackColor()
         }
     }
     
-    func messageBoxDidEndEditing(messageBox: UITextView){
+    func textViewDidEndEditing(messageBox: UITextView){
         if (messageBox.text.isEmpty){
             messageBox.text = "Message..."
             messageBox.textColor = self.placeholderColor
