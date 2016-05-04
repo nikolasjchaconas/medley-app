@@ -17,6 +17,7 @@ class SupportViewController: UIViewController, UITextViewDelegate, MFMailCompose
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var messageBox: UITextView!
     @IBOutlet weak var subjectBox: UITextField!
+    @IBOutlet weak var successText: UILabel!
     
     let buttonBorderColor : UIColor = UIColor( red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 0.35)
     let placeholderColor : UIColor = UIColor( red: 199/255.0, green: 199/255.0, blue: 205/255.0, alpha: 1)
@@ -39,6 +40,9 @@ class SupportViewController: UIViewController, UITextViewDelegate, MFMailCompose
         
         //Disable button by default
         self.sendButton.enabled = false
+        
+        //Hide success text by default
+        self.successText.hidden = true
         
         //Create message box listener
         messageBox.delegate = self
@@ -78,7 +82,7 @@ class SupportViewController: UIViewController, UITextViewDelegate, MFMailCompose
     @IBAction func sendButtonPressed(sender: AnyObject) {
         let mailComposeViewController = configuredMailComposeViewController()
         if MFMailComposeViewController.canSendMail() {
-            self.presentViewController(mailComposeViewController, animated: true, completion: self.mailSent)
+            self.presentViewController(mailComposeViewController, animated: true, completion: nil)
         } else{
           self.showSendMailError()
         }
@@ -88,6 +92,7 @@ class SupportViewController: UIViewController, UITextViewDelegate, MFMailCompose
         self.messageBox.text = "Message..."
         self.messageBox.textColor = self.placeholderColor
         self.subjectBox.text = nil
+        self.successText.hidden = false
     }
     
     func showSendMailError(){
@@ -97,7 +102,13 @@ class SupportViewController: UIViewController, UITextViewDelegate, MFMailCompose
     }
     
     func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
-        controller.dismissViewControllerAnimated(true, completion: nil)
+        if (result == MFMailComposeResultSent){
+            controller.dismissViewControllerAnimated(true, completion: self.mailSent)
+        }
+        else{
+            controller.dismissViewControllerAnimated(true, completion: nil)
+        }
+
         
     }
     
