@@ -92,19 +92,19 @@ class AccountViewController: UIViewController {
      }
      
      @IBAction func changePasswordPressed(sender: AnyObject) {
-     if(self.ValidField(self.newPasswordField) && self.ValidField(self.oldPasswordField)) {
-     ShowLoading()
-     self.myRootRef.changePasswordForUser(GetCurrentUserEmail(myRootRef), fromOld: self.oldPasswordField.text!,
-     toNew: self.newPasswordField.text!, withCompletionBlock: { error in
-     if error != nil {
-     self.HideLoading()
-     } else {
-     self.HideLoading()
-     self.HideWarning()
-     self.ShowSuccess()
-     }
-     })
-     }
+        if(self.ValidField(self.newPasswordField) && self.ValidField(self.oldPasswordField)) {
+            ShowLoading()
+            self.myRootRef.changePasswordForUser(GetCurrentUserEmail(myRootRef), fromOld: self.oldPasswordField.text!,
+                                                 toNew: self.newPasswordField.text!, withCompletionBlock: { error in
+                                                    if error != nil {
+                                                        self.HideLoading()
+                                                    } else {
+                                                        self.HideLoading()
+                                                        self.HideWarning()
+                                                        self.ShowSuccess()
+                                                    }
+            })
+        }
      }
      
     
