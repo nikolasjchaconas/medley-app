@@ -609,9 +609,6 @@
                                         <include reference="JlH-rm-5IN"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="173.5" y="182" width="250" height="85"/>
-                                </variation>
                                 <connections>
                                     <segue destination="bY3-N2-JXZ" kind="show" id="WeK-Bw-Viq"/>
                                 </connections>
@@ -637,9 +634,6 @@
                                         <include reference="7ew-ag-YQs"/>
                                         <include reference="dLb-ba-jGZ"/>
                                     </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="173.5" y="279" width="250" height="85"/>
                                 </variation>
                                 <connections>
                                     <segue destination="UH5-TK-Big" kind="show" id="1qr-JJ-gae"/>
@@ -667,9 +661,6 @@
                                         <include reference="hya-AT-qGO"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="173.5" y="376" width="250" height="85"/>
-                                </variation>
                                 <connections>
                                     <segue destination="W81-lR-yTU" kind="show" id="lK3-rr-IYB"/>
                                 </connections>
@@ -695,9 +686,6 @@
                                         <include reference="48G-u5-MPd"/>
                                         <include reference="PgR-VV-yq9"/>
                                     </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="173.5" y="473" width="250" height="85"/>
                                 </variation>
                                 <connections>
                                     <action selector="logoutButtonPressed:" destination="VFp-pa-i9i" eventType="touchUpInside" id="MER-Ja-Nrf"/>
@@ -846,8 +834,7 @@
                                         <exclude reference="Rrp-Ey-gKy"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="26" y="20" width="548" height="127"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="Rrp-Ey-gKy"/>
                                     </mask>
@@ -868,8 +855,7 @@
                                         <exclude reference="Td5-R1-QZg"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="20" y="155" width="561" height="111"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="Td5-R1-QZg"/>
                                     </mask>
@@ -879,9 +865,6 @@
                                 <rect key="frame" x="-25" y="-30" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="73" y="242" width="454" height="30"/>
-                                </variation>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l6F-U5-0D3">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -896,8 +879,7 @@
                                         <exclude reference="fe7-QR-ozW"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="73" y="280" width="454" height="180"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="fe7-QR-ozW"/>
                                     </mask>
@@ -928,9 +910,6 @@
                                         <include reference="d19-ge-MWi"/>
                                         <include reference="kkL-eY-XpU"/>
                                     </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="235" y="484" width="131" height="28"/>
                                 </variation>
                                 <connections>
                                     <action selector="sendButtonPressed:" destination="W81-lR-yTU" eventType="touchUpInside" id="tpY-Qk-ayN"/>
@@ -979,8 +958,7 @@
                                         <exclude reference="n5d-KJ-d0T"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="161.5" y="473" width="278" height="149"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="U3U-YC-REX"/>
                                         <include reference="n5d-KJ-d0T"/>
@@ -1155,9 +1133,6 @@
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="73"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="64" y="20" width="266" height="117"/>
-                                </variation>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Old Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9TQ-lt-15H">
                                 <rect key="frame" x="-25" y="-30" width="97" height="30"/>
@@ -1170,14 +1145,36 @@
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="Vao-dV-8zg"/>
                                         <exclude reference="CiD-Px-0N9"/>
+                                        <exclude reference="Vao-dV-8zg"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
                                     <mask key="constraints">
-                                        <include reference="Vao-dV-8zg"/>
                                         <include reference="CiD-Px-0N9"/>
+                                        <include reference="Vao-dV-8zg"/>
+                                    </mask>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mha-hp-g6x">
+                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="Bu5-41-92a"/>
+                                    <constraint firstAttribute="height" constant="40" id="ZMh-1Y-kda"/>
+                                </constraints>
+                                <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Bu5-41-92a"/>
+                                        <exclude reference="ZMh-1Y-kda"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="Bu5-41-92a"/>
+                                        <include reference="ZMh-1Y-kda"/>
                                     </mask>
                                 </variation>
                             </textField>
@@ -1185,9 +1182,11 @@
                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="kIU-7r-OdO" firstAttribute="leading" secondItem="dnT-Jz-uzk" secondAttribute="leading" id="4GT-j6-7JL"/>
+                            <constraint firstItem="Mha-hp-g6x" firstAttribute="leading" secondItem="9TQ-lt-15H" secondAttribute="leading" id="9cU-HK-Tm4"/>
                             <constraint firstItem="9TQ-lt-15H" firstAttribute="centerX" secondItem="dnT-Jz-uzk" secondAttribute="centerX" id="MHF-k8-BvR"/>
                             <constraint firstItem="kIU-7r-OdO" firstAttribute="top" secondItem="aLi-F2-8em" secondAttribute="bottom" constant="8" symbolic="YES" id="UDX-XV-DYL"/>
                             <constraint firstItem="k8l-qt-2dr" firstAttribute="leading" secondItem="dnT-Jz-uzk" secondAttribute="leadingMargin" constant="48" id="VNa-cW-DzU"/>
+                            <constraint firstItem="Mha-hp-g6x" firstAttribute="top" secondItem="9TQ-lt-15H" secondAttribute="bottom" constant="8" symbolic="YES" id="eBL-yY-02W"/>
                             <constraint firstItem="9TQ-lt-15H" firstAttribute="top" secondItem="k8l-qt-2dr" secondAttribute="bottom" constant="77" id="fIw-Hc-gru"/>
                             <constraint firstItem="k8l-qt-2dr" firstAttribute="top" secondItem="aLi-F2-8em" secondAttribute="bottom" id="wWA-y8-x3u"/>
                         </constraints>
@@ -1196,6 +1195,7 @@
                                 <exclude reference="kIU-7r-OdO"/>
                                 <exclude reference="k8l-qt-2dr"/>
                                 <exclude reference="9TQ-lt-15H"/>
+                                <exclude reference="Mha-hp-g6x"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="4GT-j6-7JL"/>
@@ -1204,6 +1204,8 @@
                                 <exclude reference="wWA-y8-x3u"/>
                                 <exclude reference="MHF-k8-BvR"/>
                                 <exclude reference="fIw-Hc-gru"/>
+                                <exclude reference="9cU-HK-Tm4"/>
+                                <exclude reference="eBL-yY-02W"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -1211,6 +1213,7 @@
                                 <include reference="kIU-7r-OdO"/>
                                 <include reference="k8l-qt-2dr"/>
                                 <include reference="9TQ-lt-15H"/>
+                                <include reference="Mha-hp-g6x"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="4GT-j6-7JL"/>
@@ -1219,6 +1222,8 @@
                                 <include reference="wWA-y8-x3u"/>
                                 <include reference="MHF-k8-BvR"/>
                                 <include reference="fIw-Hc-gru"/>
+                                <include reference="9cU-HK-Tm4"/>
+                                <include reference="eBL-yY-02W"/>
                             </mask>
                         </variation>
                     </view>
@@ -1243,9 +1248,6 @@
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="73"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="-96.5" y="20" width="193" height="117"/>
-                                </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TdI-1y-WjS">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -1265,8 +1267,7 @@
                                         <exclude reference="Jtm-EB-whr"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="-4" y="28" width="61" height="68"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="DNX-gp-Wea"/>
                                         <include reference="Jtm-EB-whr"/>
@@ -1287,9 +1288,6 @@ We hope you enjoy our app!</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                                 <string key="userLabel">Medley is an app where you can join rooms with friends then share and listen to music together.  Medley was created by five students at the University of California, Santa Barbara in Spring 2016.  We hope you enjoy our app!</string>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="25" y="174" width="868" height="119.5"/>
-                                </variation>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
