@@ -74,6 +74,11 @@ class SettingsViewController: UIViewController {
         */
     }
     
+    @IBAction func logoutButtonPressed(sender: AnyObject) {
+        myRootRef.unauth()
+        self.performSegueWithIdentifier("ViewController", sender:sender)
+    }
+    
     /*
     @IBAction func showAboutPopup(sender: AnyObject) {
         let alertController = UIAlertController(title: "About Medley", message:
@@ -82,10 +87,7 @@ class SettingsViewController: UIViewController {
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
-    @IBAction func logoutButtonPressed(sender: AnyObject) {
-        myRootRef.unauth()
-        self.performSegueWithIdentifier("ViewController", sender:sender)
-    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

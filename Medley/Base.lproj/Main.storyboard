@@ -1089,7 +1089,7 @@
         <!--Account View Controller-->
         <scene sceneID="uOr-8N-5V4">
             <objects>
-                <viewController id="bY3-N2-JXZ" customClass="AccountViewController" customModule="Current - Medley" sceneMemberID="viewController">
+                <viewController id="bY3-N2-JXZ" customClass="AccountViewController" customModule="Medley" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aLi-F2-8em"/>
                         <viewControllerLayoutGuide type="bottom" id="l4W-tf-hmo"/>
@@ -1137,7 +1137,6 @@
                                     <constraint firstAttribute="height" constant="40" id="CiD-Px-0N9"/>
                                     <constraint firstAttribute="width" constant="300" id="Vao-dV-8zg"/>
                                 </constraints>
-                                <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <variation key="default">
@@ -1159,7 +1158,6 @@
                                     <constraint firstAttribute="width" constant="300" id="Bu5-41-92a"/>
                                     <constraint firstAttribute="height" constant="40" id="ZMh-1Y-kda"/>
                                 </constraints>
-                                <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <variation key="default">
@@ -1200,7 +1198,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="changePasswordPressed:" destination="bY3-N2-JXZ" eventType="touchDragInside" id="Jvo-jR-UHw"/>
+                                    <action selector="changePasswordPressed:" destination="bY3-N2-JXZ" eventType="touchUpInside" id="j6U-Ku-Gpk"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are using a temporary password, it will expire in the next 24 hours. Please change your password." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVt-BR-ZPC">
@@ -1247,11 +1245,15 @@
                                     </mask>
                                 </variation>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Gb1-p8-IRf">
+                                <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="kIU-7r-OdO" firstAttribute="leading" secondItem="dnT-Jz-uzk" secondAttribute="leading" id="4GT-j6-7JL"/>
                             <constraint firstItem="Mha-hp-g6x" firstAttribute="leading" secondItem="9TQ-lt-15H" secondAttribute="leading" id="9cU-HK-Tm4"/>
+                            <constraint firstItem="Gb1-p8-IRf" firstAttribute="centerX" secondItem="3AF-np-1Xv" secondAttribute="centerX" id="ElD-Zj-ufq"/>
                             <constraint firstItem="9TQ-lt-15H" firstAttribute="centerX" secondItem="dnT-Jz-uzk" secondAttribute="centerX" id="MHF-k8-BvR"/>
                             <constraint firstItem="eMJ-Pg-38x" firstAttribute="centerX" secondItem="Mha-hp-g6x" secondAttribute="centerX" id="RlS-dw-7z2"/>
                             <constraint firstItem="eMJ-Pg-38x" firstAttribute="top" secondItem="Mha-hp-g6x" secondAttribute="bottom" constant="8" symbolic="YES" id="RyJ-72-G5h"/>
@@ -1261,6 +1263,7 @@
                             <constraint firstItem="Mha-hp-g6x" firstAttribute="top" secondItem="9TQ-lt-15H" secondAttribute="bottom" constant="8" symbolic="YES" id="eBL-yY-02W"/>
                             <constraint firstItem="9TQ-lt-15H" firstAttribute="top" secondItem="SVt-BR-ZPC" secondAttribute="bottom" constant="1" id="eig-Pg-Sr8"/>
                             <constraint firstItem="9TQ-lt-15H" firstAttribute="top" secondItem="k8l-qt-2dr" secondAttribute="bottom" constant="77" id="fIw-Hc-gru"/>
+                            <constraint firstItem="Gb1-p8-IRf" firstAttribute="top" secondItem="3AF-np-1Xv" secondAttribute="bottom" constant="40" id="fbG-4F-ohT"/>
                             <constraint firstItem="3AF-np-1Xv" firstAttribute="centerX" secondItem="eMJ-Pg-38x" secondAttribute="centerX" id="fqw-YO-anT"/>
                             <constraint firstItem="k8l-qt-2dr" firstAttribute="top" secondItem="aLi-F2-8em" secondAttribute="bottom" id="wWA-y8-x3u"/>
                             <constraint firstItem="3AF-np-1Xv" firstAttribute="top" secondItem="eMJ-Pg-38x" secondAttribute="bottom" constant="18" id="xH4-uL-lmS"/>
@@ -1274,8 +1277,14 @@
                                 <exclude reference="eMJ-Pg-38x"/>
                                 <exclude reference="SVt-BR-ZPC"/>
                                 <exclude reference="3AF-np-1Xv"/>
+                                <exclude reference="Gb1-p8-IRf"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="4GT-j6-7JL"/>
+                                <exclude reference="UDX-XV-DYL"/>
+                                <exclude reference="VNa-cW-DzU"/>
+                                <exclude reference="wWA-y8-x3u"/>
+                                <exclude reference="Wdy-e2-EXq"/>
                                 <exclude reference="MHF-k8-BvR"/>
                                 <exclude reference="eig-Pg-Sr8"/>
                                 <exclude reference="fIw-Hc-gru"/>
@@ -1283,13 +1292,10 @@
                                 <exclude reference="eBL-yY-02W"/>
                                 <exclude reference="RlS-dw-7z2"/>
                                 <exclude reference="RyJ-72-G5h"/>
-                                <exclude reference="4GT-j6-7JL"/>
-                                <exclude reference="UDX-XV-DYL"/>
                                 <exclude reference="fqw-YO-anT"/>
                                 <exclude reference="xH4-uL-lmS"/>
-                                <exclude reference="Wdy-e2-EXq"/>
-                                <exclude reference="VNa-cW-DzU"/>
-                                <exclude reference="wWA-y8-x3u"/>
+                                <exclude reference="ElD-Zj-ufq"/>
+                                <exclude reference="fbG-4F-ohT"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -1301,8 +1307,14 @@
                                 <include reference="eMJ-Pg-38x"/>
                                 <include reference="SVt-BR-ZPC"/>
                                 <include reference="3AF-np-1Xv"/>
+                                <include reference="Gb1-p8-IRf"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="4GT-j6-7JL"/>
+                                <include reference="UDX-XV-DYL"/>
+                                <include reference="VNa-cW-DzU"/>
+                                <include reference="wWA-y8-x3u"/>
+                                <include reference="Wdy-e2-EXq"/>
                                 <include reference="MHF-k8-BvR"/>
                                 <include reference="eig-Pg-Sr8"/>
                                 <include reference="fIw-Hc-gru"/>
@@ -1310,19 +1322,18 @@
                                 <include reference="eBL-yY-02W"/>
                                 <include reference="RlS-dw-7z2"/>
                                 <include reference="RyJ-72-G5h"/>
-                                <include reference="4GT-j6-7JL"/>
-                                <include reference="UDX-XV-DYL"/>
                                 <include reference="fqw-YO-anT"/>
                                 <include reference="xH4-uL-lmS"/>
-                                <include reference="Wdy-e2-EXq"/>
-                                <include reference="VNa-cW-DzU"/>
-                                <include reference="wWA-y8-x3u"/>
+                                <include reference="ElD-Zj-ufq"/>
+                                <include reference="fbG-4F-ohT"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="loadingIndicator" destination="Gb1-p8-IRf" id="Xyu-UI-4IZ"/>
                         <outlet property="newPasswordField" destination="Mha-hp-g6x" id="daW-xE-yj1"/>
                         <outlet property="oldPasswordField" destination="9TQ-lt-15H" id="6W0-TF-cSG"/>
+                        <outlet property="successMessage" destination="3AF-np-1Xv" id="bWu-UK-ANo"/>
                         <outlet property="temporaryPasswordWarning" destination="SVt-BR-ZPC" id="g3G-df-MZc"/>
                         <outlet property="updateInfoButton" destination="eMJ-Pg-38x" id="Hlk-Bg-0rW"/>
                     </connections>

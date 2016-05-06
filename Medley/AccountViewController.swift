@@ -43,56 +43,56 @@ class AccountViewController: UIViewController {
         self.updateInfoButton.layer.borderWidth = 1
         
          if(self.IsPasswordTemporary()) {
-         self.ShowWarning()
+            self.ShowWarning()
          }
          else {
-         self.HideWarning()
+            self.HideWarning()
          }
          self.HideSuccess()
          loadingIndicator.alpha = 0;
     }
      
      override func didReceiveMemoryWarning() {
-     super.didReceiveMemoryWarning()
-     // Dispose of any resources that can be recreated.
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
      }
      
      
      func ShowSuccess() {
-     self.successMessage.text = "Password Changed!"
+        self.successMessage.text = "Password Changed!"
      }
      
      func HideSuccess() {
-     self.successMessage.text = ""
+        self.successMessage.text = ""
      }
      
      func ShowLoading() {
-     loadingIndicator.alpha = 1.0
-     loadingIndicator.startAnimating()
+        loadingIndicator.alpha = 1.0
+        loadingIndicator.startAnimating()
      }
      
      func HideLoading() {
-     loadingIndicator.alpha = 0.0
+        loadingIndicator.alpha = 0.0
      }
      
      func ShowWarning() {
-     self.temporaryPasswordWarning.text = "You are using a temporary password, it will expire in the next 24 hours. Please change your password."
+        self.temporaryPasswordWarning.text = "You are using a temporary password, it will expire in the next 24 hours. Please change your password."
      }
      
      func HideWarning() {
-     self.temporaryPasswordWarning.text = ""
+        self.temporaryPasswordWarning.text = ""
      }
      
      func IsPasswordTemporary() -> Bool {
-     return (self.GetCurrentUser(self.myRootRef).providerData["isTemporaryPassword"] as? Bool)!
+        return (self.GetCurrentUser(self.myRootRef).providerData["isTemporaryPassword"] as? Bool)!
      }
      
      func ValidField(field : UITextField) -> Bool {
-     let valid = field.text != "" ? true : false
-     if(!valid)  {
-     self.MakeTextFieldRed(field, color:self.redColor)
-     }
-     return valid
+        let valid = field.text != "" ? true : false
+        if(!valid)  {
+            self.MakeTextFieldRed(field, color:self.redColor)
+        }
+        return valid
      }
      
      @IBAction func changePasswordPressed(sender: AnyObject) {
@@ -109,6 +109,7 @@ class AccountViewController: UIViewController {
                                                     }
             })
         }
+        self.ShowSuccess()
      }
      
     
