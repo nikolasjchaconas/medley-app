@@ -37,6 +37,10 @@ class AccountViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         self.hideKeyboardOnTap()
         
+        //Stylize update info button
+        self.updateInfoButton.layer.cornerRadius = 5
+        self.updateInfoButton.layer.borderColor = self.buttonBorderColor.CGColor
+        self.updateInfoButton.layer.borderWidth = 1
         
          if(self.IsPasswordTemporary()) {
          self.ShowWarning()
