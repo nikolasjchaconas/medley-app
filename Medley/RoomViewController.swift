@@ -45,5 +45,8 @@ class RoomViewController: UIViewController {
             self.view.frame.origin.y += keyboardSize.height
         }
     }
+    @IBAction func sendButtonPressed(sender: AnyObject) {
+        self.hideKeyboard()
+    }
     
 }
