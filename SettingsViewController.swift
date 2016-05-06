@@ -22,7 +22,6 @@ class SettingsViewController: UIViewController {
 
     /*
 
-     @IBOutlet weak var showAboutPopup: UIButton!
     @IBOutlet weak var newPasswordField: UITextField!
     @IBOutlet weak var oldPasswordField: UITextField!
     @IBOutlet weak var temporaryPasswordWarning: UILabel!
@@ -82,15 +81,6 @@ class SettingsViewController: UIViewController {
         alertController.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alertController, animated: true, completion: nil)
     }
-
-    
-    func contactUs(alert: UIAlertAction!){
-        let alertController = UIAlertController(title: "Thank you!", message:
-            "We will reply to your message as soon as possible! \n\nSorry if it takes a while, we're just a team of five college students.", preferredStyle: UIAlertControllerStyle.Alert)
-        alertController.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
-        self.presentViewController(alertController, animated: true, completion: nil)
-    }
-    */
     
     @IBAction func logoutButtonPressed(sender: AnyObject) {
         myRootRef.unauth()
@@ -102,7 +92,7 @@ class SettingsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    /*
+    
     func ShowSuccess() {
         self.successMessage.text = "Password Changed!"
     }
@@ -157,4 +147,5 @@ class SettingsViewController: UIViewController {
     }
     */
     
-}
+    
+ }

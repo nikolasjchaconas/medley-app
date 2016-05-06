@@ -1085,10 +1085,10 @@
             </objects>
             <point key="canvasLocation" x="3709.5" y="27"/>
         </scene>
-        <!--View Controller-->
+        <!--Account View Controller-->
         <scene sceneID="uOr-8N-5V4">
             <objects>
-                <viewController id="bY3-N2-JXZ" sceneMemberID="viewController">
+                <viewController id="bY3-N2-JXZ" customClass="AccountViewController" customModule="Current - Medley" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aLi-F2-8em"/>
                         <viewControllerLayoutGuide type="bottom" id="l4W-tf-hmo"/>
@@ -1114,8 +1114,7 @@
                                         <exclude reference="vQg-oA-Ygo"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="28" width="61" height="20"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="pbM-kn-lSD"/>
                                         <include reference="vQg-oA-Ygo"/>
@@ -1125,16 +1124,42 @@
                                     <segue destination="VFp-pa-i9i" kind="show" id="t4t-yz-8ab"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k8l-qt-2dr" userLabel="Settings">
+                                <rect key="frame" x="160" y="30" width="281" height="118"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="73"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="kIU-7r-OdO" firstAttribute="leading" secondItem="dnT-Jz-uzk" secondAttribute="leading" id="4GT-j6-7JL"/>
+                            <constraint firstItem="kIU-7r-OdO" firstAttribute="top" secondItem="aLi-F2-8em" secondAttribute="bottom" constant="8" symbolic="YES" id="UDX-XV-DYL"/>
+                            <constraint firstItem="k8l-qt-2dr" firstAttribute="leading" secondItem="dnT-Jz-uzk" secondAttribute="leadingMargin" constant="48" id="VNa-cW-DzU"/>
+                            <constraint firstItem="k8l-qt-2dr" firstAttribute="top" secondItem="aLi-F2-8em" secondAttribute="bottom" id="wWA-y8-x3u"/>
+                        </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="kIU-7r-OdO"/>
+                                <exclude reference="k8l-qt-2dr"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="4GT-j6-7JL"/>
+                                <exclude reference="UDX-XV-DYL"/>
+                                <exclude reference="VNa-cW-DzU"/>
+                                <exclude reference="wWA-y8-x3u"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="kIU-7r-OdO"/>
+                                <include reference="k8l-qt-2dr"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="4GT-j6-7JL"/>
+                                <include reference="UDX-XV-DYL"/>
+                                <include reference="VNa-cW-DzU"/>
+                                <include reference="wWA-y8-x3u"/>
                             </mask>
                         </variation>
                     </view>
@@ -1154,7 +1179,7 @@
                     <view key="view" contentMode="scaleToFill" id="lxI-hp-s1O">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sPr-Rb-PFO" userLabel="Settings">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sPr-Rb-PFO" userLabel="Settings" customClass="Account">
                                 <rect key="frame" x="160" y="30" width="281" height="118"/>
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="73"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1273,8 +1298,8 @@ We hope you enjoy our app!</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="t4t-yz-8ab"/>
-        <segue reference="Yn2-Lj-OtF"/>
         <segue reference="uJE-Sm-52R"/>
+        <segue reference="Yn2-Lj-OtF"/>
+        <segue reference="t4t-yz-8ab"/>
     </inferredMetricsTieBreakers>
 </document>
