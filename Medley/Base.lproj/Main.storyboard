@@ -1182,7 +1182,9 @@
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="0.30821659480000002" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="6xN-9f-Tza"/>
+                                    <constraint firstAttribute="width" constant="300" id="6xN-9f-Tza">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="200"/>
+                                    </constraint>
                                     <constraint firstAttribute="height" constant="40" id="xAc-BZ-fGD"/>
                                 </constraints>
                                 <state key="normal" title="Change Password">
@@ -1190,23 +1192,42 @@
                                 </state>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="xAc-BZ-fGD"/>
                                         <exclude reference="6xN-9f-Tza"/>
+                                        <exclude reference="xAc-BZ-fGD"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
                                     <mask key="constraints">
-                                        <include reference="xAc-BZ-fGD"/>
                                         <include reference="6xN-9f-Tza"/>
+                                        <include reference="xAc-BZ-fGD"/>
                                     </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="97" y="310" width="206" height="40"/>
                                 </variation>
                                 <connections>
                                     <action selector="changePasswordPressed:" destination="bY3-N2-JXZ" eventType="touchDragInside" id="Jvo-jR-UHw"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are using a temporary password, it will expire in the next 24 hours. Please change your password." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVt-BR-ZPC">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="2xs-TC-tnX"/>
+                                    <constraint firstAttribute="height" constant="100" id="jdv-kL-0HB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="0.81559806030000004" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="jdv-kL-0HB"/>
+                                        <exclude reference="2xs-TC-tnX"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="jdv-kL-0HB"/>
+                                        <include reference="2xs-TC-tnX"/>
+                                    </mask>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -1217,7 +1238,9 @@
                             <constraint firstItem="eMJ-Pg-38x" firstAttribute="top" secondItem="Mha-hp-g6x" secondAttribute="bottom" constant="8" symbolic="YES" id="RyJ-72-G5h"/>
                             <constraint firstItem="kIU-7r-OdO" firstAttribute="top" secondItem="aLi-F2-8em" secondAttribute="bottom" constant="8" symbolic="YES" id="UDX-XV-DYL"/>
                             <constraint firstItem="k8l-qt-2dr" firstAttribute="leading" secondItem="dnT-Jz-uzk" secondAttribute="leadingMargin" constant="48" id="VNa-cW-DzU"/>
+                            <constraint firstItem="SVt-BR-ZPC" firstAttribute="centerX" secondItem="9TQ-lt-15H" secondAttribute="centerX" id="Wdy-e2-EXq"/>
                             <constraint firstItem="Mha-hp-g6x" firstAttribute="top" secondItem="9TQ-lt-15H" secondAttribute="bottom" constant="8" symbolic="YES" id="eBL-yY-02W"/>
+                            <constraint firstItem="9TQ-lt-15H" firstAttribute="top" secondItem="SVt-BR-ZPC" secondAttribute="bottom" constant="1" id="eig-Pg-Sr8"/>
                             <constraint firstItem="9TQ-lt-15H" firstAttribute="top" secondItem="k8l-qt-2dr" secondAttribute="bottom" constant="77" id="fIw-Hc-gru"/>
                             <constraint firstItem="k8l-qt-2dr" firstAttribute="top" secondItem="aLi-F2-8em" secondAttribute="bottom" id="wWA-y8-x3u"/>
                         </constraints>
@@ -1228,13 +1251,16 @@
                                 <exclude reference="9TQ-lt-15H"/>
                                 <exclude reference="Mha-hp-g6x"/>
                                 <exclude reference="eMJ-Pg-38x"/>
+                                <exclude reference="SVt-BR-ZPC"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="4GT-j6-7JL"/>
                                 <exclude reference="UDX-XV-DYL"/>
                                 <exclude reference="VNa-cW-DzU"/>
                                 <exclude reference="wWA-y8-x3u"/>
+                                <exclude reference="Wdy-e2-EXq"/>
                                 <exclude reference="MHF-k8-BvR"/>
+                                <exclude reference="eig-Pg-Sr8"/>
                                 <exclude reference="fIw-Hc-gru"/>
                                 <exclude reference="9cU-HK-Tm4"/>
                                 <exclude reference="eBL-yY-02W"/>
@@ -1249,13 +1275,16 @@
                                 <include reference="9TQ-lt-15H"/>
                                 <include reference="Mha-hp-g6x"/>
                                 <include reference="eMJ-Pg-38x"/>
+                                <include reference="SVt-BR-ZPC"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="4GT-j6-7JL"/>
                                 <include reference="UDX-XV-DYL"/>
                                 <include reference="VNa-cW-DzU"/>
                                 <include reference="wWA-y8-x3u"/>
+                                <include reference="Wdy-e2-EXq"/>
                                 <include reference="MHF-k8-BvR"/>
+                                <include reference="eig-Pg-Sr8"/>
                                 <include reference="fIw-Hc-gru"/>
                                 <include reference="9cU-HK-Tm4"/>
                                 <include reference="eBL-yY-02W"/>
@@ -1267,6 +1296,7 @@
                     <connections>
                         <outlet property="newPasswordField" destination="Mha-hp-g6x" id="daW-xE-yj1"/>
                         <outlet property="oldPasswordField" destination="9TQ-lt-15H" id="6W0-TF-cSG"/>
+                        <outlet property="temporaryPasswordWarning" destination="SVt-BR-ZPC" id="g3G-df-MZc"/>
                         <outlet property="updateInfoButton" destination="eMJ-Pg-38x" id="Hlk-Bg-0rW"/>
                     </connections>
                 </viewController>
