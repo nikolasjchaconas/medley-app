@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		43507C021CD98CCD008A8881 /* no_album_art.png in Resources */ = {isa = PBXBuildFile; fileRef = 43507C011CD98CCD008A8881 /* no_album_art.png */; };
 		5B35FB211CD042A800BE38A1 /* RoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B35FB201CD042A800BE38A1 /* RoomViewController.swift */; };
 		5B35FB231CD0476000BE38A1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B35FB221CD0476000BE38A1 /* SettingsViewController.swift */; };
 		5B3A87001CC85ED900A04BCD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3A86FF1CC85ED900A04BCD /* HomeViewController.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		43507C011CD98CCD008A8881 /* no_album_art.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = no_album_art.png; sourceTree = SOURCE_ROOT; };
 		5B35FB201CD042A800BE38A1 /* RoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomViewController.swift; sourceTree = "<group>"; };
 		5B35FB221CD0476000BE38A1 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = ../SettingsViewController.swift; sourceTree = "<group>"; };
 		5B3A86FF1CC85ED900A04BCD /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				5B3A86FF1CC85ED900A04BCD /* HomeViewController.swift */,
 				AA89B62A1CC32F2300E929F0 /* ViewController.swift */,
 				AA89B62C1CC32F2300E929F0 /* Main.storyboard */,
+				43507C011CD98CCD008A8881 /* no_album_art.png */,
 				AA89B62F1CC32F2300E929F0 /* Assets.xcassets */,
 				AA89B6311CC32F2300E929F0 /* LaunchScreen.storyboard */,
 				AA89B6341CC32F2300E929F0 /* Info.plist */,
@@ -232,7 +235,7 @@
 				TargetAttributes = {
 					AA89B6241CC32F2300E929F0 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 8K58Z9Q52N;
+						DevelopmentTeam = 6GFB39PK35;
 					};
 					AA89B6381CC32F2300E929F0 = {
 						CreatedOnToolsVersion = 7.3;
@@ -271,6 +274,7 @@
 			files = (
 				AA89B6331CC32F2300E929F0 /* LaunchScreen.storyboard in Resources */,
 				AA89B6301CC32F2300E929F0 /* Assets.xcassets in Resources */,
+				43507C021CD98CCD008A8881 /* no_album_art.png in Resources */,
 				AA89B62E1CC32F2300E929F0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -496,7 +500,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Medley/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.medleyteam.Medley;
+				PRODUCT_BUNDLE_IDENTIFIER = com.medleyteam.zzeng.Medley;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -511,7 +515,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Medley/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.medleyteam.Medley;
+				PRODUCT_BUNDLE_IDENTIFIER = com.medleyteam.zzeng.Medley;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
