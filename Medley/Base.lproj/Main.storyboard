@@ -1178,12 +1178,43 @@
                                     </mask>
                                 </variation>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eMJ-Pg-38x">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="0.30821659480000002" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="6xN-9f-Tza"/>
+                                    <constraint firstAttribute="height" constant="40" id="xAc-BZ-fGD"/>
+                                </constraints>
+                                <state key="normal" title="Change Password">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="xAc-BZ-fGD"/>
+                                        <exclude reference="6xN-9f-Tza"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="xAc-BZ-fGD"/>
+                                        <include reference="6xN-9f-Tza"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="97" y="310" width="206" height="40"/>
+                                </variation>
+                                <connections>
+                                    <action selector="changePasswordPressed:" destination="bY3-N2-JXZ" eventType="touchDragInside" id="Jvo-jR-UHw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="kIU-7r-OdO" firstAttribute="leading" secondItem="dnT-Jz-uzk" secondAttribute="leading" id="4GT-j6-7JL"/>
                             <constraint firstItem="Mha-hp-g6x" firstAttribute="leading" secondItem="9TQ-lt-15H" secondAttribute="leading" id="9cU-HK-Tm4"/>
                             <constraint firstItem="9TQ-lt-15H" firstAttribute="centerX" secondItem="dnT-Jz-uzk" secondAttribute="centerX" id="MHF-k8-BvR"/>
+                            <constraint firstItem="eMJ-Pg-38x" firstAttribute="centerX" secondItem="Mha-hp-g6x" secondAttribute="centerX" id="RlS-dw-7z2"/>
+                            <constraint firstItem="eMJ-Pg-38x" firstAttribute="top" secondItem="Mha-hp-g6x" secondAttribute="bottom" constant="8" symbolic="YES" id="RyJ-72-G5h"/>
                             <constraint firstItem="kIU-7r-OdO" firstAttribute="top" secondItem="aLi-F2-8em" secondAttribute="bottom" constant="8" symbolic="YES" id="UDX-XV-DYL"/>
                             <constraint firstItem="k8l-qt-2dr" firstAttribute="leading" secondItem="dnT-Jz-uzk" secondAttribute="leadingMargin" constant="48" id="VNa-cW-DzU"/>
                             <constraint firstItem="Mha-hp-g6x" firstAttribute="top" secondItem="9TQ-lt-15H" secondAttribute="bottom" constant="8" symbolic="YES" id="eBL-yY-02W"/>
@@ -1196,6 +1227,7 @@
                                 <exclude reference="k8l-qt-2dr"/>
                                 <exclude reference="9TQ-lt-15H"/>
                                 <exclude reference="Mha-hp-g6x"/>
+                                <exclude reference="eMJ-Pg-38x"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="4GT-j6-7JL"/>
@@ -1206,6 +1238,8 @@
                                 <exclude reference="fIw-Hc-gru"/>
                                 <exclude reference="9cU-HK-Tm4"/>
                                 <exclude reference="eBL-yY-02W"/>
+                                <exclude reference="RlS-dw-7z2"/>
+                                <exclude reference="RyJ-72-G5h"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -1214,6 +1248,7 @@
                                 <include reference="k8l-qt-2dr"/>
                                 <include reference="9TQ-lt-15H"/>
                                 <include reference="Mha-hp-g6x"/>
+                                <include reference="eMJ-Pg-38x"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="4GT-j6-7JL"/>
@@ -1224,9 +1259,16 @@
                                 <include reference="fIw-Hc-gru"/>
                                 <include reference="9cU-HK-Tm4"/>
                                 <include reference="eBL-yY-02W"/>
+                                <include reference="RlS-dw-7z2"/>
+                                <include reference="RyJ-72-G5h"/>
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="newPasswordField" destination="Mha-hp-g6x" id="daW-xE-yj1"/>
+                        <outlet property="oldPasswordField" destination="9TQ-lt-15H" id="6W0-TF-cSG"/>
+                        <outlet property="updateInfoButton" destination="eMJ-Pg-38x" id="Hlk-Bg-0rW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OdX-vz-KB3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
