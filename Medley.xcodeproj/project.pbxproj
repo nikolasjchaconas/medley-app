@@ -11,13 +11,14 @@
 		5B35FB211CD042A800BE38A1 /* RoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B35FB201CD042A800BE38A1 /* RoomViewController.swift */; };
 		5B35FB231CD0476000BE38A1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B35FB221CD0476000BE38A1 /* SettingsViewController.swift */; };
 		5B3A87001CC85ED900A04BCD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3A86FF1CC85ED900A04BCD /* HomeViewController.swift */; };
+		AA3418FE1CD559CB00B571FD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA89B62A1CC32F2300E929F0 /* ViewController.swift */; };
 		AA89B6291CC32F2300E929F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA89B6281CC32F2300E929F0 /* AppDelegate.swift */; };
-		AA89B62B1CC32F2300E929F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA89B62A1CC32F2300E929F0 /* ViewController.swift */; };
 		AA89B62E1CC32F2300E929F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA89B62C1CC32F2300E929F0 /* Main.storyboard */; };
 		AA89B6301CC32F2300E929F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA89B62F1CC32F2300E929F0 /* Assets.xcassets */; };
 		AA89B6331CC32F2300E929F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA89B6311CC32F2300E929F0 /* LaunchScreen.storyboard */; };
 		AA89B63E1CC32F2300E929F0 /* MedleyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA89B63D1CC32F2300E929F0 /* MedleyTests.swift */; };
 		AA89B6491CC32F2300E929F0 /* MedleyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA89B6481CC32F2300E929F0 /* MedleyUITests.swift */; };
+		AAF2C4781CD9A98F008FA0B7 /* GradientLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF2C4771CD9A98F008FA0B7 /* GradientLayer.swift */; };
 		CA68C1DCDD70685D019A3DEB /* Pods_Medley.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FCA3095D0A9F4512A32C671 /* Pods_Medley.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 		AA89B6441CC32F2300E929F0 /* MedleyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MedleyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA89B6481CC32F2300E929F0 /* MedleyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedleyUITests.swift; sourceTree = "<group>"; };
 		AA89B64A1CC32F2300E929F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AAF2C4771CD9A98F008FA0B7 /* GradientLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientLayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				AA89B6281CC32F2300E929F0 /* AppDelegate.swift */,
 				5B35FB221CD0476000BE38A1 /* SettingsViewController.swift */,
 				5B35FB201CD042A800BE38A1 /* RoomViewController.swift */,
+				AAF2C4771CD9A98F008FA0B7 /* GradientLayer.swift */,
 				5B3A86FF1CC85ED900A04BCD /* HomeViewController.swift */,
 				AA89B62A1CC32F2300E929F0 /* ViewController.swift */,
 				AA89B62C1CC32F2300E929F0 /* Main.storyboard */,
@@ -345,11 +348,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA89B62B1CC32F2300E929F0 /* ViewController.swift in Sources */,
+				AA3418FE1CD559CB00B571FD /* ViewController.swift in Sources */,
 				AA89B6291CC32F2300E929F0 /* AppDelegate.swift in Sources */,
 				5B3A87001CC85ED900A04BCD /* HomeViewController.swift in Sources */,
 				5B35FB231CD0476000BE38A1 /* SettingsViewController.swift in Sources */,
 				5B35FB211CD042A800BE38A1 /* RoomViewController.swift in Sources */,
+				AAF2C4781CD9A98F008FA0B7 /* GradientLayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

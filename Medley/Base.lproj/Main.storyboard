@@ -343,7 +343,7 @@
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.2892780172413793" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="85" id="U8e-zv-qHN"/>
-                                    <constraint firstAttribute="width" constant="150" id="oBR-eV-IQR"/>
+                                    <constraint firstAttribute="width" constant="250" id="oBR-eV-IQR"/>
                                 </constraints>
                                 <state key="normal" title="Create Room">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -369,8 +369,8 @@
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.28927801720000001" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="DwT-Ds-Ij9"/>
-                                    <constraint firstAttribute="width" constant="150" id="ScH-gN-giw"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="DwT-Ds-Ij9"/>
+                                    <constraint firstAttribute="width" constant="250" id="ScH-gN-giw"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="85" id="f1V-1P-VHS"/>
                                     <constraint firstAttribute="height" constant="85" id="pkH-8X-wsy"/>
                                 </constraints>
@@ -402,10 +402,10 @@
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.28927801720000001" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="WMj-dY-b7o"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="WMj-dY-b7o"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="85" id="e0j-h0-vvC"/>
                                     <constraint firstAttribute="height" constant="85" id="mQT-GL-aOQ"/>
-                                    <constraint firstAttribute="width" constant="150" id="ssY-nv-j2W"/>
+                                    <constraint firstAttribute="width" constant="250" id="ssY-nv-j2W"/>
                                 </constraints>
                                 <state key="normal" title="Settings">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -519,14 +519,17 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="createRoomButton" destination="f0v-pr-y4m" id="V0g-xq-V3w"/>
                         <outlet property="greetingMessage" destination="rWS-dx-Of8" id="yNu-wv-G5f"/>
+                        <outlet property="joinRoomButton" destination="ZDU-El-Sac" id="VHp-AN-Zms"/>
+                        <outlet property="settingsButton" destination="4YH-zH-ewO" id="DRq-VZ-AfH"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="ViewController" id="OaE-fq-UVU"/>
                         <segue destination="4Ed-Mw-3xt" kind="show" identifier="RoomViewController" id="UGg-7c-sea"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5GI-IN-wus" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1665" y="642"/>
+            <point key="canvasLocation" x="1607" y="657"/>
         </scene>
         <!--Room View Controller-->
         <scene sceneID="9IR-HN-DKy">
@@ -1088,6 +1091,6 @@
         <image name="no_album_art.png" width="500" height="500"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Aq7-Q1-MC6"/>
+        <segue reference="YK2-ml-4J1"/>
     </inferredMetricsTieBreakers>
 </document>
