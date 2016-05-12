@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -334,9 +334,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="257" y="145" width="87" height="21"/>
-                                </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f0v-pr-y4m">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -354,8 +351,7 @@
                                         <exclude reference="oBR-eV-IQR"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="225" y="212" width="150" height="85"/>
+                                <variation key="widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="U8e-zv-qHN"/>
                                         <include reference="oBR-eV-IQR"/>
@@ -385,8 +381,7 @@
                                         <exclude reference="pkH-8X-wsy"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="225" y="307" width="150" height="85"/>
+                                <variation key="widthClass=compact">
                                     <mask key="constraints">
                                         <exclude reference="DwT-Ds-Ij9"/>
                                         <include reference="ScH-gN-giw"/>
@@ -418,8 +413,7 @@
                                         <exclude reference="ssY-nv-j2W"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="225" y="402" width="150" height="85"/>
+                                <variation key="widthClass=compact">
                                     <mask key="constraints">
                                         <exclude reference="WMj-dY-b7o"/>
                                         <exclude reference="e0j-h0-vvC"/>
@@ -436,9 +430,6 @@
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="73"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="190" y="25" width="222" height="117"/>
-                                </variation>
                                 <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                     <rect key="frame" x="189" y="25" width="222" height="117"/>
                                 </variation>
@@ -553,8 +544,7 @@
                                         <exclude reference="xv2-kt-CUz"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="20" y="49" width="560" height="200"/>
+                                <variation key="widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="xv2-kt-CUz"/>
                                     </mask>
@@ -565,9 +555,6 @@
                                 <state key="normal" title="Play">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="163" y="257" width="274" height="30"/>
-                                </variation>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WJr-JQ-rdu">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -593,26 +580,17 @@
                                 <state key="normal" title="Next">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="474" y="257" width="76" height="30"/>
-                                </variation>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VAA-mj-fsa">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="Button">
                                     <color key="titleColor" red="0.95699572199165095" green="0.93773329912143943" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="534" y="16" width="46" height="30"/>
-                                </variation>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rqc-oZ-lYA">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="0.95699572200000005" green="0.93773329910000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="20" y="310" width="560" height="219"/>
-                                </variation>
                             </scrollView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Song Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aL6-l5-Ckh">
                                 <rect key="frame" x="185" y="20" width="229" height="21"/>
@@ -631,7 +609,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="46" id="Z2X-kv-eOh"/>
                                 </constraints>
-                                <state key="normal" title="Back">
+                                <state key="normal" title="Leave Room">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="default">
@@ -639,13 +617,14 @@
                                         <exclude reference="Z2X-kv-eOh"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="20" y="16" width="105" height="30"/>
                                     <mask key="constraints">
                                         <include reference="Z2X-kv-eOh"/>
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="eEN-Pe-a6g" kind="show" id="Aq7-Q1-MC6"/>
+                                    <action selector="leaveRoomButtonPressed:" destination="4Ed-Mw-3xt" eventType="touchUpInside" id="gz9-Lm-wWN"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OaE-FW-nwG">
@@ -822,6 +801,7 @@
                         <outlet property="album_cover" destination="Wxh-e3-ncm" id="0FT-O1-LUO"/>
                         <outlet property="chat_bar" destination="wuY-ji-5vj" id="hr5-K5-taY"/>
                         <outlet property="chat_box" destination="Rqc-oZ-lYA" id="1vn-b8-l3W"/>
+                        <segue destination="eEN-Pe-a6g" kind="show" identifier="HomeViewController" id="Ww9-ce-MGe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="etq-nR-EDi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -868,8 +848,7 @@
                                         <exclude reference="OPs-I1-VsT"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="150" y="348" width="300" height="40"/>
+                                <variation key="widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="8FV-iR-XYt"/>
                                         <include reference="OPs-I1-VsT"/>
@@ -894,8 +873,7 @@
                                         <exclude reference="wzo-Or-PaC"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="150" y="298" width="300" height="40"/>
+                                <variation key="widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="6nS-wn-zE1"/>
                                         <include reference="wzo-Or-PaC"/>
@@ -917,8 +895,7 @@
                                         <exclude reference="XQd-io-7sx"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="200" y="140" width="200" height="100"/>
+                                <variation key="widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="7hz-Yq-cKt"/>
                                         <include reference="XQd-io-7sx"/>
@@ -940,8 +917,7 @@
                                         <exclude reference="tna-ou-IL6"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="236" y="149" width="129" height="17"/>
+                                <variation key="widthClass=compact">
                                     <mask key="constraints">
                                         <exclude reference="jsu-eB-lXi"/>
                                         <exclude reference="tna-ou-IL6"/>
@@ -963,8 +939,7 @@
                                         <exclude reference="fpY-Uw-gRT"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="150" y="248" width="300" height="40"/>
+                                <variation key="widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="Iwm-QL-Aer"/>
                                         <include reference="fpY-Uw-gRT"/>
@@ -976,18 +951,12 @@
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="73"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="174" y="20" width="254" height="117"/>
-                                </variation>
                                 <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                     <rect key="frame" x="173" y="20" width="254" height="117"/>
                                 </variation>
                             </label>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="X41-vZ-CJF">
                                 <rect key="frame" x="-10" y="-10" width="20" height="20"/>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="290" y="290" width="20" height="20"/>
-                                </variation>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1091,6 +1060,6 @@
         <image name="no_album_art.png" width="500" height="500"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="YK2-ml-4J1"/>
+        <segue reference="Ww9-ce-MGe"/>
     </inferredMetricsTieBreakers>
 </document>

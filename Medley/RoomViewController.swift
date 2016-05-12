@@ -34,6 +34,61 @@ class RoomViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func destroyRoom (roomCode : String) {
+        let available_room = [
+            "available" : true,
+            "room_name" : roomCode
+        ]
+        self.myRootRef.childByAppendingPath("rooms")
+            .childByAppendingPath(roomCode).setValue(available_room)
+        
+        self.performSegueWithIdentifier("HomeViewController", sender:self)
+    }
+    
+    func leaveRoom (roomCode : String) {
+        let current_uid = self.myRootRef.authData.uid
+        
+        self.myRootRef.childByAppendingPath("users")
+            .updateChildValues([current_uid + "/current_room": NSNull()])
+        
+        self.myRootRef.childByAppendingPath("members")
+            .childByAppendingPath(roomCode).childByAppendingPath(current_uid).removeValue()
+        
+        
+        myRootRef.childByAppendingPath("members").childByAppendingPath(roomCode)
+            .observeSingleEventOfType(.Value, withBlock: { snapshot in
+                if((snapshot.value is NSNull)){
+                    //no more members in the group
+                   self.destroyRoom(roomCode)
+                }
+                else {
+                    //check to see if current user is the admin of that group
+                    self.myRootRef.childByAppendingPath("rooms")
+                        .childByAppendingPath(roomCode).childByAppendingPath("admin")
+                        .observeSingleEventOfType(.Value, withBlock: { snapshot in
+                            if(snapshot.value as! String == current_uid) {
+                                //if we are the admin, delete the room
+                                self.destroyRoom(roomCode)
+                            } else {
+                                //we've already removed ourselves, time to go
+                                self.performSegueWithIdentifier("HomeViewController", sender:self)
+                            }
+                        })
+                }
+            })
+        
+        
+        
+    }
+    
+    @IBAction func leaveRoomButtonPressed(sender: AnyObject) {
+        myRootRef.childByAppendingPath("users").childByAppendingPath(myRootRef.authData.uid).childByAppendingPath("current_room")
+            .observeSingleEventOfType(.Value, withBlock: { snapshot in
+                //print(snapshot.value)
+                self.leaveRoom(snapshot.value as! String)
+            })
+    }
+    
     func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
             self.view.frame.origin.y -= keyboardSize.height
