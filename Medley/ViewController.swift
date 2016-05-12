@@ -147,6 +147,30 @@ class ViewController: UIViewController {
         return UIInterfaceOrientationMask.Portrait
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //if user is already logged in
+        myRootRef.observeAuthEventWithBlock({ authData in
+            if authData != nil {
+                // user authenticated
+                self.myRootRef.childByAppendingPath("users").childByAppendingPath(authData.uid).childByAppendingPath("current_room")
+                    .observeSingleEventOfType(.Value, withBlock: {snapshot in
+                        if(snapshot.value is NSNull) {
+                            self.performSegueWithIdentifier("HomeViewController", sender:self)
+                        }
+                        else {
+                            self.performSegueWithIdentifier("RoomViewController", sender:self)
+                        }
+                    
+                    })
+                
+            }
+        })
+        
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
