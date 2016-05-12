@@ -295,11 +295,12 @@
                         <outlet property="switchViewButton" destination="YiN-Y0-gw2" id="YKw-cX-p21"/>
                         <outlet property="usernameField" destination="cbH-N4-wia" id="gQl-2s-FXS"/>
                         <segue destination="eEN-Pe-a6g" kind="show" identifier="HomeViewController" id="uJE-Sm-52R"/>
+                        <segue destination="4Ed-Mw-3xt" kind="show" identifier="RoomViewController" id="qbW-3K-Lq9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="290" y="375"/>
+            <point key="canvasLocation" x="154.5" y="657"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="eV0-si-ziP">
@@ -1060,6 +1061,7 @@
         <image name="no_album_art.png" width="500" height="500"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ww9-ce-MGe"/>
+        <segue reference="qbW-3K-Lq9"/>
+        <segue reference="uJE-Sm-52R"/>
     </inferredMetricsTieBreakers>
 </document>
