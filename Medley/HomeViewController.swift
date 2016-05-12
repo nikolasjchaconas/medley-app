@@ -106,9 +106,9 @@ class HomeViewController: UIViewController {
     
     func joinRoom(alert: UIAlertAction!) {
         //use self.roomCode
-        myRootRef.childByAppendingPath("rooms").childByAppendingPath(self.roomCodeField.text!)
+        myRootRef.childByAppendingPath("rooms").childByAppendingPath(self.roomCodeField.text!).childByAppendingPath("available")
             .observeSingleEventOfType(.Value, withBlock: { snapshot in
-                if(!(snapshot.value is NSNull)){
+                if(snapshot.value as! Bool == false){
                     self.joinRoomWithCode(self.roomCodeField.text!)
                 }
                 else {
