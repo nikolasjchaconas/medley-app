@@ -41,7 +41,10 @@ class RoomViewController: UIViewController {
         ]
         self.myRootRef.childByAppendingPath("rooms")
             .childByAppendingPath(roomCode).setValue(available_room)
-        
+        self.myRootRef.childByAppendingPath("members").childByAppendingPath(roomCode)
+            .observeSingleEventOfType(.Value, withBlock: {snapshot in
+                print(snapshot)
+            })
         self.performSegueWithIdentifier("HomeViewController", sender:self)
     }
     
@@ -66,9 +69,11 @@ class RoomViewController: UIViewController {
                     self.myRootRef.childByAppendingPath("rooms")
                         .childByAppendingPath(roomCode).childByAppendingPath("admin")
                         .observeSingleEventOfType(.Value, withBlock: { snapshot in
-                            if(snapshot.value as! String == current_uid) {
-                                //if we are the admin, delete the room
-                                self.destroyRoom(roomCode)
+                            let current_admin = snapshot.value as! String
+                            if(current_admin == current_uid) {
+                                //if we are the admin, appoint new admin
+                                self.appointNewAdmin(roomCode)
+                                self.performSegueWithIdentifier("HomeViewController", sender:self)
                             } else {
                                 //we've already removed ourselves, time to go
                                 self.performSegueWithIdentifier("HomeViewController", sender:self)
@@ -78,6 +83,17 @@ class RoomViewController: UIViewController {
             })
         
         
+        
+    }
+    
+    func appointNewAdmin(roomCode : String) {
+        print("got here")   
+        self.myRootRef.childByAppendingPath("members").childByAppendingPath(roomCode)
+            .observeSingleEventOfType(.Value, withBlock: {snapshot in
+                let child: FDataSnapshot = snapshot.children.nextObject() as! FDataSnapshot
+                self.myRootRef.childByAppendingPath("rooms").childByAppendingPath(roomCode).childByAppendingPath("admin")
+                    .setValue(child.key)
+            })
         
     }
     
