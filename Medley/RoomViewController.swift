@@ -37,7 +37,7 @@ class RoomViewController: UIViewController {
     func destroyRoom (roomCode : String) {
         let available_room = [
             "available" : true,
-            "room_name" : roomCode
+            "room_name" : NSNull()
         ]
         self.myRootRef.childByAppendingPath("rooms")
             .childByAppendingPath(roomCode).setValue(available_room)
