@@ -106,18 +106,26 @@ class HomeViewController: UIViewController {
     
     func joinRoom(alert: UIAlertAction!) {
         //use self.roomCode
-        myRootRef.childByAppendingPath("rooms").childByAppendingPath(self.roomCodeField.text!).childByAppendingPath("available")
-            .observeSingleEventOfType(.Value, withBlock: { snapshot in
-                if(snapshot.value as! Bool == false){
-                    self.joinRoomWithCode(self.roomCodeField.text!)
-                }
-                else {
-                    let alertController = UIAlertController(title: "Room Does not Exist", message:
-                        "A Room With That Room Code Does Not Exist.", preferredStyle: UIAlertControllerStyle.Alert)
-                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler:nil))
-                    self.presentViewController(alertController, animated: true, completion: nil)
-                }
-            })
+        if(self.roomCodeField.text! == "") {
+            let alertController = UIAlertController(title: "Room Does not Exist", message:
+                "A Room With That Room Code Does Not Exist.", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler:nil))
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
+        else {
+            myRootRef.childByAppendingPath("rooms").childByAppendingPath(self.roomCodeField.text!).childByAppendingPath("available")
+                .observeSingleEventOfType(.Value, withBlock: { snapshot in
+                    if(snapshot.value as! Bool == false){
+                        self.joinRoomWithCode(self.roomCodeField.text!)
+                    }
+                    else {
+                        let alertController = UIAlertController(title: "Room Does not Exist", message:
+                            "A Room With That Room Code Does Not Exist.", preferredStyle: UIAlertControllerStyle.Alert)
+                        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler:nil))
+                        self.presentViewController(alertController, animated: true, completion: nil)
+                    }
+                })
+        }
         
         
     }
