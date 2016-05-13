@@ -153,6 +153,7 @@ class ViewController: UIViewController {
         //if user is already logged in
         myRootRef.observeAuthEventWithBlock({ authData in
             if authData != nil {
+                self.showLoading()
                 // user authenticated
                 self.myRootRef.childByAppendingPath("users").childByAppendingPath(authData.uid).childByAppendingPath("current_room")
                     .observeSingleEventOfType(.Value, withBlock: {snapshot in
