@@ -17,6 +17,7 @@ class RoomViewController: UIViewController {
     
     @IBOutlet weak var chat_box: UIScrollView!
     
+    @IBOutlet weak var menuButton: UIButton!
     var myRootRef = Firebase(url:"https://crackling-heat-1030.firebaseio.com/")
     
     override func viewDidLoad() {
@@ -27,6 +28,9 @@ class RoomViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RoomViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
  
         self.hideKeyboardOnTap()
+        
+        menuButton.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.rightRevealToggle(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
     }
     
     override func didReceiveMemoryWarning() {
@@ -41,10 +45,11 @@ class RoomViewController: UIViewController {
         ]
         self.myRootRef.childByAppendingPath("rooms")
             .childByAppendingPath(roomCode).setValue(available_room)
-        self.myRootRef.childByAppendingPath("members").childByAppendingPath(roomCode)
-            .observeSingleEventOfType(.Value, withBlock: {snapshot in
-                print(snapshot)
-            })
+        //will have to use this if we make functionality for deleting room with people in it
+//        self.myRootRef.childByAppendingPath("members").childByAppendingPath(roomCode)
+//            .observeSingleEventOfType(.Value, withBlock: {snapshot in
+//                print(snapshot.children.allObjects)
+//            })
         self.performSegueWithIdentifier("HomeViewController", sender:self)
     }
     
@@ -87,7 +92,6 @@ class RoomViewController: UIViewController {
     }
     
     func appointNewAdmin(roomCode : String) {
-        print("got here")   
         self.myRootRef.childByAppendingPath("members").childByAppendingPath(roomCode)
             .observeSingleEventOfType(.Value, withBlock: {snapshot in
                 let child: FDataSnapshot = snapshot.children.nextObject() as! FDataSnapshot

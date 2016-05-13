@@ -60,7 +60,7 @@ class HomeViewController: UIViewController {
         .updateChildValues([current_id + "/current_room": roomCode])
         
         myRootRef.childByAppendingPath("members").childByAppendingPath(roomCode).childByAppendingPath(current_id).setValue(true)
-        self.performSegueWithIdentifier("RoomViewController", sender:self)
+        self.performSegueWithIdentifier("SWRevealViewController", sender:self)
     }
     
     func joinPrivateRoom(roomCode : String, password : String) {
@@ -77,7 +77,7 @@ class HomeViewController: UIViewController {
                         .updateChildValues([current_id + "/current_room": roomCode])
                     
                     self.myRootRef.childByAppendingPath("members").childByAppendingPath(roomCode).childByAppendingPath(current_id).setValue(true)
-                    self.performSegueWithIdentifier("RoomViewController", sender:self)
+                    self.performSegueWithIdentifier("SWRevealViewController", sender:self)
                 }
             })
         myRootRef.childByAppendingPath("users").childByAppendingPath(current_id)
@@ -158,7 +158,7 @@ class HomeViewController: UIViewController {
         self.myRootRef.childByAppendingPath("members")
             .childByAppendingPath(roomCode).setValue(newRoomMember)
         
-        self.performSegueWithIdentifier("RoomViewController", sender:self)
+        self.performSegueWithIdentifier("SWRevealViewController", sender:self)
         
     }
     

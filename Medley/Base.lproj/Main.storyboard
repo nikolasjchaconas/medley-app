@@ -295,7 +295,7 @@
                         <outlet property="switchViewButton" destination="YiN-Y0-gw2" id="YKw-cX-p21"/>
                         <outlet property="usernameField" destination="cbH-N4-wia" id="gQl-2s-FXS"/>
                         <segue destination="eEN-Pe-a6g" kind="show" identifier="HomeViewController" id="uJE-Sm-52R"/>
-                        <segue destination="4Ed-Mw-3xt" kind="show" identifier="RoomViewController" id="qbW-3K-Lq9"/>
+                        <segue destination="9t6-K3-e6Y" kind="showDetail" identifier="SWRevealViewController" action="showViewController:sender:" id="Du8-HD-pSP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -335,6 +335,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="256.5" y="145" width="87.5" height="21"/>
+                                </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f0v-pr-y4m">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -352,7 +355,8 @@
                                         <exclude reference="oBR-eV-IQR"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="175" y="212" width="250" height="85"/>
                                     <mask key="constraints">
                                         <include reference="U8e-zv-qHN"/>
                                         <include reference="oBR-eV-IQR"/>
@@ -382,7 +386,8 @@
                                         <exclude reference="pkH-8X-wsy"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="175" y="307" width="250" height="85"/>
                                     <mask key="constraints">
                                         <exclude reference="DwT-Ds-Ij9"/>
                                         <include reference="ScH-gN-giw"/>
@@ -414,7 +419,8 @@
                                         <exclude reference="ssY-nv-j2W"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="175" y="402" width="250" height="85"/>
                                     <mask key="constraints">
                                         <exclude reference="WMj-dY-b7o"/>
                                         <exclude reference="e0j-h0-vvC"/>
@@ -431,6 +437,9 @@
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="73"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="189.5" y="25" width="222.5" height="117"/>
+                                </variation>
                                 <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                     <rect key="frame" x="189" y="25" width="222" height="117"/>
                                 </variation>
@@ -516,12 +525,60 @@
                         <outlet property="joinRoomButton" destination="ZDU-El-Sac" id="VHp-AN-Zms"/>
                         <outlet property="settingsButton" destination="4YH-zH-ewO" id="DRq-VZ-AfH"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="ViewController" id="OaE-fq-UVU"/>
-                        <segue destination="4Ed-Mw-3xt" kind="show" identifier="RoomViewController" id="UGg-7c-sea"/>
+                        <segue destination="9t6-K3-e6Y" kind="show" identifier="SWRevealViewController" id="IAo-Np-OC9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5GI-IN-wus" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1607" y="657"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="5CC-j4-U8q">
+            <objects>
+                <tableViewController id="a0u-er-EgD" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="z5d-Pk-1lv">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="7oo-Rt-3MS">
+                                <rect key="frame" x="0.0" y="28" width="0.0" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7oo-Rt-3MS" id="5CZ-74-jJk">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="a0u-er-EgD" id="QVj-7y-QAY"/>
+                            <outlet property="delegate" destination="a0u-er-EgD" id="OXi-rI-mxI"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ni2-8Q-wQQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1822.5" y="1446.75"/>
+        </scene>
+        <!--Reveal View Controller-->
+        <scene sceneID="AWh-Rv-9v7">
+            <objects>
+                <viewController id="9t6-K3-e6Y" customClass="SWRevealViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5lq-03-uyQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="c5h-T8-4hl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4bw-Yj-IHg">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="4Ed-Mw-3xt" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="9gg-Hl-SY1"/>
+                        <segue destination="a0u-er-EgD" kind="custom" identifier="sw_right" customClass="SWRevealViewControllerSegueSetController" id="27b-Yz-a8w"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5eo-Km-x3m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-22.5" y="1471.5"/>
         </scene>
         <!--Room View Controller-->
         <scene sceneID="9IR-HN-DKy">
@@ -545,7 +602,8 @@
                                         <exclude reference="xv2-kt-CUz"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="20" y="49" width="560" height="200"/>
                                     <mask key="constraints">
                                         <include reference="xv2-kt-CUz"/>
                                     </mask>
@@ -556,6 +614,9 @@
                                 <state key="normal" title="Play">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="163" y="257" width="274" height="30"/>
+                                </variation>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WJr-JQ-rdu">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -581,6 +642,9 @@
                                 <state key="normal" title="Next">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="474" y="257" width="76" height="30"/>
+                                </variation>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VAA-mj-fsa">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -588,26 +652,17 @@
                                     <color key="titleColor" red="0.95699572199165095" green="0.93773329912143943" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="334" y="16" width="46" height="30"/>
+                                    <rect key="frame" x="541" y="16" width="39" height="30"/>
                                 </variation>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rqc-oZ-lYA">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="0.95699572200000005" green="0.93773329910000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </scrollView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Song Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aL6-l5-Ckh">
-                                <rect key="frame" x="185" y="20" width="229" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="86" y="20" width="271" height="21"/>
+                                    <rect key="frame" x="20" y="310" width="560" height="219"/>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="50" y="20" width="500" height="21"/>
-                                </variation>
-                            </label>
+                            </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mUr-yH-NbA">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <constraints>
@@ -623,8 +678,7 @@
                                         <exclude reference="Z2X-kv-eOh"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="20" y="16" width="105" height="30"/>
+                                <variation key="widthClass=compact">
                                     <mask key="constraints">
                                         <exclude reference="Z2X-kv-eOh"/>
                                     </mask>
@@ -657,6 +711,18 @@
                                     <rect key="frame" x="20" y="750" width="297" height="30"/>
                                 </variation>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Song Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aL6-l5-Ckh">
+                                <rect key="frame" x="185" y="20" width="229" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="86" y="20" width="271" height="21"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="69" y="20" width="264" height="21"/>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -807,12 +873,13 @@
                         <outlet property="album_cover" destination="Wxh-e3-ncm" id="0FT-O1-LUO"/>
                         <outlet property="chat_bar" destination="wuY-ji-5vj" id="hr5-K5-taY"/>
                         <outlet property="chat_box" destination="Rqc-oZ-lYA" id="1vn-b8-l3W"/>
+                        <outlet property="menuButton" destination="VAA-mj-fsa" id="C0E-o0-zGQ"/>
                         <segue destination="eEN-Pe-a6g" kind="show" identifier="HomeViewController" id="Ww9-ce-MGe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="etq-nR-EDi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="918" y="1017"/>
+            <point key="canvasLocation" x="847.5" y="1902.75"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="zPg-Ik-U3v">
@@ -854,7 +921,8 @@
                                         <exclude reference="OPs-I1-VsT"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="150" y="348" width="300" height="40"/>
                                     <mask key="constraints">
                                         <include reference="8FV-iR-XYt"/>
                                         <include reference="OPs-I1-VsT"/>
@@ -879,7 +947,8 @@
                                         <exclude reference="wzo-Or-PaC"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="150" y="298" width="300" height="40"/>
                                     <mask key="constraints">
                                         <include reference="6nS-wn-zE1"/>
                                         <include reference="wzo-Or-PaC"/>
@@ -901,7 +970,8 @@
                                         <exclude reference="XQd-io-7sx"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="200" y="140" width="200" height="100"/>
                                     <mask key="constraints">
                                         <include reference="7hz-Yq-cKt"/>
                                         <include reference="XQd-io-7sx"/>
@@ -923,7 +993,8 @@
                                         <exclude reference="tna-ou-IL6"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="236" y="149" width="128.5" height="17"/>
                                     <mask key="constraints">
                                         <exclude reference="jsu-eB-lXi"/>
                                         <exclude reference="tna-ou-IL6"/>
@@ -945,7 +1016,8 @@
                                         <exclude reference="fpY-Uw-gRT"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="150" y="248" width="300" height="40"/>
                                     <mask key="constraints">
                                         <include reference="Iwm-QL-Aer"/>
                                         <include reference="fpY-Uw-gRT"/>
@@ -957,12 +1029,18 @@
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="73"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="174" y="20" width="253.5" height="117"/>
+                                </variation>
                                 <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                     <rect key="frame" x="173" y="20" width="254" height="117"/>
                                 </variation>
                             </label>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="X41-vZ-CJF">
                                 <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="290" y="290" width="20" height="20"/>
+                                </variation>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1059,14 +1137,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DRa-EQ-mho" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2359.5" y="292"/>
+            <point key="canvasLocation" x="2617.5" y="660.75"/>
         </scene>
     </scenes>
     <resources>
         <image name="no_album_art.png" width="500" height="500"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qbW-3K-Lq9"/>
+        <segue reference="Du8-HD-pSP"/>
         <segue reference="Ww9-ce-MGe"/>
     </inferredMetricsTieBreakers>
 </document>

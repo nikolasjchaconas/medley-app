@@ -160,7 +160,7 @@ class ViewController: UIViewController {
                             self.performSegueWithIdentifier("HomeViewController", sender:self)
                         }
                         else {
-                            self.performSegueWithIdentifier("RoomViewController", sender:self)
+                            self.performSegueWithIdentifier("SWRevealViewController", sender:self)
                         }
                     
                     })
