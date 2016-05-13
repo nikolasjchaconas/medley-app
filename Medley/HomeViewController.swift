@@ -59,7 +59,12 @@ class HomeViewController: UIViewController {
         myRootRef.childByAppendingPath("users")
         .updateChildValues([current_id + "/current_room": roomCode])
         
-        myRootRef.childByAppendingPath("members").childByAppendingPath(roomCode).childByAppendingPath(current_id).setValue(true)
+        myRootRef.childByAppendingPath("users").childByAppendingPath(current_id).childByAppendingPath("username")
+            .observeSingleEventOfType(.Value, withBlock: {snapshot in
+                print(snapshot.value)
+                self.myRootRef.childByAppendingPath("members").childByAppendingPath(roomCode).childByAppendingPath(current_id).setValue(snapshot.value)
+            })
+        
         self.performSegueWithIdentifier("SWRevealViewController", sender:self)
     }
     
@@ -76,7 +81,11 @@ class HomeViewController: UIViewController {
                     self.myRootRef.childByAppendingPath("users")
                         .updateChildValues([current_id + "/current_room": roomCode])
                     
-                    self.myRootRef.childByAppendingPath("members").childByAppendingPath(roomCode).childByAppendingPath(current_id).setValue(true)
+                    self.myRootRef.childByAppendingPath("users").childByAppendingPath(current_id).childByAppendingPath("username")
+                        .observeSingleEventOfType(.Value, withBlock: {snapshot in
+                            self.myRootRef.childByAppendingPath("members").childByAppendingPath(roomCode).childByAppendingPath(current_id).setValue(snapshot.value)
+                        })
+                    
                     self.performSegueWithIdentifier("SWRevealViewController", sender:self)
                 }
             })
@@ -137,16 +146,12 @@ class HomeViewController: UIViewController {
     func newRoom(room : FDataSnapshot, password: String) {
     
         let roomCode = room.key
-        
+        let current_id = myRootRef.authData.uid
         let newRoom = [
             "room_name" : room.key,
             "admin" : self.myRootRef.authData.uid,
             "password": password,
             "available" : false,
-        ]
-        
-        let newRoomMember = [
-            self.myRootRef.authData.uid : true
         ]
         
         self.myRootRef.childByAppendingPath("users")
@@ -155,8 +160,11 @@ class HomeViewController: UIViewController {
         self.myRootRef.childByAppendingPath("rooms")
             .childByAppendingPath(roomCode).setValue(newRoom)
         
-        self.myRootRef.childByAppendingPath("members")
-            .childByAppendingPath(roomCode).setValue(newRoomMember)
+        myRootRef.childByAppendingPath("users").childByAppendingPath(current_id).childByAppendingPath("username")
+            .observeSingleEventOfType(.Value, withBlock: {snapshot in
+                self.myRootRef.childByAppendingPath("members").childByAppendingPath(roomCode).childByAppendingPath(current_id).setValue(snapshot.value)
+            })
+        
         
         self.performSegueWithIdentifier("SWRevealViewController", sender:self)
         
