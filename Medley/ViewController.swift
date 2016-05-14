@@ -147,8 +147,8 @@ class ViewController: UIViewController {
         return UIInterfaceOrientationMask.Portrait
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         //if user is already logged in
         myRootRef.observeAuthEventWithBlock({ authData in
@@ -163,17 +163,13 @@ class ViewController: UIViewController {
                         else {
                             self.performSegueWithIdentifier("SWRevealViewController", sender:self)
                         }
-                    
+                        
                     })
                 
             }
         })
         
         
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.hideKeyboardOnTap()
         // Make login and signup buttons rounded

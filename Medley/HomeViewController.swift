@@ -41,12 +41,18 @@ class HomeViewController: UIViewController {
         
         
         //get username
-        myRootRef.childByAppendingPath("users")
-            .childByAppendingPath(myRootRef.authData.uid).childByAppendingPath("username")
-            .observeEventType(.Value, withBlock: { snapshot in
-                self.greetingMessage.text = "Hello " + ((snapshot.value as? String)!) + "!"
-                }, withCancelBlock: { error in
-            })
+        
+        myRootRef.observeAuthEventWithBlock({ authData in
+            if authData != nil {
+                self.myRootRef.childByAppendingPath("users")
+                    .childByAppendingPath(self.myRootRef.authData.uid).childByAppendingPath("username")
+                    .observeEventType(.Value, withBlock: { snapshot in
+                        self.greetingMessage.text = "Hello " + ((snapshot.value as? String)!) + "!"
+                        }, withCancelBlock: { error in
+                    })
+                        
+                    }
+        })
     }
     
     override func didReceiveMemoryWarning() {
