@@ -60,6 +60,11 @@ class HomeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    //locks orientation to portrait
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Portrait
+    }
+    
     func joinPublicRoom(roomCode : String) {
         let current_id = myRootRef.authData.uid
         myRootRef.childByAppendingPath("users")
@@ -165,6 +170,8 @@ class HomeViewController: UIViewController {
             "password": password,
             "available" : false,
         ]
+        
+        self.myRootRef.childByAppendingPath("messages").childByAppendingPath(roomCode).setValue(nil)
         
         self.myRootRef.childByAppendingPath("users")
             .updateChildValues([self.myRootRef.authData.uid + "/current_room": room.key])
