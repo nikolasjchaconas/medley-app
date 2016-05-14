@@ -20,6 +20,7 @@ class RoomViewController: UIViewController {
     var username : String!
     var messageCount : Int = 0
     var chatBoxSize : CGFloat = 0
+    var retrieveMessagesHandle : FirebaseHandle = 0, memberJoinedHandle : FirebaseHandle = 0, memberLeftHandle :FirebaseHandle = 0
     @IBOutlet weak var menuButton: UIButton!
     var myRootRef = Firebase(url:"https://crackling-heat-1030.firebaseio.com/")
     
@@ -68,13 +69,14 @@ class RoomViewController: UIViewController {
         self.username = username
     }
     func setCode(roomCode : String) {
-        memberJoined(roomCode)
-        memberLeft(roomCode)
+        //memberJoined(roomCode)
+        //memberLeft(roomCode)
         retrieveMessages(roomCode)
         self.roomCode = roomCode
     }
+    
     func memberLeft(roomCode : String) {
-        myRootRef.childByAppendingPath("members").childByAppendingPath(roomCode)
+        memberLeftHandle = myRootRef.childByAppendingPath("members").childByAppendingPath(roomCode)
             .observeEventType(.ChildRemoved, withBlock: {snapshot in
                 
                 let newUser = (snapshot.value as? String)!
@@ -88,7 +90,7 @@ class RoomViewController: UIViewController {
             })
     }
     func memberJoined(roomCode : String) {
-        myRootRef.childByAppendingPath("members").childByAppendingPath(roomCode)
+        memberJoinedHandle = myRootRef.childByAppendingPath("members").childByAppendingPath(roomCode)
             .observeEventType(.ChildAdded, withBlock: {snapshot in
 
                 let newUser = (snapshot.value as? String)!
@@ -103,7 +105,7 @@ class RoomViewController: UIViewController {
     }
     
     func retrieveMessages(roomCode : String) {
-        myRootRef.childByAppendingPath("messages").childByAppendingPath(roomCode).observeEventType(.ChildAdded, withBlock: { snapshot in
+        retrieveMessagesHandle = myRootRef.childByAppendingPath("messages").childByAppendingPath(roomCode).observeEventType(.ChildAdded, withBlock: { snapshot in
             self.messageCount += 1
             print("added -> \(snapshot.value)")
             let snapshotObj = snapshot.children.nextObject() as! FDataSnapshot
@@ -132,6 +134,11 @@ class RoomViewController: UIViewController {
     }
     
     func destroyRoom (roomCode : String) {
+        messageCount = 0
+        //myRootRef.removeObserverWithHandle(memberLeftHandle)
+        //myRootRef.removeObserverWithHandle(memberJoinedHandle)
+        //myRootRef.removeObserverWithHandle(retrieveMessagesHandle)
+        
         let available_room = [
             "available" : true,
             "room_name" : NSNull()
@@ -150,6 +157,7 @@ class RoomViewController: UIViewController {
     }
     
     func leaveRoom (roomCode : String) {
+        messageCount = 0
         let current_uid = self.myRootRef.authData.uid
         
         self.myRootRef.childByAppendingPath("users")
@@ -158,6 +166,9 @@ class RoomViewController: UIViewController {
         self.myRootRef.childByAppendingPath("members")
             .childByAppendingPath(roomCode).childByAppendingPath(current_uid).removeValue()
         
+        //myRootRef.removeObserverWithHandle(memberLeftHandle)
+        //myRootRef.removeObserverWithHandle(memberJoinedHandle)
+        //myRootRef.removeObserverWithHandle(retrieveMessagesHandle)
         
         myRootRef.childByAppendingPath("members").childByAppendingPath(roomCode)
             .observeSingleEventOfType(.Value, withBlock: { snapshot in
