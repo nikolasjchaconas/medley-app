@@ -20,20 +20,26 @@ class RoomViewController: UIViewController {
     var username : String!
     var messageCount : Int = 0
     var chatBoxSize : CGFloat = 0
+    var totalLines : CGFloat = 0
     var retrieveMessagesHandle : FirebaseHandle = 0, memberJoinedHandle : FirebaseHandle = 0, memberLeftHandle :FirebaseHandle = 0
     @IBOutlet weak var menuButton: UIButton!
     var myRootRef = Firebase(url:"https://crackling-heat-1030.firebaseio.com/")
     
     @IBOutlet weak var sendButton: UIButton!
+    
+    
+    //locks orientation to portrait
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Portrait
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RoomViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RoomViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
-        sendButton.layer.cornerRadius = 5
         self.hideKeyboardOnTap()
-        
         menuButton.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.rightRevealToggle(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         myRootRef.observeAuthEventWithBlock({ authData in
@@ -53,16 +59,14 @@ class RoomViewController: UIViewController {
             
         })
         
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplicationWillResignActiveNotification, object: nil)
+        
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.messageCount = 0
-    }
-    
-    //locks orientation to portrait
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.Portrait
     }
     
     func setname(username : String) {
@@ -109,23 +113,31 @@ class RoomViewController: UIViewController {
             self.messageCount += 1
             print("added -> \(snapshot.value)")
             let snapshotObj = snapshot.children.nextObject() as! FDataSnapshot
-            var rect = CGRectMake(0, 0, self.chat_box.bounds.size.width, 30)
-            rect.origin.y = CGFloat(self.messageCount - 1) * 30.0
+            let message = (snapshotObj.value as? String)!
+            let messageLength = message.characters.count
+            print("messages.char.count is " + String(message.characters.count))
+            let lineCount = messageLength > 40 ? messageLength / 50 + 2 : 2
+            print("message is " + message)
+            self.totalLines += CGFloat(lineCount)
+            let textBoxWidth : CGFloat = 30 * CGFloat(lineCount)
+            var rect = CGRectMake(0, 0, self.chat_box.bounds.size.width, textBoxWidth)
+            rect.origin.y = 30 * (self.totalLines - CGFloat(lineCount))
             let label = UILabel(frame: rect)
             label.layer.borderWidth = 1
             label.layer.borderColor = (UIColor.whiteColor()).CGColor
-            label.numberOfLines = 2
+            label.numberOfLines = lineCount
             label.backgroundColor = UIColor(red: 192/255, green: 192/255, blue: 192/255, alpha: 1.0)
             label.textColor = UIColor.whiteColor()
             label.textAlignment = NSTextAlignment.Left
-            label.text = "  " + snapshotObj.key + " : " + (snapshotObj.value as? String)!
-            self.chat_box.contentSize = CGSizeMake(320, (CGFloat(self.messageCount) * 30.0))
+            label.text = " " + snapshotObj.key + ":\n" + message
+            self.chat_box.contentSize = CGSizeMake(320, 30 * self.totalLines)
             self.chat_box.addSubview(label)
             self.chat_box.setContentOffset(CGPointMake(0, self.chat_box.contentSize.height - self.chat_box.bounds.size.height), animated: true)
         })
     }
     
     @IBAction func chat_barTouched(sender: AnyObject) {
+        print("done")
         self.chat_box.setContentOffset(CGPointMake(0, self.chat_box.contentSize.height - self.chat_box.bounds.size.height), animated: true)
     }
     override func didReceiveMemoryWarning() {
@@ -154,6 +166,10 @@ class RoomViewController: UIViewController {
 //                print(snapshot.children.allObjects)
 //            })
         self.performSegueWithIdentifier("HomeViewController", sender:self)
+    }
+    
+    func appMovedToBackground() {
+        self.hideKeyboard()
     }
     
     func leaveRoom (roomCode : String) {
@@ -228,15 +244,17 @@ class RoomViewController: UIViewController {
         }
     }
     @IBAction func sendButtonPressed(sender: AnyObject) {
+        if(self.chat_bar.text! != ""){
+            let newMessage = [
+                self.username : self.chat_bar.text!
+            ]
+            
+            self.chat_bar.text = ""
+            myRootRef.childByAppendingPath("messages").childByAppendingPath(self.roomCode).childByAppendingPath(String(self.messageCount))
+                .setValue(newMessage)
+            self.hideKeyboard()
+        }
         
-        let newMessage = [
-            self.username : self.chat_bar.text!
-        ]
-        
-        self.chat_bar.text = ""
-        myRootRef.childByAppendingPath("messages").childByAppendingPath(self.roomCode).childByAppendingPath(String(self.messageCount))
-        .setValue(newMessage)
-        self.hideKeyboard()
     }
     
 }

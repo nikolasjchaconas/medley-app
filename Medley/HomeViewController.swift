@@ -21,6 +21,11 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var createRoomButton: UIButton!
     let buttonBorderColor : UIColor = UIColor( red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 0.35)
     
+    //locks orientation to portrait
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Portrait
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -60,10 +65,7 @@ class HomeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    //locks orientation to portrait
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.Portrait
-    }
+   
     
     func joinPublicRoom(roomCode : String) {
         let current_id = myRootRef.authData.uid
