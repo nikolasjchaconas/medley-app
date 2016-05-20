@@ -121,22 +121,26 @@ class RoomViewController: UIViewController {
             let snapshotObj = snapshot.children.nextObject() as! FDataSnapshot
             let message = (snapshotObj.value as? String)!
             let messageLength = message.characters.count
-            print("messages.char.count is " + String(message.characters.count))
-            let lineCount = messageLength > 40 ? messageLength / 50 + 2 : 2
+            print("messages.char.count is " + String(messageLength))
+            let lineCount = messageLength > 40 ? messageLength / 40 + 1 : 1
             print("message is " + message)
             self.totalLines += CGFloat(lineCount)
-            let textBoxWidth : CGFloat = 30 * CGFloat(lineCount)
+            let textBoxWidth : CGFloat = 20 * CGFloat(lineCount)
             var rect = CGRectMake(0, 0, self.chat_box.bounds.size.width, textBoxWidth)
-            rect.origin.y = 30 * (self.totalLines - CGFloat(lineCount))
+            rect.origin.y = 20 * (self.totalLines - CGFloat(lineCount))
             let label = UILabel(frame: rect)
+            label.font = label.font.fontWithSize(15)
             label.layer.borderWidth = 1
             label.layer.borderColor = (UIColor.whiteColor()).CGColor
             label.numberOfLines = lineCount
-            label.backgroundColor = UIColor(red: 192/255, green: 192/255, blue: 192/255, alpha: 1.0)
-            label.textColor = UIColor.whiteColor()
+            //label.backgroundColor = UIColor(red: 192/255, green: 192/255, blue: 192/255, alpha: 1.0)
+            //label.textColor = UIColor.whiteColor()
             label.textAlignment = NSTextAlignment.Left
-            label.text = " " + snapshotObj.key + ":\n" + message
-            self.chat_box.contentSize = CGSizeMake(320, 30 * self.totalLines)
+            let stylizedMessage = NSMutableAttributedString(string: " " + snapshotObj.key + ": ", attributes: [NSFontAttributeName : UIFont.boldSystemFontOfSize(label.font.pointSize)])
+            let attrMessage = NSAttributedString(string: message, attributes: [NSForegroundColorAttributeName : UIColor.blackColor()])
+            stylizedMessage.appendAttributedString(attrMessage)
+            label.attributedText = stylizedMessage
+            self.chat_box.contentSize = CGSizeMake(320, 20 * self.totalLines)
             self.chat_box.addSubview(label)
             self.chat_box.setContentOffset(CGPointMake(0, self.chat_box.contentSize.height - self.chat_box.bounds.size.height), animated: true)
         })
@@ -240,22 +244,21 @@ class RoomViewController: UIViewController {
             self.view.frame.origin.y += keyboardSize.height
         }
     }
-    
     func sendMessage(message : [String : String]) {
         self.chat_bar.text = ""
         myRootRef.childByAppendingPath("messages").childByAppendingPath(self.roomCode).childByAppendingPath(String(self.messageCount))
             .setValue(message)
-        self.hideKeyboard()
     }
     
-    @IBAction func sendButtonPressed(sender: AnyObject) {
+        @IBAction func sendButtonPressed(sender: AnyObject) {
         if(self.chat_bar.text! != ""){
             let newMessage = [
                 self.username : self.chat_bar.text!
             ]
             sendMessage(newMessage)
-            
-            
+            self.chat_bar.text = ""
+            myRootRef.childByAppendingPath("messages").childByAppendingPath(self.roomCode).childByAppendingPath(String(self.messageCount))
+                .setValue(newMessage)
         }
         
     }
