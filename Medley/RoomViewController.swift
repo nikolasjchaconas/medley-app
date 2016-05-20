@@ -103,7 +103,6 @@ class RoomViewController: UIViewController {
         let ref = self.myRootRef.childByAppendingPath("members").childByAppendingPath(roomCode)
         observers.append(ref)
         ref.observeEventType(.ChildAdded, withBlock: {snapshot in
-            
             self.checkAdmin((snapshot.value as? String)!, roomCode : roomCode, currentUser : username)
             
         })
@@ -112,8 +111,7 @@ class RoomViewController: UIViewController {
     func checkAdmin(newUser : String, roomCode : String, currentUser : String) {
             let ref = myRootRef.childByAppendingPath("rooms")
                 .childByAppendingPath(roomCode).childByAppendingPath("admin")
-            observers.append(ref)
-            ref.observeEventType(.Value, withBlock: {snapshot in
+            ref.observeSingleEventOfType(.Value, withBlock: {snapshot in
                 if(self.myRootRef.authData.uid == (snapshot.value as? String)!) {
                     self.admin = currentUser
                     if(self.messageCount == 0) {
@@ -123,8 +121,10 @@ class RoomViewController: UIViewController {
                         ]
                         self.sendMessage(message)
                     }
+                    else {
+                        self.newMemberJoinedMessage(newUser)
+                    }
                     
-                    self.newMemberJoinedMessage(newUser)
                     
                 }
             })
