@@ -18,10 +18,12 @@ class RoomViewController: UIViewController {
     @IBOutlet weak var chat_box: UIScrollView!
     var roomCode : String!
     var username : String!
+    var admin : String!
     var messageCount : Int = 0
     var chatBoxSize : CGFloat = 0
     var totalLines : CGFloat = 0
-    var retrieveMessagesHandle : FirebaseHandle = 0, memberJoinedHandle : FirebaseHandle = 0, memberLeftHandle :FirebaseHandle = 0
+    var retrieveMessagesHandle : FirebaseHandle = 0, currentRoomHandle : FirebaseHandle = 0
+    
     @IBOutlet weak var menuButton: UIButton!
     var myRootRef = Firebase(url:"https://crackling-heat-1030.firebaseio.com/")
     
@@ -44,17 +46,25 @@ class RoomViewController: UIViewController {
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         myRootRef.observeAuthEventWithBlock({ authData in
             if authData != nil {
-                self.myRootRef.childByAppendingPath("users").childByAppendingPath(authData.uid).childByAppendingPath("current_room")
+                self.myRootRef.childByAppendingPath("users")
+                    .childByAppendingPath(authData.uid).childByAppendingPath("current_room")
                     .observeSingleEventOfType(.Value, withBlock: { snapshot in
                         if(!(snapshot.value is NSNull)) {
-                            self.setCode((snapshot.value as? String)!)
+                            self.setUser((snapshot.value as? String)!)
+                            
                         }
                     })
-                self.myRootRef.childByAppendingPath("users").childByAppendingPath(authData.uid).childByAppendingPath("username")
-                    .observeSingleEventOfType(.Value, withBlock: { snapshot in
-                        self.setname((snapshot.value as? String)!)
-                    })
                 
+                    self.currentRoomHandle = self.myRootRef.childByAppendingPath("users").childByAppendingPath(authData.uid).childByAppendingPath("current_room")
+                    .observeEventType(.Value, withBlock: { snapshot in
+                        if((snapshot.value is NSNull)) {
+                            self.performSegueWithIdentifier("HomeViewController", sender:self)
+                            self.myRootRef.removeObserverWithHandle(self.currentRoomHandle)
+                        }
+                    })
+ 
+            } else {
+                self.performSegueWithIdentifier("ViewController", sender:self)
             }
             
         })
@@ -63,48 +73,44 @@ class RoomViewController: UIViewController {
         notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplicationWillResignActiveNotification, object: nil)
         
     }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        self.messageCount = 0
-    }
-    
-    func setname(username : String) {
-        self.username = username
-    }
-    func setCode(roomCode : String) {
-        //memberJoined(roomCode)
-        //memberLeft(roomCode)
-        retrieveMessages(roomCode)
-        self.roomCode = roomCode
-    }
-    
-    func memberLeft(roomCode : String) {
-        memberLeftHandle = myRootRef.childByAppendingPath("members").childByAppendingPath(roomCode)
-            .observeEventType(.ChildRemoved, withBlock: {snapshot in
-                
-                let newUser = (snapshot.value as? String)!
-                let newMessage : [String : String] = [
-                    newUser : "has left the room"
-                ]
-                
-                self.chat_bar.text = ""
-                self.myRootRef.childByAppendingPath("messages").childByAppendingPath(self.roomCode).childByAppendingPath(String(self.messageCount))
-                    .setValue(newMessage)
+    func setUser(roomCode : String) {
+        self.myRootRef.childByAppendingPath("users").childByAppendingPath(myRootRef.authData.uid)
+        .childByAppendingPath("username")
+            .observeSingleEventOfType(.Value, withBlock: { snapshot in
+                self.setCode(roomCode, username: (snapshot.value as? String)!)
             })
     }
-    func memberJoined(roomCode : String) {
-        memberJoinedHandle = myRootRef.childByAppendingPath("members").childByAppendingPath(roomCode)
-            .observeEventType(.ChildAdded, withBlock: {snapshot in
-
-                let newUser = (snapshot.value as? String)!
-                let newMessage : [String : String] = [
-                    newUser : "has entered the room"
-                ]
-                
-                self.chat_bar.text = ""
-                self.myRootRef.childByAppendingPath("messages").childByAppendingPath(self.roomCode).childByAppendingPath(String(self.messageCount))
-                    .setValue(newMessage)
+    
+    func setCode(roomCode : String, username : String) {
+        self.username = username
+        retrieveMessages(roomCode)
+        
+        self.roomCode = roomCode
+        admin(roomCode,username : username)
+    }
+    
+    func admin(roomCode : String, username : String) {
+        
+        myRootRef.childByAppendingPath("rooms").childByAppendingPath(roomCode).childByAppendingPath("admin")
+            .observeSingleEventOfType(.Value, withBlock: {snapshot in
+                if(self.myRootRef.authData.uid == (snapshot.value as? String)!) {
+                    self.admin = username
+                    let message = [
+                        "Medley Bot" : "You are in room " + roomCode + ". Share the room code with your friends"
+                        + " and start listening to synced music! <3"
+                    ]
+                    self.sendMessage(message)
+                    self.myRootRef.childByAppendingPath("members").childByAppendingPath(roomCode)
+                        .observeEventType(.ChildAdded, withBlock: {snapshot in
+    
+                        let newMessage : [String : String] = [
+                             (snapshot.value as? String)! : "has entered the room"
+                        ]
+                        
+                        self.sendMessage(newMessage)
+                        
+                        })
+                }
             })
     }
     
@@ -135,7 +141,7 @@ class RoomViewController: UIViewController {
             self.chat_box.setContentOffset(CGPointMake(0, self.chat_box.contentSize.height - self.chat_box.bounds.size.height), animated: true)
         })
     }
-    
+    //change this to correct function
     @IBAction func chat_barTouched(sender: AnyObject) {
         print("done")
         self.chat_box.setContentOffset(CGPointMake(0, self.chat_box.contentSize.height - self.chat_box.bounds.size.height), animated: true)
@@ -146,11 +152,7 @@ class RoomViewController: UIViewController {
     }
     
     func destroyRoom (roomCode : String) {
-        messageCount = 0
-        //myRootRef.removeObserverWithHandle(memberLeftHandle)
-        //myRootRef.removeObserverWithHandle(memberJoinedHandle)
-        //myRootRef.removeObserverWithHandle(retrieveMessagesHandle)
-        
+        messageCount = 0        
         let available_room = [
             "available" : true,
             "room_name" : NSNull()
@@ -160,12 +162,6 @@ class RoomViewController: UIViewController {
         
         self.myRootRef.childByAppendingPath("messages")
         .childByAppendingPath(roomCode).setValue(nil)
-        //will have to use this if we make functionality for deleting room with people in it
-//        self.myRootRef.childByAppendingPath("members").childByAppendingPath(roomCode)
-//            .observeSingleEventOfType(.Value, withBlock: {snapshot in
-//                print(snapshot.children.allObjects)
-//            })
-        self.performSegueWithIdentifier("HomeViewController", sender:self)
     }
     
     func appMovedToBackground() {
@@ -173,6 +169,13 @@ class RoomViewController: UIViewController {
     }
     
     func leaveRoom (roomCode : String) {
+        
+        let newMessage : [String : String] = [
+            self.username : "has left the room"
+        ]
+        
+        sendMessage(newMessage)
+        myRootRef.removeAllObservers()
         messageCount = 0
         let current_uid = self.myRootRef.authData.uid
         
@@ -182,9 +185,7 @@ class RoomViewController: UIViewController {
         self.myRootRef.childByAppendingPath("members")
             .childByAppendingPath(roomCode).childByAppendingPath(current_uid).removeValue()
         
-        //myRootRef.removeObserverWithHandle(memberLeftHandle)
-        //myRootRef.removeObserverWithHandle(memberJoinedHandle)
-        //myRootRef.removeObserverWithHandle(retrieveMessagesHandle)
+        
         
         myRootRef.childByAppendingPath("members").childByAppendingPath(roomCode)
             .observeSingleEventOfType(.Value, withBlock: { snapshot in
@@ -201,10 +202,6 @@ class RoomViewController: UIViewController {
                             if(current_admin == current_uid) {
                                 //if we are the admin, appoint new admin
                                 self.appointNewAdmin(roomCode)
-                                self.performSegueWithIdentifier("HomeViewController", sender:self)
-                            } else {
-                                //we've already removed ourselves, time to go
-                                self.performSegueWithIdentifier("HomeViewController", sender:self)
                             }
                         })
                 }
@@ -243,16 +240,22 @@ class RoomViewController: UIViewController {
             self.view.frame.origin.y += keyboardSize.height
         }
     }
+    
+    func sendMessage(message : [String : String]) {
+        self.chat_bar.text = ""
+        myRootRef.childByAppendingPath("messages").childByAppendingPath(self.roomCode).childByAppendingPath(String(self.messageCount))
+            .setValue(message)
+        self.hideKeyboard()
+    }
+    
     @IBAction func sendButtonPressed(sender: AnyObject) {
         if(self.chat_bar.text! != ""){
             let newMessage = [
                 self.username : self.chat_bar.text!
             ]
+            sendMessage(newMessage)
             
-            self.chat_bar.text = ""
-            myRootRef.childByAppendingPath("messages").childByAppendingPath(self.roomCode).childByAppendingPath(String(self.messageCount))
-                .setValue(newMessage)
-            self.hideKeyboard()
+            
         }
         
     }

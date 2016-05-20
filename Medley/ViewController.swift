@@ -423,10 +423,6 @@ class ViewController: UIViewController {
                             // There was an error logging in to this account
                             self.hideLoading()
                             self.ShowError("Incorrect Email/Password.", label: self.loginErrorMessage)
-                        } else {
-                            //self.hideLoading()
-                            // We are now logged in
-                            self.performSegueWithIdentifier("HomeViewController", sender:sender)
                         }
         })
     }
@@ -489,7 +485,6 @@ class ViewController: UIViewController {
                 //  - https://<YOUR-FIREBASE-APP>.firebaseio.com/users/<uid>
                 self.myRootRef.childByAppendingPath("users")
                     .childByAppendingPath(authData.uid).setValue(newUser)
-                self.performSegueWithIdentifier("HomeViewController", sender:self)
             }
         }
     }

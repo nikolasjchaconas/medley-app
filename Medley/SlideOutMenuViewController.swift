@@ -17,11 +17,11 @@ class SlideOutMenuViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboard()
         myRootRef.childByAppendingPath("users").childByAppendingPath(myRootRef.authData.uid).childByAppendingPath("current_room")
             .observeSingleEventOfType(.Value, withBlock: {snapshot in
                 let roomCode = (snapshot.value as? String)!
                 self.setTable(roomCode)
-                
             })
     }
     
