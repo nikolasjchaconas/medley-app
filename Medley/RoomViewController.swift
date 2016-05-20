@@ -89,7 +89,7 @@ class RoomViewController: UIViewController {
         retrieveMessages(roomCode)
         
         self.roomCode = roomCode
-        admin(roomCode,username : username)
+        checkForUsersAdded(roomCode, username : username)
     }
     
     func removeAllObservers() {
@@ -99,11 +99,23 @@ class RoomViewController: UIViewController {
         
     }
     
-    func admin(roomCode : String, username : String) {
-        
-        myRootRef.childByAppendingPath("rooms").childByAppendingPath(roomCode).childByAppendingPath("admin")
-            .observeEventType(.ChildChanged, withBlock: {snapshot in
+    func checkForUsersAdded(roomCode : String, username : String) {
+        let ref = self.myRootRef.childByAppendingPath("members").childByAppendingPath(roomCode)
+        observers.append(ref)
+        ref.observeEventType(.ChildAdded, withBlock: {snapshot in
+            
+            self.checkAdmin((snapshot.value as? String)!, roomCode : roomCode, currentUser : username)
+            
+        })
+    }
+    
+    func checkAdmin(newUser : String, roomCode : String, currentUser : String) {
+            let ref = myRootRef.childByAppendingPath("rooms")
+                .childByAppendingPath(roomCode).childByAppendingPath("admin")
+            observers.append(ref)
+            ref.observeEventType(.Value, withBlock: {snapshot in
                 if(self.myRootRef.authData.uid == (snapshot.value as? String)!) {
+                    self.admin = currentUser
                     if(self.messageCount == 0) {
                         let message = [
                             "Medley Bot" : "You are in room " + roomCode + ". Share the room code with your friends"
@@ -112,25 +124,21 @@ class RoomViewController: UIViewController {
                         self.sendMessage(message)
                     }
                     
-                    self.listenForNewMembers(username, roomCode : roomCode)
+                    self.newMemberJoinedMessage(newUser)
                     
                 }
             })
     }
     
-    func listenForNewMembers(username : String, roomCode : String) {
-        self.admin = username
-        let ref = self.myRootRef.childByAppendingPath("members").childByAppendingPath(roomCode)
-        observers.append(ref)
-            ref.observeEventType(.ChildAdded, withBlock: {snapshot in
-                
-                let newMessage : [String : String] = [
-                    (snapshot.value as? String)! : "has entered the room"
-                ]
-                
-                self.sendMessage(newMessage)
-                
-            })
+    func newMemberJoinedMessage(newUser : String) {
+        
+        
+        let newMessage : [String : String] = [
+            newUser : "has entered the room"
+        ]
+        
+        self.sendMessage(newMessage)
+        
     }
     
     func retrieveMessages(roomCode : String) {
