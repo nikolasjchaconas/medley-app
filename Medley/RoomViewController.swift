@@ -22,7 +22,7 @@ class RoomViewController: UIViewController {
     var messageCount : Int = 0
     var chatBoxSize : CGFloat = 0
     var totalLines : CGFloat = 0
-    var retrieveMessagesHandle : FirebaseHandle = 0, currentRoomHandle : FirebaseHandle = 0
+    var retrieveMessagesHandle : FirebaseHandle = 0, currentRoomHandle : FirebaseHandle = 0, adminHandle : FirebaseHandle = 0
     
     @IBOutlet weak var menuButton: UIButton!
     var myRootRef = Firebase(url:"https://crackling-heat-1030.firebaseio.com/")
@@ -94,26 +94,32 @@ class RoomViewController: UIViewController {
         myRootRef.childByAppendingPath("rooms").childByAppendingPath(roomCode).childByAppendingPath("admin")
             .observeSingleEventOfType(.Value, withBlock: {snapshot in
                 if(self.myRootRef.authData.uid == (snapshot.value as? String)!) {
-                    self.admin = username
+                    
                     let message = [
                         "Medley Bot" : "You are in room " + roomCode + ". Share the room code with your friends"
                         + " and start listening to synced music! <3"
                     ]
                     self.sendMessage(message)
-                    self.myRootRef.childByAppendingPath("members").childByAppendingPath(roomCode)
-                        .observeEventType(.ChildAdded, withBlock: {snapshot in
-    
-                        let newMessage : [String : String] = [
-                             (snapshot.value as? String)! : "has entered the room"
-                        ]
-                        
-                        self.sendMessage(newMessage)
-                        
-                        })
+                    self.listenForNewMembers(username, roomCode : roomCode)
+                    
+                    
                 }
             })
     }
     
+    func listenForNewMembers(username : String, roomCode : String) {
+        self.admin = username
+        adminHandle = self.myRootRef.childByAppendingPath("members").childByAppendingPath(roomCode)
+            .observeEventType(.ChildAdded, withBlock: {snapshot in
+                
+                let newMessage : [String : String] = [
+                    (snapshot.value as? String)! : "has entered the room"
+                ]
+                
+                self.sendMessage(newMessage)
+                
+            })
+    }
     func retrieveMessages(roomCode : String) {
         retrieveMessagesHandle = myRootRef.childByAppendingPath("messages").childByAppendingPath(roomCode).observeEventType(.ChildAdded, withBlock: { snapshot in
             self.messageCount += 1
@@ -226,11 +232,8 @@ class RoomViewController: UIViewController {
     }
     
     @IBAction func leaveRoomButtonPressed(sender: AnyObject) {
-        myRootRef.childByAppendingPath("users").childByAppendingPath(myRootRef.authData.uid).childByAppendingPath("current_room")
-            .observeSingleEventOfType(.Value, withBlock: { snapshot in
-                //print(snapshot.value)
-                self.leaveRoom(snapshot.value as! String)
-            })
+        self.leaveRoom(self.roomCode)
+            
     }
     
     func keyboardWillShow(notification: NSNotification) {
