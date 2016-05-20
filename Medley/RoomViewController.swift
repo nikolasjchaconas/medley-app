@@ -94,12 +94,14 @@ class RoomViewController: UIViewController {
         myRootRef.childByAppendingPath("rooms").childByAppendingPath(roomCode).childByAppendingPath("admin")
             .observeSingleEventOfType(.Value, withBlock: {snapshot in
                 if(self.myRootRef.authData.uid == (snapshot.value as? String)!) {
+                    if(self.messageCount == 0) {
+                        let message = [
+                            "Medley Bot" : "You are in room " + roomCode + ". Share the room code with your friends"
+                                + " and start listening to synced music! <3"
+                        ]
+                        self.sendMessage(message)
+                    }
                     
-                    let message = [
-                        "Medley Bot" : "You are in room " + roomCode + ". Share the room code with your friends"
-                        + " and start listening to synced music! <3"
-                    ]
-                    self.sendMessage(message)
                     self.listenForNewMembers(username, roomCode : roomCode)
                     
                     
