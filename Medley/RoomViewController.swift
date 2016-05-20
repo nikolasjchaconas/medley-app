@@ -22,10 +22,10 @@ class RoomViewController: UIViewController {
     var messageCount : Int = 0
     var chatBoxSize : CGFloat = 0
     var totalLines : CGFloat = 0
-    var retrieveMessagesHandle : FirebaseHandle = 0, currentRoomHandle : FirebaseHandle = 0, adminHandle : FirebaseHandle = 0
     
     @IBOutlet weak var menuButton: UIButton!
     var myRootRef = Firebase(url:"https://crackling-heat-1030.firebaseio.com/")
+    var observers = [Firebase]()
     
     @IBOutlet weak var sendButton: UIButton!
     
@@ -37,6 +37,7 @@ class RoomViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("message count is " + String(self.messageCount))
         // Do any additional setup after loading the view, typically from a nib.
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RoomViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
@@ -54,12 +55,14 @@ class RoomViewController: UIViewController {
                             
                         }
                     })
+                    let ref = self.myRootRef.childByAppendingPath("users").childByAppendingPath(authData.uid)
+                        .childByAppendingPath("current_room")
+                    self.observers.append(ref)
                 
-                    self.currentRoomHandle = self.myRootRef.childByAppendingPath("users").childByAppendingPath(authData.uid).childByAppendingPath("current_room")
-                    .observeEventType(.Value, withBlock: { snapshot in
+                    ref.observeEventType(.Value, withBlock: { snapshot in
                         if((snapshot.value is NSNull)) {
                             self.performSegueWithIdentifier("HomeViewController", sender:self)
-                            self.myRootRef.removeObserverWithHandle(self.currentRoomHandle)
+                            self.removeAllObservers()
                         }
                     })
  
@@ -89,10 +92,17 @@ class RoomViewController: UIViewController {
         admin(roomCode,username : username)
     }
     
+    func removeAllObservers() {
+        for observer in observers {
+            observer.removeAllObservers()
+        }
+        
+    }
+    
     func admin(roomCode : String, username : String) {
         
         myRootRef.childByAppendingPath("rooms").childByAppendingPath(roomCode).childByAppendingPath("admin")
-            .observeSingleEventOfType(.Value, withBlock: {snapshot in
+            .observeEventType(.ChildChanged, withBlock: {snapshot in
                 if(self.myRootRef.authData.uid == (snapshot.value as? String)!) {
                     if(self.messageCount == 0) {
                         let message = [
@@ -104,15 +114,15 @@ class RoomViewController: UIViewController {
                     
                     self.listenForNewMembers(username, roomCode : roomCode)
                     
-                    
                 }
             })
     }
     
     func listenForNewMembers(username : String, roomCode : String) {
         self.admin = username
-        adminHandle = self.myRootRef.childByAppendingPath("members").childByAppendingPath(roomCode)
-            .observeEventType(.ChildAdded, withBlock: {snapshot in
+        let ref = self.myRootRef.childByAppendingPath("members").childByAppendingPath(roomCode)
+        observers.append(ref)
+            ref.observeEventType(.ChildAdded, withBlock: {snapshot in
                 
                 let newMessage : [String : String] = [
                     (snapshot.value as? String)! : "has entered the room"
@@ -122,16 +132,17 @@ class RoomViewController: UIViewController {
                 
             })
     }
+    
     func retrieveMessages(roomCode : String) {
-        retrieveMessagesHandle = myRootRef.childByAppendingPath("messages").childByAppendingPath(roomCode).observeEventType(.ChildAdded, withBlock: { snapshot in
+        let ref = myRootRef.childByAppendingPath("messages").childByAppendingPath(roomCode)
+            observers.append(ref)
+        
+            ref.observeEventType(.ChildAdded, withBlock: { snapshot in
             self.messageCount += 1
-            print("added -> \(snapshot.value)")
             let snapshotObj = snapshot.children.nextObject() as! FDataSnapshot
             let message = (snapshotObj.value as? String)!
             let messageLength = message.characters.count
-            print("messages.char.count is " + String(messageLength))
             let lineCount = messageLength > 40 ? messageLength / 40 + 1 : 1
-            print("message is " + message)
             self.totalLines += CGFloat(lineCount)
             let textBoxWidth : CGFloat = 20 * CGFloat(lineCount)
             var rect = CGRectMake(0, 0, self.chat_box.bounds.size.width, textBoxWidth)
@@ -155,7 +166,6 @@ class RoomViewController: UIViewController {
     }
     //change this to correct function
     @IBAction func chat_barTouched(sender: AnyObject) {
-        print("done")
         self.chat_box.setContentOffset(CGPointMake(0, self.chat_box.contentSize.height - self.chat_box.bounds.size.height), animated: true)
     }
     override func didReceiveMemoryWarning() {
@@ -174,6 +184,7 @@ class RoomViewController: UIViewController {
         
         self.myRootRef.childByAppendingPath("messages")
         .childByAppendingPath(roomCode).setValue(nil)
+        self.performSegueWithIdentifier("HomeViewController", sender:self)
     }
     
     func appMovedToBackground() {
@@ -187,7 +198,8 @@ class RoomViewController: UIViewController {
         ]
         
         sendMessage(newMessage)
-        myRootRef.removeAllObservers()
+        removeAllObservers()
+        
         messageCount = 0
         let current_uid = self.myRootRef.authData.uid
         
@@ -214,6 +226,10 @@ class RoomViewController: UIViewController {
                             if(current_admin == current_uid) {
                                 //if we are the admin, appoint new admin
                                 self.appointNewAdmin(roomCode)
+                                self.performSegueWithIdentifier("HomeViewController", sender:self)
+                            }
+                            else {
+                                self.performSegueWithIdentifier("HomeViewController", sender:self)
                             }
                         })
                 }
