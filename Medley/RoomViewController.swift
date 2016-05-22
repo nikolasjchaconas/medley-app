@@ -55,7 +55,7 @@ class RoomViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RoomViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RoomViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
         self.hideKeyboardOnTap()
-        menuButton.setTitle("\u{2699}", forState: .Normal)
+        menuButton.setTitle("\u{2630}", forState: .Normal)
         menuButton.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.rightRevealToggle(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         myRootRef.observeAuthEventWithBlock({ authData in
