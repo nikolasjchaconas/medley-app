@@ -11,7 +11,8 @@ import Firebase
 
 class SlideOutMenuViewController: UITableViewController {
     var myRootRef = Firebase(url:"https://crackling-heat-1030.firebaseio.com/")
-    var tableArray = [String]()
+    var tableArray = [NSMutableAttributedString]()
+    var observers = [Firebase]()
     
     @IBOutlet var tableReference: UITableView!
     
@@ -24,41 +25,73 @@ class SlideOutMenuViewController: UITableViewController {
             })
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        var frame = self.view.frame;
+        frame.origin.x = 60
+        self.view.frame = frame
+    }
+    
     func setTable(roomCode : String) {
-        self.tableArray = ["RoomCode " + "\"" + roomCode + "\""  , "Share the code!"]
-        self.tableArray.append("Members:")
+        let text = makeMutableString("Room Code: ")
+        let stylizedCode = makeBoldMutableString(roomCode)
+        text.appendAttributedString(stylizedCode)
+        self.tableArray = [text]
+        self.tableArray.append(makeMutableString("Share the code with Friends!"))
+        self.tableArray.append(makeMutableString(""))
+        self.tableArray.append(makeMutableString("Current Members:"))
         self.showMembers(roomCode)
         tableReference.reloadData()
     }
     
+    func makeMutableString(text : String) -> NSMutableAttributedString {
+        return NSMutableAttributedString(string: text, attributes: [NSForegroundColorAttributeName : UIColor.blackColor()])
+    }
+    
+    func makeBoldMutableString(text : String) -> NSMutableAttributedString {
+        return NSMutableAttributedString(string:text, attributes: [NSFontAttributeName : UIFont.boldSystemFontOfSize(16)])
+    }
     func showMembers(roomCode : String) {
+        let observer1 =
         myRootRef.childByAppendingPath("members").childByAppendingPath(roomCode)
-        .observeEventType(.ChildAdded, withBlock: { snapshot in
-            self.appendMember((snapshot.value as? String)!)
+        observers.append(observer1)
+            observer1.observeEventType(.ChildAdded, withBlock: { snapshot in
+            let value = self.makeBoldMutableString("   " + (snapshot.value as? String)!)
+            self.appendMember(value)
             }, withCancelBlock: { error in
                 print(error.description)
         })
         
         myRootRef.childByAppendingPath("members").childByAppendingPath(roomCode)
             .observeEventType(.ChildRemoved, withBlock: { snapshot in
-                self.removeMember((snapshot.value as? String)!)
+                let value = self.makeBoldMutableString("   " + (snapshot.value as? String)!)
+                self.removeMember(value)
                 }, withCancelBlock: { error in
                     print(error.description)
             })
     }
     
-    func appendMember(username : String) {
+//    override func viewWillDisappear(animated: Bool) {
+//        self.removeAllObservers()
+//    }
+    
+    func appendMember(username : NSMutableAttributedString) {
         tableArray.append(username)
         tableReference.reloadData()
     }
     
-    func removeMember(username : String) {
+    func removeMember(username : NSMutableAttributedString) {
         let index = tableArray.indexOf(username)
         if (index != nil) {
             tableArray.removeAtIndex(index!)
         }
         tableReference.reloadData()
-
+    }
+    
+    func removeAllObservers() {
+        for observer in observers {
+            observer.removeAllObservers()
+        }
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -68,8 +101,8 @@ class SlideOutMenuViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell : UITableViewCell = tableView.dequeueReusableCellWithIdentifier("myCell", forIndexPath: indexPath)
-        cell.textLabel!.text = tableArray[indexPath.row]
-        cell.textLabel?.textAlignment = .Right
+        cell.textLabel!.attributedText = tableArray[indexPath.row]
+        cell.textLabel?.textAlignment = .Left
         return cell
     }
 }

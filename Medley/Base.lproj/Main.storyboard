@@ -543,9 +543,6 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <edgeInsets key="layoutMargins" top="8" left="400" bottom="8" right="8"/>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="4Ed-Mw-3xt" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="E9j-iR-hFo"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -577,7 +574,7 @@
                     <connections>
                         <segue destination="4Ed-Mw-3xt" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="9gg-Hl-SY1"/>
                         <segue destination="a0u-er-EgD" kind="custom" identifier="sw_right" customClass="SWRevealViewControllerSegueSetController" id="27b-Yz-a8w"/>
-                        <segue destination="BYZ-38-t0r" kind="show" id="0ez-Ba-cTu"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="ViewController" id="0ez-Ba-cTu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5eo-Km-x3m" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -611,6 +608,9 @@
                                     <mask key="constraints">
                                         <include reference="xv2-kt-CUz"/>
                                     </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="20" y="49" width="360" height="200"/>
                                 </variation>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RUc-H4-QvP">
@@ -658,6 +658,9 @@
                                 <variation key="widthClass=compact" misplaced="YES">
                                     <rect key="frame" x="541" y="16" width="39" height="30"/>
                                 </variation>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="341" y="16" width="39" height="30"/>
+                                </variation>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mUr-yH-NbA">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -678,6 +681,9 @@
                                     <mask key="constraints">
                                         <exclude reference="Z2X-kv-eOh"/>
                                     </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="20" y="16" width="84" height="30"/>
                                 </variation>
                                 <connections>
                                     <action selector="leaveRoomButtonPressed:" destination="4Ed-Mw-3xt" eventType="touchUpInside" id="gz9-Lm-wWN"/>
@@ -801,6 +807,7 @@
                             <constraint firstItem="wuY-ji-5vj" firstAttribute="top" secondItem="Rqc-oZ-lYA" secondAttribute="bottom" constant="21" id="LMX-th-bKt"/>
                             <constraint firstAttribute="trailing" secondItem="Rqc-oZ-lYA" secondAttribute="trailing" constant="20" id="MA5-yG-Rq1"/>
                             <constraint firstItem="aL6-l5-Ckh" firstAttribute="centerX" secondItem="iLr-fg-6av" secondAttribute="centerX" id="MNm-rb-H3W"/>
+                            <constraint firstItem="mUr-yH-NbA" firstAttribute="leading" secondItem="iLr-fg-6av" secondAttribute="leading" constant="5" id="QGg-sT-lRX"/>
                             <constraint firstItem="aL6-l5-Ckh" firstAttribute="top" secondItem="seF-JR-2t1" secondAttribute="bottom" id="T0b-B9-MEJ"/>
                             <constraint firstItem="Wxh-e3-ncm" firstAttribute="centerX" secondItem="RUc-H4-QvP" secondAttribute="centerX" id="VC3-au-h6H"/>
                             <constraint firstItem="wuY-ji-5vj" firstAttribute="top" secondItem="Rqc-oZ-lYA" secondAttribute="bottom" id="bbA-Nt-gnb"/>
@@ -825,6 +832,7 @@
                             <constraint firstItem="Rqc-oZ-lYA" firstAttribute="leading" secondItem="iLr-fg-6av" secondAttribute="leading" id="ody-bC-iVu"/>
                             <constraint firstAttribute="trailing" secondItem="hbP-du-QPb" secondAttribute="trailing" id="sAL-dg-jhi"/>
                             <constraint firstItem="Rqc-oZ-lYA" firstAttribute="trailing" secondItem="wuY-ji-5vj" secondAttribute="trailing" id="sp2-H5-9a0"/>
+                            <constraint firstAttribute="trailing" secondItem="VAA-mj-fsa" secondAttribute="trailing" constant="5" id="sxW-YJ-YpA"/>
                             <constraint firstItem="Rqc-oZ-lYA" firstAttribute="leading" secondItem="wuY-ji-5vj" secondAttribute="leading" id="tiK-5g-fVt"/>
                             <constraint firstItem="Rqc-oZ-lYA" firstAttribute="trailing" secondItem="iLr-fg-6av" secondAttribute="trailingMargin" id="uU1-HH-mOV"/>
                             <constraint firstItem="RUc-H4-QvP" firstAttribute="baseline" secondItem="Ah2-ni-Aac" secondAttribute="baseline" id="x2F-vF-8ca"/>
@@ -846,6 +854,7 @@
                             <mask key="constraints">
                                 <exclude reference="5F1-ZW-WYG"/>
                                 <exclude reference="Iou-uP-Zuu"/>
+                                <exclude reference="QGg-sT-lRX"/>
                                 <exclude reference="VC3-au-h6H"/>
                                 <exclude reference="j4k-mT-CPA"/>
                                 <exclude reference="kiS-EH-AA9"/>
@@ -877,6 +886,7 @@
                                 <exclude reference="zwO-9T-0o9"/>
                                 <exclude reference="DiE-ZG-gnj"/>
                                 <exclude reference="Jlc-aY-ChY"/>
+                                <exclude reference="sxW-YJ-YpA"/>
                                 <exclude reference="I2e-gr-3wT"/>
                                 <exclude reference="8yP-03-fEw"/>
                                 <exclude reference="LMX-th-bKt"/>
@@ -933,6 +943,8 @@
                                 <include reference="hbP-du-QPb"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="Iou-uP-Zuu"/>
+                                <include reference="QGg-sT-lRX"/>
                                 <exclude reference="kiS-EH-AA9"/>
                                 <exclude reference="xoB-yP-b18"/>
                                 <include reference="5cH-gk-kTv"/>
@@ -949,6 +961,8 @@
                                 <exclude reference="tiK-5g-fVt"/>
                                 <exclude reference="uU1-HH-mOV"/>
                                 <exclude reference="xxy-2o-xk8"/>
+                                <exclude reference="DiE-ZG-gnj"/>
+                                <include reference="sxW-YJ-YpA"/>
                                 <exclude reference="8yP-03-fEw"/>
                                 <exclude reference="LMX-th-bKt"/>
                                 <include reference="bbA-Nt-gnb"/>
@@ -972,7 +986,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="etq-nR-EDi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="937.5" y="1911.75"/>
+            <point key="canvasLocation" x="748.5" y="1839"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="zPg-Ik-U3v">
@@ -1236,7 +1250,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="Du8-HD-pSP"/>
         <segue reference="0ez-Ba-cTu"/>
-        <segue reference="9gg-Hl-SY1"/>
         <segue reference="Ww9-ce-MGe"/>
     </inferredMetricsTieBreakers>
 </document>

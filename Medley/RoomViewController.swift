@@ -37,6 +37,10 @@ class RoomViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.revealViewController().rightViewRevealWidth = self.view.frame.width - 40
+        self.revealViewController().hideKeyboard()
+
         chatBoxHeight = chat_box.frame.height
         chatBarConstraint = NSLayoutConstraint(item: chat_bar, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute:NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0)
 
@@ -46,6 +50,7 @@ class RoomViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RoomViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RoomViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
         self.hideKeyboardOnTap()
+        menuButton.setTitle("\u{2699}", forState: .Normal)
         menuButton.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.rightRevealToggle(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         myRootRef.observeAuthEventWithBlock({ authData in
@@ -99,7 +104,6 @@ class RoomViewController: UIViewController {
         for observer in observers {
             observer.removeAllObservers()
         }
-        
     }
     
     func checkForUsersAdded(roomCode : String, username : String) {
