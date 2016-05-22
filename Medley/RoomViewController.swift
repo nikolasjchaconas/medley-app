@@ -28,16 +28,14 @@ class RoomViewController: UIViewController {
     var observers = [Firebase]()
     @IBOutlet weak var songName: UILabel!
     
+    @IBOutlet weak var searchBar: UITextField!
     @IBOutlet weak var songBox: UIScrollView!
     @IBOutlet weak var sendButton: UIButton!
     
     @IBOutlet weak var songsButton: UIButton!
     @IBOutlet weak var messagesButton: UIButton!
-    
-    //locks orientation to portrait
-//    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-//        return UIInterfaceOrientationMask.Portrait
-//    }
+    var lighterGrey = UIColor(red: 190/255, green: 190/255, blue: 190/255, alpha: 1.0)
+    var grey = UIColor(red: 77/255, green: 77/255, blue: 77/255, alpha: 1.0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,11 +47,14 @@ class RoomViewController: UIViewController {
         self.revealViewController().hideKeyboard()
         
         
-        chatBoxHeight = chat_box.frame.height
         chatBarConstraint = NSLayoutConstraint(item: chat_bar, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute:NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0)
         
-        view.addConstraint(chatBarConstraint)
+        songsButton.setTitleColor(lighterGrey, forState: .Normal)
+        songsButton.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
+        messagesButton.setTitleColor(grey, forState: .Normal)
+        messagesButton.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
         
+        view.addConstraint(chatBarConstraint)
         // Do any additional setup after loading the view, typically from a nib.
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RoomViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RoomViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
@@ -168,6 +169,7 @@ class RoomViewController: UIViewController {
         
     }
     func retrieveSongList(roomCode: String) {
+        addSongMessages();
         let ref = myRootRef.childByAppendingPath("songs").childByAppendingPath(roomCode)
         observers.append(ref)
         
@@ -175,6 +177,23 @@ class RoomViewController: UIViewController {
             let song = (snapshot.key as? String)!
             
         })
+    }
+    
+    func addSongMessages() {
+        let textBoxWidth : CGFloat = 40
+        var rect = CGRectMake(0, 0, self.chat_box.bounds.size.width, textBoxWidth)
+        rect.origin.y = 0
+        let label = UILabel(frame: rect)
+        label.font = label.font.fontWithSize(15)
+        label.layer.borderWidth = 1
+        label.layer.borderColor = (UIColor.whiteColor()).CGColor
+        label.numberOfLines = 4
+        
+        label.textAlignment = NSTextAlignment.Center
+        let text = "Current Song Playlist:"
+        let message = NSMutableAttributedString(string: text, attributes: [NSFontAttributeName : UIFont.boldSystemFontOfSize(label.font.pointSize)])
+        label.attributedText = message
+        self.songBox.addSubview(label)
     }
     
     func retrieveMessages(roomCode : String) {
@@ -276,7 +295,6 @@ class RoomViewController: UIViewController {
             })
         
         
-        
     }
     
     func appointNewAdmin(roomCode : String) {
@@ -302,7 +320,7 @@ class RoomViewController: UIViewController {
     func keyboardWillShow(notification: NSNotification) {
         let offset : CGFloat = notification.userInfo![UIKeyboardFrameEndUserInfoKey]!.CGRectValue.size.height
         
-        MoveChatBar(-offset)
+        MoveBar(self.chatBarConstraint, size : -offset)
         scrollChat()
     }
     
@@ -313,11 +331,11 @@ class RoomViewController: UIViewController {
     }
     
     func keyboardWillHide(notification: NSNotification) {
-        MoveChatBar(0)
+        MoveBar(self.chatBarConstraint, size: 0)
     }
     
-    func MoveChatBar(size : CGFloat ) {
-        self.chatBarConstraint.constant = size
+    func MoveBar(constraint : NSLayoutConstraint, size : CGFloat ) {
+        constraint.constant = size
         UIView.animateWithDuration(0.2, animations: {
             self.view.layoutIfNeeded()
         })
@@ -325,7 +343,11 @@ class RoomViewController: UIViewController {
     }
     @IBAction func songsButtonPressed(sender: AnyObject) {
         self.hideKeyboard()
+        songsButton.setTitleColor(grey, forState: .Normal)
+        messagesButton.setTitleColor(lighterGrey, forState: .Normal)
+
         UIView.animateWithDuration(0.3, animations: {
+            self.searchBar.alpha = 1.0
             self.chat_box.alpha = 0.0
             self.songBox.alpha = 1.0
             self.chat_bar.alpha = 0.0
@@ -335,7 +357,10 @@ class RoomViewController: UIViewController {
     
     @IBAction func messagesButtonPressed(sender: AnyObject) {
         self.hideKeyboard()
+        messagesButton.setTitleColor(grey, forState: .Normal)
+        songsButton.setTitleColor(lighterGrey, forState: .Normal)
         UIView.animateWithDuration(0.3, animations: {
+            self.searchBar.alpha = 0.0
             self.chat_box.alpha = 1.0
             self.songBox.alpha = 0.0
             self.chat_bar.alpha = 1.0
