@@ -165,7 +165,7 @@ class RoomViewController: UIViewController {
     func newMemberJoinedMessage(newUser : String) {
         
         let newMessage : [String : String] = [
-            newUser : "has entered the room"
+            newUser : " "
         ]
         
         self.sendMessage(newMessage)
@@ -264,10 +264,18 @@ class RoomViewController: UIViewController {
             label.numberOfLines = lineCount
             //label.backgroundColor = UIColor(red: 192/255, green: 192/255, blue: 192/255, alpha: 1.0)
             //label.textColor = UIColor.whiteColor()
+            var stylizedMessage : NSMutableAttributedString
+            if(message == "" || message == " ") {
+                let string = message == "" ? " " + snapshotObj.key + " has left the room." : " " + snapshotObj.key + " has joined the room."
+                stylizedMessage = NSMutableAttributedString(string: string, attributes: [NSFontAttributeName : UIFont.italicSystemFontOfSize(label.font.pointSize)])
+            }
+            else {
+                stylizedMessage = NSMutableAttributedString(string: " " + snapshotObj.key + ": ", attributes: [NSFontAttributeName : UIFont.boldSystemFontOfSize(label.font.pointSize)])
+                let attrMessage = NSAttributedString(string: message, attributes: [NSForegroundColorAttributeName : UIColor.blackColor()])
+                stylizedMessage.appendAttributedString(attrMessage)
+            }
             label.textAlignment = NSTextAlignment.Left
-            let stylizedMessage = NSMutableAttributedString(string: " " + snapshotObj.key + ": ", attributes: [NSFontAttributeName : UIFont.boldSystemFontOfSize(label.font.pointSize)])
-            let attrMessage = NSAttributedString(string: message, attributes: [NSForegroundColorAttributeName : UIColor.blackColor()])
-            stylizedMessage.appendAttributedString(attrMessage)
+            
             label.attributedText = stylizedMessage
             self.chatBox.contentSize = CGSizeMake(320, 20 * self.totalLines)
             self.chatBox.addSubview(label)
@@ -300,7 +308,7 @@ class RoomViewController: UIViewController {
     func leaveRoom (roomCode : String) {
         
         let newMessage : [String : String] = [
-            self.username : "has left the room"
+            self.username : ""
         ]
         
         sendMessage(newMessage)
@@ -421,7 +429,8 @@ class RoomViewController: UIViewController {
     }
     
         @IBAction func sendButtonPressed(sender: AnyObject) {
-        if(self.chatBar.text! != ""){
+        let whitespaceSet = NSCharacterSet.whitespaceCharacterSet()
+        if(self.chatBar.text!.stringByTrimmingCharactersInSet(whitespaceSet) != ""){
             let newMessage = [
                 self.username : self.chatBar.text!
             ]
