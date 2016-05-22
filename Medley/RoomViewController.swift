@@ -180,13 +180,15 @@ class RoomViewController: UIViewController {
             if(snapshot.value is NSNull) {
                 self.appendSong(errorMessage, error : 1)
             } else {
-                self.appendSong((snapshot.value as? String)!, error : 0)
+                let snapshotObj = snapshot.children.nextObject() as! FDataSnapshot
+                self.appendSong(snapshotObj.key, error : 0)
             }
             
         })
     }
     
     func removeError() {
+        print(songBox.subviews.last)
         songBox.subviews.last?.removeFromSuperview()
     }
     
@@ -196,7 +198,8 @@ class RoomViewController: UIViewController {
         var label : UILabel
         
         if(error == 0) {
-            if(songCount == 1) {
+            let subview : UILabel = songBox.subviews.last as! UILabel
+            if(subview.text != "Current Song Playlist:") {
                 self.removeError()
             }
             let textBoxWidth : CGFloat = 20
@@ -298,6 +301,10 @@ class RoomViewController: UIViewController {
         
         self.myRootRef.childByAppendingPath("messages")
         .childByAppendingPath(roomCode).setValue(nil)
+        
+        self.myRootRef.childByAppendingPath("songs")
+            .childByAppendingPath(roomCode).setValue(nil)
+        
         self.performSegueWithIdentifier("HomeViewController", sender:self)
     }
     
