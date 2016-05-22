@@ -26,6 +26,7 @@ class RoomViewController: UIViewController {
     @IBOutlet weak var menuButton: UIButton!
     var myRootRef = Firebase(url:"https://crackling-heat-1030.firebaseio.com/")
     var observers = [Firebase]()
+    @IBOutlet weak var songName: UILabel!
     
     @IBOutlet weak var sendButton: UIButton!
     
@@ -38,9 +39,13 @@ class RoomViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //more customizations for this can be found here
+        //http://www.ebc.cat/2015/03/07/customize-your-swrevealviewcontroller-slide-out-menu/
         self.revealViewController().rightViewRevealWidth = self.view.frame.width - 40
+        self.revealViewController().rightViewRevealDisplacement = self.view.frame.width - 55
         self.revealViewController().hideKeyboard()
-
+        
+        
         chatBoxHeight = chat_box.frame.height
         chatBarConstraint = NSLayoutConstraint(item: chat_bar, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute:NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0)
 
@@ -60,6 +65,7 @@ class RoomViewController: UIViewController {
                     .observeSingleEventOfType(.Value, withBlock: { snapshot in
                         if(!(snapshot.value is NSNull)) {
                             self.setUser((snapshot.value as? String)!)
+                            self.currentSong((snapshot.value as? String)!);
                             
                         }
                     })
@@ -83,6 +89,18 @@ class RoomViewController: UIViewController {
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplicationWillResignActiveNotification, object: nil)
         
+    }
+    func currentSong(roomCode : String) {
+        let ref = myRootRef.childByAppendingPath("rooms").childByAppendingPath(roomCode).childByAppendingPath("current_song")
+        self.observers.append(ref)
+        ref.observeEventType(.Value, withBlock: {snapshot in
+            if(snapshot.value is NSNull) {
+                self.songName.text = "daddy - Joe Song"
+            } else {
+                self.songName.text = (snapshot.value as? String)!
+            }
+            
+        })
     }
     func setUser(roomCode : String) {
         self.myRootRef.childByAppendingPath("users").childByAppendingPath(myRootRef.authData.uid)
