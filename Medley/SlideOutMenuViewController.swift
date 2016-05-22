@@ -17,7 +17,6 @@ class SlideOutMenuViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.hideKeyboard()
         myRootRef.childByAppendingPath("users").childByAppendingPath(myRootRef.authData.uid).childByAppendingPath("current_room")
             .observeSingleEventOfType(.Value, withBlock: {snapshot in
                 let roomCode = (snapshot.value as? String)!
@@ -39,11 +38,27 @@ class SlideOutMenuViewController: UITableViewController {
             }, withCancelBlock: { error in
                 print(error.description)
         })
+        
+        myRootRef.childByAppendingPath("members").childByAppendingPath(roomCode)
+            .observeEventType(.ChildRemoved, withBlock: { snapshot in
+                self.removeMember((snapshot.value as? String)!)
+                }, withCancelBlock: { error in
+                    print(error.description)
+            })
     }
     
     func appendMember(username : String) {
         tableArray.append(username)
         tableReference.reloadData()
+    }
+    
+    func removeMember(username : String) {
+        let index = tableArray.indexOf(username)
+        if (index != nil) {
+            tableArray.removeAtIndex(index!)
+        }
+        tableReference.reloadData()
+
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

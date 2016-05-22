@@ -577,6 +577,7 @@
                     <connections>
                         <segue destination="4Ed-Mw-3xt" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="9gg-Hl-SY1"/>
                         <segue destination="a0u-er-EgD" kind="custom" identifier="sw_right" customClass="SWRevealViewControllerSegueSetController" id="27b-Yz-a8w"/>
+                        <segue destination="BYZ-38-t0r" kind="show" id="0ez-Ba-cTu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5eo-Km-x3m" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -694,7 +695,7 @@
                                     <rect key="frame" x="69" y="20" width="264" height="21"/>
                                 </variation>
                             </label>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rqc-oZ-lYA">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="Rqc-oZ-lYA">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="0.95699572200000005" green="0.93773329910000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -971,7 +972,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="etq-nR-EDi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="847.5" y="1902.75"/>
+            <point key="canvasLocation" x="937.5" y="1911.75"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="zPg-Ik-U3v">
@@ -1234,7 +1235,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Du8-HD-pSP"/>
+        <segue reference="0ez-Ba-cTu"/>
+        <segue reference="9gg-Hl-SY1"/>
         <segue reference="Ww9-ce-MGe"/>
-        <segue reference="E9j-iR-hFo"/>
     </inferredMetricsTieBreakers>
 </document>

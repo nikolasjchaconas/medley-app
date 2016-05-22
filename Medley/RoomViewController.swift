@@ -31,9 +31,9 @@ class RoomViewController: UIViewController {
     
     
     //locks orientation to portrait
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.Portrait
-    }
+//    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+//        return UIInterfaceOrientationMask.Portrait
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,9 +42,7 @@ class RoomViewController: UIViewController {
 
         view.addConstraint(chatBarConstraint)
         
-        print("message count is " + String(self.messageCount))
         // Do any additional setup after loading the view, typically from a nib.
-        //chat_box.keyboardDismissMode = .Interactive
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RoomViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RoomViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
         self.hideKeyboardOnTap()
