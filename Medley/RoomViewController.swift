@@ -28,8 +28,11 @@ class RoomViewController: UIViewController {
     var observers = [Firebase]()
     @IBOutlet weak var songName: UILabel!
     
+    @IBOutlet weak var songBox: UIScrollView!
     @IBOutlet weak var sendButton: UIButton!
     
+    @IBOutlet weak var songsButton: UIButton!
+    @IBOutlet weak var messagesButton: UIButton!
     
     //locks orientation to portrait
 //    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
@@ -48,7 +51,7 @@ class RoomViewController: UIViewController {
         
         chatBoxHeight = chat_box.frame.height
         chatBarConstraint = NSLayoutConstraint(item: chat_bar, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute:NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0)
-
+        
         view.addConstraint(chatBarConstraint)
         
         // Do any additional setup after loading the view, typically from a nib.
@@ -66,7 +69,7 @@ class RoomViewController: UIViewController {
                         if(!(snapshot.value is NSNull)) {
                             self.setUser((snapshot.value as? String)!)
                             self.currentSong((snapshot.value as? String)!);
-                            
+                            self.retrieveSongList((snapshot.value as? String)!);
                         }
                     })
                     let ref = self.myRootRef.childByAppendingPath("users").childByAppendingPath(authData.uid)
@@ -163,6 +166,15 @@ class RoomViewController: UIViewController {
         
         self.sendMessage(newMessage)
         
+    }
+    func retrieveSongList(roomCode: String) {
+        let ref = myRootRef.childByAppendingPath("songs").childByAppendingPath(roomCode)
+        observers.append(ref)
+        
+        ref.observeEventType(.ChildAdded, withBlock: { snapshot in
+            let song = (snapshot.key as? String)!
+            
+        })
     }
     
     func retrieveMessages(roomCode : String) {
@@ -311,7 +323,25 @@ class RoomViewController: UIViewController {
         })
         
     }
+    @IBAction func songsButtonPressed(sender: AnyObject) {
+        self.hideKeyboard()
+        UIView.animateWithDuration(0.3, animations: {
+            self.chat_box.alpha = 0.0
+            self.songBox.alpha = 1.0
+            self.chat_bar.alpha = 0.0
+            self.sendButton.alpha = 0.0
+        })
+    }
     
+    @IBAction func messagesButtonPressed(sender: AnyObject) {
+        self.hideKeyboard()
+        UIView.animateWithDuration(0.3, animations: {
+            self.chat_box.alpha = 1.0
+            self.songBox.alpha = 0.0
+            self.chat_bar.alpha = 1.0
+            self.sendButton.alpha = 1.0
+        })
+    }
     func sendMessage(message : [String : String]) {
         self.chat_bar.text = ""
         myRootRef.childByAppendingPath("messages").childByAppendingPath(self.roomCode).childByAppendingPath(String(self.messageCount))
