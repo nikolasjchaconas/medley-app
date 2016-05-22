@@ -21,6 +21,7 @@ class RoomViewController: UIViewController {
     var username : String!
     var admin : String!
     var messageCount : Int = 0
+    var songCount : Int = 0
     var totalLines : CGFloat = 0
     var chatBoxHeight : CGFloat = 0
     var chatBarConstraint : NSLayoutConstraint = NSLayoutConstraint()
@@ -174,11 +175,56 @@ class RoomViewController: UIViewController {
         addSongMessages();
         let ref = myRootRef.childByAppendingPath("songs").childByAppendingPath(roomCode)
         observers.append(ref)
-        
-        ref.observeEventType(.ChildAdded, withBlock: { snapshot in
-            let song = (snapshot.key as? String)!
+        let errorMessage = "There are currently no songs in the playlist.\n Search in the toolbar to add some!"
+        ref.observeEventType(.Value, withBlock: { snapshot in
+            if(snapshot.value is NSNull) {
+                self.appendSong(errorMessage, error : 1)
+            } else {
+                self.appendSong((snapshot.value as? String)!, error : 0)
+            }
             
         })
+    }
+    
+    func removeError() {
+        songBox.subviews.last?.removeFromSuperview()
+    }
+    
+    func appendSong(songName : String, error : Int) {
+        songCount += 1
+        var text : String
+        var label : UILabel
+        
+        if(error == 0) {
+            if(songCount == 1) {
+                self.removeError()
+            }
+            let textBoxWidth : CGFloat = 20
+            text = String(songCount) + ". " + songName
+            var rect = CGRectMake(0, 0, self.songBox.bounds.size.width, textBoxWidth)
+            rect.origin.y = textBoxWidth * CGFloat(self.songCount) + 40
+            label = UILabel(frame: rect)
+            label.numberOfLines = 1
+            label.textAlignment = NSTextAlignment.Left
+        } else {
+            songCount -= 1
+            let textBoxWidth : CGFloat = 80
+            text = songName
+            var rect = CGRectMake(0, 0, self.songBox.bounds.size.width, textBoxWidth)
+            rect.origin.y = textBoxWidth * CGFloat(self.songCount) + 40
+            label = UILabel(frame: rect)
+            label.numberOfLines = 2
+            label.textAlignment = NSTextAlignment.Center
+        }
+        
+        label.layer.borderWidth = 1
+        label.layer.borderColor = (UIColor.whiteColor()).CGColor
+        
+        
+        
+        let message = NSMutableAttributedString(string: text, attributes: [NSForegroundColorAttributeName : UIColor.blackColor()])
+        label.attributedText = message
+        self.songBox.addSubview(label)
     }
     
     func addSongMessages() {
@@ -186,14 +232,13 @@ class RoomViewController: UIViewController {
         var rect = CGRectMake(0, 0, self.songBox.bounds.size.width, textBoxWidth)
         rect.origin.y = 0
         let label = UILabel(frame: rect)
-        label.font = label.font.fontWithSize(15)
         label.layer.borderWidth = 1
         label.layer.borderColor = (UIColor.whiteColor()).CGColor
-        label.numberOfLines = 4
+        label.numberOfLines = 1
         
         label.textAlignment = NSTextAlignment.Center
         let text = "Current Song Playlist:"
-        let message = NSMutableAttributedString(string: text, attributes: [NSFontAttributeName : UIFont.boldSystemFontOfSize(label.font.pointSize)])
+        let message = NSMutableAttributedString(string: text, attributes: [NSFontAttributeName : UIFont.boldSystemFontOfSize(20)])
         label.attributedText = message
         self.songBox.addSubview(label)
     }
