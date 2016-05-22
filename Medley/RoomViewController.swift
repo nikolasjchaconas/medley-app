@@ -20,9 +20,9 @@ class RoomViewController: UIViewController {
     var username : String!
     var admin : String!
     var messageCount : Int = 0
-    var chatBoxSize : CGFloat = 0
     var totalLines : CGFloat = 0
-    
+    var chatBoxHeight : CGFloat = 0
+    var chatBarConstraint : NSLayoutConstraint = NSLayoutConstraint()
     @IBOutlet weak var menuButton: UIButton!
     var myRootRef = Firebase(url:"https://crackling-heat-1030.firebaseio.com/")
     var observers = [Firebase]()
@@ -37,9 +37,14 @@ class RoomViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        chatBoxHeight = chat_box.frame.height
+        chatBarConstraint = NSLayoutConstraint(item: chat_bar, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute:NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0)
+
+        view.addConstraint(chatBarConstraint)
+        
         print("message count is " + String(self.messageCount))
         // Do any additional setup after loading the view, typically from a nib.
-        
+        //chat_box.keyboardDismissMode = .Interactive
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RoomViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RoomViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
         self.hideKeyboardOnTap()
@@ -132,7 +137,6 @@ class RoomViewController: UIViewController {
     
     func newMemberJoinedMessage(newUser : String) {
         
-        
         let newMessage : [String : String] = [
             newUser : "has entered the room"
         ]
@@ -169,12 +173,8 @@ class RoomViewController: UIViewController {
             label.attributedText = stylizedMessage
             self.chat_box.contentSize = CGSizeMake(320, 20 * self.totalLines)
             self.chat_box.addSubview(label)
-            self.chat_box.setContentOffset(CGPointMake(0, self.chat_box.contentSize.height - self.chat_box.bounds.size.height), animated: true)
+            self.scrollChat()
         })
-    }
-    //change this to correct function
-    @IBAction func chat_barTouched(sender: AnyObject) {
-        self.chat_box.setContentOffset(CGPointMake(0, self.chat_box.contentSize.height - self.chat_box.bounds.size.height), animated: true)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -262,17 +262,36 @@ class RoomViewController: UIViewController {
             
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: self.view.window)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: self.view.window)
+    }
+    
     func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-            self.view.frame.origin.y -= keyboardSize.height
-        }
+        let offset : CGFloat = notification.userInfo![UIKeyboardFrameEndUserInfoKey]!.CGRectValue.size.height
+        
+        MoveChatBar(-offset)
+        scrollChat()
+    }
+    
+    func scrollChat() {
+        UIView.animateWithDuration(0.5, animations: {
+            self.chat_box.setContentOffset(CGPointMake(0, self.chat_box.contentSize.height - self.chat_box.bounds.size.height), animated: false)
+        })
     }
     
     func keyboardWillHide(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-            self.view.frame.origin.y += keyboardSize.height
-        }
+        MoveChatBar(0)
     }
+    
+    func MoveChatBar(size : CGFloat ) {
+        self.chatBarConstraint.constant = size
+        UIView.animateWithDuration(0.2, animations: {
+            self.view.layoutIfNeeded()
+        })
+        
+    }
+    
     func sendMessage(message : [String : String]) {
         self.chat_bar.text = ""
         myRootRef.childByAppendingPath("messages").childByAppendingPath(self.roomCode).childByAppendingPath(String(self.messageCount))
