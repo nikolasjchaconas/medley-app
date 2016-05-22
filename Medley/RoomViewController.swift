@@ -11,11 +11,12 @@ import Firebase
 
 class RoomViewController: UIViewController {
     
-    @IBOutlet weak var album_cover: UIImageView!
+    @IBOutlet weak var albumCover: UIImageView!
     
-    @IBOutlet weak var chat_bar: UITextField!
+    @IBOutlet weak var chatBar: UITextField!
     
-    @IBOutlet weak var chat_box: UIScrollView!
+    @IBOutlet weak var chatBox: UIScrollView!
+    
     var roomCode : String!
     var username : String!
     var admin : String!
@@ -49,8 +50,8 @@ class RoomViewController: UIViewController {
         self.revealViewController().hideKeyboard()
         
         
-        chatBoxHeight = chat_box.frame.height
-        chatBarConstraint = NSLayoutConstraint(item: chat_bar, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute:NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0)
+        chatBoxHeight = chatBox.frame.height
+        chatBarConstraint = NSLayoutConstraint(item: chatBar, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute:NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0)
         
         view.addConstraint(chatBarConstraint)
         
@@ -189,7 +190,7 @@ class RoomViewController: UIViewController {
             let lineCount = messageLength > 40 ? messageLength / 40 + 1 : 1
             self.totalLines += CGFloat(lineCount)
             let textBoxWidth : CGFloat = 20 * CGFloat(lineCount)
-            var rect = CGRectMake(0, 0, self.chat_box.bounds.size.width, textBoxWidth)
+            var rect = CGRectMake(0, 0, self.chatBox.bounds.size.width, textBoxWidth)
             rect.origin.y = 20 * (self.totalLines - CGFloat(lineCount))
             let label = UILabel(frame: rect)
             label.font = label.font.fontWithSize(15)
@@ -203,8 +204,8 @@ class RoomViewController: UIViewController {
             let attrMessage = NSAttributedString(string: message, attributes: [NSForegroundColorAttributeName : UIColor.blackColor()])
             stylizedMessage.appendAttributedString(attrMessage)
             label.attributedText = stylizedMessage
-            self.chat_box.contentSize = CGSizeMake(320, 20 * self.totalLines)
-            self.chat_box.addSubview(label)
+            self.chatBox.contentSize = CGSizeMake(320, 20 * self.totalLines)
+            self.chatBox.addSubview(label)
             self.scrollChat()
         })
     }
@@ -308,7 +309,7 @@ class RoomViewController: UIViewController {
     
     func scrollChat() {
         UIView.animateWithDuration(0.5, animations: {
-            self.chat_box.setContentOffset(CGPointMake(0, self.chat_box.contentSize.height - self.chat_box.bounds.size.height), animated: false)
+            self.chatBox.setContentOffset(CGPointMake(0, self.chatBox.contentSize.height - self.chatBox.bounds.size.height), animated: false)
         })
     }
     
@@ -326,9 +327,9 @@ class RoomViewController: UIViewController {
     @IBAction func songsButtonPressed(sender: AnyObject) {
         self.hideKeyboard()
         UIView.animateWithDuration(0.3, animations: {
-            self.chat_box.alpha = 0.0
+            self.chatBox.alpha = 0.0
             self.songBox.alpha = 1.0
-            self.chat_bar.alpha = 0.0
+            self.chatBar.alpha = 0.0
             self.sendButton.alpha = 0.0
         })
     }
@@ -336,25 +337,25 @@ class RoomViewController: UIViewController {
     @IBAction func messagesButtonPressed(sender: AnyObject) {
         self.hideKeyboard()
         UIView.animateWithDuration(0.3, animations: {
-            self.chat_box.alpha = 1.0
+            self.chatBox.alpha = 1.0
             self.songBox.alpha = 0.0
-            self.chat_bar.alpha = 1.0
+            self.chatBar.alpha = 1.0
             self.sendButton.alpha = 1.0
         })
     }
     func sendMessage(message : [String : String]) {
-        self.chat_bar.text = ""
+        self.chatBar.text = ""
         myRootRef.childByAppendingPath("messages").childByAppendingPath(self.roomCode).childByAppendingPath(String(self.messageCount))
             .setValue(message)
     }
     
         @IBAction func sendButtonPressed(sender: AnyObject) {
-        if(self.chat_bar.text! != ""){
+        if(self.chatBar.text! != ""){
             let newMessage = [
-                self.username : self.chat_bar.text!
+                self.username : self.chatBar.text!
             ]
             sendMessage(newMessage)
-            self.chat_bar.text = ""
+            self.chatBar.text = ""
             myRootRef.childByAppendingPath("messages").childByAppendingPath(self.roomCode).childByAppendingPath(String(self.messageCount))
                 .setValue(newMessage)
         }
