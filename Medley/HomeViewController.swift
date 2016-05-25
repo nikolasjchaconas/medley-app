@@ -253,4 +253,9 @@ class HomeViewController: UIViewController {
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
+    @IBAction func logoutButtonPressed(sender: AnyObject) {
+        myRootRef.unauth()
+        self.performSegueWithIdentifier("ViewController", sender:sender)
+    }
+    
 }
