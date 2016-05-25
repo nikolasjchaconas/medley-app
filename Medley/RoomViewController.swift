@@ -41,12 +41,15 @@ class RoomViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         //more customizations for this can be found here
         //http://www.ebc.cat/2015/03/07/customize-your-swrevealviewcontroller-slide-out-menu/
         self.revealViewController().rightViewRevealWidth = self.view.frame.width - 40
         self.revealViewController().rightViewRevealDisplacement = self.view.frame.width - 55
         self.revealViewController().hideKeyboard()
+        
+        self.searchBar.addTarget(self, action: #selector(songSearchChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        
         
         
         chatBoxHeight = chatBox.frame.height
@@ -97,6 +100,11 @@ class RoomViewController: UIViewController {
         notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplicationWillResignActiveNotification, object: nil)
         
     }
+    
+    func songSearchChange(sender : UITextField) {
+        print("searching for " + sender.text!)
+    }
+    
     func currentSong(roomCode : String) {
         let ref = myRootRef.childByAppendingPath("rooms").childByAppendingPath(roomCode).childByAppendingPath("current_song")
         self.observers.append(ref)

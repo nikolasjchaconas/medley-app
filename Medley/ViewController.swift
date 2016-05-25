@@ -28,10 +28,6 @@ extension UIViewController {
         return (GetCurrentUser(myRootRef).providerData["email"] as? String)!
     }
     
-    func ReturnUsername(username : String) -> String {
-        return username
-    }
-    
     
     func MakeTextFieldRed(sender:UITextField, color:UIColor) {
         sender.layer.borderColor = color.CGColor
