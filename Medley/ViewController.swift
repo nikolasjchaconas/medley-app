@@ -28,10 +28,6 @@ extension UIViewController {
         return (GetCurrentUser(myRootRef).providerData["email"] as? String)!
     }
     
-    func ReturnUsername(username : String) -> String {
-        return username
-    }
-    
     
     func MakeTextFieldRed(sender:UITextField, color:UIColor) {
         sender.layer.borderColor = color.CGColor
@@ -149,6 +145,27 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //if user is already logged in
+        myRootRef.observeAuthEventWithBlock({ authData in
+            if authData != nil {
+                self.showLoading()
+                // user authenticated
+                self.myRootRef.childByAppendingPath("users").childByAppendingPath(authData.uid).childByAppendingPath("current_room")
+                    .observeSingleEventOfType(.Value, withBlock: {snapshot in
+                        if(snapshot.value is NSNull) {
+                            self.performSegueWithIdentifier("HomeViewController", sender:self)
+                        }
+                        else {
+                            self.performSegueWithIdentifier("SWRevealViewController", sender:self)
+                        }
+                        
+                    })
+                
+            }
+        })
+        
+        
         // Do any additional setup after loading the view, typically from a nib.
         self.hideKeyboardOnTap()
         // Make login and signup buttons rounded
@@ -402,10 +419,6 @@ class ViewController: UIViewController {
                             // There was an error logging in to this account
                             self.hideLoading()
                             self.ShowError("Incorrect Email/Password.", label: self.loginErrorMessage)
-                        } else {
-                            //self.hideLoading()
-                            // We are now logged in
-                            self.performSegueWithIdentifier("HomeViewController", sender:sender)
                         }
         })
     }
@@ -468,7 +481,6 @@ class ViewController: UIViewController {
                 //  - https://<YOUR-FIREBASE-APP>.firebaseio.com/users/<uid>
                 self.myRootRef.childByAppendingPath("users")
                     .childByAppendingPath(authData.uid).setValue(newUser)
-                self.performSegueWithIdentifier("HomeViewController", sender:self)
             }
         }
     }

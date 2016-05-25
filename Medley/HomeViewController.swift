@@ -14,12 +14,17 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var greetingMessage: UILabel!
     var myRootRef = Firebase(url:"https://crackling-heat-1030.firebaseio.com/")
-    @IBOutlet var roomCode: UITextField!
+    @IBOutlet var roomCodeField: UITextField!
+    @IBOutlet var passwordField: UITextField!
     @IBOutlet weak var joinRoomButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var createRoomButton: UIButton!
-    
     let buttonBorderColor : UIColor = UIColor( red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 0.35)
+    
+    //locks orientation to portrait
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Portrait
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,12 +46,18 @@ class HomeViewController: UIViewController {
         
         
         //get username
-        myRootRef.childByAppendingPath("users")
-            .childByAppendingPath(myRootRef.authData.uid).childByAppendingPath("username")
-            .observeEventType(.Value, withBlock: { snapshot in
-                self.greetingMessage.text = "Hello " + ((snapshot.value as? String)!) + "!"
-                }, withCancelBlock: { error in
-            })
+        
+        myRootRef.observeAuthEventWithBlock({ authData in
+            if authData != nil {
+                self.myRootRef.childByAppendingPath("users")
+                    .childByAppendingPath(self.myRootRef.authData.uid).childByAppendingPath("username")
+                    .observeEventType(.Value, withBlock: { snapshot in
+                        self.greetingMessage.text = "Hello " + ((snapshot.value as? String)!) + "!"
+                        }, withCancelBlock: { error in
+                    })
+                        
+                    }
+        })
     }
     
     override func didReceiveMemoryWarning() {
@@ -54,47 +65,174 @@ class HomeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+   
+    
+    func joinPublicRoom(roomCode : String) {
+        let current_id = myRootRef.authData.uid
+        myRootRef.childByAppendingPath("users")
+        .updateChildValues([current_id + "/current_room": roomCode])
+        
+        myRootRef.childByAppendingPath("users").childByAppendingPath(current_id).childByAppendingPath("username")
+            .observeSingleEventOfType(.Value, withBlock: {snapshot in
+                print(snapshot.value)
+                self.myRootRef.childByAppendingPath("members").childByAppendingPath(roomCode).childByAppendingPath(current_id).setValue(snapshot.value)
+            })
+        
+        self.performSegueWithIdentifier("SWRevealViewController", sender:self)
+    }
+    
+    func joinPrivateRoom(roomCode : String, password : String) {
+        let current_id = myRootRef.authData.uid
+        myRootRef.childByAppendingPath("rooms").childByAppendingPath(roomCode).childByAppendingPath("password")
+            .observeSingleEventOfType(.Value, withBlock: { snapshot in
+                if(password != snapshot.value as? String) {
+                    let alertController = UIAlertController(title: "Incorrect Password", message:
+                        "The password entered for room " + roomCode + " is not correct", preferredStyle: UIAlertControllerStyle.Alert)
+                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler:nil))
+                    self.presentViewController(alertController, animated: true, completion: nil)
+                } else {
+                    self.myRootRef.childByAppendingPath("users")
+                        .updateChildValues([current_id + "/current_room": roomCode])
+                    
+                    self.myRootRef.childByAppendingPath("users").childByAppendingPath(current_id).childByAppendingPath("username")
+                        .observeSingleEventOfType(.Value, withBlock: {snapshot in
+                            self.myRootRef.childByAppendingPath("members").childByAppendingPath(roomCode).childByAppendingPath(current_id).setValue(snapshot.value)
+                        })
+                    
+                    self.performSegueWithIdentifier("SWRevealViewController", sender:self)
+                }
+            })
+        myRootRef.childByAppendingPath("users").childByAppendingPath(current_id)
+    }
+    
+    func joinRoomWithCode(roomCode : String) {
+        
+        myRootRef.childByAppendingPath("rooms").childByAppendingPath(roomCode).childByAppendingPath("password")
+            .observeSingleEventOfType(.Value, withBlock: { snapshot in
+                let password = snapshot.value as? String
+                if(password == "") {
+                    self.joinPublicRoom(roomCode)
+                }
+                else {
+                    let alertController = UIAlertController(title: "Room is Private", message:
+                        "This room is private. Please enter the password for this room", preferredStyle: UIAlertControllerStyle.Alert)
+                    alertController.addTextFieldWithConfigurationHandler(self.addPassword)
+                    alertController.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler:{ action in
+                        self.joinPrivateRoom(roomCode, password: self.passwordField.text!)
+                    }))
+                    alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alertController, animated: true, completion: nil)
+                }
+        })
+    }
+    
     func joinRoom(alert: UIAlertAction!) {
         //use self.roomCode
-        self.performSegueWithIdentifier("RoomViewController", sender:self)
+        if(self.roomCodeField.text! == "") {
+            let alertController = UIAlertController(title: "Room Does not Exist", message:
+                "A Room With That Room Code Does Not Exist.", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler:nil))
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
+        else {
+            myRootRef.childByAppendingPath("rooms").childByAppendingPath(self.roomCodeField.text!).childByAppendingPath("available")
+                .observeSingleEventOfType(.Value, withBlock: { snapshot in
+                    if(snapshot.value is NSNull) {
+                        let alertController = UIAlertController(title: "Room Does not Exist", message:
+                            "A Room With That Room Code Does Not Exist.", preferredStyle: UIAlertControllerStyle.Alert)
+                        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler:nil))
+                        self.presentViewController(alertController, animated: true, completion: nil)
+                    }
+                    else if(snapshot.value as! Bool == false){
+                        self.joinRoomWithCode(self.roomCodeField.text!)
+                    }
+                    else {
+                        let alertController = UIAlertController(title: "Room Does not Exist", message:
+                            "A Room With That Room Code Does Not Exist.", preferredStyle: UIAlertControllerStyle.Alert)
+                        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler:nil))
+                        self.presentViewController(alertController, animated: true, completion: nil)
+                    }
+                })
+        }
+        
+        
     }
     
     func createPublicRoom(alert: UIAlertAction!) {
         createRoom("")
     }
     
+    func newRoom(room : FDataSnapshot, password: String) {
+    
+        let roomCode = room.key
+        let current_id = myRootRef.authData.uid
+        let newRoom = [
+            "room_name" : room.key,
+            "admin" : self.myRootRef.authData.uid,
+            "password": password,
+            "available" : false,
+        ]
+        
+        self.myRootRef.childByAppendingPath("messages").childByAppendingPath(roomCode).setValue(nil)
+        
+        self.myRootRef.childByAppendingPath("users")
+            .updateChildValues([self.myRootRef.authData.uid + "/current_room": room.key])
+        
+        self.myRootRef.childByAppendingPath("rooms")
+            .childByAppendingPath(roomCode).setValue(newRoom)
+        
+        myRootRef.childByAppendingPath("users").childByAppendingPath(current_id).childByAppendingPath("username")
+            .observeSingleEventOfType(.Value, withBlock: {snapshot in
+                self.myRootRef.childByAppendingPath("members").childByAppendingPath(roomCode).childByAppendingPath(current_id).setValue(snapshot.value)
+            })
+        
+        
+        self.performSegueWithIdentifier("SWRevealViewController", sender:self)
+        
+    }
+    
     func createRoom(password: String) {
-        if(password == "") {
-            //create nonprivate room
-            self.performSegueWithIdentifier("RoomViewController", sender:self)
-        }
-        else {
+        
             //create private room
-            self.performSegueWithIdentifier("RoomViewController", sender:self)
-        }
+            myRootRef.childByAppendingPath("rooms").queryOrderedByChild("available").queryEqualToValue(true).queryLimitedToFirst(1)
+                .observeSingleEventOfType(.Value, withBlock: { snapshot in
+                    if(!(snapshot.value is NSNull)) {
+                        let child: FDataSnapshot = snapshot.children.nextObject() as! FDataSnapshot
+                        self.newRoom(child, password: password)
+                    }
+                    else {
+                        let alertController = UIAlertController(title: "No more Available Room Codes", message:
+                            "The makers of medley suck and there arent any more room codes.", preferredStyle: UIAlertControllerStyle.Alert)
+                        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler:nil))
+                        self.presentViewController(alertController, animated: true, completion: nil)
+                    }
+                    
+                    
+                })
+
     }
     
     func createPrivateRoom(alert: UIAlertAction!) {
-        var password = ""
         let alertController = UIAlertController(title: "Create A Private Room", message:
             "Create a Password for your Room: Leave field blank to make Room Public", preferredStyle: UIAlertControllerStyle.Alert)
-        alertController.addTextFieldWithConfigurationHandler({(textField: UITextField!) in
-            textField.textAlignment = NSTextAlignment .Center
-            textField.placeholder = "Room Code"
-            password = textField.text!
-        })
+        alertController.addTextFieldWithConfigurationHandler(addPassword)
         alertController.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler:{ action in
-            // whatever else you need to do here
-            self.createRoom(password)
+            self.createRoom(self.passwordField.text!)
         }))
         alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
+    func addPassword(textField: UITextField!) {
+        textField.textAlignment = NSTextAlignment .Center
+        textField.placeholder = "Password"
+        self.passwordField = textField
+    }
+    
     func addTextField(textField: UITextField!) {
         textField.textAlignment = NSTextAlignment .Center
         textField.placeholder = "Room Code"
-        self.roomCode = textField
+        self.roomCodeField = textField
     }
 
     
