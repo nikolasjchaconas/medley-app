@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import YouTubePlayer
 
 class RoomViewController: UIViewController {
     
@@ -17,6 +18,15 @@ class RoomViewController: UIViewController {
     
     @IBOutlet weak var chatBox: UIScrollView!
     
+    @IBOutlet weak var videoLoadingIndicator: UIActivityIndicatorView!
+    
+    @IBOutlet weak var playerView: YouTubePlayerView!
+    
+    
+    @IBOutlet weak var previousButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var playButton: UIButton!
+    
     var roomCode : String!
     var username : String!
     var admin : String!
@@ -24,10 +34,13 @@ class RoomViewController: UIViewController {
     var songCount : Int = 0
     var totalLines : CGFloat = 0
     var chatBoxHeight : CGFloat = 0
+    var songPresent : Bool = false
     var chatBarConstraint : NSLayoutConstraint = NSLayoutConstraint()
     @IBOutlet weak var menuButton: UIButton!
     var myRootRef = Firebase(url:"https://crackling-heat-1030.firebaseio.com/")
     var observers = [Firebase]()
+    var songTime : Float = 0
+    var songTimer : NSTimer = NSTimer()
     @IBOutlet weak var songName: UILabel!
     
     @IBOutlet weak var searchBar: UITextField!
@@ -39,9 +52,11 @@ class RoomViewController: UIViewController {
     var lighterGrey = UIColor(red: 190/255, green: 190/255, blue: 190/255, alpha: 1.0)
     var grey = UIColor(red: 77/255, green: 77/255, blue: 77/255, alpha: 1.0)
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         //more customizations for this can be found here
         //http://www.ebc.cat/2015/03/07/customize-your-swrevealviewcontroller-slide-out-menu/
         self.revealViewController().rightViewRevealWidth = self.view.frame.width - 40
@@ -49,6 +64,8 @@ class RoomViewController: UIViewController {
         self.revealViewController().hideKeyboard()
         
         self.searchBar.addTarget(self, action: #selector(songSearchChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        self.searchBar.addTarget(self, action: #selector(searchBarTapped(_:)), forControlEvents: UIControlEvents.EditingDidBegin)
+        self.searchBar.addTarget(self, action: #selector(searchBarGone(_:)), forControlEvents: UIControlEvents.EditingDidEnd)
         
         
         
@@ -68,6 +85,7 @@ class RoomViewController: UIViewController {
         menuButton.setTitle("\u{2630}", forState: .Normal)
         menuButton.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.rightRevealToggle(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        observers.append(myRootRef)
         myRootRef.observeAuthEventWithBlock({ authData in
             if authData != nil {
                 self.myRootRef.childByAppendingPath("users")
@@ -76,6 +94,7 @@ class RoomViewController: UIViewController {
                         if(!(snapshot.value is NSNull)) {
                             self.setUser((snapshot.value as? String)!)
                             self.currentSong((snapshot.value as? String)!);
+                            self.songState((snapshot.value as? String)!);
                             self.retrieveSongList((snapshot.value as? String)!);
                         }
                     })
@@ -101,27 +120,138 @@ class RoomViewController: UIViewController {
         
     }
     
+    func songState(roomCode : String) {
+        let ref = myRootRef.childByAppendingPath("rooms")
+            .childByAppendingPath(roomCode).childByAppendingPath("song_playing")
+            observers.append(ref)
+            ref.observeEventType(.Value, withBlock: {snapshot in
+                if(!(snapshot.value is NSNull)) {
+                    let playing : Bool = (snapshot.value as? Bool)!
+                    if(playing == true) {
+                        let ref2 = self.myRootRef.childByAppendingPath("rooms")
+                            .childByAppendingPath(roomCode).childByAppendingPath("song_time")
+                            self.observers.append(ref2)
+                        
+                            ref2.observeSingleEventOfType(.Value, withBlock: {snapshot in
+                                let time = (snapshot.value as? Float)!
+                                self.playerView.seekTo(time, seekAhead: true)
+                                self.playerView.play()
+                            })
+                    }
+                    else {
+                        self.playerView.stop()
+                    }
+                }
+            
+            })
+    }
+    
+    func adminChange(roomCode : String, username : String) {
+        let ref = myRootRef.childByAppendingPath("rooms")
+            .childByAppendingPath(roomCode).childByAppendingPath("admin")
+        observers.append(ref)
+        ref.observeEventType(.Value, withBlock: {snapshot in
+            if(self.myRootRef.authData.uid == (snapshot.value as? String)!) {
+                self.admin = username
+                self.playButton.alpha = 1.0
+                self.nextButton.alpha = 1.0
+                self.previousButton.alpha = 1.0
+                let alertController = UIAlertController(title: "Admin", message:
+                    "You are now the admin for room " + roomCode, preferredStyle: UIAlertControllerStyle.Alert)
+                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler:nil))
+                self.presentViewController(alertController, animated: true, completion: nil)
+            } else {
+                self.playButton.alpha = 0.0
+                self.nextButton.alpha = 0.0
+                self.previousButton.alpha = 0.0
+            }
+        })
+    }
+    
     func songSearchChange(sender : UITextField) {
         print("searching for " + sender.text!)
     }
     
+    func searchBarTapped(sender : UITextField) {
+        print("helloo!")
+    }
+    
+    func searchBarGone(sender : UITextField) {
+        print("gooodbye!!")
+    }
+    
+    @IBAction func playButtonPressed(sender: AnyObject) {
+        if(self.songPresent == true) {
+            if(!(playerView.ready)) {
+                videoLoadingIndicator.startAnimating();
+            } else {
+                videoLoadingIndicator.stopAnimating();
+                if playerView.playerState != YouTubePlayerState.Playing {
+                    myRootRef.childByAppendingPath("rooms")
+                        .childByAppendingPath(self.roomCode).childByAppendingPath("song_playing")
+                        .setValue(true)
+                    songTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(songTimerIncrementor), userInfo: nil, repeats: true)
+                    playerView.play()
+                    playButton.setTitle("Pause", forState: .Normal)
+                } else {
+                    myRootRef.childByAppendingPath("rooms")
+                        .childByAppendingPath(self.roomCode).childByAppendingPath("song_playing")
+                        .setValue(false)
+                    playerView.pause()
+                    songTimer.invalidate()
+                    playButton.setTitle("Play", forState: .Normal)
+                }
+            }
+        }
+    }
+    
+    func songTimerIncrementor() {
+        self.songTime += 0.1
+        myRootRef.childByAppendingPath("rooms").childByAppendingPath(self.roomCode)
+            .childByAppendingPath("song_time").setValue(self.songTime)
+    }
+    
+    @IBAction func nextButtonPressed(sender: AnyObject) {
+        playerView.nextVideo()
+    }
+    @IBAction func previousButtonPressed(sender: AnyObject) {
+    }
     func currentSong(roomCode : String) {
         let ref = myRootRef.childByAppendingPath("rooms").childByAppendingPath(roomCode).childByAppendingPath("current_song")
         self.observers.append(ref)
         ref.observeEventType(.Value, withBlock: {snapshot in
             if(snapshot.value is NSNull) {
-                self.songName.text = "daddy - Joe Song"
+                self.songPresent = false
+                self.songName.text = "There are no videos in your playlist!"
             } else {
-                self.songName.text = (snapshot.value as? String)!
+                self.songPresent = true
+                let snapshotObj = snapshot.children.nextObject() as! FDataSnapshot
+                self.songName.text = snapshotObj.key
+                self.loadVideo((snapshotObj.value as? String)!)
+                
             }
             
         })
     }
+    
+    func loadVideo(videoUrl : String) {
+        playerView.playerVars = [
+            "playsinline": "1",
+            "controls": "0",
+            "showinfo": "0"
+        ]
+        print("loading video with URL "  + videoUrl)
+        //playerView.loadVideoID("wQg3bXrVLtg")
+        let url = NSURL(string: videoUrl)
+        playerView.loadVideoURL(url!)
+    }
+    
     func setUser(roomCode : String) {
         self.myRootRef.childByAppendingPath("users").childByAppendingPath(myRootRef.authData.uid)
         .childByAppendingPath("username")
             .observeSingleEventOfType(.Value, withBlock: { snapshot in
                 self.setCode(roomCode, username: (snapshot.value as? String)!)
+                self.adminChange(roomCode, username: (snapshot.value as? String)!);
             })
     }
     

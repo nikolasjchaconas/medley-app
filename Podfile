@@ -5,6 +5,7 @@ use_frameworks!
 
 target 'Medley' do
     pod 'Firebase', '>= 2.5.1'
+    pod 'YouTubePlayer', '~> 0.3'
 end
 
 target 'MedleyTests' do
