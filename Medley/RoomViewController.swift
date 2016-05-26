@@ -470,7 +470,7 @@ class RoomViewController: UIViewController {
         print("Application is now in background")
         timer.invalidate()
         
-        timer = NSTimer.scheduledTimerWithTimeInterval(15.0, target:self, selector: #selector(RoomViewController.leaveRoom), userInfo: nil, repeats: false)
+        timer = NSTimer.scheduledTimerWithTimeInterval(300.0, target:self, selector: #selector(RoomViewController.leaveRoom), userInfo: nil, repeats: false)
     }
     
     func myForegroundObserverMethod(notification: NSNotification){
