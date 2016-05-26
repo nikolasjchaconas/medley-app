@@ -39,6 +39,8 @@ class RoomViewController: UIViewController {
     var lighterGrey = UIColor(red: 190/255, green: 190/255, blue: 190/255, alpha: 1.0)
     var grey = UIColor(red: 77/255, green: 77/255, blue: 77/255, alpha: 1.0)
     
+    var timer = NSTimer()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -50,7 +52,12 @@ class RoomViewController: UIViewController {
         
         self.searchBar.addTarget(self, action: #selector(songSearchChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
         
+        //Observer for listening to when application enters background
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RoomViewController.myBackgroundObserverMethod(_:)), name:UIApplicationDidEnterBackgroundNotification, object: nil)
         
+        
+        //Observer for listening to when application enters foreground
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RoomViewController.myForegroundObserverMethod(_:)), name:UIApplicationWillEnterForegroundNotification, object: nil)
         
         chatBoxHeight = chatBox.frame.height
         chatBarConstraint = NSLayoutConstraint(item: chatBar, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute:NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0)
@@ -137,6 +144,7 @@ class RoomViewController: UIViewController {
         for observer in observers {
             observer.removeAllObservers()
         }
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     func checkForUsersAdded(roomCode : String, username : String) {
@@ -320,7 +328,8 @@ class RoomViewController: UIViewController {
         self.hideKeyboard()
     }
     
-    func leaveRoom (roomCode : String) {
+    func leaveRoom () {
+        print("Room has been left")
         
         let newMessage : [String : String] = [
             self.username : ""
@@ -336,7 +345,7 @@ class RoomViewController: UIViewController {
             .updateChildValues([current_uid + "/current_room": NSNull()])
         
         self.myRootRef.childByAppendingPath("members")
-            .childByAppendingPath(roomCode).childByAppendingPath(current_uid).removeValue()
+            .childByAppendingPath(self.roomCode).childByAppendingPath(current_uid).removeValue()
         
         
         
@@ -344,17 +353,17 @@ class RoomViewController: UIViewController {
             .observeSingleEventOfType(.Value, withBlock: { snapshot in
                 if((snapshot.value is NSNull)){
                     //no more members in the group
-                   self.destroyRoom(roomCode)
+                   self.destroyRoom(self.roomCode)
                 }
                 else {
                     //check to see if current user is the admin of that group
                     self.myRootRef.childByAppendingPath("rooms")
-                        .childByAppendingPath(roomCode).childByAppendingPath("admin")
+                        .childByAppendingPath(self.roomCode).childByAppendingPath("admin")
                         .observeSingleEventOfType(.Value, withBlock: { snapshot in
                             let current_admin = snapshot.value as! String
                             if(current_admin == current_uid) {
                                 //if we are the admin, appoint new admin
-                                self.appointNewAdmin(roomCode)
+                                self.appointNewAdmin(self.roomCode)
                                 self.performSegueWithIdentifier("HomeViewController", sender:self)
                             }
                             else {
@@ -378,7 +387,7 @@ class RoomViewController: UIViewController {
     }
     
     @IBAction func leaveRoomButtonPressed(sender: AnyObject) {
-        self.leaveRoom(self.roomCode)
+        self.leaveRoom()
             
     }
     
@@ -457,4 +466,17 @@ class RoomViewController: UIViewController {
         
     }
     
+    func myBackgroundObserverMethod(notification: NSNotification){
+        print("Application is now in background")
+        timer.invalidate()
+        
+        timer = NSTimer.scheduledTimerWithTimeInterval(15.0, target:self, selector: #selector(RoomViewController.leaveRoom), userInfo: nil, repeats: false)
+    }
+    
+    func myForegroundObserverMethod(notification: NSNotification){
+        print("Application is now in foreground")
+        timer.invalidate()
+    }
+    
 }
+
