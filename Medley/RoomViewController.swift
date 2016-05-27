@@ -43,7 +43,7 @@ class RoomViewController: UIViewController, YouTubePlayerDelegate {
     var observers = [Firebase]()
     var songStateRef : Firebase = Firebase()
     var songTime : Float = 0
-    var seekAmount : Float = 0
+    var seekAmount : Float = 0.5
     var songTimer : NSTimer = NSTimer()
     var waiting : Bool = false
     var firstTime : Bool = true
@@ -143,17 +143,27 @@ class RoomViewController: UIViewController, YouTubePlayerDelegate {
         func songState(roomCode : String) {
             
             songStateRef = myRootRef.childByAppendingPath("rooms")
-                .childByAppendingPath(roomCode).childByAppendingPath("song_playing")
+                .childByAppendingPath(roomCode).childByAppendingPath("state")
             observers.append(songStateRef)
+            if(waiting == true) {
+                waiting = false
+                self.videoLoadingIndicator.stopAnimating()
+            }
             songStateRef.observeEventType(.Value, withBlock: {snapshot in
                 if(!(snapshot.value is NSNull)) {
-                    let playing : Bool = (snapshot.value as? Bool)!
-                    if(playing == true) {
+                    let state: String = (snapshot.value as? String)!
+                    if(state == "playing") {
+                        print("song is currently playing, calling play and seeking to " + String(self.songTime + self.seekAmount))
                         self.playerView.play()
                         self.playerView.seekTo(self.songTime + self.seekAmount, seekAhead: true)
                     }
-                    else {
+                    else if(state == "paused") {
+                        print("pressing pause2")
                         self.playerView.pause()
+                    } else if (state == "ended") {
+                        //this is kind of optional
+                        print("stopping video")
+                        self.playerView.stop()
                     }
                 }
                 
@@ -161,46 +171,64 @@ class RoomViewController: UIViewController, YouTubePlayerDelegate {
         }
     
         func playOrPauseVideo() {
-            print("here")
             if playerView.playerState != YouTubePlayerState.Playing {
                 myRootRef.childByAppendingPath("rooms")
-                    .childByAppendingPath(self.roomCode).childByAppendingPath("song_playing")
-                    .setValue(true)
+                    .childByAppendingPath(self.roomCode).childByAppendingPath("state")
+                    .setValue("playing")
                 print("playing")
                 playerView.play()
                 playButton.setTitle("Pause", forState: .Normal)
             } else {
                 myRootRef.childByAppendingPath("rooms")
-                    .childByAppendingPath(self.roomCode).childByAppendingPath("song_playing")
-                    .setValue(false)
-                print("pausing")
+                    .childByAppendingPath(self.roomCode).childByAppendingPath("state")
+                    .setValue("paused")
+                print("pressing pause")
                 playerView.pause()
                 playButton.setTitle("Play", forState: .Normal)
             }
         }
-    
+        //protocols
         func playerReady(videoPlayer: YouTubePlayerView) {
             if(myRootRef.authData.uid != self.admin) {
                 if(firstTime == true) {
                     firstTime = false
+                    print("calling song state")
                     songState(self.roomCode)
                 }
                 
+            } else {
+                if(waiting == true) {
+                    print("waiting")
+                    waiting = false
+                    self.videoLoadingIndicator.stopAnimating()
+                    self.playOrPauseVideo()
+                }
             }
-            if(waiting == true) {
-                waiting = false
-                self.videoLoadingIndicator.stopAnimating()
-                self.playOrPauseVideo()
-            }
+            
         }
     
         func playerStateChanged(videoPlayer: YouTubePlayerView, playerState: YouTubePlayerState) {
-            
+            print("state is " + String(playerState))
+            if(playerState == YouTubePlayerState.Ended) {
+                seekAmount = 0.5
+            }
             if(myRootRef.authData.uid == self.admin) {
-                if(self.playerView.playerState != YouTubePlayerState.Playing) {
+                if(self.playerView.playerState == YouTubePlayerState.Paused) {
+                    print("turning off timer")
                     songTimer.invalidate()
-                } else {
+                } else if (playerState == YouTubePlayerState.Playing) {
                     songTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(songTimerIncrementor), userInfo: nil, repeats: true)
+                } else if(playerState == YouTubePlayerState.Ended) {
+                    print("turning off timer")
+                    songTimer.invalidate()
+                    playButton.setTitle("Play", forState: .Normal)
+                    setSeekZero()
+                    myRootRef.childByAppendingPath("rooms")
+                        .childByAppendingPath(self.roomCode).childByAppendingPath("song_playing")
+                        .setValue(false)
+                    myRootRef.childByAppendingPath("rooms")
+                        .childByAppendingPath(self.roomCode).childByAppendingPath("state")
+                        .setValue("ended")
                 }
             }
             
@@ -261,6 +289,12 @@ class RoomViewController: UIViewController, YouTubePlayerDelegate {
     
     func songTimerIncrementor() {
         self.songTime += 0.1
+        myRootRef.childByAppendingPath("rooms").childByAppendingPath(self.roomCode)
+            .childByAppendingPath("song_time").setValue(self.songTime)
+    }
+    
+    func setSeekZero() {
+        songTime = 0
         myRootRef.childByAppendingPath("rooms").childByAppendingPath(self.roomCode)
             .childByAppendingPath("song_time").setValue(self.songTime)
     }
