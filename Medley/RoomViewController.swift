@@ -135,7 +135,9 @@ class RoomViewController: UIViewController, YouTubePlayerDelegate {
             self.observers.append(ref2)
             
             ref2.observeEventType(.Value, withBlock: {snapshot in
-                self.songTime = (snapshot.value as? Float)!
+                if (!(snapshot.value is NSNull)) {
+                    self.songTime = (snapshot.value as? Float)!
+                }
             })
         }
         func songState(roomCode : String) {
@@ -148,7 +150,7 @@ class RoomViewController: UIViewController, YouTubePlayerDelegate {
                     let playing : Bool = (snapshot.value as? Bool)!
                     if(playing == true) {
                         self.playerView.play()
-                        self.playerView.seekTo(self.songTime, seekAhead: true)
+                        self.playerView.seekTo(self.songTime + self.seekAmount, seekAhead: true)
                     }
                     else {
                         self.playerView.pause()
@@ -522,7 +524,7 @@ class RoomViewController: UIViewController, YouTubePlayerDelegate {
     }
     
     func leaveRoom (roomCode : String) {
-        
+        playerView.stop()
         let newMessage : [String : String] = [
             self.username : ""
         ]

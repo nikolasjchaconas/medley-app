@@ -39,7 +39,7 @@ class SlideOutMenuViewController: UITableViewController {
         self.tableArray = [text]
         self.tableArray.append(makeMutableString("Share the code with Friends!"))
         self.tableArray.append(makeMutableString(""))
-        self.tableArray.append(makeMutableString("Current Members:"))
+        self.tableArray.append(makeMutableString("Admin:"))
         self.showMembers(roomCode)
         tableReference.reloadData()
     }
@@ -52,6 +52,20 @@ class SlideOutMenuViewController: UITableViewController {
         return NSMutableAttributedString(string:text, attributes: [NSFontAttributeName : UIFont.boldSystemFontOfSize(16)])
     }
     func showMembers(roomCode : String) {
+        let observer = myRootRef.childByAppendingPath("rooms").childByAppendingPath(roomCode)
+        .childByAppendingPath("admin")
+        
+        observer.observeEventType(.Value, withBlock: {snapshot in
+            self.myRootRef.childByAppendingPath("users").childByAppendingPath((snapshot.value as? String)!)
+                .childByAppendingPath("username")
+                .observeSingleEventOfType(.Value, withBlock: {snapshot in
+                    let value = self.makeBoldMutableString("   " + (snapshot.value as? String)!)
+                    self.addMemberToIndex(value, index: 4)
+                })
+        })
+        
+        self.tableArray.append(makeMutableString(""))
+        self.tableArray.append(makeMutableString("Members:"))
         let observer1 =
         myRootRef.childByAppendingPath("members").childByAppendingPath(roomCode)
         observers.append(observer1)
@@ -71,19 +85,25 @@ class SlideOutMenuViewController: UITableViewController {
             })
     }
     
-//    override func viewWillDisappear(animated: Bool) {
-//        self.removeAllObservers()
-//    }
-    
     func appendMember(username : NSMutableAttributedString) {
         tableArray.append(username)
         tableReference.reloadData()
     }
     
+    func addMemberToIndex(username : NSMutableAttributedString, index : Int) {
+        tableArray.insert(username, atIndex: index)
+        tableReference.reloadData()
+    }
+    
     func removeMember(username : NSMutableAttributedString) {
-        let index = tableArray.indexOf(username)
+        var index = tableArray.indexOf(username)
         if (index != nil) {
             tableArray.removeAtIndex(index!)
+            //try again incase member is also admin
+            index = tableArray.indexOf(username)
+            if(index != nil) {
+                tableArray.removeAtIndex(index!)
+            }
         }
         tableReference.reloadData()
     }
