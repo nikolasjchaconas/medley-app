@@ -151,7 +151,7 @@ class RoomViewController: UIViewController, YouTubePlayerDelegate {
                         self.playerView.seekTo(self.songTime, seekAhead: true)
                     }
                     else {
-                        self.playerView.stop()
+                        self.playerView.pause()
                     }
                 }
                 
@@ -159,17 +159,19 @@ class RoomViewController: UIViewController, YouTubePlayerDelegate {
         }
     
         func playOrPauseVideo() {
+            print("here")
             if playerView.playerState != YouTubePlayerState.Playing {
                 myRootRef.childByAppendingPath("rooms")
                     .childByAppendingPath(self.roomCode).childByAppendingPath("song_playing")
                     .setValue(true)
-                
+                print("playing")
                 playerView.play()
                 playButton.setTitle("Pause", forState: .Normal)
             } else {
                 myRootRef.childByAppendingPath("rooms")
                     .childByAppendingPath(self.roomCode).childByAppendingPath("song_playing")
                     .setValue(false)
+                print("pausing")
                 playerView.pause()
                 playButton.setTitle("Play", forState: .Normal)
             }
@@ -271,15 +273,16 @@ class RoomViewController: UIViewController, YouTubePlayerDelegate {
     }
     
     @IBAction func syncVideoForwardButtonPressed(sender: AnyObject) {
+        print(playerView.playerState)
         if(playerView.playerState == YouTubePlayerState.Playing) {
-            seekAmount += 0.05
+            seekAmount += 0.1
             playerView.seekTo(songTime + seekAmount, seekAhead: true)
         }
     }
     
     @IBAction func syncVideoBackwardButtonPressed(sender: AnyObject) {
         if(playerView.playerState == YouTubePlayerState.Playing) {
-            seekAmount -= 0.05
+            seekAmount -= 0.1
             playerView.seekTo(songTime + seekAmount, seekAhead: true)
         }
     }
