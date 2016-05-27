@@ -43,7 +43,7 @@ class RoomViewController: UIViewController, YouTubePlayerDelegate {
     var observers = [Firebase]()
     var songStateRef : Firebase = Firebase()
     var songTime : Float = 0
-    var seekAmount : Float = 0.5
+    var seekAmount : Float = 0
     var songTimer : NSTimer = NSTimer()
     var waiting : Bool = false
     var firstTime : Bool = true
@@ -143,7 +143,7 @@ class RoomViewController: UIViewController, YouTubePlayerDelegate {
         func songState(roomCode : String) {
             
             songStateRef = myRootRef.childByAppendingPath("rooms")
-                .childByAppendingPath(roomCode).childByAppendingPath("state")
+                .childByAppendingPath(roomCode).childByAppendingPath("song_state")
             observers.append(songStateRef)
             if(waiting == true) {
                 waiting = false
@@ -173,14 +173,14 @@ class RoomViewController: UIViewController, YouTubePlayerDelegate {
         func playOrPauseVideo() {
             if playerView.playerState != YouTubePlayerState.Playing {
                 myRootRef.childByAppendingPath("rooms")
-                    .childByAppendingPath(self.roomCode).childByAppendingPath("state")
+                    .childByAppendingPath(self.roomCode).childByAppendingPath("song_state")
                     .setValue("playing")
                 print("playing")
                 playerView.play()
                 playButton.setTitle("Pause", forState: .Normal)
             } else {
                 myRootRef.childByAppendingPath("rooms")
-                    .childByAppendingPath(self.roomCode).childByAppendingPath("state")
+                    .childByAppendingPath(self.roomCode).childByAppendingPath("song_state")
                     .setValue("paused")
                 print("pressing pause")
                 playerView.pause()
@@ -210,7 +210,7 @@ class RoomViewController: UIViewController, YouTubePlayerDelegate {
         func playerStateChanged(videoPlayer: YouTubePlayerView, playerState: YouTubePlayerState) {
             print("state is " + String(playerState))
             if(playerState == YouTubePlayerState.Ended) {
-                seekAmount = 0.5
+                seekAmount = 0
             }
             if(myRootRef.authData.uid == self.admin) {
                 if(self.playerView.playerState == YouTubePlayerState.Paused) {
@@ -227,7 +227,7 @@ class RoomViewController: UIViewController, YouTubePlayerDelegate {
                         .childByAppendingPath(self.roomCode).childByAppendingPath("song_playing")
                         .setValue(false)
                     myRootRef.childByAppendingPath("rooms")
-                        .childByAppendingPath(self.roomCode).childByAppendingPath("state")
+                        .childByAppendingPath(self.roomCode).childByAppendingPath("song_state")
                         .setValue("ended")
                 }
             }
@@ -244,6 +244,11 @@ class RoomViewController: UIViewController, YouTubePlayerDelegate {
         ref.observeEventType(.Value, withBlock: {snapshot in
             self.admin = (snapshot.value as? String)!
             if(self.myRootRef.authData.uid == (snapshot.value as? String)!) {
+                if(self.playerView.playerState == YouTubePlayerState.Playing) {
+                    self.playButton.setTitle("Pause", forState: .Normal)
+                    self.songTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(self.songTimerIncrementor), userInfo: nil, repeats: true)
+                }
+                self.seekAmount = 0
                 self.songStateRef.removeAllObservers()
                 self.playButton.alpha = 1.0
                 self.nextButton.alpha = 1.0
@@ -345,9 +350,10 @@ class RoomViewController: UIViewController, YouTubePlayerDelegate {
         playerView.playerVars = [
             "playsinline": "1",
             "controls": "0",
-            "showinfo": "0"
+            "showinfo": "0",
+            "start" : String(songTime)
         ]
-        print("loading video with URL "  + videoUrl)
+        print("loading video with URL "  + videoUrl + "to timestamp " + String(songTime))
         //playerView.loadVideoID("wQg3bXrVLtg")
         let url = NSURL(string: videoUrl)
         playerView.loadVideoURL(url!)
@@ -558,11 +564,12 @@ class RoomViewController: UIViewController, YouTubePlayerDelegate {
     }
     
     func leaveRoom (roomCode : String) {
-        playerView.stop()
+        
         let newMessage : [String : String] = [
             self.username : ""
         ]
-        
+        playerView.stop()
+        songTimer.invalidate()
         sendMessage(newMessage)
         removeAllObservers()
         
@@ -585,19 +592,14 @@ class RoomViewController: UIViewController, YouTubePlayerDelegate {
                 }
                 else {
                     //check to see if current user is the admin of that group
-                    self.myRootRef.childByAppendingPath("rooms")
-                        .childByAppendingPath(roomCode).childByAppendingPath("admin")
-                        .observeSingleEventOfType(.Value, withBlock: { snapshot in
-                            let current_admin = snapshot.value as! String
-                            if(current_admin == current_uid) {
-                                //if we are the admin, appoint new admin
-                                self.appointNewAdmin(roomCode)
-                                self.performSegueWithIdentifier("HomeViewController", sender:self)
-                            }
-                            else {
-                                self.performSegueWithIdentifier("HomeViewController", sender:self)
-                            }
-                        })
+                    if(self.admin == current_uid) {
+                        //if we are the admin, appoint new admin
+                        self.appointNewAdmin(roomCode)
+                        self.performSegueWithIdentifier("HomeViewController", sender:self)
+                    }
+                    else {
+                        self.performSegueWithIdentifier("HomeViewController", sender:self)
+                    }
                 }
             })
         
@@ -610,6 +612,7 @@ class RoomViewController: UIViewController, YouTubePlayerDelegate {
                 let child: FDataSnapshot = snapshot.children.nextObject() as! FDataSnapshot
                 self.myRootRef.childByAppendingPath("rooms").childByAppendingPath(roomCode).childByAppendingPath("admin")
                     .setValue(child.key)
+                self.songTimer.invalidate()
             })
         
     }
