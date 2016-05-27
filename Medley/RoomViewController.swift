@@ -48,6 +48,8 @@ class RoomViewController: UIViewController, YouTubePlayerDelegate {
     var waiting : Bool = false
     var firstTime : Bool = true
     var timeoutTimer :  NSTimer = NSTimer()
+    var messagesMissing : Int = 0
+    var inMessages : Bool = true
     @IBOutlet weak var songName: UILabel!
     
     @IBOutlet weak var searchBar: UITextField!
@@ -60,7 +62,7 @@ class RoomViewController: UIViewController, YouTubePlayerDelegate {
     var delegate:YouTubePlayerDelegate?
     
     var lighterGrey = UIColor(red: 190/255, green: 190/255, blue: 190/255, alpha: 1.0)
-    var grey = UIColor(red: 77/255, green: 77/255, blue: 77/255, alpha: 1.0)
+    var grey = UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1.0)
     
     
     
@@ -88,9 +90,7 @@ class RoomViewController: UIViewController, YouTubePlayerDelegate {
         chatBarConstraint = NSLayoutConstraint(item: chatBar, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute:NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0)
         
         songsButton.setTitleColor(lighterGrey, forState: .Normal)
-        songsButton.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
         messagesButton.setTitleColor(grey, forState: .Normal)
-        messagesButton.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
         
         view.addConstraint(chatBarConstraint)
         // Do any additional setup after loading the view, typically from a nib.
@@ -510,39 +510,43 @@ class RoomViewController: UIViewController, YouTubePlayerDelegate {
             observers.append(ref)
         
             ref.observeEventType(.ChildAdded, withBlock: { snapshot in
-            self.messageCount += 1
-            let snapshotObj = snapshot.children.nextObject() as! FDataSnapshot
-            let message = (snapshotObj.value as? String)!
-            let messageLength = message.characters.count
-            let lineCount = messageLength > 40 ? messageLength / 40 + 1 : 1
-            self.totalLines += CGFloat(lineCount)
-            let textBoxWidth : CGFloat = 20 * CGFloat(lineCount)
-            var rect = CGRectMake(0, 0, self.chatBox.bounds.size.width, textBoxWidth)
-            rect.origin.y = 20 * (self.totalLines - CGFloat(lineCount))
-            let label = UILabel(frame: rect)
-            label.font = label.font.fontWithSize(15)
-            label.layer.borderWidth = 1
-            label.layer.borderColor = (UIColor.whiteColor()).CGColor
-            label.numberOfLines = lineCount
-            //label.backgroundColor = UIColor(red: 192/255, green: 192/255, blue: 192/255, alpha: 1.0)
-            //label.textColor = UIColor.whiteColor()
-            var stylizedMessage : NSMutableAttributedString
-            if(message == "" || message == " ") {
-                let string = message == "" ? " " + snapshotObj.key + " has left the room." : " " + snapshotObj.key + " has joined the room."
-                stylizedMessage = NSMutableAttributedString(string: string, attributes: [NSFontAttributeName : UIFont.italicSystemFontOfSize(label.font.pointSize)])
-            }
-            else {
-                stylizedMessage = NSMutableAttributedString(string: " " + snapshotObj.key + ": ", attributes: [NSFontAttributeName : UIFont.boldSystemFontOfSize(label.font.pointSize)])
-                let attrMessage = NSAttributedString(string: message, attributes: [NSForegroundColorAttributeName : UIColor.blackColor()])
-                stylizedMessage.appendAttributedString(attrMessage)
-            }
-            label.textAlignment = NSTextAlignment.Left
-            
-            label.attributedText = stylizedMessage
-            self.chatBox.contentSize = CGSizeMake(320, 20 * self.totalLines)
-            self.chatBox.addSubview(label)
-            self.scrollChat()
-        })
+                if(self.inMessages == false) {
+                    self.messagesMissing += 1
+                    self.showMessagesMissed()
+                }
+                self.messageCount += 1
+                let snapshotObj = snapshot.children.nextObject() as! FDataSnapshot
+                let message = (snapshotObj.value as? String)!
+                let messageLength = message.characters.count
+                let lineCount = messageLength > 40 ? messageLength / 40 + 1 : 1
+                self.totalLines += CGFloat(lineCount)
+                let textBoxWidth : CGFloat = 20 * CGFloat(lineCount)
+                var rect = CGRectMake(0, 0, self.chatBox.bounds.size.width, textBoxWidth)
+                rect.origin.y = 20 * (self.totalLines - CGFloat(lineCount))
+                let label = UILabel(frame: rect)
+                label.font = label.font.fontWithSize(15)
+                label.layer.borderWidth = 1
+                label.layer.borderColor = (UIColor.whiteColor()).CGColor
+                label.numberOfLines = lineCount
+                //label.backgroundColor = UIColor(red: 192/255, green: 192/255, blue: 192/255, alpha: 1.0)
+                //label.textColor = UIColor.whiteColor()
+                var stylizedMessage : NSMutableAttributedString
+                if(message == "" || message == " ") {
+                    let string = message == "" ? " " + snapshotObj.key + " has left the room." : " " + snapshotObj.key + " has joined the room."
+                    stylizedMessage = NSMutableAttributedString(string: string, attributes: [NSFontAttributeName : UIFont.italicSystemFontOfSize(label.font.pointSize)])
+                }
+                else {
+                    stylizedMessage = NSMutableAttributedString(string: " " + snapshotObj.key + ": ", attributes: [NSFontAttributeName : UIFont.boldSystemFontOfSize(label.font.pointSize)])
+                    let attrMessage = NSAttributedString(string: message, attributes: [NSForegroundColorAttributeName : UIColor.blackColor()])
+                    stylizedMessage.appendAttributedString(attrMessage)
+                }
+                label.textAlignment = NSTextAlignment.Left
+                
+                label.attributedText = stylizedMessage
+                self.chatBox.contentSize = CGSizeMake(320, 20 * self.totalLines)
+                self.chatBox.addSubview(label)
+                self.scrollChat()
+            })
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -659,11 +663,20 @@ class RoomViewController: UIViewController, YouTubePlayerDelegate {
         })
         
     }
+    
+    func showMessagesMissed() {
+        messagesMissing = messagesMissing > 10 ? 10 : messagesMissing
+        let num = messagesMissing + 10101
+        let unicodeChar = Character(UnicodeScalar(num))
+        let toAdd = messagesMissing >= 10 ? "\(unicodeChar)" + "+" : "\(unicodeChar)"
+        messagesButton.setTitle("\(toAdd)" + " Messages", forState: .Normal)
+    }
+    
     @IBAction func songsButtonPressed(sender: AnyObject) {
+        inMessages = false
         self.hideKeyboard()
         songsButton.setTitleColor(grey, forState: .Normal)
         messagesButton.setTitleColor(lighterGrey, forState: .Normal)
-
         UIView.animateWithDuration(0.3, animations: {
             self.searchBar.alpha = 1.0
             self.chatBox.alpha = 0.0
@@ -674,6 +687,9 @@ class RoomViewController: UIViewController, YouTubePlayerDelegate {
     }
     
     @IBAction func messagesButtonPressed(sender: AnyObject) {
+        messagesButton.setTitle("Messages", forState: .Normal)
+        inMessages = true
+        messagesMissing = 0
         self.hideKeyboard()
         messagesButton.setTitleColor(grey, forState: .Normal)
         songsButton.setTitleColor(lighterGrey, forState: .Normal)
