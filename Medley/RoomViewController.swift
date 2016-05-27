@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import YouTubePlayer
 
-class RoomViewController: UIViewController {
+class RoomViewController: UIViewController, YouTubePlayerDelegate {
     
     @IBOutlet weak var albumCover: UIImageView!
     
@@ -41,6 +41,8 @@ class RoomViewController: UIViewController {
     var observers = [Firebase]()
     var songTime : Float = 0
     var songTimer : NSTimer = NSTimer()
+    var waiting : Bool = false
+    var firstTime : Bool = true
     @IBOutlet weak var songName: UILabel!
     
     @IBOutlet weak var searchBar: UITextField!
@@ -49,6 +51,9 @@ class RoomViewController: UIViewController {
     
     @IBOutlet weak var songsButton: UIButton!
     @IBOutlet weak var messagesButton: UIButton!
+    
+    var delegate:YouTubePlayerDelegate?
+    
     var lighterGrey = UIColor(red: 190/255, green: 190/255, blue: 190/255, alpha: 1.0)
     var grey = UIColor(red: 77/255, green: 77/255, blue: 77/255, alpha: 1.0)
     
@@ -67,7 +72,7 @@ class RoomViewController: UIViewController {
         self.searchBar.addTarget(self, action: #selector(searchBarTapped(_:)), forControlEvents: UIControlEvents.EditingDidBegin)
         self.searchBar.addTarget(self, action: #selector(searchBarGone(_:)), forControlEvents: UIControlEvents.EditingDidEnd)
         
-        
+        playerView.delegate = self
         
         chatBoxHeight = chatBox.frame.height
         chatBarConstraint = NSLayoutConstraint(item: chatBar, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute:NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0)
@@ -94,7 +99,7 @@ class RoomViewController: UIViewController {
                         if(!(snapshot.value is NSNull)) {
                             self.setUser((snapshot.value as? String)!)
                             self.currentSong((snapshot.value as? String)!);
-                            self.songState((snapshot.value as? String)!);
+                            //self.songState((snapshot.value as? String)!);
                             self.retrieveSongList((snapshot.value as? String)!);
                         }
                     })
@@ -115,44 +120,93 @@ class RoomViewController: UIViewController {
             
         })
         
-        let notificationCenter = NSNotificationCenter.defaultCenter()
-        notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplicationWillResignActiveNotification, object: nil)
+            let notificationCenter = NSNotificationCenter.defaultCenter()
+            notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplicationWillResignActiveNotification, object: nil)
         
-    }
+        }
     
-    func songState(roomCode : String) {
-        let ref = myRootRef.childByAppendingPath("rooms")
-            .childByAppendingPath(roomCode).childByAppendingPath("song_playing")
+        func songState(roomCode : String) {
+            let ref2 = self.myRootRef.childByAppendingPath("rooms")
+                .childByAppendingPath(roomCode).childByAppendingPath("song_time")
+            self.observers.append(ref2)
+            
+            ref2.observeEventType(.Value, withBlock: {snapshot in
+                self.songTime = (snapshot.value as? Float)!
+            })
+            
+            let ref = myRootRef.childByAppendingPath("rooms")
+                .childByAppendingPath(roomCode).childByAppendingPath("song_playing")
             observers.append(ref)
             ref.observeEventType(.Value, withBlock: {snapshot in
                 if(!(snapshot.value is NSNull)) {
                     let playing : Bool = (snapshot.value as? Bool)!
                     if(playing == true) {
-                        let ref2 = self.myRootRef.childByAppendingPath("rooms")
-                            .childByAppendingPath(roomCode).childByAppendingPath("song_time")
-                            self.observers.append(ref2)
-                        
-                            ref2.observeSingleEventOfType(.Value, withBlock: {snapshot in
-                                let time = (snapshot.value as? Float)!
-                                self.playerView.seekTo(time, seekAhead: true)
-                                self.playerView.play()
-                            })
+                        self.playerView.play()
+                        print("playing video")
+                        print("seeking to " + String(time))
+                        self.playerView.seekTo(self.songTime, seekAhead: false)
                     }
                     else {
                         self.playerView.stop()
                     }
                 }
-            
+                
             })
-    }
+        }
+    
+        func playOrPauseVideo() {
+            if playerView.playerState != YouTubePlayerState.Playing {
+                myRootRef.childByAppendingPath("rooms")
+                    .childByAppendingPath(self.roomCode).childByAppendingPath("song_playing")
+                    .setValue(true)
+                
+                playerView.play()
+                playButton.setTitle("Pause", forState: .Normal)
+            } else {
+                myRootRef.childByAppendingPath("rooms")
+                    .childByAppendingPath(self.roomCode).childByAppendingPath("song_playing")
+                    .setValue(false)
+                playerView.pause()
+                playButton.setTitle("Play", forState: .Normal)
+            }
+        }
+        func playerReady(videoPlayer: YouTubePlayerView) {
+            if(myRootRef.authData.uid != self.admin) {
+                if(firstTime == true) {
+                    firstTime = false
+                    songState(self.roomCode)
+                }
+                
+            }
+            if(waiting == true) {
+                waiting = false
+                self.videoLoadingIndicator.stopAnimating()
+                self.playOrPauseVideo()
+            }
+        }
+    
+        func playerStateChanged(videoPlayer: YouTubePlayerView, playerState: YouTubePlayerState) {
+            
+            if(myRootRef.authData.uid == self.admin) {
+                if(self.playerView.playerState != YouTubePlayerState.Playing) {
+                    songTimer.invalidate()
+                } else {
+                    songTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(songTimerIncrementor), userInfo: nil, repeats: true)
+                }
+            }
+            
+        }
+        func playerQualityChanged(videoPlayer: YouTubePlayerView, playbackQuality: YouTubePlaybackQuality) {
+            
+        }
     
     func adminChange(roomCode : String, username : String) {
         let ref = myRootRef.childByAppendingPath("rooms")
             .childByAppendingPath(roomCode).childByAppendingPath("admin")
         observers.append(ref)
         ref.observeEventType(.Value, withBlock: {snapshot in
+            self.admin = (snapshot.value as? String)!
             if(self.myRootRef.authData.uid == (snapshot.value as? String)!) {
-                self.admin = username
                 self.playButton.alpha = 1.0
                 self.nextButton.alpha = 1.0
                 self.previousButton.alpha = 1.0
@@ -183,24 +237,10 @@ class RoomViewController: UIViewController {
     @IBAction func playButtonPressed(sender: AnyObject) {
         if(self.songPresent == true) {
             if(!(playerView.ready)) {
-                videoLoadingIndicator.startAnimating();
+                self.videoLoadingIndicator.startAnimating()
+                self.waiting = true
             } else {
-                videoLoadingIndicator.stopAnimating();
-                if playerView.playerState != YouTubePlayerState.Playing {
-                    myRootRef.childByAppendingPath("rooms")
-                        .childByAppendingPath(self.roomCode).childByAppendingPath("song_playing")
-                        .setValue(true)
-                    songTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(songTimerIncrementor), userInfo: nil, repeats: true)
-                    playerView.play()
-                    playButton.setTitle("Pause", forState: .Normal)
-                } else {
-                    myRootRef.childByAppendingPath("rooms")
-                        .childByAppendingPath(self.roomCode).childByAppendingPath("song_playing")
-                        .setValue(false)
-                    playerView.pause()
-                    songTimer.invalidate()
-                    playButton.setTitle("Play", forState: .Normal)
-                }
+                self.playOrPauseVideo()
             }
         }
     }
@@ -212,7 +252,7 @@ class RoomViewController: UIViewController {
     }
     
     @IBAction func nextButtonPressed(sender: AnyObject) {
-        playerView.nextVideo()
+        songTime = 0
     }
     @IBAction func previousButtonPressed(sender: AnyObject) {
     }
@@ -228,7 +268,6 @@ class RoomViewController: UIViewController {
                 let snapshotObj = snapshot.children.nextObject() as! FDataSnapshot
                 self.songName.text = snapshotObj.key
                 self.loadVideo((snapshotObj.value as? String)!)
-                
             }
             
         })
@@ -282,8 +321,8 @@ class RoomViewController: UIViewController {
             let ref = myRootRef.childByAppendingPath("rooms")
                 .childByAppendingPath(roomCode).childByAppendingPath("admin")
             ref.observeSingleEventOfType(.Value, withBlock: {snapshot in
+                self.admin = (snapshot.value as? String)!
                 if(self.myRootRef.authData.uid == (snapshot.value as? String)!) {
-                    self.admin = currentUser
                     if(self.messageCount == 0) {
                         let message = [
                             "Medley Bot" : "You are in room " + roomCode + ". Share the room code with your friends"
