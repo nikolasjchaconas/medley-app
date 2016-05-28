@@ -286,6 +286,7 @@
                         <outlet property="loginErrorMessage" destination="U7m-Ye-FJe" id="THd-W5-dMq"/>
                         <outlet property="loginSuccessMessage" destination="9MQ-AL-8Vq" id="3hm-Uz-1QP"/>
                         <outlet property="loginText" destination="WDz-A1-TV7" id="syo-5W-hLU"/>
+                        <outlet property="medleyLogo" destination="oXh-kI-mfu" id="xjc-6f-HeO"/>
                         <outlet property="passwordConfirmationField" destination="hoJ-l1-seo" id="oIa-JY-4hY"/>
                         <outlet property="passwordField" destination="dWP-Z0-Bnx" id="6Ae-RA-Bmp"/>
                         <outlet property="resetPasswordButton" destination="Kwp-oU-gd2" id="nDx-ia-HlL"/>
@@ -928,7 +929,7 @@
                                     <rect key="frame" x="163" y="250.5" width="273" height="30"/>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="273" y="290" width="52" height="30"/>
+                                    <rect key="frame" x="274" y="290" width="52" height="30"/>
                                     <mask key="constraints">
                                         <exclude reference="nzp-j1-Fbb"/>
                                     </mask>
@@ -2275,9 +2276,9 @@ We hope you enjoy our app!</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="IAo-Np-OC9"/>
-        <segue reference="Ww9-ce-MGe"/>
-        <segue reference="XAP-CB-ULA"/>
         <segue reference="2xC-TU-NkH"/>
+        <segue reference="uJE-Sm-52R"/>
+        <segue reference="XAP-CB-ULA"/>
+        <segue reference="Du8-HD-pSP"/>
     </inferredMetricsTieBreakers>
 </document>
