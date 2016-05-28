@@ -13,6 +13,7 @@ class AccountViewController: UIViewController {
     var myRootRef = Firebase(url:"https://crackling-heat-1030.firebaseio.com/")
      
      @IBOutlet weak var newPasswordField: UITextField!
+     @IBOutlet weak var accountHeader: UILabel!
      @IBOutlet weak var oldPasswordField: UITextField!
      @IBOutlet weak var temporaryPasswordWarning: UILabel!
      @IBOutlet weak var updateInfoButton: UIButton!
@@ -29,6 +30,7 @@ class AccountViewController: UIViewController {
     
     //Color for button borders
     let buttonBorderColor : UIColor = UIColor( red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 0.35)
+    let buttonShadowColor : UIColor = UIColor( red: 20/255.0, green: 20/255.0, blue: 20/255.0, alpha: 1.0)
     var redColor = UIColor(red: 1, green:0, blue: 0, alpha: 0.8)
     var greenColor = UIColor(red: 0, green: 1, blue: 0, alpha: 0.8)
     
@@ -37,10 +39,30 @@ class AccountViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         self.hideKeyboardOnTap()
         
-        //Stylize update info button
+        // Round edges of update info button
         self.updateInfoButton.layer.cornerRadius = 5
         self.updateInfoButton.layer.borderColor = self.buttonBorderColor.CGColor
         self.updateInfoButton.layer.borderWidth = 1
+        
+        // Add shadow to update info button
+        self.updateInfoButton.layer.shadowColor = self.buttonShadowColor.CGColor
+        self.updateInfoButton.layer.shadowRadius = 1.0
+        self.updateInfoButton.layer.shadowOpacity = 1.0
+        self.updateInfoButton.layer.shadowOffset = CGSizeMake(0, 3)
+        
+        // Add shadow to account header, success message, and warning message
+        self.accountHeader.layer.shadowColor = buttonShadowColor.CGColor
+        self.accountHeader.layer.shadowOffset = CGSizeMake(0, 6)
+        self.accountHeader.layer.shadowRadius = 3.0
+        self.accountHeader.layer.shadowOpacity = 1.0
+        self.temporaryPasswordWarning.layer.shadowColor = buttonShadowColor.CGColor
+        self.temporaryPasswordWarning.layer.shadowOffset = CGSizeMake(0, 2)
+        self.temporaryPasswordWarning.layer.shadowRadius = 1.0
+        self.temporaryPasswordWarning.layer.shadowOpacity = 1.0
+        self.successMessage.layer.shadowColor = buttonShadowColor.CGColor
+        self.successMessage.layer.shadowOffset = CGSizeMake(0, 2)
+        self.successMessage.layer.shadowRadius = 1.0
+        self.successMessage.layer.shadowOpacity = 1.0
         
          if(self.IsPasswordTemporary()) {
             self.ShowWarning()

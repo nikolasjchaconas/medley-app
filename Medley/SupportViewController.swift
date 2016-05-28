@@ -15,11 +15,14 @@ class SupportViewController: UIViewController, UITextViewDelegate, MFMailCompose
     var myRootRef = Firebase(url:"https://crackling-heat-1030.firebaseio.com/")
     
     @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var supportHeader: UILabel!
+    @IBOutlet weak var supportMessage: UILabel!
     @IBOutlet weak var messageBox: UITextView!
     @IBOutlet weak var subjectBox: UITextField!
     @IBOutlet weak var successText: UILabel!
     
-    let buttonBorderColor : UIColor = UIColor( red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 0.35)
+    let buttonBorderColor : UIColor = UIColor( red: 200/255.0, green: 200/255.0, blue: 200/255.0, alpha: 0.35)
+    let buttonShadowColor : UIColor = UIColor( red: 20/255.0, green: 20/255.0, blue: 20/255.0, alpha: 1.0)
     let placeholderColor : UIColor = UIColor( red: 199/255.0, green: 199/255.0, blue: 205/255.0, alpha: 1)
     
     
@@ -27,10 +30,31 @@ class SupportViewController: UIViewController, UITextViewDelegate, MFMailCompose
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        //Stylize send button
+        // Add shadow to about header message, support info text, and success text
+        self.supportHeader.layer.shadowColor = buttonShadowColor.CGColor
+        self.supportHeader.layer.shadowOffset = CGSizeMake(0, 6)
+        self.supportHeader.layer.shadowRadius = 3.0
+        self.supportHeader.layer.shadowOpacity = 1.0
+        self.supportMessage.layer.shadowColor = buttonShadowColor.CGColor
+        self.supportMessage.layer.shadowOffset = CGSizeMake(0, 2)
+        self.supportMessage.layer.shadowRadius = 1.0
+        self.supportMessage.layer.shadowOpacity = 1.0
+        self.successText.layer.shadowColor = buttonShadowColor.CGColor
+        self.successText.layer.shadowOffset = CGSizeMake(0, 2)
+        self.successText.layer.shadowRadius = 1.0
+        self.successText.layer.shadowOpacity = 1.0
+        
+        // Round send button corners
         self.sendButton.layer.cornerRadius = 5
         self.sendButton.layer.borderColor = self.buttonBorderColor.CGColor
         self.sendButton.layer.borderWidth = 1
+        
+        //Put shadow on send button
+        self.sendButton.layer.shadowColor = self.buttonShadowColor.CGColor
+        self.sendButton.layer.shadowOpacity = 1.0
+        self.sendButton.layer.shadowRadius = 1.0
+        self.sendButton.layer.shadowOffset = CGSizeMake(0, 3)
+        
         //Stylize message box
         self.messageBox.layer.cornerRadius = 5
         self.messageBox.text = "Message..."
