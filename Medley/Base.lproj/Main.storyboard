@@ -1678,7 +1678,7 @@
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pG0-QV-9zy">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.28927801720000001" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="85" id="d19-ge-MWi">
                                         <variation key="heightClass=regular-widthClass=compact" constant="28"/>
@@ -1757,7 +1757,7 @@
                                 </variation>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="l6F-U5-0D3" firstAttribute="top" secondItem="Som-EB-XQP" secondAttribute="bottom" constant="8" symbolic="YES" id="1oV-HD-5xa"/>
                             <constraint firstItem="3Oj-VT-ZN7" firstAttribute="top" secondItem="l6F-U5-0D3" secondAttribute="bottom" constant="13" id="3lc-tj-wuf"/>
@@ -2277,7 +2277,7 @@ We hope you enjoy our app!</string>
     <inferredMetricsTieBreakers>
         <segue reference="IAo-Np-OC9"/>
         <segue reference="YK2-ml-4J1"/>
-        <segue reference="t4t-yz-8ab"/>
+        <segue reference="Yzw-TG-vj6"/>
         <segue reference="Yn2-Lj-OtF"/>
     </inferredMetricsTieBreakers>
 </document>
