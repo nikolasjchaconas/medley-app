@@ -7,50 +7,50 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		012A7E018F3D34F159894EBD7EACACF9 /* Empty.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2A4BC8682152FB3A76726AD81B5BF5 /* Empty.m */; };
+		012A7E018F3D34F159894EBD7EACACF9 /* Empty.m in Sources */ = {isa = PBXBuildFile; fileRef = E935D94D8C5E7B3BECE2696EE78F416A /* Empty.m */; };
 		0CFBE3E55CF475C56BA0E741B51040EE /* Pods-MedleyUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 70FCC174E59DE5239FC5BD56CAE60E9B /* Pods-MedleyUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		191DE2EB9A35585AE0A88BA9F833A1F4 /* FTransactionResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BD38BA517B69FE7A7A127C2EC65A414 /* FTransactionResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1C3EF85CD30E6FF2E51471BD5B3CEB29 /* Firebase.h in Headers */ = {isa = PBXBuildFile; fileRef = 615E939F5134C8957A06B5B93028D79F /* Firebase.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1D925BB011B04DDED982C7946571A67A /* FAuthType.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E3E791512DAAC70481721E861D8E1C3 /* FAuthType.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1D9D7FF5237C8CC91EF58DC45AC274FB /* Firebase-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F9241A3B97E113BBC52D11E5D2450ECA /* Firebase-dummy.m */; };
+		191DE2EB9A35585AE0A88BA9F833A1F4 /* FTransactionResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 608DCAEF95286977FF622A87CDF14D07 /* FTransactionResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1C3EF85CD30E6FF2E51471BD5B3CEB29 /* Firebase.h in Headers */ = {isa = PBXBuildFile; fileRef = 71E73501014190EEE2545A7540C2E959 /* Firebase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1D925BB011B04DDED982C7946571A67A /* FAuthType.h in Headers */ = {isa = PBXBuildFile; fileRef = 9514AE58A369D064AC9CBBB6C6278248 /* FAuthType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1D9D7FF5237C8CC91EF58DC45AC274FB /* Firebase-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E4BED426489AB079F9961EB612BC98 /* Firebase-dummy.m */; };
 		1E338760CBC33BC6B336387E038D2530 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DE1CA2C649A7D498907EDA2BB79F456 /* CFNetwork.framework */; };
 		1E6DE784A7B938E860AEB5C78446148D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16074B17A28C3B533169A6D610280008 /* SystemConfiguration.framework */; };
-		239B10F388840841389B7F09648735B1 /* FEventType.h in Headers */ = {isa = PBXBuildFile; fileRef = F1FF18D35C7746B8809EA5CC4BAB5C0E /* FEventType.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		24692341E454E3EE1C25F6F3944B5512 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 764F56587A817DAF4471759BE67F5970 /* Foundation.framework */; };
+		239B10F388840841389B7F09648735B1 /* FEventType.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F4D4D7226E7E063AC64768EB58308E8 /* FEventType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2DA501CF1B286EF46B32EE2B03D4ECDD /* Pods-Medley-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E4351B92D0EADC1B9BD6BA3FBE8DC75B /* Pods-Medley-dummy.m */; };
 		2F010FBB5B72A07DCBE0171288A87F57 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 764F56587A817DAF4471759BE67F5970 /* Foundation.framework */; };
-		2F1496011DBBB75777645194AAAFE92D /* FirebaseApp.h in Headers */ = {isa = PBXBuildFile; fileRef = ECB5CCFB066F76E1AB8EBB661FA640DA /* FirebaseApp.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4D75CF0089B20355B17A851513C4A002 /* FQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = 47EF72E021AB80B1DD1111AA2980363A /* FQuery.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2F1496011DBBB75777645194AAAFE92D /* FirebaseApp.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E7DDCEAE36CEE59C84BA02CE5CD742D /* FirebaseApp.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4D75CF0089B20355B17A851513C4A002 /* FQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DC54B52C44D77AB1BE310556565201C /* FQuery.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		52B5EF41A0C4DA71CBD032362B324BF7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 764F56587A817DAF4471759BE67F5970 /* Foundation.framework */; };
-		5C1A64375BCDCA2EAFA733682524D03E /* YouTubePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D679846188ABFA70E11BF44F447C9CE5 /* YouTubePlayer.swift */; };
-		60F9139BDD38565B78214C4FC5F5729D /* Firebase-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BDC3F9E60E821DD41A725D3F7B5E99B /* Firebase-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6646DA26298257396C7FFE141BB84CC3 /* FirebaseServerValue.h in Headers */ = {isa = PBXBuildFile; fileRef = 5743E6A771CCE5D941B0AB245393EC16 /* FirebaseServerValue.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		52EDE5086EBC52EC75BFE0B3B9156A62 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 764F56587A817DAF4471759BE67F5970 /* Foundation.framework */; };
+		60F9139BDD38565B78214C4FC5F5729D /* Firebase-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F21188616927ED2F90A80C66D89BCA8C /* Firebase-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6646DA26298257396C7FFE141BB84CC3 /* FirebaseServerValue.h in Headers */ = {isa = PBXBuildFile; fileRef = B61B33B83E3C2706D7BCCDFA661FAFC7 /* FirebaseServerValue.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6BF15CCD4DA49BE8B2E09E1FE2959A0F /* youtube-ios-player-helper-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EA0ED82C25D35FA157A983F1366ACDE /* youtube-ios-player-helper-dummy.m */; };
 		7F99930C3CFED769510185EB16FD07B2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 764F56587A817DAF4471759BE67F5970 /* Foundation.framework */; };
 		7FB6A477CE60593E7A9F2F7F9E547D78 /* Pods-MedleyTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 55BC0A59C1912628DE13680DF23EFF6E /* Pods-MedleyTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		82824CD9C733FF56A8A2EFA49C8F8034 /* YTPlayer.html in Resources */ = {isa = PBXBuildFile; fileRef = 85685CB08BD6AC87D062582D3AB4C02D /* YTPlayer.html */; };
-		97170BA7DAF582F7546CC0C6CB52D47D /* YouTubePlayer-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BAA3A38CC8584DA57F9BDE8C1BECE8A3 /* YouTubePlayer-dummy.m */; };
-		98814D1CAAE3250DA7B370A6BC5E852C /* Pods-Medley-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E4351B92D0EADC1B9BD6BA3FBE8DC75B /* Pods-Medley-dummy.m */; };
-		A0E1495C1AD2F88EB6ADBDCD580C63BB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 764F56587A817DAF4471759BE67F5970 /* Foundation.framework */; };
+		9ECA4C20F83E105EFB1348D525CA4855 /* Pods-Medley-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4037E01970B54AE6DF38FE7F6A320C27 /* Pods-Medley-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AF81733B7C89B9AA8BF593C7357D92D2 /* youtube-ios-player-helper-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 83E5DA3E68D0D788898CFA4E3A29319C /* youtube-ios-player-helper-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AFCDFED0483F645BE046C0C030325D6D /* YTPlayerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A08791B402C71D248B4AFC30A00D288 /* YTPlayerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AFF6EC6514DD0003278B7A01E9AE77EA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7336C3619B6C46F51EBB5A19DD32AEF5 /* Security.framework */; };
+		B147ABCCC63881EE533C7C12E7C74E9B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 764F56587A817DAF4471759BE67F5970 /* Foundation.framework */; };
 		B6AC9A89F7BBE3EB94F7DDC4CBFBA9F2 /* Pods-MedleyTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB9D73107327713E5C5DF6932B73AA0F /* Pods-MedleyTests-dummy.m */; };
-		C23FCF31260D47CEC1494A292DAA1A1E /* FAuthData.h in Headers */ = {isa = PBXBuildFile; fileRef = C211DB4133BDA3000B9A6390A22E654B /* FAuthData.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CE8A916EA3E4738DA90908BE2DEB0637 /* Pods-Medley-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4037E01970B54AE6DF38FE7F6A320C27 /* Pods-Medley-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C23FCF31260D47CEC1494A292DAA1A1E /* FAuthData.h in Headers */ = {isa = PBXBuildFile; fileRef = 67C3078B76496550C662C9642A06518B /* FAuthData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D1D9A4151BF2F726F412E5EDE3CF200F /* Pods-MedleyUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 636D7A5DCDD9E18954D5310B3627FE0A /* Pods-MedleyUITests-dummy.m */; };
-		DB05A9DD8244D10C28B6915C514AE15F /* FMutableData.h in Headers */ = {isa = PBXBuildFile; fileRef = 67FBA9C03C9E898B139048F5E12D8876 /* FMutableData.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E60FA42EEC3ECC48701DB55986D25D69 /* FConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = F78792A2511EC42D0A56212027B0620A /* FConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E720BC56CDD2341DBA34ECC0AA19769B /* YTPlayer.html in Sources */ = {isa = PBXBuildFile; fileRef = 85685CB08BD6AC87D062582D3AB4C02D /* YTPlayer.html */; };
-		E8B534D15D2B25919ACD898217266891 /* FDataSnapshot.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F31F11A14413260D639EDE3EB9F65E6 /* FDataSnapshot.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F541E42944F98AC2AD0396E42BF17118 /* YouTubePlayer-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E29F48A74B38326362463F5E27D41E4 /* YouTubePlayer-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D4E48079CD0EE0D7E0366011AD4B58B5 /* Assets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 346A16E3BC55F63B4D4DF8008F1545BC /* Assets.bundle */; };
+		DB05A9DD8244D10C28B6915C514AE15F /* FMutableData.h in Headers */ = {isa = PBXBuildFile; fileRef = 18703AB3B57CA12F2C626A964E4EE9B2 /* FMutableData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD02F43CD040D3259317F7BBE60DF77D /* YTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F41DB0696342B69846C1F3783AEDA7 /* YTPlayerView.m */; };
+		E60FA42EEC3ECC48701DB55986D25D69 /* FConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 81823798CD447743A51EAC565721930E /* FConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E8B534D15D2B25919ACD898217266891 /* FDataSnapshot.h in Headers */ = {isa = PBXBuildFile; fileRef = D6790B8A4C14512DFC4C9F2A157B0DF0 /* FDataSnapshot.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		1D00129A8A0A4FE7C3D576AB6D930A30 /* PBXContainerItemProxy */ = {
+		42DD7A2F505CD3ABB6E3E00C72A31246 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 1647D40F1749B490B0CD3819B5D39A8F;
-			remoteInfo = YouTubePlayer;
+			remoteGlobalIDString = 029C331EDE13427740C1ED5DFADD35AB;
+			remoteInfo = "youtube-ios-player-helper";
 		};
-		E7D3D0748CFAAC65E25BAF49729CA792 /* PBXContainerItemProxy */ = {
+		C2B54340C9ABDBC4DE0AFFB46EC78A98 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
@@ -60,76 +60,85 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		05AD012085DCD38F00362A783372B022 /* Pods_Medley.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Medley.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		06B570DEBB82DA432D71C97034301F08 /* youtube-ios-player-helper.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "youtube-ios-player-helper.modulemap"; sourceTree = "<group>"; };
 		0B6D60AD87093EABA776DA45508B2749 /* Pods-Medley.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Medley.debug.xcconfig"; sourceTree = "<group>"; };
-		0BDC3F9E60E821DD41A725D3F7B5E99B /* Firebase-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Firebase-umbrella.h"; sourceTree = "<group>"; };
-		0E8B343AFAA5EC5028867EF678C35A5C /* Pods_MedleyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MedleyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12CE9E5393A6809DD82ABA6FBE430838 /* Pods-MedleyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MedleyTests.debug.xcconfig"; sourceTree = "<group>"; };
+		15966848EF5BDC4E033F76A4914FF44A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		16074B17A28C3B533169A6D610280008 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		18703AB3B57CA12F2C626A964E4EE9B2 /* FMutableData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FMutableData.h; sourceTree = "<group>"; };
+		1A08791B402C71D248B4AFC30A00D288 /* YTPlayerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YTPlayerView.h; path = Classes/YTPlayerView.h; sourceTree = "<group>"; };
 		1D713C3D78B26F4D08A9B20631AB7AAA /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1E29F48A74B38326362463F5E27D41E4 /* YouTubePlayer-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "YouTubePlayer-umbrella.h"; sourceTree = "<group>"; };
+		1E7DDCEAE36CEE59C84BA02CE5CD742D /* FirebaseApp.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FirebaseApp.h; sourceTree = "<group>"; };
+		1F4D4D7226E7E063AC64768EB58308E8 /* FEventType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FEventType.h; sourceTree = "<group>"; };
 		20DE7140941A8EEC9E161E61B5FAC4B2 /* Pods-MedleyTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MedleyTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		274C79DAABFAD2CED5A053EB1558F64A /* Pods-Medley-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Medley-acknowledgements.markdown"; sourceTree = "<group>"; };
 		2AFB59437B1AE258D56F664D63C70D75 /* Pods-MedleyUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MedleyUITests-acknowledgements.plist"; sourceTree = "<group>"; };
-		2BD38BA517B69FE7A7A127C2EC65A414 /* FTransactionResult.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FTransactionResult.h; sourceTree = "<group>"; };
-		2F31F11A14413260D639EDE3EB9F65E6 /* FDataSnapshot.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FDataSnapshot.h; sourceTree = "<group>"; };
+		2EB9D606ADD5082A37C7E5D26EE4BF37 /* Firebase.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Firebase.xcconfig; sourceTree = "<group>"; };
 		2F65D8287C9F1A1949A7F3CE56408C0B /* Pods-Medley.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Medley.release.xcconfig"; sourceTree = "<group>"; };
-		3B2A4BC8682152FB3A76726AD81B5BF5 /* Empty.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = Empty.m; sourceTree = "<group>"; };
+		346A16E3BC55F63B4D4DF8008F1545BC /* Assets.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = Assets.bundle; path = "youtube-ios-player-helper/Assets.bundle"; sourceTree = "<group>"; };
+		3B4D9ED5255F6F0BE042A84F685A0E89 /* youtube-ios-player-helper-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "youtube-ios-player-helper-prefix.pch"; sourceTree = "<group>"; };
 		3D57FC3D4813D0A3A12F56C34966F88A /* Pods-Medley.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Medley.modulemap"; sourceTree = "<group>"; };
 		4037E01970B54AE6DF38FE7F6A320C27 /* Pods-Medley-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Medley-umbrella.h"; sourceTree = "<group>"; };
 		47178375D37E6A35336DC3EBE3839B37 /* Pods-MedleyUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MedleyUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		474552E54CD4E531BC2A2B4DD70A8037 /* Pods-MedleyTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MedleyTests-frameworks.sh"; sourceTree = "<group>"; };
-		47EF72E021AB80B1DD1111AA2980363A /* FQuery.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FQuery.h; sourceTree = "<group>"; };
 		4957D9AFE542406F69B64DAB333C18DF /* Pods-MedleyTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MedleyTests-resources.sh"; sourceTree = "<group>"; };
-		4E3E791512DAAC70481721E861D8E1C3 /* FAuthType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FAuthType.h; sourceTree = "<group>"; };
 		5247AB68FF632AAF248C630F02165947 /* Pods-MedleyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MedleyTests.release.xcconfig"; sourceTree = "<group>"; };
 		55BC0A59C1912628DE13680DF23EFF6E /* Pods-MedleyTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MedleyTests-umbrella.h"; sourceTree = "<group>"; };
-		5743E6A771CCE5D941B0AB245393EC16 /* FirebaseServerValue.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FirebaseServerValue.h; sourceTree = "<group>"; };
+		5890CB67D4683E2F1CAD86E77ADEFA27 /* Firebase.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Firebase.modulemap; sourceTree = "<group>"; };
 		5A448475476ECFF77C1485E8E7B0BF19 /* Pods-MedleyUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MedleyUITests-resources.sh"; sourceTree = "<group>"; };
 		5C5D498AF1B13E38F51C7C368D7FF669 /* Pods-MedleyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MedleyUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		5C9AEF6B337FD9AFE5449B2488B669F7 /* Firebase-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Firebase-prefix.pch"; sourceTree = "<group>"; };
 		5D352754059013C7501E51360C5B6103 /* Pods-MedleyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MedleyUITests.release.xcconfig"; sourceTree = "<group>"; };
+		608DCAEF95286977FF622A87CDF14D07 /* FTransactionResult.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FTransactionResult.h; sourceTree = "<group>"; };
 		60E2EF704FD406A02E67874C75C09726 /* Pods-Medley-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Medley-frameworks.sh"; sourceTree = "<group>"; };
-		615E939F5134C8957A06B5B93028D79F /* Firebase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = Firebase.h; sourceTree = "<group>"; };
-		61D85976C1D50B8FDB2B175EFCB5A4B7 /* libFirebaseStatic.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; path = libFirebaseStatic.a; sourceTree = "<group>"; };
 		636D7A5DCDD9E18954D5310B3627FE0A /* Pods-MedleyUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MedleyUITests-dummy.m"; sourceTree = "<group>"; };
-		67FBA9C03C9E898B139048F5E12D8876 /* FMutableData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FMutableData.h; sourceTree = "<group>"; };
+		67C3078B76496550C662C9642A06518B /* FAuthData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FAuthData.h; sourceTree = "<group>"; };
+		6DC54B52C44D77AB1BE310556565201C /* FQuery.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FQuery.h; sourceTree = "<group>"; };
 		6DE1CA2C649A7D498907EDA2BB79F456 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
 		70FCC174E59DE5239FC5BD56CAE60E9B /* Pods-MedleyUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MedleyUITests-umbrella.h"; sourceTree = "<group>"; };
+		71E73501014190EEE2545A7540C2E959 /* Firebase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = Firebase.h; sourceTree = "<group>"; };
 		7336C3619B6C46F51EBB5A19DD32AEF5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
-		75C2D6599662D72CB02347E864AD5A3E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		764F56587A817DAF4471759BE67F5970 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		85685CB08BD6AC87D062582D3AB4C02D /* YTPlayer.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = YTPlayer.html; path = YouTubePlayer/YouTubePlayer/YTPlayer.html; sourceTree = "<group>"; };
-		8659F6CE2B068EA0B4C8F0BB97FB48E2 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7D95E2E0263A07D6D538272B1FEEEF0C /* youtube-ios-player-helper.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "youtube-ios-player-helper.xcconfig"; sourceTree = "<group>"; };
+		7DBDB36B03BCB76E3FEC05D49B7F6572 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		81823798CD447743A51EAC565721930E /* FConfig.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FConfig.h; sourceTree = "<group>"; };
+		83E5DA3E68D0D788898CFA4E3A29319C /* youtube-ios-player-helper-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "youtube-ios-player-helper-umbrella.h"; sourceTree = "<group>"; };
 		8A0C5BA9332E8430BA63697D82481CCA /* Pods-MedleyUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MedleyUITests-frameworks.sh"; sourceTree = "<group>"; };
-		8F202CCEE1F1BE38A279E2625189F140 /* YouTubePlayer-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "YouTubePlayer-prefix.pch"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		93FAB9248829EAEDE7ED8FF9A874DCE6 /* Pods-Medley-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Medley-resources.sh"; sourceTree = "<group>"; };
+		9514AE58A369D064AC9CBBB6C6278248 /* FAuthType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FAuthType.h; sourceTree = "<group>"; };
+		95E4BED426489AB079F9961EB612BC98 /* Firebase-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Firebase-dummy.m"; sourceTree = "<group>"; };
+		985A4A4B3E514481774E7521D949C9C3 /* Firebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Firebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C33A7022D099389A840A79E85637F07 /* Pods-Medley-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Medley-acknowledgements.plist"; sourceTree = "<group>"; };
+		9EA0ED82C25D35FA157A983F1366ACDE /* youtube-ios-player-helper-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "youtube-ios-player-helper-dummy.m"; sourceTree = "<group>"; };
 		A8C6BF669CF28A4004589EB73AE3D232 /* Pods-MedleyTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-MedleyTests.modulemap"; sourceTree = "<group>"; };
-		A9FC7C547045ED9D4373C797E1599D3A /* YouTubePlayer.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = YouTubePlayer.modulemap; sourceTree = "<group>"; };
 		AB9D73107327713E5C5DF6932B73AA0F /* Pods-MedleyTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MedleyTests-dummy.m"; sourceTree = "<group>"; };
+		B61B33B83E3C2706D7BCCDFA661FAFC7 /* FirebaseServerValue.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FirebaseServerValue.h; sourceTree = "<group>"; };
 		BA15A1C6BA6CA19E6BA7A0A2737B2800 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BAA3A38CC8584DA57F9BDE8C1BECE8A3 /* YouTubePlayer-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "YouTubePlayer-dummy.m"; sourceTree = "<group>"; };
 		BE264F32FD748BF97A159D12BB544DE8 /* Pods-MedleyTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MedleyTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		C211DB4133BDA3000B9A6390A22E654B /* FAuthData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FAuthData.h; sourceTree = "<group>"; };
-		C7FD372803C025FCB259D44A1EE82962 /* Firebase.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Firebase.modulemap; sourceTree = "<group>"; };
-		CAFFBC7C903989A528EDFC5ABF0E1BF1 /* YouTubePlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = YouTubePlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D450BFD16E20B5CB306FE7143B125B16 /* YouTubePlayer.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = YouTubePlayer.xcconfig; sourceTree = "<group>"; };
-		D520CB7EAFB5868B4ABE70B4AB17B44F /* Firebase.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Firebase.xcconfig; sourceTree = "<group>"; };
-		D679846188ABFA70E11BF44F447C9CE5 /* YouTubePlayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YouTubePlayer.swift; path = YouTubePlayer/YouTubePlayer/YouTubePlayer.swift; sourceTree = "<group>"; };
-		D8F0FDDB22B144CE701A115B7B5A0952 /* Pods_Medley.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Medley.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2183DA3BB2FC9001B42EAF61B2522BD /* Firebase-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Firebase-prefix.pch"; sourceTree = "<group>"; };
+		C36448855F8C6F52107E5BA483B6D5FD /* Pods_MedleyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MedleyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D11AE21A52EB80E8CB0955A60F4DA950 /* Pods_MedleyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MedleyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6790B8A4C14512DFC4C9F2A157B0DF0 /* FDataSnapshot.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FDataSnapshot.h; sourceTree = "<group>"; };
+		D789DF762237A6D1EC7B39DF473C2E5B /* youtube_ios_player_helper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = youtube_ios_player_helper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE0AF78169DB0DE06EFF1B04311E1B3F /* libFirebaseStatic.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; path = libFirebaseStatic.a; sourceTree = "<group>"; };
 		E1B6BF1E86E37EA7DF8D1953B779E224 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4351B92D0EADC1B9BD6BA3FBE8DC75B /* Pods-Medley-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Medley-dummy.m"; sourceTree = "<group>"; };
-		E94DC2001558FBA30720412F226B06F4 /* Firebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Firebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5F41DB0696342B69846C1F3783AEDA7 /* YTPlayerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YTPlayerView.m; path = Classes/YTPlayerView.m; sourceTree = "<group>"; };
+		E935D94D8C5E7B3BECE2696EE78F416A /* Empty.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = Empty.m; sourceTree = "<group>"; };
 		EC758A6CB38D6A698147539CBB920DD9 /* Pods-MedleyUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-MedleyUITests.modulemap"; sourceTree = "<group>"; };
-		ECB5CCFB066F76E1AB8EBB661FA640DA /* FirebaseApp.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FirebaseApp.h; sourceTree = "<group>"; };
-		F1FF18D35C7746B8809EA5CC4BAB5C0E /* FEventType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FEventType.h; sourceTree = "<group>"; };
-		F4391BA052211E62421DA464C1D1D44D /* Pods_MedleyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MedleyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F78792A2511EC42D0A56212027B0620A /* FConfig.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FConfig.h; sourceTree = "<group>"; };
-		F9241A3B97E113BBC52D11E5D2450ECA /* Firebase-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Firebase-dummy.m"; sourceTree = "<group>"; };
+		F21188616927ED2F90A80C66D89BCA8C /* Firebase-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Firebase-umbrella.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0987AF2036503F88FE2CF7A110369A2D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B147ABCCC63881EE533C7C12E7C74E9B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		20B8F3261621E4E6BA1A1BFB6BEBA246 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -146,14 +155,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		77C1F8FB7835B89F6BE3781172D070D4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				24692341E454E3EE1C25F6F3944B5512 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		A7E10F383DCD59079712A57B50DCF88E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -165,23 +166,43 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D9CB1516A87DF3A344BCA5DA75ABB28A /* Frameworks */ = {
+		C163F3736321F00E0B606FB304AC9C41 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0E1495C1AD2F88EB6ADBDCD580C63BB /* Foundation.framework in Frameworks */,
+				52EDE5086EBC52EC75BFE0B3B9156A62 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00A0BC72B2E1CD493E618EBEE9DF92AD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				985A4A4B3E514481774E7521D949C9C3 /* Firebase.framework */,
+				05AD012085DCD38F00362A783372B022 /* Pods_Medley.framework */,
+				C36448855F8C6F52107E5BA483B6D5FD /* Pods_MedleyTests.framework */,
+				D11AE21A52EB80E8CB0955A60F4DA950 /* Pods_MedleyUITests.framework */,
+				D789DF762237A6D1EC7B39DF473C2E5B /* youtube_ios_player_helper.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		14B8B9B15ECBE87983FF987239AB2D7B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				21E8101B1E2DBD0F5665941ACCDCEC22 /* iOS */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1E37EBEBE074342BB0D3E3D9BF2201DD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				346A16E3BC55F63B4D4DF8008F1545BC /* Assets.bundle */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		21E8101B1E2DBD0F5665941ACCDCEC22 /* iOS */ = {
@@ -195,19 +216,12 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		22DB56718A087E84C729BCB5E45FD97B /* Frameworks */ = {
+		2AAB6A0A30EBE87D70E0683E2A14081B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				61D85976C1D50B8FDB2B175EFCB5A4B7 /* libFirebaseStatic.a */,
+				DE0AF78169DB0DE06EFF1B04311E1B3F /* libFirebaseStatic.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		25C0DD4F0B1AA691188B8A0930FCBEE4 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Resources;
 			sourceTree = "<group>";
 		};
 		454F6A5F86E7A8B44888DBBE91EE0A74 /* Pods-MedleyTests */ = {
@@ -238,11 +252,11 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		56DFCB0A537E2BB659D1077C9402C3A0 /* Pods */ = {
+		61D2043909C4418693F61E5268F2801D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F48DBAB8A20F1FC035E3B0EBD95D5BE5 /* Firebase */,
-				A722BB445FAEAA2361B83D9043BEE7F2 /* YouTubePlayer */,
+				C4F6069AB07C239B6FDEE289DE1E31A2 /* Firebase */,
+				749A826F5546D8C152AA4985DF63E64F /* youtube-ios-player-helper */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -265,13 +279,38 @@
 			path = "Target Support Files/Pods-Medley";
 			sourceTree = "<group>";
 		};
+		749A826F5546D8C152AA4985DF63E64F /* youtube-ios-player-helper */ = {
+			isa = PBXGroup;
+			children = (
+				1A08791B402C71D248B4AFC30A00D288 /* YTPlayerView.h */,
+				E5F41DB0696342B69846C1F3783AEDA7 /* YTPlayerView.m */,
+				1E37EBEBE074342BB0D3E3D9BF2201DD /* Resources */,
+				780AE095FF188E41EDDD723073502B58 /* Support Files */,
+			);
+			path = "youtube-ios-player-helper";
+			sourceTree = "<group>";
+		};
+		780AE095FF188E41EDDD723073502B58 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				15966848EF5BDC4E033F76A4914FF44A /* Info.plist */,
+				06B570DEBB82DA432D71C97034301F08 /* youtube-ios-player-helper.modulemap */,
+				7D95E2E0263A07D6D538272B1FEEEF0C /* youtube-ios-player-helper.xcconfig */,
+				9EA0ED82C25D35FA157A983F1366ACDE /* youtube-ios-player-helper-dummy.m */,
+				3B4D9ED5255F6F0BE042A84F685A0E89 /* youtube-ios-player-helper-prefix.pch */,
+				83E5DA3E68D0D788898CFA4E3A29319C /* youtube-ios-player-helper-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/youtube-ios-player-helper";
+			sourceTree = "<group>";
+		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				14B8B9B15ECBE87983FF987239AB2D7B /* Frameworks */,
-				56DFCB0A537E2BB659D1077C9402C3A0 /* Pods */,
-				BA6ADAE94AE76A003B514E254BA60460 /* Products */,
+				61D2043909C4418693F61E5268F2801D /* Pods */,
+				00A0BC72B2E1CD493E618EBEE9DF92AD /* Products */,
 				4563630E595B57CE144572343132EF77 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
@@ -294,76 +333,39 @@
 			path = "Target Support Files/Pods-MedleyUITests";
 			sourceTree = "<group>";
 		};
-		9D9E683A81E9FCAC7AE5718746D1AA62 /* Support Files */ = {
+		C4F6069AB07C239B6FDEE289DE1E31A2 /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
-				8659F6CE2B068EA0B4C8F0BB97FB48E2 /* Info.plist */,
-				A9FC7C547045ED9D4373C797E1599D3A /* YouTubePlayer.modulemap */,
-				D450BFD16E20B5CB306FE7143B125B16 /* YouTubePlayer.xcconfig */,
-				BAA3A38CC8584DA57F9BDE8C1BECE8A3 /* YouTubePlayer-dummy.m */,
-				8F202CCEE1F1BE38A279E2625189F140 /* YouTubePlayer-prefix.pch */,
-				1E29F48A74B38326362463F5E27D41E4 /* YouTubePlayer-umbrella.h */,
+				E935D94D8C5E7B3BECE2696EE78F416A /* Empty.m */,
+				67C3078B76496550C662C9642A06518B /* FAuthData.h */,
+				9514AE58A369D064AC9CBBB6C6278248 /* FAuthType.h */,
+				81823798CD447743A51EAC565721930E /* FConfig.h */,
+				D6790B8A4C14512DFC4C9F2A157B0DF0 /* FDataSnapshot.h */,
+				1F4D4D7226E7E063AC64768EB58308E8 /* FEventType.h */,
+				71E73501014190EEE2545A7540C2E959 /* Firebase.h */,
+				1E7DDCEAE36CEE59C84BA02CE5CD742D /* FirebaseApp.h */,
+				B61B33B83E3C2706D7BCCDFA661FAFC7 /* FirebaseServerValue.h */,
+				18703AB3B57CA12F2C626A964E4EE9B2 /* FMutableData.h */,
+				6DC54B52C44D77AB1BE310556565201C /* FQuery.h */,
+				608DCAEF95286977FF622A87CDF14D07 /* FTransactionResult.h */,
+				2AAB6A0A30EBE87D70E0683E2A14081B /* Frameworks */,
+				F9A54DDACC109802F84B680E0E4DF001 /* Support Files */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/YouTubePlayer";
+			path = Firebase;
 			sourceTree = "<group>";
 		};
-		A722BB445FAEAA2361B83D9043BEE7F2 /* YouTubePlayer */ = {
+		F9A54DDACC109802F84B680E0E4DF001 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				D679846188ABFA70E11BF44F447C9CE5 /* YouTubePlayer.swift */,
-				85685CB08BD6AC87D062582D3AB4C02D /* YTPlayer.html */,
-				25C0DD4F0B1AA691188B8A0930FCBEE4 /* Resources */,
-				9D9E683A81E9FCAC7AE5718746D1AA62 /* Support Files */,
-			);
-			path = YouTubePlayer;
-			sourceTree = "<group>";
-		};
-		BA6ADAE94AE76A003B514E254BA60460 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				E94DC2001558FBA30720412F226B06F4 /* Firebase.framework */,
-				D8F0FDDB22B144CE701A115B7B5A0952 /* Pods_Medley.framework */,
-				0E8B343AFAA5EC5028867EF678C35A5C /* Pods_MedleyTests.framework */,
-				F4391BA052211E62421DA464C1D1D44D /* Pods_MedleyUITests.framework */,
-				CAFFBC7C903989A528EDFC5ABF0E1BF1 /* YouTubePlayer.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		BFD888476FE385D44826F54A38DCD228 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				C7FD372803C025FCB259D44A1EE82962 /* Firebase.modulemap */,
-				D520CB7EAFB5868B4ABE70B4AB17B44F /* Firebase.xcconfig */,
-				F9241A3B97E113BBC52D11E5D2450ECA /* Firebase-dummy.m */,
-				5C9AEF6B337FD9AFE5449B2488B669F7 /* Firebase-prefix.pch */,
-				0BDC3F9E60E821DD41A725D3F7B5E99B /* Firebase-umbrella.h */,
-				75C2D6599662D72CB02347E864AD5A3E /* Info.plist */,
+				5890CB67D4683E2F1CAD86E77ADEFA27 /* Firebase.modulemap */,
+				2EB9D606ADD5082A37C7E5D26EE4BF37 /* Firebase.xcconfig */,
+				95E4BED426489AB079F9961EB612BC98 /* Firebase-dummy.m */,
+				C2183DA3BB2FC9001B42EAF61B2522BD /* Firebase-prefix.pch */,
+				F21188616927ED2F90A80C66D89BCA8C /* Firebase-umbrella.h */,
+				7DBDB36B03BCB76E3FEC05D49B7F6572 /* Info.plist */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/Firebase";
-			sourceTree = "<group>";
-		};
-		F48DBAB8A20F1FC035E3B0EBD95D5BE5 /* Firebase */ = {
-			isa = PBXGroup;
-			children = (
-				3B2A4BC8682152FB3A76726AD81B5BF5 /* Empty.m */,
-				C211DB4133BDA3000B9A6390A22E654B /* FAuthData.h */,
-				4E3E791512DAAC70481721E861D8E1C3 /* FAuthType.h */,
-				F78792A2511EC42D0A56212027B0620A /* FConfig.h */,
-				2F31F11A14413260D639EDE3EB9F65E6 /* FDataSnapshot.h */,
-				F1FF18D35C7746B8809EA5CC4BAB5C0E /* FEventType.h */,
-				615E939F5134C8957A06B5B93028D79F /* Firebase.h */,
-				ECB5CCFB066F76E1AB8EBB661FA640DA /* FirebaseApp.h */,
-				5743E6A771CCE5D941B0AB245393EC16 /* FirebaseServerValue.h */,
-				67FBA9C03C9E898B139048F5E12D8876 /* FMutableData.h */,
-				47EF72E021AB80B1DD1111AA2980363A /* FQuery.h */,
-				2BD38BA517B69FE7A7A127C2EC65A414 /* FTransactionResult.h */,
-				22DB56718A087E84C729BCB5E45FD97B /* Frameworks */,
-				BFD888476FE385D44826F54A38DCD228 /* Support Files */,
-			);
-			path = Firebase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -396,11 +398,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		91BC5C3375C2E7CCAC70AF614FD50A58 /* Headers */ = {
+		5E3F91C471154F2C4E6FD41509B2760C /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F541E42944F98AC2AD0396E42BF17118 /* YouTubePlayer-umbrella.h in Headers */,
+				9ECA4C20F83E105EFB1348D525CA4855 /* Pods-Medley-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9FDB30875FACFE59692A699201898736 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF81733B7C89B9AA8BF593C7357D92D2 /* youtube-ios-player-helper-umbrella.h in Headers */,
+				AFCDFED0483F645BE046C0C030325D6D /* YTPlayerView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,52 +423,44 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CF714DF0A679ACFA21522E705AED8789 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CE8A916EA3E4738DA90908BE2DEB0637 /* Pods-Medley-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		1647D40F1749B490B0CD3819B5D39A8F /* YouTubePlayer */ = {
+		029C331EDE13427740C1ED5DFADD35AB /* youtube-ios-player-helper */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5062FAC1203C312019CE2AFE147B615F /* Build configuration list for PBXNativeTarget "YouTubePlayer" */;
+			buildConfigurationList = C32F5F5C613249CA766C0539970C9C79 /* Build configuration list for PBXNativeTarget "youtube-ios-player-helper" */;
 			buildPhases = (
-				18C49C5CAA2B3440CDBFF75BDACEA570 /* Sources */,
-				D9CB1516A87DF3A344BCA5DA75ABB28A /* Frameworks */,
-				7D1383FD0FFDBB158CAA9EA89F68904C /* Resources */,
-				91BC5C3375C2E7CCAC70AF614FD50A58 /* Headers */,
+				E3A619D7DFC763C65DAA5C0B1397C9A6 /* Sources */,
+				C163F3736321F00E0B606FB304AC9C41 /* Frameworks */,
+				9FDB30875FACFE59692A699201898736 /* Headers */,
+				93A488E2130052091EB0C2528A84B417 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = YouTubePlayer;
-			productName = YouTubePlayer;
-			productReference = CAFFBC7C903989A528EDFC5ABF0E1BF1 /* YouTubePlayer.framework */;
+			name = "youtube-ios-player-helper";
+			productName = "youtube-ios-player-helper";
+			productReference = D789DF762237A6D1EC7B39DF473C2E5B /* youtube_ios_player_helper.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		2B4F6531746FE3CA704B01327CE62BF8 /* Pods-Medley */ = {
+		1A20A4008CA29506E251F200DCD11C3A /* Pods-Medley */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1D56047F77EB3A9BD06191BB153398FE /* Build configuration list for PBXNativeTarget "Pods-Medley" */;
+			buildConfigurationList = AFC6843ADEEC953E9CDFC32FAA5843C0 /* Build configuration list for PBXNativeTarget "Pods-Medley" */;
 			buildPhases = (
-				FF108FA8196C9CC4087E212EC048FD43 /* Sources */,
-				77C1F8FB7835B89F6BE3781172D070D4 /* Frameworks */,
-				CF714DF0A679ACFA21522E705AED8789 /* Headers */,
+				249F8A6E8C41E80A1A272EEEF65D3471 /* Sources */,
+				0987AF2036503F88FE2CF7A110369A2D /* Frameworks */,
+				5E3F91C471154F2C4E6FD41509B2760C /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				592EA6B9C8D1DBC7EB77D7234AC50943 /* PBXTargetDependency */,
-				E05C0837A1613CE748CEBCBA5D022BC8 /* PBXTargetDependency */,
+				2500B758BF8FA6A79E344C7668C2C4B1 /* PBXTargetDependency */,
+				B945007FE122E56242D25A11E894440F /* PBXTargetDependency */,
 			);
 			name = "Pods-Medley";
 			productName = "Pods-Medley";
-			productReference = D8F0FDDB22B144CE701A115B7B5A0952 /* Pods_Medley.framework */;
+			productReference = 05AD012085DCD38F00362A783372B022 /* Pods_Medley.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		30EE59A66DAC6DB83A18EB7673383D55 /* Pods-MedleyUITests */ = {
@@ -474,7 +477,7 @@
 			);
 			name = "Pods-MedleyUITests";
 			productName = "Pods-MedleyUITests";
-			productReference = F4391BA052211E62421DA464C1D1D44D /* Pods_MedleyUITests.framework */;
+			productReference = D11AE21A52EB80E8CB0955A60F4DA950 /* Pods_MedleyUITests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		B7AC9326D819482593FE118E915409D7 /* Firebase */ = {
@@ -491,7 +494,7 @@
 			);
 			name = Firebase;
 			productName = Firebase;
-			productReference = E94DC2001558FBA30720412F226B06F4 /* Firebase.framework */;
+			productReference = 985A4A4B3E514481774E7521D949C9C3 /* Firebase.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		D2C2AB04419ECA5D8B0EA15933132E4A /* Pods-MedleyTests */ = {
@@ -508,7 +511,7 @@
 			);
 			name = "Pods-MedleyTests";
 			productName = "Pods-MedleyTests";
-			productReference = 0E8B343AFAA5EC5028867EF678C35A5C /* Pods_MedleyTests.framework */;
+			productReference = C36448855F8C6F52107E5BA483B6D5FD /* Pods_MedleyTests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -528,38 +531,36 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = BA6ADAE94AE76A003B514E254BA60460 /* Products */;
+			productRefGroup = 00A0BC72B2E1CD493E618EBEE9DF92AD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				B7AC9326D819482593FE118E915409D7 /* Firebase */,
-				2B4F6531746FE3CA704B01327CE62BF8 /* Pods-Medley */,
+				1A20A4008CA29506E251F200DCD11C3A /* Pods-Medley */,
 				D2C2AB04419ECA5D8B0EA15933132E4A /* Pods-MedleyTests */,
 				30EE59A66DAC6DB83A18EB7673383D55 /* Pods-MedleyUITests */,
-				1647D40F1749B490B0CD3819B5D39A8F /* YouTubePlayer */,
+				029C331EDE13427740C1ED5DFADD35AB /* youtube-ios-player-helper */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		7D1383FD0FFDBB158CAA9EA89F68904C /* Resources */ = {
+		93A488E2130052091EB0C2528A84B417 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82824CD9C733FF56A8A2EFA49C8F8034 /* YTPlayer.html in Resources */,
+				D4E48079CD0EE0D7E0366011AD4B58B5 /* Assets.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		18C49C5CAA2B3440CDBFF75BDACEA570 /* Sources */ = {
+		249F8A6E8C41E80A1A272EEEF65D3471 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				97170BA7DAF582F7546CC0C6CB52D47D /* YouTubePlayer-dummy.m in Sources */,
-				5C1A64375BCDCA2EAFA733682524D03E /* YouTubePlayer.swift in Sources */,
-				E720BC56CDD2341DBA34ECC0AA19769B /* YTPlayer.html in Sources */,
+				2DA501CF1B286EF46B32EE2B03D4ECDD /* Pods-Medley-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,65 +589,33 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FF108FA8196C9CC4087E212EC048FD43 /* Sources */ = {
+		E3A619D7DFC763C65DAA5C0B1397C9A6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98814D1CAAE3250DA7B370A6BC5E852C /* Pods-Medley-dummy.m in Sources */,
+				6BF15CCD4DA49BE8B2E09E1FE2959A0F /* youtube-ios-player-helper-dummy.m in Sources */,
+				DD02F43CD040D3259317F7BBE60DF77D /* YTPlayerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		592EA6B9C8D1DBC7EB77D7234AC50943 /* PBXTargetDependency */ = {
+		2500B758BF8FA6A79E344C7668C2C4B1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Firebase;
 			target = B7AC9326D819482593FE118E915409D7 /* Firebase */;
-			targetProxy = E7D3D0748CFAAC65E25BAF49729CA792 /* PBXContainerItemProxy */;
+			targetProxy = C2B54340C9ABDBC4DE0AFFB46EC78A98 /* PBXContainerItemProxy */;
 		};
-		E05C0837A1613CE748CEBCBA5D022BC8 /* PBXTargetDependency */ = {
+		B945007FE122E56242D25A11E894440F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = YouTubePlayer;
-			target = 1647D40F1749B490B0CD3819B5D39A8F /* YouTubePlayer */;
-			targetProxy = 1D00129A8A0A4FE7C3D576AB6D930A30 /* PBXContainerItemProxy */;
+			name = "youtube-ios-player-helper";
+			target = 029C331EDE13427740C1ED5DFADD35AB /* youtube-ios-player-helper */;
+			targetProxy = 42DD7A2F505CD3ABB6E3E00C72A31246 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		1A6D32C042C063FD51A2F393EE86D028 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2F65D8287C9F1A1949A7F3CE56408C0B /* Pods-Medley.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-Medley/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Medley/Pods-Medley.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_Medley;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		1F483B65FD93EB7B0ED4FEFB4EB73288 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5C5D498AF1B13E38F51C7C368D7FF669 /* Pods-MedleyUITests.debug.xcconfig */;
@@ -760,65 +729,7 @@
 			};
 			name = Debug;
 		};
-		8FB78ED3E28C584DA38F8EB8BB5FCC2F /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D450BFD16E20B5CB306FE7143B125B16 /* YouTubePlayer.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/YouTubePlayer/YouTubePlayer-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/YouTubePlayer/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/YouTubePlayer/YouTubePlayer.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = YouTubePlayer;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		9E5F9A409F7A80E320328AA627E5F72F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D520CB7EAFB5868B4ABE70B4AB17B44F /* Firebase.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Firebase/Firebase-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Firebase/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Firebase/Firebase.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = Firebase;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		9F8626A74484487F2B7DB7532599F564 /* Debug */ = {
+		713391A8486D34970CC3F076D3ABA223 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0B6D60AD87093EABA776DA45508B2749 /* Pods-Medley.debug.xcconfig */;
 			buildSettings = {
@@ -845,7 +756,64 @@
 				PRODUCT_NAME = Pods_Medley;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		8966B37D5CF04B275C17F32478AE16A2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D95E2E0263A07D6D538272B1FEEEF0C /* youtube-ios-player-helper.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/youtube-ios-player-helper/youtube-ios-player-helper-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/youtube-ios-player-helper/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/youtube-ios-player-helper/youtube-ios-player-helper.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = youtube_ios_player_helper;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		9E5F9A409F7A80E320328AA627E5F72F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2EB9D606ADD5082A37C7E5D26EE4BF37 /* Firebase.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Firebase/Firebase-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Firebase/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Firebase/Firebase.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = Firebase;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -854,7 +822,7 @@
 		};
 		A137EDCFE721980B861039D09E3342BD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D520CB7EAFB5868B4ABE70B4AB17B44F /* Firebase.xcconfig */;
+			baseConfigurationReference = 2EB9D606ADD5082A37C7E5D26EE4BF37 /* Firebase.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -914,35 +882,38 @@
 			};
 			name = Release;
 		};
-		BE43857BCD6412509D7909C82EDF9AA9 /* Debug */ = {
+		BB4893A582ADADF12DC81AFD674FA649 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D450BFD16E20B5CB306FE7143B125B16 /* YouTubePlayer.xcconfig */;
+			baseConfigurationReference = 2F65D8287C9F1A1949A7F3CE56408C0B /* Pods-Medley.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/YouTubePlayer/YouTubePlayer-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/YouTubePlayer/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-Medley/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/YouTubePlayer/YouTubePlayer.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = YouTubePlayer;
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Medley/Pods-Medley.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Medley;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
 		BEDF2E8EAF0A4A209C13666FB6777716 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1010,18 +981,38 @@
 			};
 			name = Debug;
 		};
+		ED768F3B3B84A59342BD73CA3EC77C5E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D95E2E0263A07D6D538272B1FEEEF0C /* youtube-ios-player-helper.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/youtube-ios-player-helper/youtube-ios-player-helper-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/youtube-ios-player-helper/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/youtube-ios-player-helper/youtube-ios-player-helper.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = youtube_ios_player_helper;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1D56047F77EB3A9BD06191BB153398FE /* Build configuration list for PBXNativeTarget "Pods-Medley" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9F8626A74484487F2B7DB7532599F564 /* Debug */,
-				1A6D32C042C063FD51A2F393EE86D028 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1040,20 +1031,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5062FAC1203C312019CE2AFE147B615F /* Build configuration list for PBXNativeTarget "YouTubePlayer" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BE43857BCD6412509D7909C82EDF9AA9 /* Debug */,
-				8FB78ED3E28C584DA38F8EB8BB5FCC2F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		A01670DDEFD91B11F59162F8D60234B3 /* Build configuration list for PBXNativeTarget "Pods-MedleyTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E587F5A2447E5A7945E2531BB7048780 /* Debug */,
 				BEDF2E8EAF0A4A209C13666FB6777716 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AFC6843ADEEC953E9CDFC32FAA5843C0 /* Build configuration list for PBXNativeTarget "Pods-Medley" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				713391A8486D34970CC3F076D3ABA223 /* Debug */,
+				BB4893A582ADADF12DC81AFD674FA649 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C32F5F5C613249CA766C0539970C9C79 /* Build configuration list for PBXNativeTarget "youtube-ios-player-helper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED768F3B3B84A59342BD73CA3EC77C5E /* Debug */,
+				8966B37D5CF04B275C17F32478AE16A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

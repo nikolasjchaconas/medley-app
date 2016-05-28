@@ -57,6 +57,9 @@ class HomeViewController: UIViewController {
                     })
                         
                     }
+            else {
+                self.performSegueWithIdentifier("ViewController", sender:self)
+            }
         })
     }
     

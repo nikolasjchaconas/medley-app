@@ -1,15 +1,15 @@
 PODS:
   - Firebase (2.5.1)
-  - YouTubePlayer (0.3.0)
+  - youtube-ios-player-helper (0.1.6)
 
 DEPENDENCIES:
   - Firebase (>= 2.5.1)
-  - YouTubePlayer (~> 0.3)
+  - youtube-ios-player-helper (~> 0.1.1)
 
 SPEC CHECKSUMS:
   Firebase: 3565ea88b830f28f2c77ecc524622bc71a20d085
-  YouTubePlayer: 88713a96c356f2c88da8925eb61438eda88bcd57
+  youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
 
-PODFILE CHECKSUM: ebfe4d76658a086124e18578360048bb0423f7b9
+PODFILE CHECKSUM: 42404d633d8a25183631ee0ccf1fc5a867732392
 
 COCOAPODS: 1.0.0
