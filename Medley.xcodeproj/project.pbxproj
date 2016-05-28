@@ -13,6 +13,7 @@
 		5B35FB211CD042A800BE38A1 /* RoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B35FB201CD042A800BE38A1 /* RoomViewController.swift */; };
 		5B35FB231CD0476000BE38A1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B35FB221CD0476000BE38A1 /* SettingsViewController.swift */; };
 		5B3A87001CC85ED900A04BCD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3A86FF1CC85ED900A04BCD /* HomeViewController.swift */; };
+		5B4821ED1CF93F7F00EFD975 /* YouTubeSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4821EC1CF93F7F00EFD975 /* YouTubeSearch.swift */; };
 		5B4D1AF41CE5458800916C6D /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D1AF31CE5458800916C6D /* SWRevealViewController.m */; };
 		5B4D1AF71CE54C3700916C6D /* SlideOutMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D1AF61CE54C3700916C6D /* SlideOutMenuViewController.swift */; };
 		AA1FA2E81CD83E1C007E5D61 /* SupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1FA2E71CD83E1C007E5D61 /* SupportViewController.swift */; };
@@ -53,6 +54,7 @@
 		5B35FB201CD042A800BE38A1 /* RoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomViewController.swift; sourceTree = "<group>"; };
 		5B35FB221CD0476000BE38A1 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = ../SettingsViewController.swift; sourceTree = "<group>"; };
 		5B3A86FF1CC85ED900A04BCD /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		5B4821EC1CF93F7F00EFD975 /* YouTubeSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouTubeSearch.swift; sourceTree = "<group>"; };
 		5B4D1AF11CE5458700916C6D /* Medley-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Medley-Bridging-Header.h"; sourceTree = "<group>"; };
 		5B4D1AF21CE5458800916C6D /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		5B4D1AF31CE5458800916C6D /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				AADEC45B1CDD3050001C3408 /* AccountViewController.swift */,
 				5B3A86FF1CC85ED900A04BCD /* HomeViewController.swift */,
 				AA89B62A1CC32F2300E929F0 /* ViewController.swift */,
+				5B4821EC1CF93F7F00EFD975 /* YouTubeSearch.swift */,
 				5B4D1AF61CE54C3700916C6D /* SlideOutMenuViewController.swift */,
 				AA1FA2E71CD83E1C007E5D61 /* SupportViewController.swift */,
 				AAF2C4751CD96E87008FA0B7 /* AboutViewController.swift */,
@@ -476,6 +479,7 @@
 				AA3418FE1CD559CB00B571FD /* ViewController.swift in Sources */,
 				AA89B6291CC32F2300E929F0 /* AppDelegate.swift in Sources */,
 				AADEC45C1CDD3050001C3408 /* AccountViewController.swift in Sources */,
+				5B4821ED1CF93F7F00EFD975 /* YouTubeSearch.swift in Sources */,
 				AA1FA2E81CD83E1C007E5D61 /* SupportViewController.swift in Sources */,
 				AAF2C4761CD96E87008FA0B7 /* AboutViewController.swift in Sources */,
 				5B3A87001CC85ED900A04BCD /* HomeViewController.swift in Sources */,
