@@ -24,7 +24,7 @@ extension CAGradientLayer {
     }
     
     func blackGradient() -> CAGradientLayer {
-        let grayBottom = UIColor(red: 40/255.0, green: 40/255.0, blue: 40/255.0, alpha: 1.0)
+        let grayBottom = UIColor(red: 30/255.0, green: 30/255.0, blue: 30/255.0, alpha: 1.0)
         let blackTop = UIColor( red: 74/255.0, green: 74/255.0, blue: 74/255.0, alpha: 1.0)
         
         let gradientColors: [CGColor] = [blackTop.CGColor, grayBottom.CGColor]
