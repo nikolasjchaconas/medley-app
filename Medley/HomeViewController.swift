@@ -39,7 +39,7 @@ class HomeViewController: UIViewController {
         self.medleyLogo.layer.shadowRadius = 3.0
         self.medleyLogo.layer.shadowOpacity = 1.0
         self.greetingMessage.layer.shadowColor = buttonShadowColor.CGColor
-        self.greetingMessage.layer.shadowOffset = CGSizeMake(0, 3)
+        self.greetingMessage.layer.shadowOffset = CGSizeMake(0, 2)
         self.greetingMessage.layer.shadowRadius = 1.0
         self.greetingMessage.layer.shadowOpacity = 1.0
         
