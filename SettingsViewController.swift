@@ -15,6 +15,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var accountSettingsButton: UIButton!
     @IBOutlet weak var aboutButton: UIButton!
     @IBOutlet weak var supportButton: UIButton!
+    @IBOutlet weak var settingsHeader: UILabel!
     @IBOutlet weak var logoutButton: UIButton!
     
 
@@ -38,7 +39,8 @@ class SettingsViewController: UIViewController {
     var purpleBackground = UIColor(red: 204/255, green: 102/255, blue: 1, alpha: 1.0)
     
     //Color for button borders
-    let buttonBorderColor : UIColor = UIColor( red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 0.35)
+    let buttonBorderColor : UIColor = UIColor( red: 200/255.0, green: 200/255.0, blue: 200/255.0, alpha: 0.35)
+    let buttonShadowColor : UIColor = UIColor( red: 20/255.0, green: 20/255.0, blue: 20/255.0, alpha: 1.0)
     var redColor = UIColor(red: 1, green:0, blue: 0, alpha: 0.8)
     var greenColor = UIColor(red: 0, green: 1, blue: 0, alpha: 0.8)
     
@@ -47,7 +49,13 @@ class SettingsViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         self.hideKeyboardOnTap()
         
-        //Give buttons nicer appearances
+        //Put shadow on settings header
+        self.settingsHeader.layer.shadowColor = buttonShadowColor.CGColor
+        self.settingsHeader.layer.shadowOffset = CGSizeMake(0, 6)
+        self.settingsHeader.layer.shadowRadius = 3.0
+        self.settingsHeader.layer.shadowOpacity = 1.0
+        
+        //Round button edges
         self.aboutButton.layer.borderWidth = 1
         self.aboutButton.layer.borderColor = self.buttonBorderColor.CGColor
         self.aboutButton.layer.cornerRadius = 5
@@ -60,6 +68,24 @@ class SettingsViewController: UIViewController {
         self.supportButton.layer.borderWidth = 1
         self.supportButton.layer.borderColor = self.buttonBorderColor.CGColor
         self.supportButton.layer.cornerRadius = 5
+        
+        //Give buttons shadows
+        self.aboutButton.layer.shadowColor = self.buttonShadowColor.CGColor
+        self.aboutButton.layer.shadowOpacity = 1.0
+        self.aboutButton.layer.shadowRadius = 1.0
+        self.aboutButton.layer.shadowOffset = CGSizeMake(0, 3)
+        self.accountSettingsButton.layer.shadowColor = self.buttonShadowColor.CGColor
+        self.accountSettingsButton.layer.shadowOpacity = 1.0
+        self.accountSettingsButton.layer.shadowRadius = 1.0
+        self.accountSettingsButton.layer.shadowOffset = CGSizeMake(0, 3)
+        self.logoutButton.layer.shadowColor = self.buttonShadowColor.CGColor
+        self.logoutButton.layer.shadowOpacity = 1.0
+        self.logoutButton.layer.shadowRadius = 1.0
+        self.logoutButton.layer.shadowOffset = CGSizeMake(0, 3)
+        self.supportButton.layer.shadowColor = self.buttonShadowColor.CGColor
+        self.supportButton.layer.shadowOpacity = 1.0
+        self.supportButton.layer.shadowRadius = 1.0
+        self.supportButton.layer.shadowOffset = CGSizeMake(0, 3)
         
         
         /*
