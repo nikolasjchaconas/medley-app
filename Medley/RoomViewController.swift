@@ -47,6 +47,7 @@ class RoomViewController: UIViewController, YouTubePlayerDelegate {
     var songTimer : NSTimer = NSTimer()
     var waiting : Bool = false
     var firstTime : Bool = true
+    var timeoutTimer :  NSTimer = NSTimer()
     @IBOutlet weak var songName: UILabel!
     
     @IBOutlet weak var searchBar: UITextField!
@@ -75,6 +76,11 @@ class RoomViewController: UIViewController, YouTubePlayerDelegate {
         self.searchBar.addTarget(self, action: #selector(songSearchChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
         self.searchBar.addTarget(self, action: #selector(searchBarTapped(_:)), forControlEvents: UIControlEvents.EditingDidBegin)
         self.searchBar.addTarget(self, action: #selector(searchBarGone(_:)), forControlEvents: UIControlEvents.EditingDidEnd)
+        
+        //Observer for listening to when application enters background
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RoomViewController.myBackgroundObserverMethod(_:)), name:UIApplicationDidEnterBackgroundNotification, object: nil)
+        //Observer for listening to when application enters foreground
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RoomViewController.myForegroundObserverMethod(_:)), name:UIApplicationWillEnterForegroundNotification, object: nil)
         
         playerView.delegate = self
         
@@ -380,6 +386,8 @@ class RoomViewController: UIViewController, YouTubePlayerDelegate {
         for observer in observers {
             observer.removeAllObservers()
         }
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     func checkForUsersAdded(roomCode : String, username : String) {
@@ -563,7 +571,7 @@ class RoomViewController: UIViewController, YouTubePlayerDelegate {
         self.hideKeyboard()
     }
     
-    func leaveRoom (roomCode : String) {
+    func leaveRoom () {
         
         let newMessage : [String : String] = [
             self.username : ""
@@ -580,21 +588,21 @@ class RoomViewController: UIViewController, YouTubePlayerDelegate {
             .updateChildValues([current_uid + "/current_room": NSNull()])
         
         self.myRootRef.childByAppendingPath("members")
-            .childByAppendingPath(roomCode).childByAppendingPath(current_uid).removeValue()
+            .childByAppendingPath(self.roomCode).childByAppendingPath(current_uid).removeValue()
         
         
         
-        myRootRef.childByAppendingPath("members").childByAppendingPath(roomCode)
+        myRootRef.childByAppendingPath("members").childByAppendingPath(self.roomCode)
             .observeSingleEventOfType(.Value, withBlock: { snapshot in
                 if((snapshot.value is NSNull)){
                     //no more members in the group
-                   self.destroyRoom(roomCode)
+                   self.destroyRoom(self.roomCode)
                 }
                 else {
                     //check to see if current user is the admin of that group
                     if(self.admin == current_uid) {
                         //if we are the admin, appoint new admin
-                        self.appointNewAdmin(roomCode)
+                        self.appointNewAdmin(self.roomCode)
                         self.performSegueWithIdentifier("HomeViewController", sender:self)
                     }
                     else {
@@ -618,7 +626,7 @@ class RoomViewController: UIViewController, YouTubePlayerDelegate {
     }
     
     @IBAction func leaveRoomButtonPressed(sender: AnyObject) {
-        self.leaveRoom(self.roomCode)
+        self.leaveRoom()
             
     }
     
@@ -696,5 +704,15 @@ class RoomViewController: UIViewController, YouTubePlayerDelegate {
         }
         
     }
+   
+    func myBackgroundObserverMethod(notification: NSNotification){
+        print("Application is now in background")
+        timeoutTimer.invalidate()
+        timeoutTimer = NSTimer.scheduledTimerWithTimeInterval(300.0, target:self, selector: #selector(RoomViewController.leaveRoom), userInfo: nil, repeats: false)
+    }
     
+    func myForegroundObserverMethod(notification: NSNotification){
+        print("Application is now in foreground")
+        timeoutTimer.invalidate()
+     }
 }
