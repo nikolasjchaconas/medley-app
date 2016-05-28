@@ -23,6 +23,8 @@ class HomeViewController: UIViewController {
     let buttonBorderColor : UIColor = UIColor( red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 0.35)
     let buttonShadowColor : UIColor = UIColor( red: 20/255.0, green: 20/255.0, blue: 20/255.0, alpha: 1.0)
     
+    let blackGrad = CAGradientLayer().blackGradient()
+    
     //locks orientation to portrait
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.Portrait
@@ -32,6 +34,10 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.hideKeyboardOnTap()
+        
+        //Add black gradient
+        self.blackGrad.frame = self.view.bounds
+        self.view.layer.addSublayer(blackGrad)
         
         // Put shadow on Medley logo and greetings text
         self.medleyLogo.layer.shadowColor = buttonShadowColor.CGColor
