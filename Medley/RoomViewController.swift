@@ -10,14 +10,14 @@ import UIKit
 import Firebase
 import youtube_ios_player_helper
 
-class RoomViewController: UIViewController, YTPlayerViewDelegate {
+class RoomViewController: UIViewController, YTPlayerViewDelegate, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var testView: UIWebView!
-    @IBOutlet weak var albumCover: UIImageView!
     
     @IBOutlet weak var chatBar: UITextField!
     
     @IBOutlet weak var chatBox: UIScrollView!
+    
+    @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var videoLoadingIndicator: UIActivityIndicatorView!
     
@@ -31,9 +31,14 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
     
+    @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var searchIndicatorView: UIView!
+    var currentRoomSong: Bool = false
+    var YTSearch : YouTubeSearch = YouTubeSearch()
     var roomCode : String!
     var username : String!
     var admin : String!
+    var currentSongIndex : Int = 0
     var messageCount : Int = 0
     var songCount : Int = 0
     var totalLines : CGFloat = 0
@@ -61,8 +66,6 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate {
     @IBOutlet weak var songsButton: UIButton!
     @IBOutlet weak var messagesButton: UIButton!
     
-    var delegate:YTPlayerViewDelegate?
-    
     var lighterGrey = UIColor(red: 190/255, green: 190/255, blue: 190/255, alpha: 1.0)
     var grey = UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1.0)
     
@@ -78,12 +81,15 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate {
         self.blackGrad.frame = self.view.bounds
         self.view.layer.addSublayer(blackGrad)
         
+        tableView.delegate = self
+        tableView.dataSource = self
+        playerView.delegate = self
+        
         //more customizations for this can be found here
         //http://www.ebc.cat/2015/03/07/customize-your-swrevealviewcontroller-slide-out-menu/
         self.revealViewController().rightViewRevealWidth = self.view.frame.width - 40
         self.revealViewController().rightViewRevealDisplacement = self.view.frame.width - 55
-        self.revealViewController().hideKeyboard()
-        
+        self.searchIndicatorView.hidden = true
         self.searchBar.addTarget(self, action: #selector(songSearchChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
         self.searchBar.addTarget(self, action: #selector(searchBarTapped(_:)), forControlEvents: UIControlEvents.EditingDidBegin)
         self.searchBar.addTarget(self, action: #selector(searchBarGone(_:)), forControlEvents: UIControlEvents.EditingDidEnd)
@@ -93,7 +99,7 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate {
         //Observer for listening to when application enters foreground
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RoomViewController.myForegroundObserverMethod(_:)), name:UIApplicationWillEnterForegroundNotification, object: nil)
         
-        playerView.delegate = self
+        
         
         chatBoxHeight = chatBox.frame.height
         chatBarConstraint = NSLayoutConstraint(item: chatBar, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute:NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0)
@@ -105,7 +111,7 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RoomViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RoomViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
-        self.hideKeyboardOnTap()
+        //self.hideKeyboardOnTap()
         menuButton.setTitle("\u{2630}", forState: .Normal)
         menuButton.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.rightRevealToggle(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
@@ -138,10 +144,6 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate {
             }
             
         })
-        
-            let notificationCenter = NSNotificationCenter.defaultCenter()
-            notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplicationWillResignActiveNotification, object: nil)
-            notificationCenter.addObserver(self, selector: #selector(appMovedToForeground), name: UIApplicationWillEnterForegroundNotification, object: nil)
         
         }
     
@@ -286,18 +288,6 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate {
         })
     }
     
-    func songSearchChange(sender : UITextField) {
-        print("searching for " + sender.text!)
-    }
-    
-    func searchBarTapped(sender : UITextField) {
-        print("helloo!")
-    }
-    
-    func searchBarGone(sender : UITextField) {
-        print("gooodbye!!")
-    }
-    
     @IBAction func playButtonPressed(sender: AnyObject) {
         if(self.songPresent == true) {
             if(playerView.playerState() == YTPlayerState.Buffering) {
@@ -354,6 +344,7 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate {
         self.observers.append(ref)
         ref.observeEventType(.Value, withBlock: {snapshot in
             if(snapshot.value is NSNull) {
+                self.currentRoomSong = false
                 self.songPresent = false
                 self.songName.text = "There are no videos in your playlist!"
             } else {
@@ -366,7 +357,7 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate {
         })
     }
     
-    func loadVideo(videoUrl : String) {
+    func loadVideo(videoID : String) {
         let playerVars = [
             "playsinline" : "1",
             "showinfo" : "0",
@@ -378,8 +369,8 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate {
         ]
         
         
-        print("loading video with URL "  + videoUrl + "to timestamp " + String(songTime))
-        playerView.loadWithVideoId("Ri7-vnrJD3k", playerVars:  playerVars)
+        print("loading video with ID "  + videoID + "to timestamp " + String(songTime))
+        playerView.loadWithVideoId(videoID, playerVars:  playerVars)
     }
     
     func setUser(roomCode : String) {
@@ -452,12 +443,12 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate {
         let ref = myRootRef.childByAppendingPath("songs").childByAppendingPath(roomCode)
         observers.append(ref)
         let errorMessage = "There are currently no songs in the playlist.\n Search in the toolbar to add some!"
-        ref.observeEventType(.Value, withBlock: { snapshot in
+        ref.observeEventType(.ChildAdded, withBlock: { snapshot in
             if(snapshot.value is NSNull) {
-                self.appendSong(errorMessage, error : 1)
+                self.appendSong(errorMessage, error : 1, songID: " ")
             } else {
                 let snapshotObj = snapshot.children.nextObject() as! FDataSnapshot
-                self.appendSong(snapshotObj.key, error : 0)
+                self.appendSong(snapshotObj.key, error : 0, songID: (snapshotObj.value as? String)!)
             }
             
         })
@@ -468,15 +459,24 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate {
         songBox.subviews.last?.removeFromSuperview()
     }
     
-    func appendSong(songName : String, error : Int) {
+    func appendSong(songName : String, error : Int, songID : String) {
         songCount += 1
         var text : String
         var label : UILabel
         
         if(error == 0) {
             let subview : UILabel = songBox.subviews.last as! UILabel
-            if(subview.text != "Current Song Playlist:") {
+            if(subview.text == "There are currently no songs in the playlist.\n Search in the toolbar to add some!") {
                 self.removeError()
+            }
+            if(currentRoomSong == false) {
+                currentRoomSong = true
+                let newSong = [
+                    songName : songID
+                ]
+                currentSongIndex = 1
+                myRootRef.childByAppendingPath("rooms").childByAppendingPath(roomCode)
+                .childByAppendingPath("current_song").setValue(newSong)
             }
             let textBoxWidth : CGFloat = 20
             text = String(songCount) + ". " + songName
@@ -499,9 +499,13 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate {
         label.layer.borderWidth = 1
         label.layer.borderColor = (UIColor.whiteColor()).CGColor
         
+        let message : NSMutableAttributedString
+        if(songCount == currentSongIndex) {
+            message = NSMutableAttributedString(string:text, attributes: [NSFontAttributeName : UIFont.boldSystemFontOfSize(16)])
+        } else {
+            message = NSMutableAttributedString(string: text, attributes: [NSForegroundColorAttributeName : UIColor.blackColor()])
+        }
         
-        
-        let message = NSMutableAttributedString(string: text, attributes: [NSForegroundColorAttributeName : UIColor.blackColor()])
         label.attributedText = message
         self.songBox.addSubview(label)
     }
@@ -588,17 +592,6 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate {
         self.performSegueWithIdentifier("HomeViewController", sender:self)
     }
     
-    func appMovedToBackground() {
-        self.hideKeyboard()
-    }
-    
-    
-    func appMovedToForeground() {
-        print("resyncing!!!!!!")
-        seekAmount = 0
-        syncVideoByAmount()
-    }
-    
     func leaveRoom () {
         let newMessage : [String : String] = [
             self.username : ""
@@ -616,7 +609,6 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate {
         
         self.myRootRef.childByAppendingPath("members")
             .childByAppendingPath(self.roomCode).childByAppendingPath(current_uid).removeValue()
-        
         
         
         myRootRef.childByAppendingPath("members").childByAppendingPath(self.roomCode)
@@ -743,15 +735,104 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate {
         }
         
     }
-   
+    
     func myBackgroundObserverMethod(notification: NSNotification){
         print("Application is now in background")
+        self.hideKeyboard()
         timeoutTimer.invalidate()
         timeoutTimer = NSTimer.scheduledTimerWithTimeInterval(300.0, target:self, selector: #selector(RoomViewController.leaveRoom), userInfo: nil, repeats: false)
     }
     
     func myForegroundObserverMethod(notification: NSNotification){
         print("Application is now in foreground")
+        seekAmount = 0
+        syncVideoByAmount()
         timeoutTimer.invalidate()
      }
+    
+    //Youtube search
+    
+    func songSearchChange(sender : UITextField) {
+        print("searching for " + searchBar.text!)
+        YTSearch.query(sender.text!, tableView: tableView, viewWait: searchIndicatorView)
+    }
+    
+    @IBAction func searchButtonPressed(sender: AnyObject) {
+//        if(YTSearch.videosArray.count != 0){
+//            YTSearch.videosArray.removeAll(keepCapacity: false)
+//        }
+//        print("searching for " + searchBar.text!)
+//        YTSearch.query(searchBar.text!, tableView: tableView, viewWait: searchIndicatorView)
+//        print("reloaded data")
+    }
+    
+    func searchBarTapped(sender : UITextField) {
+        tableView.reloadData()
+        tableView.alpha = 1.0
+    }
+    
+    func searchBarGone(sender : UITextField) {
+        tableView.alpha = 0
+        YTSearch.videosArray.removeAll(keepCapacity: false)
+        print("gooodbye!!")
+    }
+
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return YTSearch.videosArray.count
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+
+        print("adding new cell")
+        var cell: UITableViewCell!
+        cell = tableView.dequeueReusableCellWithIdentifier("idCellVideo", forIndexPath: indexPath)
+        
+        let videoTitle = cell.viewWithTag(10) as! UILabel
+        let videoThumbnail = cell.viewWithTag(11) as! UIImageView
+        print("length of array is " + String(YTSearch.videosArray.count) + " and index is " + String(indexPath.row))
+        let videoDetails = YTSearch.videosArray[indexPath.row]
+        videoTitle.text = videoDetails["title"] as? String
+        videoThumbnail.image = UIImage(data: NSData(contentsOfURL: NSURL(string: (videoDetails["thumbnail"] as? String)!)!)!)
+    
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 130.0
+    }
+    
+    
+    //when a song option is tapped
+
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        print("this is happening!!!")
+        
+        print("row is \(indexPath.row) and the array has length " + String(YTSearch.videosArray.count))
+        
+        let songName : String = (YTSearch.videosArray[indexPath.row]["title"] as? String)!
+        let songID : String = (YTSearch.videosArray[indexPath.row]["videoID"] as? String)!
+        
+        let newSong = [
+            removeSpecialCharsFromString(songName) : songID
+        ]
+        
+        
+        searchBar.text = ""
+        self.hideKeyboard()
+        myRootRef.childByAppendingPath("songs").childByAppendingPath(roomCode)
+        .childByAppendingPath(String(songCount + 1)).setValue(newSong)
+    }
+    
+    func removeSpecialCharsFromString(text: String) -> String {
+        let badChars : Set<Character> =
+            Set("/.#$[]".characters)
+        return String(text.characters.filter {!(badChars.contains($0)) })
+    }
+
 }
