@@ -13,6 +13,7 @@ class AccountViewController: UIViewController {
     var myRootRef = Firebase(url:"https://crackling-heat-1030.firebaseio.com/")
      
      @IBOutlet weak var newPasswordField: UITextField!
+    @IBOutlet weak var accountHeader: UILabel!
      @IBOutlet weak var oldPasswordField: UITextField!
      @IBOutlet weak var temporaryPasswordWarning: UILabel!
      @IBOutlet weak var updateInfoButton: UIButton!
@@ -41,6 +42,20 @@ class AccountViewController: UIViewController {
         self.updateInfoButton.layer.cornerRadius = 5
         self.updateInfoButton.layer.borderColor = self.buttonBorderColor.CGColor
         self.updateInfoButton.layer.borderWidth = 1
+        
+        // Add shadow to account header, success message, and warning message
+        self.accountHeader.layer.shadowColor = buttonShadowColor.CGColor
+        self.accountHeader.layer.shadowOffset = CGSizeMake(0, 6)
+        self.accountHeader.layer.shadowRadius = 3.0
+        self.accountHeader.layer.shadowOpacity = 1.0
+        self.temporaryPasswordWarning.layer.shadowColor = buttonShadowColor.CGColor
+        self.temporaryPasswordWarning.layer.shadowOffset = CGSizeMake(0, 2)
+        self.temporaryPasswordWarning.layer.shadowRadius = 1.0
+        self.temporaryPasswordWarning.layer.shadowOpacity = 1.0
+        self.successMessage.layer.shadowColor = buttonShadowColor.CGColor
+        self.successMessage.layer.shadowOffset = CGSizeMake(0, 2)
+        self.successMessage.layer.shadowRadius = 1.0
+        self.successMessage.layer.shadowOpacity = 1.0
         
          if(self.IsPasswordTemporary()) {
             self.ShowWarning()
