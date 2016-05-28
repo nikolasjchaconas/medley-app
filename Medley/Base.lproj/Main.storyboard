@@ -325,7 +325,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f0v-pr-y4m">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.2892780172413793" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="85" id="U8e-zv-qHN"/>
                                     <constraint firstAttribute="width" constant="250" id="oBR-eV-IQR"/>
@@ -352,7 +352,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZDU-El-Sac">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.28927801720000001" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="DwT-Ds-Ij9"/>
                                     <constraint firstAttribute="width" constant="250" id="ScH-gN-giw"/>
@@ -385,7 +385,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4YH-zH-ewO">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.28927801720000001" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="WMj-dY-b7o"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="85" id="e0j-h0-vvC"/>
@@ -426,7 +426,7 @@
                                 </variation>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="ZDU-El-Sac" firstAttribute="centerY" secondItem="56c-60-mxp" secondAttribute="centerY" id="2DR-aN-DkK"/>
                             <constraint firstItem="4YH-zH-ewO" firstAttribute="centerX" secondItem="56c-60-mxp" secondAttribute="centerX" id="7u3-ZK-Dj8"/>
@@ -2277,7 +2277,7 @@ We hope you enjoy our app!</string>
     <inferredMetricsTieBreakers>
         <segue reference="IAo-Np-OC9"/>
         <segue reference="YK2-ml-4J1"/>
-        <segue reference="2xC-TU-NkH"/>
-        <segue reference="Yn2-Lj-OtF"/>
+        <segue reference="Pc2-jv-RTt"/>
+        <segue reference="OaE-fq-UVU"/>
     </inferredMetricsTieBreakers>
 </document>
