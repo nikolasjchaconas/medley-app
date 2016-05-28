@@ -584,9 +584,6 @@
                                 <variation key="widthClass=compact" misplaced="YES">
                                     <rect key="frame" x="163" y="250.5" width="273" height="30"/>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="200" y="290" width="200" height="30"/>
-                                </variation>
                                 <connections>
                                     <action selector="playButtonPressed:" destination="4Ed-Mw-3xt" eventType="touchUpInside" id="mxt-We-irV"/>
                                 </connections>
@@ -609,8 +606,7 @@
                                         <include reference="bv9-hI-JsX"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="290" width="200" height="30"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <exclude reference="bv9-hI-JsX"/>
                                     </mask>
@@ -627,9 +623,6 @@
                                 <variation key="widthClass=compact" misplaced="YES">
                                     <rect key="frame" x="473" y="250.5" width="76" height="30"/>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="400" y="290" width="200" height="30"/>
-                                </variation>
                                 <connections>
                                     <action selector="nextButtonPressed:" destination="4Ed-Mw-3xt" eventType="touchUpInside" id="4iJ-Dt-ECa"/>
                                 </connections>
@@ -642,9 +635,6 @@
                                 </state>
                                 <variation key="widthClass=compact" misplaced="YES">
                                     <rect key="frame" x="541" y="11" width="39" height="30"/>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="523" y="20" width="72" height="45"/>
                                 </variation>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mUr-yH-NbA">
@@ -760,9 +750,6 @@
                                 <state key="normal" title="Messages ">
                                     <color key="titleColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="320" width="300" height="24"/>
-                                </variation>
                                 <connections>
                                     <action selector="messagesButtonPressed:" destination="4Ed-Mw-3xt" eventType="touchUpInside" id="wgI-T9-Fxm"/>
                                 </connections>
@@ -774,9 +761,6 @@
                                 <state key="normal" title="Songs">
                                     <color key="titleColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="300" y="320" width="300" height="24"/>
-                                </variation>
                                 <connections>
                                     <action selector="songsButtonPressed:" destination="4Ed-Mw-3xt" eventType="touchUpInside" id="ugH-nW-TA8"/>
                                 </connections>
@@ -877,8 +861,7 @@
                                 <variation key="widthClass=compact" misplaced="YES">
                                     <rect key="frame" x="163" y="250.5" width="273" height="30"/>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="506" y="290" width="94" height="30"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <exclude reference="hMQ-Q8-mKT"/>
                                     </mask>
@@ -898,8 +881,7 @@
                                         <exclude reference="JoK-GX-SKS"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="80" width="600" height="210"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="JoK-GX-SKS"/>
                                     </mask>
@@ -927,8 +909,7 @@
                                 <variation key="widthClass=compact" misplaced="YES">
                                     <rect key="frame" x="163" y="250.5" width="273" height="30"/>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="274" y="290" width="52" height="30"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <exclude reference="nzp-j1-Fbb"/>
                                     </mask>
@@ -1376,9 +1357,6 @@
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="73"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="173" y="20" width="254" height="117"/>
-                                </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Agb-hq-zcx">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -1401,9 +1379,6 @@
                                         <include reference="97Q-QU-PeV"/>
                                         <include reference="JlH-rm-5IN"/>
                                     </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="173" y="182" width="250" height="85"/>
                                 </variation>
                                 <connections>
                                     <segue destination="bY3-N2-JXZ" kind="show" id="WeK-Bw-Viq"/>
@@ -1431,9 +1406,6 @@
                                         <include reference="dLb-ba-jGZ"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="173" y="279" width="250" height="85"/>
-                                </variation>
                                 <connections>
                                     <segue destination="UH5-TK-Big" kind="show" id="1qr-JJ-gae"/>
                                 </connections>
@@ -1460,9 +1432,6 @@
                                         <include reference="hya-AT-qGO"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="173" y="376" width="250" height="85"/>
-                                </variation>
                                 <connections>
                                     <segue destination="W81-lR-yTU" kind="show" id="lK3-rr-IYB"/>
                                 </connections>
@@ -1488,9 +1457,6 @@
                                         <include reference="48G-u5-MPd"/>
                                         <include reference="PgR-VV-yq9"/>
                                     </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="173" y="473" width="250" height="85"/>
                                 </variation>
                                 <connections>
                                     <action selector="logoutButtonPressed:" destination="VFp-pa-i9i" eventType="touchUpInside" id="MER-Ja-Nrf"/>
@@ -1639,8 +1605,7 @@
                                         <exclude reference="Rrp-Ey-gKy"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="26" y="20" width="548" height="127"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="Rrp-Ey-gKy"/>
                                     </mask>
@@ -1661,8 +1626,7 @@
                                         <exclude reference="Td5-R1-QZg"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="20" y="155" width="561" height="111"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="Td5-R1-QZg"/>
                                     </mask>
@@ -1672,9 +1636,6 @@
                                 <rect key="frame" x="-25" y="-30" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="73" y="242" width="454" height="30"/>
-                                </variation>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l6F-U5-0D3">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -1689,8 +1650,7 @@
                                         <exclude reference="fe7-QR-ozW"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="73" y="280" width="454" height="180"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="fe7-QR-ozW"/>
                                     </mask>
@@ -1721,9 +1681,6 @@
                                         <include reference="d19-ge-MWi"/>
                                         <include reference="kkL-eY-XpU"/>
                                     </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="235" y="484" width="131" height="28"/>
                                 </variation>
                                 <connections>
                                     <action selector="sendButtonPressed:" destination="W81-lR-yTU" eventType="touchUpInside" id="tpY-Qk-ayN"/>
@@ -1772,8 +1729,7 @@
                                         <exclude reference="n5d-KJ-d0T"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="161" y="473" width="278" height="149"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="U3U-YC-REX"/>
                                         <include reference="n5d-KJ-d0T"/>
@@ -1898,6 +1854,8 @@
                         <outlet property="sendButton" destination="pG0-QV-9zy" id="Hha-12-bFD"/>
                         <outlet property="subjectBox" destination="Som-EB-XQP" id="k6P-tl-VH9"/>
                         <outlet property="successText" destination="3Oj-VT-ZN7" id="OeW-Qs-ySL"/>
+                        <outlet property="supportHeader" destination="xyG-88-BO4" id="wkg-iQ-yjl"/>
+                        <outlet property="supportMessage" destination="per-lL-IWv" id="GPd-0h-V7f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1gG-6W-bKs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1948,9 +1906,6 @@
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="73"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="64" y="20" width="266" height="117"/>
-                                </variation>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Old Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9TQ-lt-15H">
                                 <rect key="frame" x="-25" y="-30" width="97" height="30"/>
@@ -1972,9 +1927,6 @@
                                         <include reference="Vao-dV-8zg"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="-150" y="214" width="300" height="40"/>
-                                </variation>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mha-hp-g6x">
                                 <rect key="frame" x="-25" y="-30" width="97" height="30"/>
@@ -1995,9 +1947,6 @@
                                         <include reference="Bu5-41-92a"/>
                                         <include reference="ZMh-1Y-kda"/>
                                     </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="-150" y="262" width="300" height="40"/>
                                 </variation>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eMJ-Pg-38x">
@@ -2024,9 +1973,6 @@
                                         <include reference="xAc-BZ-fGD"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="-100" y="310" width="200" height="40"/>
-                                </variation>
                                 <connections>
                                     <action selector="changePasswordPressed:" destination="bY3-N2-JXZ" eventType="touchUpInside" id="j6U-Ku-Gpk"/>
                                 </connections>
@@ -2052,9 +1998,6 @@
                                         <include reference="jdv-kL-0HB"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="-100" y="113" width="200" height="100"/>
-                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password Changed!" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3AF-np-1Xv">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
@@ -2077,15 +2020,9 @@
                                         <exclude reference="U9M-UG-vIP"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="-65" y="368" width="129" height="17"/>
-                                </variation>
                             </label>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Gb1-p8-IRf">
                                 <rect key="frame" x="-10" y="-10" width="20" height="20"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="-10" y="425" width="20" height="20"/>
-                                </variation>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -2198,9 +2135,6 @@
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="73"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="-97" y="20" width="193" height="117"/>
-                                </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TdI-1y-WjS">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -2220,8 +2154,7 @@
                                         <exclude reference="Jtm-EB-whr"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="-4" y="28" width="61" height="20"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="DNX-gp-Wea"/>
                                         <include reference="Jtm-EB-whr"/>
@@ -2242,9 +2175,6 @@ We hope you enjoy our app!</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                                 <string key="userLabel">Medley is an app where you can join rooms with friends then share and listen to music together.  Medley was created by five students at the University of California, Santa Barbara in Spring 2016.  We hope you enjoy our app!</string>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="25" y="126" width="868" height="120"/>
-                                </variation>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -2321,7 +2251,7 @@ We hope you enjoy our app!</string>
     <inferredMetricsTieBreakers>
         <segue reference="IAo-Np-OC9"/>
         <segue reference="Ww9-ce-MGe"/>
-        <segue reference="Pc2-jv-RTt"/>
         <segue reference="OaE-fq-UVU"/>
+        <segue reference="Yzw-TG-vj6"/>
     </inferredMetricsTieBreakers>
 </document>
