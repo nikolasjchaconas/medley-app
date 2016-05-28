@@ -13,7 +13,7 @@ class AccountViewController: UIViewController {
     var myRootRef = Firebase(url:"https://crackling-heat-1030.firebaseio.com/")
      
      @IBOutlet weak var newPasswordField: UITextField!
-    @IBOutlet weak var accountHeader: UILabel!
+     @IBOutlet weak var accountHeader: UILabel!
      @IBOutlet weak var oldPasswordField: UITextField!
      @IBOutlet weak var temporaryPasswordWarning: UILabel!
      @IBOutlet weak var updateInfoButton: UIButton!
@@ -39,10 +39,16 @@ class AccountViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         self.hideKeyboardOnTap()
         
-        //Stylize update info button
+        // Round edges of update info button
         self.updateInfoButton.layer.cornerRadius = 5
         self.updateInfoButton.layer.borderColor = self.buttonBorderColor.CGColor
         self.updateInfoButton.layer.borderWidth = 1
+        
+        // Add shadow to update info button
+        self.updateInfoButton.layer.shadowColor = self.buttonShadowColor.CGColor
+        self.updateInfoButton.layer.shadowRadius = 1.0
+        self.updateInfoButton.layer.shadowOpacity = 1.0
+        self.updateInfoButton.layer.shadowOffset = CGSizeMake(0, 3)
         
         // Add shadow to account header, success message, and warning message
         self.accountHeader.layer.shadowColor = buttonShadowColor.CGColor
