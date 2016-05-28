@@ -68,8 +68,15 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate {
     
     
     
+    let blackGrad = CAGradientLayer().blackGradient()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        
+        //Add black gradient
+        self.blackGrad.frame = self.view.bounds
+        self.view.layer.addSublayer(blackGrad)
         
         //more customizations for this can be found here
         //http://www.ebc.cat/2015/03/07/customize-your-swrevealviewcontroller-slide-out-menu/

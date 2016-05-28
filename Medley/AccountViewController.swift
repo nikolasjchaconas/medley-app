@@ -34,10 +34,16 @@ class AccountViewController: UIViewController {
     var redColor = UIColor(red: 1, green:0, blue: 0, alpha: 0.8)
     var greenColor = UIColor(red: 0, green: 1, blue: 0, alpha: 0.8)
     
+    let blackGrad = CAGradientLayer().blackGradient()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.hideKeyboardOnTap()
+        
+        //Add black gradient
+        self.blackGrad.frame = self.view.bounds
+        self.view.layer.addSublayer(blackGrad)
         
         // Round edges of update info button
         self.updateInfoButton.layer.cornerRadius = 5

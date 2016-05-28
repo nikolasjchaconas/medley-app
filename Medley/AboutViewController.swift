@@ -18,8 +18,14 @@ class AboutViewController: UIViewController {
     
     let buttonShadowColor : UIColor = UIColor( red: 20/255.0, green: 20/255.0, blue: 20/255.0, alpha: 1.0)
     
+    let blackGrad = CAGradientLayer().blackGradient()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Add black gradient
+        self.blackGrad.frame = self.view.bounds
+        self.view.layer.addSublayer(blackGrad)
         
         // Add shadow to about header message and about text
         self.aboutHeader.layer.shadowColor = buttonShadowColor.CGColor

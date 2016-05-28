@@ -25,10 +25,15 @@ class SupportViewController: UIViewController, UITextViewDelegate, MFMailCompose
     let buttonShadowColor : UIColor = UIColor( red: 20/255.0, green: 20/255.0, blue: 20/255.0, alpha: 1.0)
     let placeholderColor : UIColor = UIColor( red: 199/255.0, green: 199/255.0, blue: 205/255.0, alpha: 1)
     
+    let blackGrad = CAGradientLayer().blackGradient()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        //Add black gradient
+        self.blackGrad.frame = self.view.bounds
+        self.view.layer.addSublayer(blackGrad)
         
         // Add shadow to about header message, support info text, and success text
         self.supportHeader.layer.shadowColor = buttonShadowColor.CGColor
