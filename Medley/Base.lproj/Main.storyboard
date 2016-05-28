@@ -2199,7 +2199,7 @@ We hope you enjoy our app!</string>
                                 <string key="userLabel">Medley is an app where you can join rooms with friends then share and listen to music together.  Medley was created by five students at the University of California, Santa Barbara in Spring 2016.  We hope you enjoy our app!</string>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="sPr-Rb-PFO" firstAttribute="leading" secondItem="TdI-1y-WjS" secondAttribute="trailing" constant="12" id="1Vo-Df-eD7">
                                 <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
@@ -2277,7 +2277,7 @@ We hope you enjoy our app!</string>
     <inferredMetricsTieBreakers>
         <segue reference="IAo-Np-OC9"/>
         <segue reference="YK2-ml-4J1"/>
-        <segue reference="Yzw-TG-vj6"/>
+        <segue reference="2xC-TU-NkH"/>
         <segue reference="Yn2-Lj-OtF"/>
     </inferredMetricsTieBreakers>
 </document>
