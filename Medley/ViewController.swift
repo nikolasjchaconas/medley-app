@@ -41,6 +41,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var resetPasswordButton: UIButton!
     @IBOutlet weak var helpSigningInText: UILabel!
+    @IBOutlet weak var medleyLogo: UILabel!
     @IBOutlet weak var loginErrorMessage: UILabel!
     @IBOutlet weak var signupErrorMessage: UILabel!
     @IBOutlet weak var usernameField: UITextField!
@@ -58,10 +59,12 @@ class ViewController: UIViewController {
     var purpleBackground = UIColor(red: 204/255, green: 102/255, blue: 1, alpha: 1.0)
     
     let blueGrad = CAGradientLayer().blueGradient()
+    let blackGrad = CAGradientLayer().blackGradient()
     let purpleGrad = CAGradientLayer().purpleGradient()
     
     //Color for button borders
     let buttonBorderColor : UIColor = UIColor( red: 255, green: 255, blue: 255, alpha: 0.35)
+    let buttonShadowColor : UIColor = UIColor( red: 20/255.0, green: 20/255.0, blue: 20/255.0, alpha: 1.0)
     var redColor = UIColor(red: 1, green:0, blue: 0, alpha: 0.8)
     var greenColor = UIColor(red: 0, green: 1, blue: 0, alpha: 0.8)
     // Create a reference to a Firebase location
@@ -177,6 +180,12 @@ class ViewController: UIViewController {
         loginButton.layer.borderColor = buttonBorderColor.CGColor
         signupButton.layer.borderWidth = 1
         signupButton.layer.borderColor = buttonBorderColor.CGColor
+       
+        //Give medley logo shadow
+        medleyLogo.layer.shadowColor = buttonShadowColor.CGColor
+        medleyLogo.layer.shadowOffset = CGSizeMake(0, 3)
+        medleyLogo.layer.shadowOpacity = 1.0
+        medleyLogo.layer.shadowRadius = 1.0
         
         //add listeners on text fields
         self.passwordConfirmationField.addTarget(self, action: #selector(ViewController.LoginFieldChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
