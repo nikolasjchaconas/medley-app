@@ -500,6 +500,7 @@
                         <outlet property="createRoomButton" destination="f0v-pr-y4m" id="V0g-xq-V3w"/>
                         <outlet property="greetingMessage" destination="rWS-dx-Of8" id="yNu-wv-G5f"/>
                         <outlet property="joinRoomButton" destination="ZDU-El-Sac" id="VHp-AN-Zms"/>
+                        <outlet property="medleyLogo" destination="P0e-D4-YMj" id="teZ-Hj-yu3"/>
                         <outlet property="settingsButton" destination="4YH-zH-ewO" id="DRq-VZ-AfH"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="ViewController" id="OaE-fq-UVU"/>
                         <segue destination="9t6-K3-e6Y" kind="show" identifier="SWRevealViewController" id="IAo-Np-OC9"/>
@@ -2318,9 +2319,9 @@ We hope you enjoy our app!</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Ww9-ce-MGe"/>
         <segue reference="IAo-Np-OC9"/>
-        <segue reference="XAP-CB-ULA"/>
+        <segue reference="Ww9-ce-MGe"/>
         <segue reference="Pc2-jv-RTt"/>
+        <segue reference="OaE-fq-UVU"/>
     </inferredMetricsTieBreakers>
 </document>
