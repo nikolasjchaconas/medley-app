@@ -54,6 +54,7 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
     var songStateRef : Firebase = Firebase()
     var songTime : Float = 0
     var seekAmount : Float = 0
+    var searchTimer : NSTimer = NSTimer()
     var songTimer : NSTimer = NSTimer()
     var waiting : Bool = false
     var firstTime : Bool = true
@@ -762,7 +763,6 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
         
         @IBAction func leaveRoomButtonPressed(sender: AnyObject) {
             self.leaveRoom()
-                
         }
         
         override func viewWillDisappear(animated: Bool) {
@@ -873,9 +873,20 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
          }
         
         //Youtube search
-        
+        func doQuery() {
+            songTimer.invalidate()
+            if(searchBar.text! != "") {
+                YTSearch.query(searchBar.text!, tableView: tableView, viewWait: searchIndicatorView)
+            } else {
+                searchIndicatorView.hidden = true
+            }
+        }
+    
         func songSearchChange(sender : UITextField) {
-            YTSearch.query(sender.text!, tableView: tableView, viewWait: searchIndicatorView)
+            searchIndicatorView.hidden = false
+            songTimer.invalidate()
+            songTimer = NSTimer.scheduledTimerWithTimeInterval(0.4, target: self, selector: #selector(doQuery), userInfo: nil, repeats: true)
+            
         }
         
         func searchBarTapped(sender : UITextField) {
