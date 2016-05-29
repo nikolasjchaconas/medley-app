@@ -96,8 +96,8 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
         self.sendButton.layer.addBorder(UIRectEdge.Top, color: lighterGrey,
                                         thickness: 1.0, width: 55.0, height: 50)
         
-        //Highlight messages button by default
-        self.messagesButton.layer.backgroundColor = self.highlightedButton.CGColor
+        //Highlight playlist button by default
+        self.songsButton.layer.backgroundColor = self.highlightedButton.CGColor
         
         //Center button labels
         self.messagesButton.titleLabel?.textAlignment = NSTextAlignment.Center
@@ -806,8 +806,8 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
         }
         
         @IBAction func songsButtonPressed(sender: AnyObject) {
-            self.messagesButton.layer.backgroundColor = UIColor.whiteColor().CGColor
-            self.songsButton.layer.backgroundColor = self.highlightedButton.CGColor
+            self.songsButton.layer.backgroundColor = UIColor.whiteColor().CGColor
+            self.messagesButton.layer.backgroundColor = self.highlightedButton.CGColor
             inMessages = false
             self.hideKeyboard()
             songsButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
@@ -822,8 +822,8 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
         }
         
         @IBAction func messagesButtonPressed(sender: AnyObject) {
-            self.songsButton.layer.backgroundColor = UIColor.whiteColor().CGColor
-            self.messagesButton.layer.backgroundColor = self.highlightedButton.CGColor
+            self.messagesButton.layer.backgroundColor = UIColor.whiteColor().CGColor
+            self.songsButton.layer.backgroundColor = self.highlightedButton.CGColor
             messagesButton.setTitle("Chat Room", forState: .Normal)
             inMessages = true
             messagesMissing = 0
