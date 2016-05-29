@@ -16,6 +16,8 @@
 		5B4821ED1CF93F7F00EFD975 /* YouTubeSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4821EC1CF93F7F00EFD975 /* YouTubeSearch.swift */; };
 		5B4D1AF41CE5458800916C6D /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D1AF31CE5458800916C6D /* SWRevealViewController.m */; };
 		5B4D1AF71CE54C3700916C6D /* SlideOutMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D1AF61CE54C3700916C6D /* SlideOutMenuViewController.swift */; };
+		5B9544551CFACBD60003DD4E /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B9544541CFACBD60003DD4E /* Firebase.framework */; };
+		5B9544561CFACBD60003DD4E /* Firebase.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5B9544541CFACBD60003DD4E /* Firebase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AA1FA2E81CD83E1C007E5D61 /* SupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1FA2E71CD83E1C007E5D61 /* SupportViewController.swift */; };
 		AA3418FE1CD559CB00B571FD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA89B62A1CC32F2300E929F0 /* ViewController.swift */; };
 		AA89B6291CC32F2300E929F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA89B6281CC32F2300E929F0 /* AppDelegate.swift */; };
@@ -47,6 +49,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		5B9544571CFACBD70003DD4E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5B9544561CFACBD60003DD4E /* Firebase.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0D026A753A63183035544CB8 /* Pods_MedleyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MedleyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A51DBD3F4F3262B7413F2A8 /* Pods-MedleyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedleyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MedleyTests/Pods-MedleyTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -59,6 +75,7 @@
 		5B4D1AF21CE5458800916C6D /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		5B4D1AF31CE5458800916C6D /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		5B4D1AF61CE54C3700916C6D /* SlideOutMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideOutMenuViewController.swift; sourceTree = "<group>"; };
+		5B9544541CFACBD60003DD4E /* Firebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Firebase.framework; path = "/Users/nikolaschaconas/Library/Developer/Xcode/DerivedData/Medley-btvmptjcwbjrngaraufohmgslvgj/Build/Products/Debug-iphonesimulator/Firebase/Firebase.framework"; sourceTree = "<absolute>"; };
 		5BD948D14EA6DAAEF2A8EEFB /* Pods_Medley.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Medley.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B8CA7600E2E5DCFD7BC7B22 /* Pods-MedleyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedleyUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MedleyUITests/Pods-MedleyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7FF55AAF6C5B1C8CE5D73F80 /* Pods-MedleyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedleyTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MedleyTests/Pods-MedleyTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -91,6 +108,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42994AFF628D03EB4F98E991 /* Pods_Medley.framework in Frameworks */,
+				5B9544551CFACBD60003DD4E /* Firebase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,6 +167,7 @@
 		AA89B61C1CC32F2300E929F0 = {
 			isa = PBXGroup;
 			children = (
+				5B9544541CFACBD60003DD4E /* Firebase.framework */,
 				AA89B6271CC32F2300E929F0 /* Medley */,
 				AA89B63C1CC32F2300E929F0 /* MedleyTests */,
 				AA89B6471CC32F2300E929F0 /* MedleyUITests */,
@@ -223,6 +242,7 @@
 				AA89B6231CC32F2300E929F0 /* Resources */,
 				D7141EE5E7CADE5782D794D8 /* 📦 Embed Pods Frameworks */,
 				0343D229B3370581B7B920FA /* 📦 Copy Pods Resources */,
+				5B9544571CFACBD70003DD4E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -286,7 +306,7 @@
 				TargetAttributes = {
 					AA89B6241CC32F2300E929F0 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = ZT7R9RPL34;
+						DevelopmentTeam = 8K58Z9Q52N;
 					};
 					AA89B6381CC32F2300E929F0 = {
 						CreatedOnToolsVersion = 7.3;

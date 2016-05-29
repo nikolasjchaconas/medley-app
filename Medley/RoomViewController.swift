@@ -243,7 +243,7 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
         //delegates
     
         func playerViewDidBecomeReady(playerView: YTPlayerView) {
-            
+            self.highlightCurrentSong()
             if(myRootRef.authData.uid != self.admin) {
                 if(firstTime == true) {
                     firstTime = false
@@ -305,7 +305,6 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
                     .childByAppendingPath("song_state").setValue("garbage")
                 myRootRef.childByAppendingPath("rooms").childByAppendingPath(roomCode)
                 .childByAppendingPath("song_state").setValue("playing")
-                highlightCurrentSong(currentSongIndex, currentIndex: currentSongIndex+1)
                 
                 myRootRef.childByAppendingPath("rooms").childByAppendingPath(self.roomCode)
                 .childByAppendingPath("currentSongIndex").setValue(currentSongIndex + 1)
@@ -327,7 +326,6 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
                     .childByAppendingPath("song_state").setValue("garbage")
                 myRootRef.childByAppendingPath("rooms").childByAppendingPath(roomCode)
                     .childByAppendingPath("song_state").setValue("playing")
-                highlightCurrentSong(currentSongIndex, currentIndex: currentSongIndex-1)
                 
                 myRootRef.childByAppendingPath("rooms").childByAppendingPath(self.roomCode)
                     .childByAppendingPath("currentSongIndex").setValue(currentSongIndex - 1)
@@ -336,14 +334,17 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
             }
         }
     
-        func highlightCurrentSong(oldSongIndex : Int, currentIndex : Int) {
-            let oldLabel = (songBox.subviews[2 + oldSongIndex] as? UILabel)!
-            let oldText = oldLabel.text!
-            oldLabel.attributedText = NSMutableAttributedString(string: oldText, attributes: [NSForegroundColorAttributeName : UIColor.blackColor()])
-            
-            let newLabel = (songBox.subviews[2 + currentIndex] as? UILabel)!
-            let newText = newLabel.text!
-            newLabel.attributedText = NSMutableAttributedString(string:newText, attributes: [NSFontAttributeName : UIFont.boldSystemFontOfSize(18)])
+        func highlightCurrentSong() {
+            for i in 1 ..< songList.count + 1 {
+                let newLabel = (songBox.subviews[2 + i] as? UILabel)!
+                let newText = newLabel.text!
+                if(i == currentSongIndex) {
+                    newLabel.attributedText = NSMutableAttributedString(string:newText, attributes: [NSFontAttributeName : UIFont.boldSystemFontOfSize(18)])
+                } else {
+                    newLabel.attributedText = NSMutableAttributedString(string: newText, attributes: [NSForegroundColorAttributeName : UIColor.blackColor()])
+                }
+            }
+
         }
 
         func adminChange(roomCode : String, username : String) {
