@@ -45,8 +45,8 @@ class SettingsViewController: UIViewController {
         
         //Put shadow on settings header
         self.settingsHeader.layer.shadowColor = buttonShadowColor.CGColor
-        self.settingsHeader.layer.shadowOffset = CGSizeMake(0, 6)
-        self.settingsHeader.layer.shadowRadius = 3.0
+        self.settingsHeader.layer.shadowOffset = CGSizeMake(0, 3)
+        self.settingsHeader.layer.shadowRadius = 1.0
         self.settingsHeader.layer.shadowOpacity = 1.0
         
         //Round button edges

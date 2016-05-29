@@ -52,8 +52,8 @@ class AccountViewController: UIViewController {
         
         // Add shadow to account header
         self.accountHeader.layer.shadowColor = buttonShadowColor.CGColor
-        self.accountHeader.layer.shadowOffset = CGSizeMake(0, 6)
-        self.accountHeader.layer.shadowRadius = 3.0
+        self.accountHeader.layer.shadowOffset = CGSizeMake(0, 3)
+        self.accountHeader.layer.shadowRadius = 1.0
         self.accountHeader.layer.shadowOpacity = 1.0
         
          if(self.IsPasswordTemporary()) {

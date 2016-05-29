@@ -41,8 +41,8 @@ class HomeViewController: UIViewController {
         
         // Put shadow on Medley logo
         self.medleyLogo.layer.shadowColor = buttonShadowColor.CGColor
-        self.medleyLogo.layer.shadowOffset = CGSizeMake(0, 6)
-        self.medleyLogo.layer.shadowRadius = 3.0
+        self.medleyLogo.layer.shadowOffset = CGSizeMake(0, 3)
+        self.medleyLogo.layer.shadowRadius = 1.0
         self.medleyLogo.layer.shadowOpacity = 1.0
         
         // Round the button corners

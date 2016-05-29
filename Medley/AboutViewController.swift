@@ -29,8 +29,8 @@ class AboutViewController: UIViewController {
         
         // Add shadow to about header message
         self.aboutHeader.layer.shadowColor = buttonShadowColor.CGColor
-        self.aboutHeader.layer.shadowOffset = CGSizeMake(0, 6)
-        self.aboutHeader.layer.shadowRadius = 3.0
+        self.aboutHeader.layer.shadowOffset = CGSizeMake(0, 3)
+        self.aboutHeader.layer.shadowRadius = 1.0
         self.aboutHeader.layer.shadowOpacity = 1.0
         
         // Do any additional setup after loading the view, typically from a nib.

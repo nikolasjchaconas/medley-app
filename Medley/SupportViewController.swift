@@ -37,8 +37,8 @@ class SupportViewController: UIViewController, UITextViewDelegate, MFMailCompose
         
         // Add shadow to about header message
         self.supportHeader.layer.shadowColor = buttonShadowColor.CGColor
-        self.supportHeader.layer.shadowOffset = CGSizeMake(0, 6)
-        self.supportHeader.layer.shadowRadius = 3.0
+        self.supportHeader.layer.shadowOffset = CGSizeMake(0, 3)
+        self.supportHeader.layer.shadowRadius = 1.0
         self.supportHeader.layer.shadowOpacity = 1.0
         
         // Round send button corners
