@@ -206,6 +206,7 @@ class HomeViewController: UIViewController {
             "admin" : self.myRootRef.authData.uid,
             "password": password,
             "available" : false,
+            "currentSongIndex" : 0
         ]
         
         self.myRootRef.childByAppendingPath("messages").childByAppendingPath(roomCode).setValue(nil)
