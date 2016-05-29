@@ -23,7 +23,7 @@ class HomeViewController: UIViewController {
     let buttonBorderColor : UIColor = UIColor( red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 0.35)
     let buttonShadowColor : UIColor = UIColor( red: 20/255.0, green: 20/255.0, blue: 20/255.0, alpha: 1.0)
     
-    let blackGrad = CAGradientLayer().blackGradient()
+    let blueGrad = CAGradientLayer().blueGradient()
     
     //locks orientation to portrait
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
@@ -36,18 +36,18 @@ class HomeViewController: UIViewController {
         self.hideKeyboardOnTap()
         
         //Add black gradient
-        self.blackGrad.frame = self.view.bounds
-        self.view.layer.addSublayer(blackGrad)
+        self.blueGrad.frame = self.view.bounds
+        self.view.layer.addSublayer(blueGrad)
         
         // Put shadow on Medley logo and greetings text
         self.medleyLogo.layer.shadowColor = buttonShadowColor.CGColor
         self.medleyLogo.layer.shadowOffset = CGSizeMake(0, 6)
         self.medleyLogo.layer.shadowRadius = 3.0
         self.medleyLogo.layer.shadowOpacity = 1.0
-        self.greetingMessage.layer.shadowColor = buttonShadowColor.CGColor
-        self.greetingMessage.layer.shadowOffset = CGSizeMake(0, 2)
-        self.greetingMessage.layer.shadowRadius = 1.0
-        self.greetingMessage.layer.shadowOpacity = 1.0
+//        self.greetingMessage.layer.shadowColor = buttonShadowColor.CGColor
+//        self.greetingMessage.layer.shadowOffset = CGSizeMake(0, 2)
+//        self.greetingMessage.layer.shadowRadius = 1.0
+//        self.greetingMessage.layer.shadowOpacity = 1.0
         
         // Round the button corners
         self.createRoomButton.layer.cornerRadius = 5
@@ -63,18 +63,18 @@ class HomeViewController: UIViewController {
         self.settingsButton.layer.borderColor = self.buttonBorderColor.CGColor
         
         // Give buttons shadows
-        self.createRoomButton.layer.shadowColor = self.buttonShadowColor.CGColor
-        self.createRoomButton.layer.shadowOpacity = 1.0
-        self.createRoomButton.layer.shadowRadius = 1.0
-        self.createRoomButton.layer.shadowOffset = CGSizeMake(0, 3)
-        self.joinRoomButton.layer.shadowColor = self.buttonShadowColor.CGColor
-        self.joinRoomButton.layer.shadowOpacity = 1.0
-        self.joinRoomButton.layer.shadowRadius = 1.0
-        self.joinRoomButton.layer.shadowOffset = CGSizeMake(0, 3)
-        self.settingsButton.layer.shadowColor = self.buttonShadowColor.CGColor
-        self.settingsButton.layer.shadowOpacity = 1.0
-        self.settingsButton.layer.shadowRadius = 1.0
-        self.settingsButton.layer.shadowOffset = CGSizeMake(0, 3)
+//        self.createRoomButton.layer.shadowColor = self.buttonShadowColor.CGColor
+//        self.createRoomButton.layer.shadowOpacity = 1.0
+//        self.createRoomButton.layer.shadowRadius = 1.0
+//        self.createRoomButton.layer.shadowOffset = CGSizeMake(0, 3)
+//        self.joinRoomButton.layer.shadowColor = self.buttonShadowColor.CGColor
+//        self.joinRoomButton.layer.shadowOpacity = 1.0
+//        self.joinRoomButton.layer.shadowRadius = 1.0
+//        self.joinRoomButton.layer.shadowOffset = CGSizeMake(0, 3)
+//        self.settingsButton.layer.shadowColor = self.buttonShadowColor.CGColor
+//        self.settingsButton.layer.shadowOpacity = 1.0
+//        self.settingsButton.layer.shadowRadius = 1.0
+//        self.settingsButton.layer.shadowOffset = CGSizeMake(0, 3)
         
         
         //get username
