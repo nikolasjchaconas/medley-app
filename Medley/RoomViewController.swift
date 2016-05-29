@@ -537,20 +537,12 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
             addSongMessages();
             let ref = myRootRef.childByAppendingPath("songs").childByAppendingPath(roomCode)
             observers.append(ref)
-            let errorMessage = "There are currently no songs in the playlist.\n Search in the toolbar to add some!"
+            let errorMessage = "\nThere are currently no videos in the playlist.\n Search in the toolbar to add some!"
+            self.appendSong(errorMessage, error : 1, songID: " ")
             ref.observeEventType(.ChildAdded, withBlock: { snapshot in
-                if(snapshot.value is NSNull) {
-                    self.appendSong(errorMessage, error : 1, songID: " ")
-                } else {
-                    let snapshotObj = snapshot.children.nextObject() as! FDataSnapshot
-                    self.appendSong(snapshotObj.key, error : 0, songID: (snapshotObj.value as? String)!)
-                }
-                
+                let snapshotObj = snapshot.children.nextObject() as! FDataSnapshot
+                self.appendSong(snapshotObj.key, error : 0, songID: (snapshotObj.value as? String)!)
             })
-        }
-        
-        func removeError() {
-            songBox.subviews.last?.removeFromSuperview()
         }
         
         func appendSong(songName : String, error : Int, songID : String) {
@@ -563,8 +555,8 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
                 let newSong = [
                     songName : songID
                 ]
-                if(subview.text == "There are currently no songs in the playlist.\n Search in the toolbar to add some!") {
-                    self.removeError()
+                if(subview.text == "\nThere are currently no videos in the playlist.\n Search in the toolbar to add some!") {
+                    subview.removeFromSuperview()
                 }
                 if(songCount == 1) {
                     myRootRef.childByAppendingPath("rooms").childByAppendingPath(self.roomCode)
@@ -583,19 +575,19 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
                 
                 
                 songList.append((songName, songID))
-                let textBoxWidth : CGFloat = 20
+                let textBoxWidth : CGFloat = 35.0
                 text = String(songCount) + ". " + songName
                 var rect = CGRectMake(0, 0, self.songBox.bounds.size.width, textBoxWidth)
-                rect.origin.y = textBoxWidth * CGFloat(self.songCount) + 40
+                rect.origin.y = textBoxWidth * CGFloat(self.songCount)
                 label = UILabel(frame: rect)
                 label.numberOfLines = 1
                 label.textAlignment = NSTextAlignment.Left
             } else {
                 songCount -= 1
-                let textBoxWidth : CGFloat = 80
+                let textBoxWidth : CGFloat = 80.0
                 text = songName
                 var rect = CGRectMake(0, 0, self.songBox.bounds.size.width, textBoxWidth)
-                rect.origin.y = textBoxWidth * CGFloat(self.songCount) + 40
+                rect.origin.y = textBoxWidth * CGFloat(self.songCount)
                 label = UILabel(frame: rect)
                 label.numberOfLines = 2
                 label.textAlignment = NSTextAlignment.Center
@@ -611,14 +603,14 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
                 message = NSMutableAttributedString(string: text, attributes: [NSForegroundColorAttributeName : UIColor.blackColor()])
             }
             self.songBox.contentSize =
-                CGSizeMake(self.view.bounds.width, 20.0 * CGFloat(self.songCount) + 40.0)
+                CGSizeMake(self.view.bounds.width, 35.0 * CGFloat(self.songCount + 1))
             
             label.attributedText = message
             self.songBox.addSubview(label)
         }
         
         func addSongMessages() {
-            let textBoxWidth : CGFloat = 40
+            let textBoxWidth : CGFloat = 35
             var rect = CGRectMake(0, 0, self.songBox.bounds.size.width, textBoxWidth)
             rect.origin.y = 0
             let label = UILabel(frame: rect)
@@ -627,7 +619,7 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
             label.numberOfLines = 1
             
             label.textAlignment = NSTextAlignment.Center
-            let text = "Current Song Playlist:"
+            let text = "Current Video Playlist:"
             let message = NSMutableAttributedString(string: text, attributes: [NSFontAttributeName : UIFont.boldSystemFontOfSize(20)])
             label.attributedText = message
             self.songBox.addSubview(label)
@@ -768,9 +760,11 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
         }
         
         func scrollChat() {
-            UIView.animateWithDuration(0.5, animations: {
-                self.chatBox.setContentOffset(CGPointMake(0, self.chatBox.contentSize.height - self.chatBox.bounds.size.height), animated: false)
-            })
+            if(songBox.bounds.height < 20 * self.totalLines) {
+                UIView.animateWithDuration(0.5, animations: {
+                    self.chatBox.setContentOffset(CGPointMake(0, self.chatBox.contentSize.height - self.chatBox.bounds.size.height), animated: false)
+                })
+            }
         }
         
         func keyboardWillHide(notification: NSNotification) {
