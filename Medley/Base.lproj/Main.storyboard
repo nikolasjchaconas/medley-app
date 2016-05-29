@@ -2065,7 +2065,7 @@
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pG0-QV-9zy">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="0.25" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="85" id="d19-ge-MWi">
                                         <variation key="heightClass=regular-widthClass=compact" constant="28"/>
@@ -2124,7 +2124,9 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thanks for contacting us! We'll reply as soon as we can. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Oj-VT-ZN7">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="149" id="U3U-YC-REX"/>
+                                    <constraint firstAttribute="height" constant="149" id="U3U-YC-REX">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="102"/>
+                                    </constraint>
                                     <constraint firstAttribute="width" constant="278" id="n5d-KJ-d0T"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -2144,10 +2146,12 @@
                                 </variation>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="l6F-U5-0D3" firstAttribute="top" secondItem="Som-EB-XQP" secondAttribute="bottom" constant="8" symbolic="YES" id="1oV-HD-5xa"/>
-                            <constraint firstItem="3Oj-VT-ZN7" firstAttribute="top" secondItem="l6F-U5-0D3" secondAttribute="bottom" constant="13" id="3lc-tj-wuf"/>
+                            <constraint firstItem="3Oj-VT-ZN7" firstAttribute="top" secondItem="l6F-U5-0D3" secondAttribute="bottom" constant="13" id="3lc-tj-wuf">
+                                <variation key="heightClass=regular-widthClass=compact" constant="60"/>
+                            </constraint>
                             <constraint firstItem="3Oj-VT-ZN7" firstAttribute="centerX" secondItem="pG0-QV-9zy" secondAttribute="centerX" id="45u-sv-U4W"/>
                             <constraint firstItem="xyG-88-BO4" firstAttribute="top" secondItem="bim-0J-ilh" secondAttribute="topMargin" constant="10" id="6dn-4W-tmC">
                                 <variation key="heightClass=regular-widthClass=compact" constant="20"/>
@@ -2667,8 +2671,9 @@ We hope you enjoy our app!</string>
         <segue reference="Du8-HD-pSP"/>
         <segue reference="Ww9-ce-MGe"/>
         <segue reference="Pc2-jv-RTt"/>
+        <segue reference="Yzw-TG-vj6"/>
+        <segue reference="Yn2-Lj-OtF"/>
         <segue reference="YK2-ml-4J1"/>
         <segue reference="IAo-Np-OC9"/>
-        <segue reference="Yn2-Lj-OtF"/>
     </inferredMetricsTieBreakers>
 </document>
