@@ -305,7 +305,7 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
                     .childByAppendingPath("song_state").setValue("garbage")
                 myRootRef.childByAppendingPath("rooms").childByAppendingPath(roomCode)
                 .childByAppendingPath("song_state").setValue("playing")
-                highlightCurrentSong(currentSongIndex)
+                highlightCurrentSong(currentSongIndex, currentIndex: currentSongIndex+1)
                 
                 myRootRef.childByAppendingPath("rooms").childByAppendingPath(self.roomCode)
                 .childByAppendingPath("currentSongIndex").setValue(currentSongIndex + 1)
@@ -327,7 +327,7 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
                     .childByAppendingPath("song_state").setValue("garbage")
                 myRootRef.childByAppendingPath("rooms").childByAppendingPath(roomCode)
                     .childByAppendingPath("song_state").setValue("playing")
-                highlightCurrentSong(currentSongIndex)
+                highlightCurrentSong(currentSongIndex, currentIndex: currentSongIndex-1)
                 
                 myRootRef.childByAppendingPath("rooms").childByAppendingPath(self.roomCode)
                     .childByAppendingPath("currentSongIndex").setValue(currentSongIndex - 1)
@@ -336,11 +336,16 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
             }
         }
     
-        func highlightCurrentSong(oldSongIndex : Int) {
-            print(songBox.subviews[0])
-            print(songBox.subviews[1])
+        func highlightCurrentSong(oldSongIndex : Int, currentIndex : Int) {
+            let oldLabel = (songBox.subviews[2 + oldSongIndex] as? UILabel)!
+            let oldText = oldLabel.text!
+            oldLabel.attributedText = NSMutableAttributedString(string: oldText, attributes: [NSForegroundColorAttributeName : UIColor.blackColor()])
+            
+            let newLabel = (songBox.subviews[2 + currentIndex] as? UILabel)!
+            let newText = newLabel.text!
+            newLabel.attributedText = NSMutableAttributedString(string:newText, attributes: [NSFontAttributeName : UIFont.boldSystemFontOfSize(18)])
         }
-    
+
         func adminChange(roomCode : String, username : String) {
             let ref = myRootRef.childByAppendingPath("rooms")
                 .childByAppendingPath(roomCode).childByAppendingPath("admin")
@@ -601,7 +606,7 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
             
             let message : NSMutableAttributedString
             if(songCount == 1) {
-                message = NSMutableAttributedString(string:text, attributes: [NSFontAttributeName : UIFont.boldSystemFontOfSize(16)])
+                message = NSMutableAttributedString(string:text, attributes: [NSFontAttributeName : UIFont.boldSystemFontOfSize(18)])
             } else {
                 message = NSMutableAttributedString(string: text, attributes: [NSForegroundColorAttributeName : UIColor.blackColor()])
             }
@@ -868,6 +873,7 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
         }
         
         func searchBarGone(sender : UITextField) {
+            self.searchBar.text = ""
             self.leaveRoomButton.alpha = 1.0
             self.menuButton.alpha = 1.0
             UIView.animateWithDuration(0.20, animations: {
