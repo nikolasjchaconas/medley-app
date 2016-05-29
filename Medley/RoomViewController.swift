@@ -73,7 +73,7 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
     
     var lighterGrey = UIColor(red: 190/255, green: 190/255, blue: 190/255, alpha: 1.0)
     var highlightedButton = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1.0)
-    var grey = UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1.0)
+    var grey = UIColor(red: 100/255, green: 100/255, blue: 100/255, alpha: 1.0)
     
     
     
@@ -145,8 +145,8 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
         chatBoxHeight = chatBox.frame.height
         chatBarConstraint = NSLayoutConstraint(item: chatBar, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute:NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0)
         
-        songsButton.setTitleColor(lighterGrey, forState: .Normal)
-        messagesButton.setTitleColor(grey, forState: .Normal)
+        songsButton.setTitleColor(grey, forState: .Normal)
+        messagesButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
         
         view.addConstraint(chatBarConstraint)
         // Do any additional setup after loading the view, typically from a nib.
@@ -793,7 +793,7 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
             let num = messagesMissing + 10101
             let unicodeChar = Character(UnicodeScalar(num))
             let toAdd = messagesMissing >= 10 ? "\(unicodeChar)" + "+" : "\(unicodeChar)"
-            messagesButton.setTitle("\(toAdd)" + " Messages", forState: .Normal)
+            messagesButton.setTitle("\(toAdd)" + " Chat Room", forState: .Normal)
         }
         
         @IBAction func songsButtonPressed(sender: AnyObject) {
@@ -801,8 +801,8 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
             self.songsButton.layer.backgroundColor = self.highlightedButton.CGColor
             inMessages = false
             self.hideKeyboard()
-            songsButton.setTitleColor(grey, forState: .Normal)
-            messagesButton.setTitleColor(lighterGrey, forState: .Normal)
+            songsButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+            messagesButton.setTitleColor(grey, forState: .Normal)
             UIView.animateWithDuration(0.3, animations: {
                 self.searchBar.alpha = 1.0
                 self.chatBox.alpha = 0.0
@@ -815,12 +815,12 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
         @IBAction func messagesButtonPressed(sender: AnyObject) {
             self.songsButton.layer.backgroundColor = UIColor.whiteColor().CGColor
             self.messagesButton.layer.backgroundColor = self.highlightedButton.CGColor
-            messagesButton.setTitle("Messages", forState: .Normal)
+            messagesButton.setTitle("Chat Room", forState: .Normal)
             inMessages = true
             messagesMissing = 0
             self.hideKeyboard()
-            messagesButton.setTitleColor(grey, forState: .Normal)
-            songsButton.setTitleColor(lighterGrey, forState: .Normal)
+            messagesButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+            songsButton.setTitleColor(grey, forState: .Normal)
             UIView.animateWithDuration(0.3, animations: {
                 self.searchBar.alpha = 0.0
                 self.chatBox.alpha = 1.0
