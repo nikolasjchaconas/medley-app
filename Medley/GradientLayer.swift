@@ -49,3 +49,32 @@ extension CAGradientLayer {
         return gradientLayer
     }
 }
+
+extension CALayer {
+    
+    func addBorder(edge: UIRectEdge, color: UIColor, thickness: CGFloat, width : CGFloat, height : CGFloat) {
+        
+        let border = CALayer()
+        
+        switch edge {
+        case UIRectEdge.Top:
+            border.frame = CGRectMake(0, 0, width, thickness)
+            break
+        case UIRectEdge.Bottom:
+            border.frame = CGRectMake(0, height - thickness, width, thickness)
+            break
+        case UIRectEdge.Left:
+            border.frame = CGRectMake(0, 0, thickness, height)
+            break
+        case UIRectEdge.Right:
+            border.frame = CGRectMake(width - thickness, 0, thickness, height)
+            break
+        default:
+            break
+        }
+        
+        border.backgroundColor = color.CGColor;
+        
+        self.addSublayer(border)
+    }
+}

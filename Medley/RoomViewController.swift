@@ -10,11 +10,12 @@ import UIKit
 import Firebase
 import youtube_ios_player_helper
 
-class RoomViewController: UIViewController, YTPlayerViewDelegate, UITableViewDelegate, UITableViewDataSource {
+class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource {
     
     
     @IBOutlet weak var chatBar: UITextField!
     
+    @IBOutlet weak var searchForSongsTitle: UILabel!
     @IBOutlet weak var chatBox: UIScrollView!
     
     @IBOutlet weak var tableView: UITableView!
@@ -33,6 +34,7 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UITableViewDel
     
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var searchIndicatorView: UIView!
+    var songList: Array<Dictionary<String, String>> = []
     var currentRoomSong: Bool = false
     var YTSearch : YouTubeSearch = YouTubeSearch()
     var roomCode : String!
@@ -59,12 +61,15 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UITableViewDel
     var inMessages : Bool = true
     @IBOutlet weak var songName: UILabel!
     
+    @IBOutlet weak var videoTapView: UIView!
     @IBOutlet weak var searchBar: UITextField!
     @IBOutlet weak var songBox: UIScrollView!
     @IBOutlet weak var sendButton: UIButton!
     
     @IBOutlet weak var songsButton: UIButton!
     @IBOutlet weak var messagesButton: UIButton!
+    
+    @IBOutlet weak var disableKeyboardView: UIView!
     
     var lighterGrey = UIColor(red: 190/255, green: 190/255, blue: 190/255, alpha: 1.0)
     var grey = UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1.0)
@@ -81,6 +86,19 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UITableViewDel
         self.blackGrad.frame = self.view.bounds
         self.view.layer.addSublayer(blackGrad)
         
+        self.chatBar.layer.addBorder(UIRectEdge.Top, color: lighterGrey,
+                                     thickness: 1.0, width: chatBar.frame.width, height: 50)
+        self.searchBar.layer.addBorder(UIRectEdge.Top, color: lighterGrey,
+                                       thickness: 1.0, width: self.view.frame.width, height : 50)
+        
+        self.sendButton.layer.addBorder(UIRectEdge.Top, color: lighterGrey,
+                                        thickness: 1.0, width: 55.0, height: 50)
+        
+
+        tableView.layer.addBorder(UIRectEdge.Top, color: lighterGrey,
+                                  thickness: 0.5, width: self.view.frame.width, height: tableView.frame.height)
+        
+        
         tableView.delegate = self
         tableView.dataSource = self
         playerView.delegate = self
@@ -93,6 +111,21 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UITableViewDel
         self.searchBar.addTarget(self, action: #selector(songSearchChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
         self.searchBar.addTarget(self, action: #selector(searchBarTapped(_:)), forControlEvents: UIControlEvents.EditingDidBegin)
         self.searchBar.addTarget(self, action: #selector(searchBarGone(_:)), forControlEvents: UIControlEvents.EditingDidEnd)
+        self.disableKeyboardView.hidden = true
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(RoomViewController.hideKeyboardForSearch(_:)))
+        
+        let tap2 = UITapGestureRecognizer(target: self, action:
+            #selector(RoomViewController.playerViewTapped(_:)))
+        
+        
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(RoomViewController.hideKeyboardForSearch(_:)))
+        swipeDown.direction = UISwipeGestureRecognizerDirection.Down
+        
+        
+        disableKeyboardView.addGestureRecognizer(swipeDown)
+        disableKeyboardView.addGestureRecognizer(tap)
+        videoTapView.addGestureRecognizer(tap2)
         
         //Observer for listening to when application enters background
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RoomViewController.myBackgroundObserverMethod(_:)), name:UIApplicationDidEnterBackgroundNotification, object: nil)
@@ -288,7 +321,12 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UITableViewDel
         })
     }
     
+    
     @IBAction func playButtonPressed(sender: AnyObject) {
+        pressPlayButton()
+    }
+    
+    func pressPlayButton() {
         if(self.songPresent == true) {
             if(playerView.playerState() == YTPlayerState.Buffering) {
                 self.videoLoadingIndicator.startAnimating()
@@ -298,7 +336,6 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UITableViewDel
             }
         }
     }
-    
     func setSongTime() {
         self.songTime = playerView.currentTime()
         myRootRef.childByAppendingPath("rooms").childByAppendingPath(self.roomCode)
@@ -307,9 +344,6 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UITableViewDel
     
     @IBAction func nextButtonPressed(sender: AnyObject) {
         
-//        songTime = 0
-//        myRootRef.childByAppendingPath("rooms").childByAppendingPath(self.roomCode)
-//            .childByAppendingPath("song_time").setValue(self.songTime)
     }
     @IBAction func previousButtonPressed(sender: AnyObject) {
     }
@@ -469,11 +503,12 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UITableViewDel
             if(subview.text == "There are currently no songs in the playlist.\n Search in the toolbar to add some!") {
                 self.removeError()
             }
+            let newSong = [
+                songName : songID
+            ]
+            songList.append(newSong)
             if(currentRoomSong == false) {
                 currentRoomSong = true
-                let newSong = [
-                    songName : songID
-                ]
                 currentSongIndex = 1
                 myRootRef.childByAppendingPath("rooms").childByAppendingPath(roomCode)
                 .childByAppendingPath("current_song").setValue(newSong)
@@ -505,6 +540,8 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UITableViewDel
         } else {
             message = NSMutableAttributedString(string: text, attributes: [NSForegroundColorAttributeName : UIColor.blackColor()])
         }
+        self.songBox.contentSize =
+            CGSizeMake(self.view.bounds.width, 20.0 * CGFloat(self.songCount) + 40.0)
         
         label.attributedText = message
         self.songBox.addSubview(label)
@@ -564,7 +601,7 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UITableViewDel
                 label.textAlignment = NSTextAlignment.Left
                 
                 label.attributedText = stylizedMessage
-                self.chatBox.contentSize = CGSizeMake(320, 20 * self.totalLines)
+                self.chatBox.contentSize = CGSizeMake(self.view.bounds.width, 20 * self.totalLines)
                 self.chatBox.addSubview(label)
                 self.scrollChat()
             })
@@ -768,11 +805,17 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UITableViewDel
     
     func searchBarTapped(sender : UITextField) {
         tableView.reloadData()
-        tableView.alpha = 1.0
+        UIView.animateWithDuration(0.20, animations: {
+            self.tableView.alpha = 1.0
+        })
+        disableKeyboardView.hidden = false
     }
     
     func searchBarGone(sender : UITextField) {
-        tableView.alpha = 0
+        UIView.animateWithDuration(0.20, animations: {
+            self.tableView.alpha = 0.0
+        })
+        disableKeyboardView.hidden = true
         YTSearch.videosArray.removeAll(keepCapacity: false)
         print("gooodbye!!")
     }
@@ -803,12 +846,19 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UITableViewDel
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 130.0
+        return 90.0
     }
     
+    func hideKeyboardForSearch(sender: UITapGestureRecognizer? = nil) {
+        self.hideKeyboard()
+        disableKeyboardView.hidden = true
+    }
+    
+    func playerViewTapped(sender: UITapGestureRecognizer? = nil) {
+        pressPlayButton()
+    }
     
     //when a song option is tapped
-
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         print("this is happening!!!")
