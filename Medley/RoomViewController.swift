@@ -812,13 +812,11 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
             self.hideKeyboard()
             songsButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
             messagesButton.setTitleColor(grey, forState: .Normal)
-            UIView.animateWithDuration(0.3, animations: {
-                self.searchBar.alpha = 1.0
-                self.chatBox.alpha = 0.0
-                self.songBox.alpha = 1.0
-                self.chatBar.alpha = 0.0
-                self.sendButton.alpha = 0.0
-            })
+            self.searchBar.alpha = 1.0
+            self.chatBox.alpha = 0.0
+            self.songBox.alpha = 1.0
+            self.chatBar.alpha = 0.0
+            self.sendButton.alpha = 0.0
         }
         
         @IBAction func messagesButtonPressed(sender: AnyObject) {
@@ -830,13 +828,11 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
             self.hideKeyboard()
             messagesButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
             songsButton.setTitleColor(grey, forState: .Normal)
-            UIView.animateWithDuration(0.3, animations: {
-                self.searchBar.alpha = 0.0
-                self.chatBox.alpha = 1.0
-                self.songBox.alpha = 0.0
-                self.chatBar.alpha = 1.0
-                self.sendButton.alpha = 1.0
-            })
+            self.searchBar.alpha = 0.0
+            self.chatBox.alpha = 1.0
+            self.songBox.alpha = 0.0
+            self.chatBar.alpha = 1.0
+            self.sendButton.alpha = 1.0
         }
         func sendMessage(message : [String : String]) {
             self.chatBar.text = ""
