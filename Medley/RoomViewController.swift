@@ -209,18 +209,15 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
                 if(!(snapshot.value is NSNull)) {
                     let state: String = (snapshot.value as? String)!
                     if(state == "playing") {
-                        print("song is currently playing, calling play and seeking to " + String(self.songTime + self.seekAmount))
                         self.waiting = true
                         self.playerView.playVideo()
                         self.seekAmount = 0
                         self.syncVideoByAmount()
                     }
                     else if(state == "paused") {
-                        print("pressing pause2")
                         self.playerView.pauseVideo()
                     } else if (state == "ended") {
                         //this is kind of optional
-                        print("stopping video")
                         self.playerView.stopVideo()
                     }
                 }
@@ -233,14 +230,12 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
                 myRootRef.childByAppendingPath("rooms")
                     .childByAppendingPath(self.roomCode).childByAppendingPath("song_state")
                     .setValue("playing")
-                print("playing")
                 playerView.playVideo()
                 playButton.setTitle("Pause", forState: .Normal)
             } else {
                 myRootRef.childByAppendingPath("rooms")
                     .childByAppendingPath(self.roomCode).childByAppendingPath("song_state")
                     .setValue("paused")
-                print("pressing pause")
                 playerView.pauseVideo()
                 playButton.setTitle("Play", forState: .Normal)
             }
@@ -250,14 +245,11 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
         func playerViewDidBecomeReady(playerView: YTPlayerView) {
             
             if(myRootRef.authData.uid != self.admin) {
-                print("player is ready")
                 if(firstTime == true) {
                     firstTime = false
-                    print("calling song state")
                     songState(self.roomCode)
                 }
                 if(waiting == true) {
-                    print("calling play")
                     waiting = false
                     self.videoLoadingIndicator.stopAnimating()
                     self.playerView.playVideo()
@@ -266,7 +258,6 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
                 
             } else {
                 if(waiting == true) {
-                    print("waiting")
                     waiting = false
                     self.videoLoadingIndicator.stopAnimating()
                     self.playOrPauseVideo()
@@ -275,20 +266,17 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
         }
     
         func playerView(playerView: YTPlayerView, didChangeToState state: YTPlayerState) {
-            print("state is " + String(state))
             if(state == YTPlayerState.Ended) {
                 seekAmount = 0
             }
             if(myRootRef.authData.uid == self.admin) {
                 if(self.playerView.playerState() == YTPlayerState.Paused) {
-                    print("turning off timer")
                     songTimer.invalidate()
                 } else if (state == YTPlayerState.Playing) {
                     songTimer.invalidate()
                     songTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(setSongTime), userInfo: nil, repeats: true)
                 } else if(state == YTPlayerState.Ended) {
                     playNextSong()
-                    print("turning off timer")
                     songTimer.invalidate()
                     playButton.setTitle("Play", forState: .Normal)
                     myRootRef.childByAppendingPath("rooms")
@@ -349,8 +337,8 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
         }
     
         func highlightCurrentSong(oldSongIndex : Int) {
-            print(songBox.subviews[currentSongIndex])
-            print(songBox.subviews[oldSongIndex])
+            print(songBox.subviews[0])
+            print(songBox.subviews[1])
         }
     
         func adminChange(roomCode : String, username : String) {
@@ -398,7 +386,6 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
         func pressPlayButton() {
             if(self.songPresent == true) {
                 if(playerView.playerState() == YTPlayerState.Buffering || YTPlayerState.Unknown == playerView.playerState()) {
-                    print("song is buffer")
                     self.videoLoadingIndicator.startAnimating()
                     self.waiting = true
                 } else {
@@ -427,7 +414,6 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
             
         }
         @IBAction func syncVideoForwardButtonPressed(sender: AnyObject) {
-            print(playerView.playerState)
             if(playerView.playerState() == YTPlayerState.Playing) {
                 seekAmount += 0.1
                 syncVideoByAmount()
@@ -473,7 +459,6 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
             ]
             
             
-            print("loading video with ID "  + videoID + "to timestamp " + String(songTime))
             playerView.loadWithVideoId(videoID, playerVars:  playerVars)
         }
         
@@ -869,17 +854,7 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
         //Youtube search
         
         func songSearchChange(sender : UITextField) {
-            print("searching for " + searchBar.text!)
             YTSearch.query(sender.text!, tableView: tableView, viewWait: searchIndicatorView)
-        }
-        
-        @IBAction func searchButtonPressed(sender: AnyObject) {
-    //        if(YTSearch.videosArray.count != 0){
-    //            YTSearch.videosArray.removeAll(keepCapacity: false)
-    //        }
-    //        print("searching for " + searchBar.text!)
-    //        YTSearch.query(searchBar.text!, tableView: tableView, viewWait: searchIndicatorView)
-    //        print("reloaded data")
         }
         
         func searchBarTapped(sender : UITextField) {
@@ -900,7 +875,6 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
             })
             disableKeyboardView.hidden = true
             YTSearch.videosArray.removeAll(keepCapacity: false)
-            print("gooodbye!!")
         }
 
         
@@ -914,7 +888,6 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
         
         func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
-            print("adding new cell")
             var cell: UITableViewCell!
             cell = tableView.dequeueReusableCellWithIdentifier("idCellVideo", forIndexPath: indexPath)
             
@@ -942,10 +915,6 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
         
         //when a song option is tapped
         func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-            
-            print("this is happening!!!")
-            
-            print("row is \(indexPath.row) and the array has length " + String(YTSearch.videosArray.count))
             
             let songName : String = (YTSearch.videosArray[indexPath.row]["title"] as? String)!
             let songID : String = (YTSearch.videosArray[indexPath.row]["videoID"] as? String)!
