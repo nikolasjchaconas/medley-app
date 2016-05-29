@@ -35,19 +35,15 @@ class HomeViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         self.hideKeyboardOnTap()
         
-        //Add black gradient
+        //Add blue gradient
         self.blueGrad.frame = self.view.bounds
         self.view.layer.addSublayer(blueGrad)
         
-        // Put shadow on Medley logo and greetings text
+        // Put shadow on Medley logo
         self.medleyLogo.layer.shadowColor = buttonShadowColor.CGColor
         self.medleyLogo.layer.shadowOffset = CGSizeMake(0, 6)
         self.medleyLogo.layer.shadowRadius = 3.0
         self.medleyLogo.layer.shadowOpacity = 1.0
-//        self.greetingMessage.layer.shadowColor = buttonShadowColor.CGColor
-//        self.greetingMessage.layer.shadowOffset = CGSizeMake(0, 2)
-//        self.greetingMessage.layer.shadowRadius = 1.0
-//        self.greetingMessage.layer.shadowOpacity = 1.0
         
         // Round the button corners
         self.createRoomButton.layer.cornerRadius = 5
@@ -62,23 +58,7 @@ class HomeViewController: UIViewController {
         self.settingsButton.layer.borderWidth = 1
         self.settingsButton.layer.borderColor = self.buttonBorderColor.CGColor
         
-        // Give buttons shadows
-//        self.createRoomButton.layer.shadowColor = self.buttonShadowColor.CGColor
-//        self.createRoomButton.layer.shadowOpacity = 1.0
-//        self.createRoomButton.layer.shadowRadius = 1.0
-//        self.createRoomButton.layer.shadowOffset = CGSizeMake(0, 3)
-//        self.joinRoomButton.layer.shadowColor = self.buttonShadowColor.CGColor
-//        self.joinRoomButton.layer.shadowOpacity = 1.0
-//        self.joinRoomButton.layer.shadowRadius = 1.0
-//        self.joinRoomButton.layer.shadowOffset = CGSizeMake(0, 3)
-//        self.settingsButton.layer.shadowColor = self.buttonShadowColor.CGColor
-//        self.settingsButton.layer.shadowOpacity = 1.0
-//        self.settingsButton.layer.shadowRadius = 1.0
-//        self.settingsButton.layer.shadowOffset = CGSizeMake(0, 3)
-        
-        
         //get username
-        
         myRootRef.observeAuthEventWithBlock({ authData in
             if authData != nil {
                 self.myRootRef.childByAppendingPath("users")

@@ -67,6 +67,7 @@ class ViewController: UIViewController {
     let buttonShadowColor : UIColor = UIColor( red: 20/255.0, green: 20/255.0, blue: 20/255.0, alpha: 1.0)
     var redColor = UIColor(red: 1, green:0, blue: 0, alpha: 0.8)
     var greenColor = UIColor(red: 0, green: 1, blue: 0, alpha: 0.8)
+    
     // Create a reference to a Firebase location
     let myRootRef = Firebase(url:"https://crackling-heat-1030.firebaseio.com/")
     

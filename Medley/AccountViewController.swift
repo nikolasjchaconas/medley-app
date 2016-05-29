@@ -41,7 +41,7 @@ class AccountViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         self.hideKeyboardOnTap()
         
-        //Add black gradient
+        //Add purple gradient
         self.purpleGrad.frame = self.view.bounds
         self.view.layer.addSublayer(purpleGrad)
         
@@ -50,25 +50,11 @@ class AccountViewController: UIViewController {
         self.updateInfoButton.layer.borderColor = self.buttonBorderColor.CGColor
         self.updateInfoButton.layer.borderWidth = 1
         
-        // Add shadow to update info button
-//        self.updateInfoButton.layer.shadowColor = self.buttonShadowColor.CGColor
-//        self.updateInfoButton.layer.shadowRadius = 1.0
-//        self.updateInfoButton.layer.shadowOpacity = 1.0
-//        self.updateInfoButton.layer.shadowOffset = CGSizeMake(0, 3)
-        
-        // Add shadow to account header, success message, and warning message
+        // Add shadow to account header
         self.accountHeader.layer.shadowColor = buttonShadowColor.CGColor
         self.accountHeader.layer.shadowOffset = CGSizeMake(0, 6)
         self.accountHeader.layer.shadowRadius = 3.0
         self.accountHeader.layer.shadowOpacity = 1.0
-//        self.temporaryPasswordWarning.layer.shadowColor = buttonShadowColor.CGColor
-//        self.temporaryPasswordWarning.layer.shadowOffset = CGSizeMake(0, 2)
-//        self.temporaryPasswordWarning.layer.shadowRadius = 1.0
-//        self.temporaryPasswordWarning.layer.shadowOpacity = 1.0
-//        self.successMessage.layer.shadowColor = buttonShadowColor.CGColor
-//        self.successMessage.layer.shadowOffset = CGSizeMake(0, 2)
-//        self.successMessage.layer.shadowRadius = 1.0
-//        self.successMessage.layer.shadowOpacity = 1.0
         
          if(self.IsPasswordTemporary()) {
             self.ShowWarning()

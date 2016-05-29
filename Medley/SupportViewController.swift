@@ -31,34 +31,20 @@ class SupportViewController: UIViewController, UITextViewDelegate, MFMailCompose
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        //Add black gradient
+        //Add purple gradient
         self.purpleGrad.frame = self.view.bounds
         self.view.layer.addSublayer(purpleGrad)
         
-        // Add shadow to about header message, support info text, and success text
+        // Add shadow to about header message
         self.supportHeader.layer.shadowColor = buttonShadowColor.CGColor
         self.supportHeader.layer.shadowOffset = CGSizeMake(0, 6)
         self.supportHeader.layer.shadowRadius = 3.0
         self.supportHeader.layer.shadowOpacity = 1.0
-//        self.supportMessage.layer.shadowColor = buttonShadowColor.CGColor
-//        self.supportMessage.layer.shadowOffset = CGSizeMake(0, 2)
-//        self.supportMessage.layer.shadowRadius = 1.0
-//        self.supportMessage.layer.shadowOpacity = 1.0
-//        self.successText.layer.shadowColor = buttonShadowColor.CGColor
-//        self.successText.layer.shadowOffset = CGSizeMake(0, 2)
-//        self.successText.layer.shadowRadius = 1.0
-//        self.successText.layer.shadowOpacity = 1.0
         
         // Round send button corners
         self.sendButton.layer.cornerRadius = 5
         self.sendButton.layer.borderColor = self.buttonBorderColor.CGColor
         self.sendButton.layer.borderWidth = 1
-        
-        //Put shadow on send button
-//        self.sendButton.layer.shadowColor = self.buttonShadowColor.CGColor
-//        self.sendButton.layer.shadowOpacity = 1.0
-//        self.sendButton.layer.shadowRadius = 1.0
-//        self.sendButton.layer.shadowOffset = CGSizeMake(0, 3)
         
         //Stylize message box
         self.messageBox.layer.cornerRadius = 5

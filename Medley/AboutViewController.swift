@@ -23,19 +23,16 @@ class AboutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Add black gradient
+        //Add purple gradient
         self.purpleGrad.frame = self.view.bounds
         self.view.layer.addSublayer(purpleGrad)
         
-        // Add shadow to about header message and about text
+        // Add shadow to about header message
         self.aboutHeader.layer.shadowColor = buttonShadowColor.CGColor
         self.aboutHeader.layer.shadowOffset = CGSizeMake(0, 6)
         self.aboutHeader.layer.shadowRadius = 3.0
         self.aboutHeader.layer.shadowOpacity = 1.0
-//        self.aboutMessage.layer.shadowColor = buttonShadowColor.CGColor
-//        self.aboutMessage.layer.shadowOffset = CGSizeMake(0, 2)
-//        self.aboutMessage.layer.shadowRadius = 1.0
-//        self.aboutMessage.layer.shadowOpacity = 1.0
+        
         // Do any additional setup after loading the view, typically from a nib.
         self.hideKeyboardOnTap()
     }
