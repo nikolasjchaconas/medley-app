@@ -46,6 +46,7 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
     var songCount : Int = 0
     var totalLines : CGFloat = 0
     var chatBoxHeight : CGFloat = 0
+    var errorMessagePresent : Bool = false
     var songPresent : Bool = false
     var chatBarConstraint : NSLayoutConstraint = NSLayoutConstraint()
     @IBOutlet weak var menuButton: UIButton!
@@ -570,13 +571,20 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
             var label : UILabel
             
             if(error == 0) {
-                let subview : UILabel = songBox.subviews.last as! UILabel
+                if(errorMessagePresent == true) {
+                    let subview : UILabel = songBox.subviews.last as! UILabel
+                    
+                    if(subview.text == "\nThere are currently no videos in the playlist.\n Search in the toolbar to add some!") {
+                        subview.removeFromSuperview()
+                        errorMessagePresent = false
+                    }
+                    
+                }
+                
                 let newSong = [
                     songName : songID
                 ]
-                if(subview.text == "\nThere are currently no videos in the playlist.\n Search in the toolbar to add some!") {
-                    subview.removeFromSuperview()
-                }
+                
                 if(songCount == 1) {
                     myRootRef.childByAppendingPath("rooms").childByAppendingPath(self.roomCode)
                         .childByAppendingPath("admin")
@@ -602,6 +610,7 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
                 label.numberOfLines = 1
                 label.textAlignment = NSTextAlignment.Left
             } else {
+                errorMessagePresent = true
                 songCount -= 1
                 let textBoxWidth : CGFloat = 80.0
                 text = songName
