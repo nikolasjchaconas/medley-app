@@ -2189,9 +2189,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Gb1-p8-IRf">
-                                <rect key="frame" x="-10" y="-10" width="20" height="20"/>
-                            </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kIU-7r-OdO">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <constraints>
@@ -2236,14 +2233,14 @@
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="ZyJ-9s-7JR"/>
                                         <exclude reference="Jxw-6M-EvT"/>
+                                        <exclude reference="ZyJ-9s-7JR"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
                                     <mask key="constraints">
-                                        <include reference="ZyJ-9s-7JR"/>
                                         <include reference="Jxw-6M-EvT"/>
+                                        <include reference="ZyJ-9s-7JR"/>
                                     </mask>
                                 </variation>
                             </textField>
@@ -2340,14 +2337,6 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ysQ-EH-OK9">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <string key="text">Change your e-mail or password.
-Leave fields blank unchanged to keep them unchanged.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Incorrect Password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IFA-8I-wcd">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <constraints>
@@ -2390,17 +2379,18 @@ Leave fields blank unchanged to keep them unchanged.</string>
                                     </mask>
                                 </variation>
                             </textField>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Gb1-p8-IRf">
+                                <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="kIU-7r-OdO" firstAttribute="leading" secondItem="dnT-Jz-uzk" secondAttribute="leading" id="4GT-j6-7JL"/>
-                            <constraint firstItem="ysQ-EH-OK9" firstAttribute="top" secondItem="k8l-qt-2dr" secondAttribute="bottom" constant="8" symbolic="YES" id="8bv-SC-eEk"/>
-                            <constraint firstItem="ysQ-EH-OK9" firstAttribute="centerX" secondItem="Mha-hp-g6x" secondAttribute="centerX" id="9SZ-XW-C90"/>
                             <constraint firstItem="SVt-BR-ZPC" firstAttribute="top" secondItem="IFA-8I-wcd" secondAttribute="bottom" constant="6" id="9VH-xJ-MZu">
-                                <variation key="heightClass=regular-widthClass=compact" constant="8"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="-317"/>
                             </constraint>
                             <constraint firstItem="Mha-hp-g6x" firstAttribute="leading" secondItem="9TQ-lt-15H" secondAttribute="leading" id="9cU-HK-Tm4">
-                                <variation key="heightClass=regular-widthClass=compact" constant="1"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                             </constraint>
                             <constraint firstItem="4rF-B9-Hqe" firstAttribute="top" secondItem="9TQ-lt-15H" secondAttribute="bottom" constant="8" symbolic="YES" id="BUY-AJ-HJT">
                                 <variation key="heightClass=regular-widthClass=compact" constant="-88"/>
@@ -2410,7 +2400,7 @@ Leave fields blank unchanged to keep them unchanged.</string>
                             <constraint firstItem="9TQ-lt-15H" firstAttribute="centerX" secondItem="dnT-Jz-uzk" secondAttribute="centerX" id="MHF-k8-BvR"/>
                             <constraint firstItem="Q16-of-Lqo" firstAttribute="leading" secondItem="dnT-Jz-uzk" secondAttribute="leadingMargin" constant="47" id="Mmc-G4-Tf2"/>
                             <constraint firstItem="eMJ-Pg-38x" firstAttribute="centerX" secondItem="Mha-hp-g6x" secondAttribute="centerX" id="RlS-dw-7z2">
-                                <variation key="heightClass=regular-widthClass=compact" constant="-1"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                             </constraint>
                             <constraint firstItem="eMJ-Pg-38x" firstAttribute="top" secondItem="Mha-hp-g6x" secondAttribute="bottom" constant="8" symbolic="YES" id="RyJ-72-G5h">
                                 <variation key="heightClass=regular-widthClass=compact" constant="104"/>
@@ -2430,23 +2420,20 @@ Leave fields blank unchanged to keep them unchanged.</string>
                                 <variation key="heightClass=regular-widthClass=compact" constant="-136"/>
                             </constraint>
                             <constraint firstItem="9TQ-lt-15H" firstAttribute="top" secondItem="SVt-BR-ZPC" secondAttribute="bottom" constant="1" id="eig-Pg-Sr8">
-                                <variation key="heightClass=regular-widthClass=compact" constant="-222"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="96"/>
                             </constraint>
                             <constraint firstItem="9TQ-lt-15H" firstAttribute="top" secondItem="k8l-qt-2dr" secondAttribute="bottom" constant="77" id="fIw-Hc-gru">
-                                <variation key="heightClass=regular-widthClass=compact" constant="190"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="179"/>
                             </constraint>
-                            <constraint firstItem="Mha-hp-g6x" firstAttribute="top" secondItem="ysQ-EH-OK9" secondAttribute="bottom" constant="39" id="fl7-k6-XPd">
-                                <variation key="heightClass=regular-widthClass=compact" constant="19"/>
+                            <constraint firstItem="SVt-BR-ZPC" firstAttribute="top" secondItem="Gb1-p8-IRf" secondAttribute="bottom" constant="8" symbolic="YES" id="pPn-MK-mbp">
+                                <variation key="heightClass=regular-widthClass=compact" constant="-317"/>
                             </constraint>
-                            <constraint firstItem="ysQ-EH-OK9" firstAttribute="leading" secondItem="dnT-Jz-uzk" secondAttribute="leadingMargin" id="mYe-yf-bMF"/>
-                            <constraint firstItem="SVt-BR-ZPC" firstAttribute="top" secondItem="Gb1-p8-IRf" secondAttribute="bottom" constant="8" symbolic="YES" id="pPn-MK-mbp"/>
                             <constraint firstItem="IFA-8I-wcd" firstAttribute="centerX" secondItem="Q16-of-Lqo" secondAttribute="centerX" id="qVd-9B-Zcb"/>
                             <constraint firstItem="k8l-qt-2dr" firstAttribute="top" secondItem="aLi-F2-8em" secondAttribute="bottom" id="wWA-y8-x3u"/>
                             <constraint firstItem="IFA-8I-wcd" firstAttribute="centerY" secondItem="Q16-of-Lqo" secondAttribute="centerY" id="yYz-aX-vGv"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="Gb1-p8-IRf"/>
                                 <exclude reference="kIU-7r-OdO"/>
                                 <exclude reference="k8l-qt-2dr"/>
                                 <exclude reference="4rF-B9-Hqe"/>
@@ -2454,28 +2441,23 @@ Leave fields blank unchanged to keep them unchanged.</string>
                                 <exclude reference="eMJ-Pg-38x"/>
                                 <exclude reference="SVt-BR-ZPC"/>
                                 <exclude reference="Q16-of-Lqo"/>
-                                <exclude reference="ysQ-EH-OK9"/>
                                 <exclude reference="IFA-8I-wcd"/>
                                 <exclude reference="9TQ-lt-15H"/>
+                                <exclude reference="Gb1-p8-IRf"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="4GT-j6-7JL"/>
-                                <exclude reference="UDX-XV-DYL"/>
-                                <exclude reference="VNa-cW-DzU"/>
-                                <exclude reference="wWA-y8-x3u"/>
-                                <exclude reference="8bv-SC-eEk"/>
-                                <exclude reference="9SZ-XW-C90"/>
-                                <exclude reference="mYe-yf-bMF"/>
-                                <exclude reference="9cU-HK-Tm4"/>
-                                <exclude reference="eBL-yY-02W"/>
-                                <exclude reference="fl7-k6-XPd"/>
+                                <exclude reference="BV9-QV-aaH"/>
                                 <exclude reference="BUY-AJ-HJT"/>
                                 <exclude reference="cZF-U5-est"/>
                                 <exclude reference="MHF-k8-BvR"/>
                                 <exclude reference="eig-Pg-Sr8"/>
                                 <exclude reference="fIw-Hc-gru"/>
+                                <exclude reference="9cU-HK-Tm4"/>
+                                <exclude reference="eBL-yY-02W"/>
                                 <exclude reference="RlS-dw-7z2"/>
                                 <exclude reference="RyJ-72-G5h"/>
+                                <exclude reference="4GT-j6-7JL"/>
+                                <exclude reference="UDX-XV-DYL"/>
                                 <exclude reference="Xsm-gP-VTM"/>
                                 <exclude reference="qVd-9B-Zcb"/>
                                 <exclude reference="yYz-aX-vGv"/>
@@ -2484,12 +2466,12 @@ Leave fields blank unchanged to keep them unchanged.</string>
                                 <exclude reference="9VH-xJ-MZu"/>
                                 <exclude reference="Wdy-e2-EXq"/>
                                 <exclude reference="pPn-MK-mbp"/>
-                                <exclude reference="BV9-QV-aaH"/>
+                                <exclude reference="VNa-cW-DzU"/>
+                                <exclude reference="wWA-y8-x3u"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
-                                <include reference="Gb1-p8-IRf"/>
                                 <include reference="kIU-7r-OdO"/>
                                 <include reference="k8l-qt-2dr"/>
                                 <include reference="4rF-B9-Hqe"/>
@@ -2497,28 +2479,23 @@ Leave fields blank unchanged to keep them unchanged.</string>
                                 <include reference="eMJ-Pg-38x"/>
                                 <include reference="SVt-BR-ZPC"/>
                                 <include reference="Q16-of-Lqo"/>
-                                <include reference="ysQ-EH-OK9"/>
                                 <include reference="IFA-8I-wcd"/>
                                 <include reference="9TQ-lt-15H"/>
+                                <include reference="Gb1-p8-IRf"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="4GT-j6-7JL"/>
-                                <include reference="UDX-XV-DYL"/>
-                                <include reference="VNa-cW-DzU"/>
-                                <include reference="wWA-y8-x3u"/>
-                                <include reference="8bv-SC-eEk"/>
-                                <include reference="9SZ-XW-C90"/>
-                                <include reference="mYe-yf-bMF"/>
-                                <include reference="9cU-HK-Tm4"/>
-                                <include reference="eBL-yY-02W"/>
-                                <include reference="fl7-k6-XPd"/>
+                                <include reference="BV9-QV-aaH"/>
                                 <include reference="BUY-AJ-HJT"/>
                                 <include reference="cZF-U5-est"/>
                                 <include reference="MHF-k8-BvR"/>
                                 <include reference="eig-Pg-Sr8"/>
                                 <include reference="fIw-Hc-gru"/>
+                                <include reference="9cU-HK-Tm4"/>
+                                <include reference="eBL-yY-02W"/>
                                 <include reference="RlS-dw-7z2"/>
                                 <include reference="RyJ-72-G5h"/>
+                                <include reference="4GT-j6-7JL"/>
+                                <include reference="UDX-XV-DYL"/>
                                 <include reference="Xsm-gP-VTM"/>
                                 <include reference="qVd-9B-Zcb"/>
                                 <include reference="yYz-aX-vGv"/>
@@ -2527,7 +2504,8 @@ Leave fields blank unchanged to keep them unchanged.</string>
                                 <include reference="9VH-xJ-MZu"/>
                                 <include reference="Wdy-e2-EXq"/>
                                 <include reference="pPn-MK-mbp"/>
-                                <include reference="BV9-QV-aaH"/>
+                                <include reference="VNa-cW-DzU"/>
+                                <include reference="wWA-y8-x3u"/>
                             </mask>
                         </variation>
                     </view>
