@@ -72,6 +72,7 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
     @IBOutlet weak var disableKeyboardView: UIView!
     
     var lighterGrey = UIColor(red: 190/255, green: 190/255, blue: 190/255, alpha: 1.0)
+    var highlightedButton = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1.0)
     var grey = UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1.0)
     
     
@@ -93,6 +94,13 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
         
         self.sendButton.layer.addBorder(UIRectEdge.Top, color: lighterGrey,
                                         thickness: 1.0, width: 55.0, height: 50)
+        
+        //Highlight messages button by default
+        self.messagesButton.layer.backgroundColor = self.highlightedButton.CGColor
+        
+        //Center button labels
+        self.messagesButton.titleLabel?.textAlignment = NSTextAlignment.Center
+        self.songsButton.titleLabel?.textAlignment = NSTextAlignment.Center
         
 
         tableView.layer.addBorder(UIRectEdge.Top, color: lighterGrey,
@@ -789,6 +797,8 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
         }
         
         @IBAction func songsButtonPressed(sender: AnyObject) {
+            self.messagesButton.layer.backgroundColor = UIColor.whiteColor().CGColor
+            self.songsButton.layer.backgroundColor = self.highlightedButton.CGColor
             inMessages = false
             self.hideKeyboard()
             songsButton.setTitleColor(grey, forState: .Normal)
@@ -803,6 +813,8 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
         }
         
         @IBAction func messagesButtonPressed(sender: AnyObject) {
+            self.songsButton.layer.backgroundColor = UIColor.whiteColor().CGColor
+            self.messagesButton.layer.backgroundColor = self.highlightedButton.CGColor
             messagesButton.setTitle("Messages", forState: .Normal)
             inMessages = true
             messagesMissing = 0
