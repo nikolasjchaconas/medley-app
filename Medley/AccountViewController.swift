@@ -13,16 +13,16 @@ class AccountViewController: UIViewController {
     var myRootRef = Firebase(url:"https://crackling-heat-1030.firebaseio.com/")
      
     @IBOutlet weak var newPasswordField: UITextField!
-    @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var accountHeader: UILabel!
     @IBOutlet weak var oldPasswordField: UITextField!
     @IBOutlet weak var confirmPasswordField: UITextField!
     @IBOutlet weak var temporaryPasswordWarning: UILabel!
     @IBOutlet weak var incorrectPasswordWarning: UILabel!
     @IBOutlet weak var updateInfoButton: UIButton!
+    @IBOutlet weak var passwordSuccessMessage: UILabel!
     @IBOutlet weak var successMessage: UILabel!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
-
+    
     /*
      
      change these, we need to make these global somewhere
@@ -59,21 +59,14 @@ class AccountViewController: UIViewController {
         self.accountHeader.layer.shadowRadius = 1.0
         self.accountHeader.layer.shadowOpacity = 1.0
         
-        // Add listeners to text fields
-//        self.confirmPasswordField.addTarget(self, action: #selector(ViewController.LoginFieldChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
-//        self.newPasswordField.addTarget(self, action: #selector(ViewController.LoginFieldChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
-//        self.oldPasswordField.addTarget(self, action: #selector(ViewController.LoginFieldChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
-//        self.emailField.addTarget(self, action: #selector(ViewController.LoginFieldChange(_:)), forControlEvents: UIControlEvents.EditingDidEnd)
-        
         if(self.IsPasswordTemporary()) {
             self.ShowWarning()
         }
         else {
             self.HideWarning()
         }
-        self.HideSuccess()
+        self.hidePasswordSuccess()
         self.hideIncorrectPassword()
-        self.emailField.text = GetCurrentUserEmail(myRootRef)
         
         loadingIndicator.alpha = 0;
     }
@@ -83,26 +76,15 @@ class AccountViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-//     func AbleToSignup (sender:UITextField) {
-//         sender.layer.borderWidth = 0
-//         if(oldPasswordField == ) {
-//             if(!isRed(emailField) && !isRed(usernameField) && !isRed(passwordField) && !isRed(passwordConfirmationField)){
-//                 self.updateInfoButton.enabled = true
-//             }
-//         }
-//         else {
-//             self.updateInfoButton.enabled = false
-//         }
-//     }
     
-    func ShowSuccess() {
-        self.successMessage.text = "Password Changed!"
+    func showPasswordSuccess() {
+        self.passwordSuccessMessage.text = "Password Changed!"
     }
      
-    func HideSuccess() {
-        self.successMessage.text = ""
+    func hidePasswordSuccess() {
+        self.passwordSuccessMessage.text = ""
     }
-
+    
     func hideIncorrectPassword(){
         self.incorrectPasswordWarning.text = ""
     }
@@ -174,10 +156,13 @@ class AccountViewController: UIViewController {
     
     @IBAction func updateInfoPressed(sender: AnyObject) {
         self.hideKeyboard()
-        self.HideSuccess()
+        self.hidePasswordSuccess()
         self.ShowLoading()
         
         if(self.ValidField(self.oldPasswordField)){
+            //Remove red border around password
+            self.oldPasswordField.layer.borderWidth = 0
+            
             if(self.newPasswordField.text != "" && self.confirmPasswordField.text != ""){
                 if(self.confirmPasswordField.text != self.newPasswordField.text){
                     self.showPasswordMismatch()
@@ -192,12 +177,11 @@ class AccountViewController: UIViewController {
                             self.hideIncorrectPassword()
                             self.HideLoading()
                             self.HideWarning()
-                            self.ShowSuccess()
+                            self.showPasswordSuccess()
                         }
                     })
                 }
             }
-
         }
         self.HideLoading()
     }
