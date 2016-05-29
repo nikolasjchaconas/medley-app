@@ -17,19 +17,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var supportButton: UIButton!
     @IBOutlet weak var settingsHeader: UILabel!
     @IBOutlet weak var logoutButton: UIButton!
-    
 
-    
-
-    /*
-
-    @IBOutlet weak var newPasswordField: UITextField!
-    @IBOutlet weak var oldPasswordField: UITextField!
-    @IBOutlet weak var temporaryPasswordWarning: UILabel!
-    @IBOutlet weak var successMessage: UILabel!
-    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
-    */
-    
     /*
  
             change these, we need to make these global somewhere
@@ -92,75 +80,8 @@ class SettingsViewController: UIViewController {
         self.performSegueWithIdentifier("ViewController", sender:sender)
     }
     
-    /*
-    @IBAction func showAboutPopup(sender: AnyObject) {
-        let alertController = UIAlertController(title: "About Medley", message:
-            "Medley is an app where you can join rooms with friends to listen to music and chat. \n\nMedley was first created by five students at the University of California, Santa Barbara in Spring 2016. \n\nWe hope you enjoy using our app!", preferredStyle: UIAlertControllerStyle.Alert)
-        alertController.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
-        self.presentViewController(alertController, animated: true, completion: nil)
-    }
-    
-
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-    func ShowSuccess() {
-        self.successMessage.text = "Password Changed!"
-    }
-    
-    func HideSuccess() {
-        self.successMessage.text = ""
-    }
-    
-    func ShowLoading() {
-        loadingIndicator.alpha = 1.0
-        loadingIndicator.startAnimating()
-    }
-    
-    func HideLoading() {
-        loadingIndicator.alpha = 0.0
-    }
-    
-    func ShowWarning() {
-        self.temporaryPasswordWarning.text = "You are using a temporary password, it will expire in the next 24 hours. Please change your password."
-    }
-    
-    func HideWarning() {
-        self.temporaryPasswordWarning.text = ""
-    }
-    
-    func IsPasswordTemporary() -> Bool {
-        return (self.GetCurrentUser(self.myRootRef).providerData["isTemporaryPassword"] as? Bool)!
-    }
-    
-    func ValidField(field : UITextField) -> Bool {
-        let valid = field.text != "" ? true : false
-        if(!valid)  {
-           self.MakeTextFieldRed(field, color:self.redColor)
-        }
-        return valid
-    }
-    
-    @IBAction func changePasswordPressed(sender: AnyObject) {
-        if(self.ValidField(self.newPasswordField) && self.ValidField(self.oldPasswordField)) {
-            ShowLoading()
-            self.myRootRef.changePasswordForUser(GetCurrentUserEmail(myRootRef), fromOld: self.oldPasswordField.text!,
-                toNew: self.newPasswordField.text!, withCompletionBlock: { error in
-                if error != nil {
-                    self.HideLoading()
-                } else {
-                    self.HideLoading()
-                    self.HideWarning()
-                    self.ShowSuccess()
-                }
-            })
-        }
-    }
-    */
-    
-    
  }
