@@ -335,14 +335,23 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
         }
     
         func highlightCurrentSong() {
-            for i in 1 ..< songList.count + 1 {
-                let newLabel = (songBox.subviews[2 + i] as? UILabel)!
-                let newText = newLabel.text!
-                if(i == currentSongIndex) {
-                    newLabel.attributedText = NSMutableAttributedString(string:newText, attributes: [NSFontAttributeName : UIFont.boldSystemFontOfSize(18)])
+            var padding = 0
+            var i = 1
+            while(i != songList.count + 1) {
+                print(NSStringFromClass(songBox.subviews[i + padding].classForCoder))
+                if(NSStringFromClass(songBox.subviews[i + padding].classForCoder) == "UILabel") {
+                    let newLabel = songBox.subviews[i + padding] as! UILabel
+                    let newText = newLabel.text!
+                    if(i == currentSongIndex) {
+                        newLabel.attributedText = NSMutableAttributedString(string:newText, attributes: [NSFontAttributeName : UIFont.boldSystemFontOfSize(18)])
+                    } else {
+                        newLabel.attributedText = NSMutableAttributedString(string: newText, attributes: [NSForegroundColorAttributeName : UIColor.blackColor()])
+                    }
+                i += 1
                 } else {
-                    newLabel.attributedText = NSMutableAttributedString(string: newText, attributes: [NSForegroundColorAttributeName : UIColor.blackColor()])
+                    padding += 1
                 }
+            
             }
 
         }
