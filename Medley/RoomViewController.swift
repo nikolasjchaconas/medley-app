@@ -530,7 +530,7 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
                         if(self.messageCount == 0) {
                             let message = [
                                 "Medley Bot" : "You are in room " + roomCode + ". Share the room code with your friends"
-                                    + " and start listening to synced music! <3"
+                                    + " and start watching synced videos! <3"
                             ]
                             self.sendMessage(message)
                         }
