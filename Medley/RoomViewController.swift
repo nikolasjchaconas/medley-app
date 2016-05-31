@@ -771,6 +771,7 @@ class RoomViewController: UIViewController, YTPlayerViewDelegate, UIGestureRecog
         }
         
         @IBAction func leaveRoomButtonPressed(sender: AnyObject) {
+            self.leaveRoomButton.enabled = false
             self.leaveRoom()
         }
         
